@@ -13,7 +13,9 @@ jobs:
     env:
       # one filename per line, including directory if in a subdirectory
       FILES: |
-        note.tex
+        V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.tex
+        V5A2-D-Modules/D_Modules_Notes.tex
+        V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.tex
     steps:
       - name: Checkout
         uses: actions/checkout@v4

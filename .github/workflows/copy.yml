@@ -1,0 +1,45 @@
+name: copy pdfs to web branch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - build
+    paths:
+      - "**.pdf"
+
+jobs:
+  copy:
+    name: Copy PDFs to web branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Git config
+        run: |
+          git config user.email "gabriel_ong@ieee.org"
+          git config user.name "Gabriel Ong"
+
+      - name: Fetch and switch to web branch
+        run: |
+          git fetch origin
+          git checkout -B web origin/web
+
+      - name: Clean existing files
+        run: |
+          # remove all files and folders except .git
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+          git add -A
+          git commit -m "Clean old PDF files" || echo "Nothing to commit"
+
+      - name: Checkout new PDFs from build branch
+        run: |
+          git fetch origin build
+          git checkout origin/build -- V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.pdf
+          git checkout origin/build -- V5A2-D-Modules/D_Modules_Notes.pdf
+          git checkout origin/build -- V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.pdf
+
+      - name: Commit and push updates
+        run: |
+          git add .
+          git commit -m "Update PDFs"
+          git push origin web

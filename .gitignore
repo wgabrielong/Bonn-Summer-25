@@ -11,6 +11,10 @@
 *.cb
 *.cb2
 .*.lb
+.*.bbl-SAVE-ERROR
+.*.bcf-SAVE-ERROR
+
+
 
 ## Intermediate documents:
 *.dvi
@@ -299,3 +303,9 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
+V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.pdf
+V5A2-D-Modules/D_Modules_Notes.pdf
+V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.pdf
+V4A1-Algebraic-Geometry-II/._wordcount_selection.tex
+V5A2-D-Modules/._wordcount_selection.tex
+V5A4-Habiro-Cohomology._wordcount_selection.tex
