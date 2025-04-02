@@ -1,17 +1,17 @@
 name: copy pdfs to web branch
 
 on:
-  workflow_dispatch:
-  push:
-    branches:
-      - build
-    paths:
-      - "**.pdf"
+  workflow_run:
+    workflows: ["build pdf"]  # must match the name in pdf.yml
+    types:
+      - completed
 
 jobs:
   copy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     name: Copy PDFs to web branch
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -39,7 +39,7 @@ jobs:
           git add -A
           git commit -m "Clean old files" || echo "Nothing to clean"
 
-      - name: Fetch all PDFs from build branch
+      - name: Fetch and copy all PDFs from build
         run: |
           git fetch origin build
           mkdir -p temp
@@ -47,8 +47,11 @@ jobs:
           find temp -name "*.pdf" -exec cp --parents {} . \;
           rm -rf temp
 
-      - name: Commit and push updated PDFs
+      - name: Add .nojekyll to enable capitalized paths
+        run: |
+          touch .nojekyll
+
+      - name: Commit and push updates
         run: |
           git add .
-          git commit -m "Update PDFs from build branch" || echo "No changes to commit"
-          git push origin web
+          git commit -m "Update PDFs and add .nojekyll" || echo "No

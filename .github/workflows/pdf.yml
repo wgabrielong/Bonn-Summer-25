@@ -1,4 +1,5 @@
 name: build pdf
+
 on:
   workflow_dispatch:
   push:
@@ -7,59 +8,69 @@ on:
     paths:
       - "**.tex"
       - "**.bib"
+
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # one filename per line, including directory if in a subdirectory
+      # One filename per line, including relative path
       FILES: |
         V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.tex
         V5A2-D-Modules/D_Modules_Notes.tex
         V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.tex
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install and run Git hooks
+
+      - name: Install Git hooks
         run: |
           git config core.hooksPath .githooks/
           git checkout
-      - name: Compile LaTeX document
+
+      - name: Compile LaTeX documents
         uses: xu-cheng/latex-action@v3
         with:
           root_file: ${{ env.FILES }}
           latexmk_shell_escape: true
           work_in_root_file_dir: true
           docker_image: ghcr.io/xu-cheng/texlive-full:20230801
-      - name: Move output pdf's preserving directory structure
+
+      - name: Move output PDFs (preserve directory structure)
         run: |
-          mkdir github-artifacts
-          echo -n "${{ env.FILES }}" | awk '{$1=$1};1' | sed "s/.tex$/.pdf/g" | rsync -a --files-from=- . ./github-artifacts
-      - name: Upload pdf's as artifact
+          mkdir -p github-artifacts
+          echo -n "${{ env.FILES }}" | awk '{$1=$1};1' | sed 's/.tex$/.pdf/' | rsync -a --files-from=- . ./github-artifacts
+
+      - name: Upload PDFs as artifact
         uses: actions/upload-artifact@v4
         with:
           name: pdfs
           path: ./github-artifacts
+
   deploy:
-    needs: [build]
+    needs: build
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
         with:
-          path: github-artifacts
-      - name: Move pdf
-        run: mkdir -p github-deploy && mv github-artifacts/*/* github-deploy
-      - name: Deploy on orphan branch
+          name: pdfs
+          path: github-deploy
+
+      - name: Deploy to build branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./github-deploy
           publish_branch: build
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          # remove this option if you want to have all builds preserved in the build directory
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
           force_orphan: true
+
       - name: Delete artifacts
         uses: geekyeggo/delete-artifact@v5
         with:
