@@ -2,7 +2,7 @@ name: copy pdfs to web branch
 
 on:
   workflow_run:
-    workflows: ["build pdf"]  # must match pdf.yml's workflow name
+    workflows: ["build pdf"]
     types:
       - completed
 
@@ -48,3 +48,14 @@ jobs:
           git --work-tree=temp checkout origin/build -- .
           find temp -name "*.pdf" -exec cp --parents {} . \;
           rm -rf temp
+
+      - name: Add .nojekyll and timestamp to trigger rebuild
+        run: |
+          touch .nojekyll
+          date > .build_timestamp
+
+      - name: Commit and push new content
+        run: |
+          git add .
+          git commit -m "Update PDFs and trigger Pages rebuild" || echo "No changes to commit"
+          git push origin web
