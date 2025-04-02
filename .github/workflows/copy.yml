@@ -46,8 +46,14 @@ jobs:
           git fetch origin build
           mkdir -p temp
           git --work-tree=temp checkout origin/build -- .
-          find temp -name "*.pdf" -exec cp --parents {} . \;
-          rm -rf temp
+          echo "Fetched PDF files from build branch:"
+          find temp -name "*.pdf"
+          echo "Copying..."
+          find temp -name "*.pdf" | while read filepath; do
+            target_path="./${filepath#temp/}"
+            mkdir -p "$(dirname "$target_path")"
+            cp "$filepath" "$target_path"
+          done
 
       - name: Add .nojekyll and timestamp to trigger rebuild
         run: |
@@ -57,5 +63,5 @@ jobs:
       - name: Commit and push new content
         run: |
           git add .
-          git commit -m "Update PDFs and trigger Pages rebuild" || echo "No changes to commit"
+          git commit -m "Update PDFs and trigger GitHub Pages rebuild" || echo "No changes to commit"
           git push origin web
