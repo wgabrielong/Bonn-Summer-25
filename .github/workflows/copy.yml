@@ -2,7 +2,7 @@ name: copy pdfs to web branch
 
 on:
   workflow_run:
-    workflows: ["build pdf"]  # must match the name in pdf.yml
+    workflows: ["build pdf"]  # must match pdf.yml's workflow name
     types:
       - completed
 
@@ -20,15 +20,17 @@ jobs:
           git config user.email "gabriel_ong@ieee.org"
           git config user.name "Gabriel Ong"
 
-      - name: Create or switch to web branch
+      - name: Create or switch to web branch safely
         run: |
-          if git ls-remote --exit-code --heads origin web; then
-            git checkout -B web origin/web
+          git fetch origin
+          if git show-ref --verify --quiet refs/remotes/origin/web; then
+            git checkout web || git checkout -b web origin/web
           else
             git checkout --orphan web
             git rm -rf .
-            echo "<!DOCTYPE html><html><body><h1>Coming Soon</h1></body></html>" > index.html
-            git add index.html
+            echo "<!DOCTYPE html><html><body><h1>Initialized Web Branch</h1></body></html>" > index.html
+            touch .nojekyll
+            git add .
             git commit -m "Initialize web branch"
             git push origin web
           fi
@@ -39,19 +41,10 @@ jobs:
           git add -A
           git commit -m "Clean old files" || echo "Nothing to clean"
 
-      - name: Fetch and copy all PDFs from build
+      - name: Fetch and copy all PDFs from build branch
         run: |
           git fetch origin build
           mkdir -p temp
           git --work-tree=temp checkout origin/build -- .
           find temp -name "*.pdf" -exec cp --parents {} . \;
           rm -rf temp
-
-      - name: Add .nojekyll to enable capitalized paths
-        run: |
-          touch .nojekyll
-
-      - name: Commit and push updates
-        run: |
-          git add .
-          git commit -m "Update PDFs and add .nojekyll" || echo "No
