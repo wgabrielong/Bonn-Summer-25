@@ -1,4 +1,5 @@
 name: copy pdfs to web branch
+
 on:
   workflow_dispatch:
   push:
@@ -19,27 +20,35 @@ jobs:
           git config user.email "gabriel_ong@ieee.org"
           git config user.name "Gabriel Ong"
 
-      - name: Fetch and switch to web branch
+      - name: Create or switch to web branch
         run: |
-          git fetch origin
-          git checkout -B web origin/web
+          if git ls-remote --exit-code --heads origin web; then
+            git checkout -B web origin/web
+          else
+            git checkout --orphan web
+            git rm -rf .
+            echo "<!DOCTYPE html><html><body><h1>Coming Soon</h1></body></html>" > index.html
+            git add index.html
+            git commit -m "Initialize web branch"
+            git push origin web
+          fi
 
       - name: Clean existing files
         run: |
-          # remove all files and folders except .git
           find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
           git add -A
-          git commit -m "Clean old PDF files" || echo "Nothing to commit"
+          git commit -m "Clean old files" || echo "Nothing to clean"
 
-      - name: Checkout new PDFs from build branch
+      - name: Fetch all PDFs from build branch
         run: |
           git fetch origin build
-          git checkout origin/build -- V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.pdf
-          git checkout origin/build -- V5A2-D-Modules/D_Modules_Notes.pdf
-          git checkout origin/build -- V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.pdf
+          mkdir -p temp
+          git --work-tree=temp checkout origin/build -- .
+          find temp -name "*.pdf" -exec cp --parents {} . \;
+          rm -rf temp
 
-      - name: Commit and push updates
+      - name: Commit and push updated PDFs
         run: |
           git add .
-          git commit -m "Update PDFs"
+          git commit -m "Update PDFs from build branch" || echo "No changes to commit"
           git push origin web
