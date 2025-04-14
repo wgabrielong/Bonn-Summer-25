@@ -1,0 +1,12 @@
+\section{Lecture 2 -- 10th April 2025}\label{sec: lecture 2}
+We begin with an example. 
+\begin{example}
+    Let $A=k, B=k[x,y], C=B/\bfrak$ where $\bfrak=(xy)$. We have that $\spec(B)$ is the affine plane $\A^{2}_{k}$ and $\spec(C)$ is the union of the two coordinate axes. The exact sequence of \Cref{prop: ideal exact sequence} gives 
+    $$\bfrak/\bfrak^{2}\to\Omega_{k[x,y]/k}^{1}\otimes_{k[x,y]}C\to\Omega_{C/k}^{1}\to0.$$
+    Explicitly identifying $\bfrak/\bfrak^{2}$ with the $C$-module $(xy)/(x^{2}y^{2})$ module-isomorphic to $C$ by $1\mapsto xy$ and $\Omega^{1}_{k[x,y]/k}$ with the free $k[x,y]$-module $B\dform x\oplus B\dform y$, we observe that the map $\bfrak/\bfrak^{2}\to\Omega^{1}_{k[x,y]/k}\otimes_{k[x,y]} C$ is given by $\overline{xy}\mapsto\dform(xy)\otimes 1=(x\dform y+y\dform x)\otimes 1$. This yields a map $C\to C\oplus C$ by $1\mapsto (y,x)$ and the cokernel of this map is the kernel of the map $C\oplus C\to C$ by $(a,b)\mapsto ax-by$ so by exactness the image of $C\oplus C\to C$ is the ideal $(x,y)\subseteq C$ showing $\Omega^{1}_{C/k}\cong (x,y)\subseteq C$. Thus $\Omega_{C/k}\otimes_{C}\frac{k[x,y]}{(x,y)}\cong kx\oplus ky$ and in particular $\Omega_{C/k}^{1}\otimes_{C}k$ is of $k$-dimension 2. For all points $\pfrak\in\spec(C)\setminus\{(x,y)\}$, we have $\Omega_{C/k}\otimes_{C}\kappa(\pfrak)\cong k$ extending the exact sequence above to a short exact sequence. 
+\end{example}
+In what follows, we will use the following lemma for K\"{a}hler differentials of field extensions, the proof of which we omit. 
+\begin{lemma}\label{lem: differentials of separable extension are zero}
+    Let $k$ be a field and $K/k$ a separable extension. Then $\Omega_{K/k}^{1}=0$. 
+\end{lemma}
+This lemma, in conjunction with \Cref{prop: ideal exact sequence}, shows that 
