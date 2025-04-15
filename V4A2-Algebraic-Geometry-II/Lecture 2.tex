@@ -9,4 +9,102 @@ In what follows, we will use the following lemma for K\"{a}hler differentials of
 \begin{lemma}\label{lem: differentials of separable extension are zero}
     Let $k$ be a field and $K/k$ a separable extension. Then $\Omega_{K/k}^{1}=0$. 
 \end{lemma}
-This lemma, in conjunction with \Cref{prop: ideal exact sequence}, shows that 
+This lemma, in conjunction with \Cref{prop: ideal exact sequence}, shows that for maximal ideals of $k$-algebras $A$ with separable residue field, the base change of the sheaf of K\"{a}hler differentials to $k$ is isomorphic to the Zariski tangent space $\mfrak/\mfrak^{2}$. 
+\begin{proposition}\label{prop: isomorphism to Zariski tangent space}
+    Let $A$ be a finite type $k$-algebra and $\mfrak\subseteq A$ maximal with residue field $\kappa(\mfrak)$ separable over $k$. There is an isomorphism $\frac{\mfrak}{\mfrak^{2}}\to\Omega_{A/k}^{1}\otimes_{A}k$. 
+\end{proposition}
+\begin{proof}
+    Let $\varphi:k[x_{1},\dots,x_{n}]\to A$ with kernel $\ker(\varphi)=\afrak$ and $\widetilde{\mfrak}=\varphi^{-1}(\mfrak)$. This yields a surjective map $\frac{\widetilde{\mfrak}}{\widetilde{\mfrak}^{2}}\to\frac{\mfrak}{\mfrak^{2}}$ with kernel $\afrak$. By \Cref{prop: ideal exact sequence} we have the following diagram with bottom row exact
+    $$% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXGFmcmFrIl0sWzAsMSwiXFxmcmFje1xcYWZyYWt9e1xcYWZyYWteezJ9fSJdLFsyLDEsIlxcT21lZ2Ffe2tbeF97MX0sXFxkb3RzLHhfe259XS9rfV57MX1cXG90aW1lc197a1t4X3sxfSxcXGRvdHMseF97bn1dfWsiXSxbNCwwLCJcXGZyYWN7XFxtZnJha317XFxtZnJha157Mn19Il0sWzQsMSwiXFxPbWVnYV97QS9rfV57MX1cXG90aW1lc197QX1rIl0sWzYsMCwiMCJdLFs2LDEsIjAiXSxbMiwwLCJcXGZyYWN7XFx3aWRldGlsZGV7XFxtZnJha319e1xcd2lkZXRpbGRle1xcbWZyYWt9XnsyfX0iXSxbMCw3XSxbNywzXSxbMyw1XSxbMSwyXSxbMiw0XSxbNCw2XSxbNywyXSxbMyw0XSxbMCwxXV0=
+    \begin{tikzcd}
+        \afrak && {\frac{\widetilde{\mfrak}}{\widetilde{\mfrak}^{2}}} && {\frac{\mfrak}{\mfrak^{2}}} && 0 \\
+        {\frac{\afrak}{\afrak^{2}}} && {\Omega_{k[x_{1},\dots,x_{n}]/k}^{1}\otimes_{k[x_{1},\dots,x_{n}]}k} && {\Omega_{A/k}^{1}\otimes_{A}k} && 0
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-5, to=1-7]
+        \arrow[from=1-5, to=2-5]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=2-3, to=2-5]
+        \arrow[from=2-5, to=2-7]
+    \end{tikzcd}$$
+    and noting the top row is the $-\otimes_{k[x_{1},\dots,x_{n}]}k$ of the bottom, a right-exact operation, we get the claim. 
+\end{proof}
+We deduce the following result which will be required for defining the sheaf of K\"{a}hler differentials on schemes more generally. 
+\begin{corollary}\label{corr: diagonal differentials}
+    Let $B$ be an $A$-algebra and $I$ the kernel of the map $B\otimes_{A}B\to B$ by $b_{1}\otimes b_{2}\mapsto b_{1}b_{2}$. Then $\Omega_{B/A}^{1}\cong I/I^{2}$ as $B$-modules by $\dform b\mapsto 1\otimes b-b\otimes 1$, and where $I/I^{2}$ has the structure of a $B$-module by $b(b_{1}\otimes b_{2})=bb_{1}\otimes b_{2}$. 
+\end{corollary}
+\begin{proof}
+    We use the universal property of K\"{a}hler differentials. Defining $\delta$ by $b\mapsto 1\otimes b-b\otimes 1$ we get the diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJCIl0sWzIsMCwiSS9JXnsyfSJdLFswLDEsIlxcT21lZ2Ffe0IvQX1eezF9Il0sWzAsMl0sWzAsMSwiXFxkZWx0YSJdLFsyLDEsIlxcZXhpc3RzISIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \begin{tikzcd}
+        B && {I/I^{2}} \\
+        {\Omega_{B/A}^{1}.}
+        \arrow["\delta", from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["{\exists!}"', dashed, from=2-1, to=1-3]
+    \end{tikzcd}$$
+    Note for $b_{1},b_{2}\in B$, we compute 
+    $$\delta(b_{1}\cdot b_{2})=1\otimes b_{1}b_{2}-b_{1}b_{2}\otimes 1=b_{1}\delta(b_{2})+b_{2}\delta(b_{1})=b_{1}(1\otimes b_{2}-b_{2}\otimes 1)+b_{2}(1\otimes b_{1}-b_{1}\otimes 1).$$
+    The difference of the two expresssions is $(1\otimes b_{1}-b_{1}\otimes 1)(1\otimes b_{2}-b_{2}\otimes 1)$ the product of two elements of $I$, hence in $I^{2}$, hence vanishes in the quotient. Since this is a derivation, there exists an extension $\Omega^{1}_{B/A}\to I/I^{2}$.
+    
+    To show surjectivity, we consider an element $\sum b_{i}\otimes b_{i}'\in I$ and compute 
+    \begin{align*}
+        \sum b_{i}\otimes b_{i}'&=\sum b_{i}(1\otimes b_{i}')\\
+        &=\sum b_{i}(1\otimes b_{i}')-\underbrace{\left(\sum b_{i}b_{i}'\right)}_{=0}\otimes 1 \\
+        &= \sum b_{i}(1\otimes b_{i}'-b_{i}'\otimes 1)
+    \end{align*}
+    showing it is surjective. 
+
+    To show injectivity, we consider the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJCIl0sWzAsMSwiXFxPbWVnYV57MX1fe0IvQX0iXSxbMCwyLCJJL0leezJ9Il0sWzIsMCwiTSJdLFswLDMsIlxcZGVsdGEiXSxbMCwxLCJcXGRmb3JtIiwyXSxbMSwyXSxbMiwzLCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSwzXV0=
+    \begin{tikzcd}
+        B && M \\
+        {\Omega^{1}_{B/A}} \\
+        {I/I^{2}}
+        \arrow["\delta", from=1-1, to=1-3]
+        \arrow["\dform"', from=1-1, to=2-1]
+        \arrow[from=2-1, to=1-3]
+        \arrow[from=2-1, to=3-1]
+        \arrow[dashed, from=3-1, to=1-3]
+    \end{tikzcd}$$
+    The existence of a dotted arrow rendering the entire diagram commutative would imply the injectivity of $\delta$ for $M=\Omega^{1}_{B/A}$. Note that the $B$-module $B\oplus M$ can be given the structure of a free algebra by the map $b\mapsto b\oplus0$ and multiplication $(b_{1},m_{1})\cdot(b_{2},m_{2})=(b_{1}b_{2},b_{1}m_{2}+b_{2}m_{1})$, which defines a $B$-algebra in which $M$ is an ideal with square zero. We can define a map $\varphi:B\otimes_{A}B\to B\oplus M$ by $b_{1}\otimes b_{2}\mapsto (b_{1}b_{2},b_{1}\delta(b_{2}))$ which is a homomorphism of $A$-algebras and where the image of the ideal $I$ is zero since $M^{2}$ is zero. Thus an extension $\psi:I/I^{2}\to M$ and the diagram commutes, yielding injectivity, and hence the claim. 
+\end{proof}
+We now seek to define the sheaf of K\"{a}hler differentials on a scheme. 
+\begin{definition}[Relative K\"{a}hler Differentials of a Scheme]\label{def: kahler differentials of a scheme}
+    Let $f:X\to Y$ be a morphism of schemes. The sheaf of K\"{a}hler differentials of $X$ is locally given by the $\Ical/\Ical^{2}$ of the locally closed embedding $X\to X\times_{Y}X$. 
+\end{definition}
+We will most often be interested in the situation where $Y=\spec(k)$ and $f$ is the structure map of $f$ as a $k$-scheme. 
+\begin{example}\label{ex: affine space scheme differentials}
+    Let $X=\A^{n}_{k}$ over $\spec(A)$. $\Omega^{1}_{X/A}$ is free of rank $n$ as in \Cref{ex: differentials of affine space}. 
+\end{example}
+\begin{example}
+    Let $X=\PP^{n}_{A}$ over $\spec(A)$. $\Omega^{1}_{X/A}$ is the locally free sheaf of rank $n$ obtained by gluing the free sheaves of \Cref{ex: affine space scheme differentials} on the distinguished affine opens $D_{+}(x_{i})$ of $\PP^{n}_{A}$.  
+\end{example}
+The sheaf of K\"{a}hler differentials is another example of an interesting sheaf on schemes which is not the structure sheaf. In the case of projective space, the relationship between the sheaf of K\"{a}hler differentials is related to the structure sheaf by the Euler sequence. 
+\begin{theorem}[Euler Sequence]\label{thm: Euler sequence}
+    Let $A$ be a ring. There is a short exact sequence of sheaves 
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxPbWVnYV57MX1fe1xcUFBee259X3tBfS9BfSJdLFsyLDAsIlxcT2NhbF97XFxQUF57bn1fe0F9fSgtMSlee1xcb3BsdXMgbisxfSJdLFszLDAsIlxcT2NhbF97XFxQUF57bn1fe0F9fSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzLCIoeF97MH0sXFxkb3RzLHhfe259KSJdLFszLDRdXQ==
+    \begin{tikzcd}
+        0 & {\Omega^{1}_{\PP^{n}_{A}/A}} & {\Ocal_{\PP^{n}_{A}}(-1)^{\oplus n+1}} & {\Ocal_{\PP^{n}_{A}}} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow["{(x_{0},\dots,x_{n})}", from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+    \end{tikzcd}$$
+    on $\PP^{n}_{A}$. 
+\end{theorem}
+\begin{proof}
+    We have $X=\proj(B)$ with $B=A[x_{0},\dots,x_{n}]$ and $\Ocal_{\PP^{n}_{A}}(-1)=\widetilde{B(1)}$. The map $\Ocal_{\PP^{n}_{A}}(-1)^{\oplus n+1}\to\Ocal_{\PP^{n}_{A}}$ is given by the module homomorphism given by the dot product map, and is surjective since $\bigcap_{i=0}^{n}V_{+}(x_{i})=\emptyset$ and $-\otimes\Ocal_{\PP^{n}_{A}}(1)$ being right-exact. We show that the kernel of this map is $\Omega^{1}_{\PP^{n}_{A}/A}$ affine-locally. 
+
+    On $D_{+}(x_{i})$, the map is given by localizations $B(-1)^{\oplus n+1}_{(x_{i})}\to B_{(x_{i})}$ and the kernel is free of rank $n$ generated by $e_{j}-\frac{x_{j}}{x_{i}}e_{i}$ for $j\neq i$. In particular, the kernel is a free $\Ocal_{D_{+}(x_{i})}$-module generated by $\frac{1}{x_{i}}e_{j}-\frac{x_{j}}{x_{i}^{2}}e_{i}$ for $j\neq i$. Recall that $\Omega^{1}_{\PP^{n}_{A}/A}$ is the free $\Ocal_{D_{+}(x_{i})}$-module spanned by $\dform(\frac{x_{0}}{x_{i}}),\dots,\dform(\frac{x_{n}}{x_{i}})$ and the isomorphism to the kernel of the map is given by $\dform(\frac{x_{j}}{x_{i}})\mapsto \frac{1}{x_{i}}e_{j}-\frac{x_{j}}{x_{i}^{2}}e_{i}$. The isomorphisms glue by inspection, giving the isomorphism of sheaves. 
+\end{proof}
+\begin{example}
+    Let $n=1$. The Euler sequence gives $0\to\Omega^{1}_{\PP^{1}_{A}/A}\to\Ocal_{\PP^{1}_{A}}(-1)^{\oplus 2}\to\Ocal_{\PP^{1}_{A}}\to0$ where passing to determinants gives $\det(\Ocal_{\PP^{1}_{A}}(-1)^{\oplus 2})\cong\det(\Ocal_{\PP^{1}_{A}})\otimes\det(\Omega^{1}_{\PP^{1}_{A}})$ showing $\Omega^{1}_{\PP^{1}_{A}/A}\cong\Ocal_{\PP^{1}_{A}}(-2)$. 
+\end{example}
+\begin{example}
+    For $n>1$m $\Omega^{1}_{\PP^{n}_{A}/A}$ is never a direct sum of line bundles. We have $\det(\Omega^{1}_{\PP^{n}_{A}/A})\cong\Ocal_{\PP^{n}_{A}}(-n-1)$. Twisting by $\Ocal_{\PP^{n}_{A}}(1)$, we get a short exacts sequence 
+    $$0\to H^{0}(\PP^{n}_{A},\Omega^{1}_{\PP^{n}_{A}/1})\to H^{0}(\PP^{n}_{A},\Ocal_{\PP^{n}_{A}}^{\oplus n+1})\to H^{0}(\PP^{n}_{A},\Ocal_{\PP^{n}_{A}}(1))\to0$$
+    since $H^{1}$ of all the sheaves in the Euler sequence vanishes. If $\Omega^{1}_{\PP^{n}_{A}/A}\cong\bigoplus\Ocal_{\PP^{n}_{A}}(a_{i})$ then $a_{i}\leq-2$ and $\sum a_{i}\leq -2n$ which has global sections, a contradiction for $n\geq 2$. 
+\end{example}
