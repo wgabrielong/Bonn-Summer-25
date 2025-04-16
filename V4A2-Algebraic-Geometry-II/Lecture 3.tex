@@ -1,0 +1,147 @@
+\section{Lecture 3 -- 14th April 2025}\label{sec: lecture 3}
+Recall that the cotangent sheaf on $\A^{n}_{A},\PP^{n}_{A}$ over $\spec(A)$ are locally free sheaves by \Cref{ex: affine space scheme differentials,ex: projective space scheme differentials}. One is then led to consider for what other $S$-schemes $X$ is $\Omega^{1}_{X/S}$ locally free. This is roughly captured by smoothness. Moreover, as suggested by \Cref{prop: isomorphism to Zariski tangent space}, the notion of smoothness is connected to the Zariski tangent space, which in the case of algebraic geometry -- unlike differential geometry -- need not coincide with the geometric tangent space, especially in characteristic $p$ situations. 
+
+We recall the definition of the Zariski tangent space. 
+\begin{definition}[Zariski Tangent Space of a Ring]\label{def: Zariski tangent space}
+    Let $A$ be a local ring with maximal ideal $\mfrak$ and residue field $\kappa=A/\mfrak$. The Zariski tangent space of $A$ is the $\kappa$-vector space $(\frac{\mfrak}{\mfrak^{2}})^{\vee}=\Hom_{\Vect_{\kappa}}(\frac{\mfrak}{\mfrak^{2}},\kappa)$. 
+\end{definition}
+\begin{definition}[Zariski Tangent Space of a Scheme]\label{def: Zariski tangent space scheme}
+    Let $X$ be a scheme and $x\in X$ a point. The Zariski tangent space $T_{X,x}$ is the Zariski tangent space of the local ring $\Ocal_{X,x}$. 
+\end{definition}
+\begin{example}\label{ex: spec A example}
+    Let $A$ be a ring and $\pfrak\subseteq\spec(A)$. The Zariski tangent space $T_{\spec(A),\pfrak}$ is given by $(\frac{\pfrak A_{\pfrak}}{(\pfrak A_{\pfrak})^{2}})^{\vee}$. This is a vector space over the field $\kappa(\pfrak)=A_{\pfrak}/\pfrak A_{\pfrak}$. 
+\end{example}
+\begin{example}\label{ex: map to hom}
+    Let $k$ be a field and $x\in \A^{n}_{k}(k)$ a closed $k$-rational point hence of the form $(x_{1}-a_{1},\dots,x_{n}-a_{n})$. Define a map $D_{x}:k[x_{1},\dots,x_{n}]\to\Hom_{\Vect_{k}}(k^{n},k)$ by $$f\mapsto\left[(\alpha_{i})_{i=1}^{n}\mapsto\sum_{i=1}^{n}\alpha_{i}\frac{\partial f}{\partial x_{i}}(x)\right].$$
+    The map is $k$-linear and satisfies the Leibniz rule, hence defines a $k$-linear derivation which is a $k$-vector space. This defines an isomorphism between $(\frac{\mfrak}{\mfrak^{2}})^{2}$ and $\Hom_{\Vect_{k}}(k^{n},k)$ by considering the Taylor expansion of a polynomial 
+    $$f=f(x)+\sum_{i=1}^{n}\frac{\partial f}{\partial x_{i}}(x)(x_{i}-a_{i})+\underbrace{O(x^{2})}_{\in \mfrak^{2}}$$
+    hence the map is zero on $f\in\mfrak^{2}$ showing that $(\frac{\mfrak}{\mfrak^{2}})^{\vee}\to\Hom_{\Vect_{k}}(k^{n},k)$ by $(x_{i}-a_{i})\mapsto e_{i}^{\vee}$ is an injection between vector spaces of the same dimension and hence an isomorphism. 
+\end{example}
+\begin{example}
+    In general, one can still define a map on non-rational points with target $\Hom_{\Vect_{\kappa(\pfrak)}}(\kappa(\pfrak)^{n},\kappa(\pfrak))$ which may fail to be injective. Let $k$ be a field of characteristic $p$ and consider $(x^{p}-a)\subseteq k[x]$ which is maximal when $a^{1/p}\notin k$. We have $\frac{\mfrak}{\mfrak^{2}}=\frac{(x^{p}-a)}{(x^{p}-a)^{2}}\cong k$ which defines a map $\Hom_{\Vect_{k}}(k,k)$ by \Cref{ex: map to hom} which is the zero map as $px^{p-1}=0$. 
+\end{example}
+In what follows, we will use the following result for closed subschemes of affine spaces. 
+\begin{proposition}\label{prop: annihilator is differentials}
+    Let $\afrak\subseteq k[x_{1},\dots,x_{n}]$ be an ideal defining $X=V(\afrak)\subseteq \A^{n}_{k}$. Let $x\in X(k)\subseteq\A^{n}_{k}(k)$. Then $T_{X,x}$ is the annihilator of the image of $\afrak$ under $D_{x}$
+\end{proposition}
+\begin{proof}
+    We have a short exact sequence 
+    $$0\to\afrak\to\widetilde{\mfrak}\to\mfrak\to 0$$
+    inducing 
+    \begin{equation}\label{eqn: maxl ideal intersection SES}
+        0\to\frac{\afrak}{\afrak\cap\widetilde{\mfrak}^{2}}\to\frac{\widetilde{\mfrak}}{\widetilde{\mfrak}^{2}}\to\frac{\mfrak}{\mfrak^{2}}\to0.
+    \end{equation}
+    Applying the right-exact functor $\Hom_{\Vect_{k}}(-,k)$ we get 
+    $$\left(\frac{\afrak}{\afrak\cap\widetilde{\mfrak}^{2}}\right)^{\vee}\to T_{\A^{n}_{k},x}^{\vee}\to T_{X,x}^{\vee}\to0$$
+    where the map $\left(\frac{\afrak}{\afrak\cap\widetilde{\mfrak}^{2}}\right)^{\vee}\to \Hom_{\Vect_{k}}(k^{n},k)$ by taking $\afrak$-derivations as in \Cref{ex: map to hom}. 
+\end{proof}
+An analogous proof can be used to show that the Zariski tangent space is the cokernel of the Jacobian matrix. 
+\begin{corollary}\label{corr: dimension is corank jacobian}
+    Let $\afrak\subseteq k[x_{1},\dots,x_{n}]$ be an ideal defining $X=V(\afrak)\subseteq \A^{n}_{k}$. Let $x\in X(k)\subseteq\A^{n}_{k}(k)$. Then $T_{X,x}^{\vee}\cong\coker(J_{x})$ where $J_{x}$ is the Jacobian at $x$. 
+\end{corollary}
+\begin{proof}
+    We use the short exact sequence (\ref{eqn: maxl ideal intersection SES}) and observe that the map $\frac{\afrak}{\afrak\cap \widetilde{\mfrak}^{2}}\to\frac{\widetilde{\mfrak}}{\widetilde{\mfrak}^{2}}$ is given by multiplication by the Jacobian, giving the claim. 
+\end{proof}
+Having related this to the Zariski tangent space, we want to relate the Jacobian matrix to the sheaf/module of K\"{a}hler differentials, an analogy suggested by \Cref{prop: isomorphism to Zariski tangent space}. 
+\begin{proposition}\label{prop: corank of Jacobian is base change of differentials}
+    Let $\afrak\subseteq k[x_{1},\dots,x_{n}]$ be an ideal defining $X=V(\afrak)\subseteq \A^{n}_{k}$. Let $x\in X(k)\subseteq\A^{n}_{k}(k)$. Then the corank of the Jacobian $J_{x}$ is equal to $\dim_{\kappa(x)}\Omega_{X/k}^{1}\otimes\kappa(x)$. 
+\end{proposition} 
+\begin{proof}
+    Applying $-\otimes\kappa(x)$ to the short exact sequence of \Cref{prop: ideal exact sequence}, we have 
+    $$\frac{\afrak}{\afrak^{2}}\otimes\kappa(x)\to\Omega^{1}_{\A^{n}_{k}/k}\otimes\kappa(x)\to\Omega_{X/k}^{1}\otimes\kappa(x)\to0$$
+    which factors over the image of the Jacobian $J_{x}$. As such, we get that $\dim_{\kappa(x)}\Omega_{X/k}^{1}=n-\dim(\img(J_{x}))=n-\mathrm{rank}(J_{x})$ which is precisely the corank. 
+\end{proof}
+Moreover, for a general point $x$, the property of the Zariski tangent space being isomorphic to the scalar extension of the sheaf of K\"{a}hler differentials. 
+\begin{proposition}
+    Let $\afrak\subseteq k[x_{1},\dots,x_{n}]$ be an ideal defining $X=V(\afrak)\subseteq \A^{n}_{k}$. Let $x\in X$. $\kappa(x)$ is a separable extension of $k$ if and only if $T_{X,x}^{\vee}\cong\Omega_{X/k}^{1}\otimes\kappa(x)$. 
+\end{proposition}
+\begin{proof}
+    $(\Rightarrow)$ If $\kappa(x)$ is separable over $k$, then $\Omega_{\kappa(x)/k}^{1}=0$ by \Cref{lem: differentials of separable extension are zero} so $\frac{\mfrak}{\mfrak^{2}}\to\Omega_{X,k}^{1}\otimes\kappa(x)$ is surjective, but this shows that we have a surjection of $\kappa(x)$-vector spaces of the same dimension, hence an isomorphism. 
+
+    $(\Leftarrow)$ If the Zariski cotangent space is isomorphic to teh sheaf of differentials, then the cokernel $\Omega^{1}_{\kappa(x)/k}$ of the exact sequence \Cref{prop: ideal exact sequence} is zero, showing that $\kappa(x)/k$ is separable. 
+\end{proof}
+Note that the equality $\dim(T_{X,x})=\dim_{\kappa(x)}\Omega^{1}_{X/k}\otimes\kappa(x)$ does not imply the natural map is an isomorphism when $\kappa(x)$ is not separable over $k$. 
+\begin{example}
+    Let $k$ be a field of characteristic $p$ and consider $(x^{p}-a)\subseteq k[x]$ for $a^{1/p}\notin k$. Denoting $X=V(x^{p}-a)\subseteq\A^{1}_{k}$, we have $\dim(T_{X,x})=1=\dim_{\kappa(x)}\Omega^{1}_{X/k}\otimes\kappa(x)$ but $\Omega^{1}_{\kappa(x)/k}$ is nonzero as $\kappa(x)$ is not a separable extension of $k$. 
+\end{example}
+We arrive at the notion of smoothness for schemes. 
+\begin{definition}[Smooth Scheme]\label{def: smooth scheme}
+    Let $X$ be a scheme of finite type over a field $k$. $X$ is smooth of pure dimension $d$ if 
+    \begin{enumerate}[label=(\roman*)]
+        \item each of the finitely many irreducible components of $X$ are of dimension $d$, and 
+        \item every point $x\in X$ is contained in an affine open neighborhood where the Jacobian matrix is of corank $d$. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}\label{rmk: smoothness is relative}
+    Smoothness is a relative notion, determined by the structure map to $\spec(k)$. 
+\end{remark}
+\begin{remark}
+    By \Cref{ex: spec A example}, this construction is independent of the choice of chart. 
+\end{remark}
+\begin{remark}\label{rmk: check smoothness on closed points}
+    It suffices to verify this condition on closed points, as if the Jacobian is rank-deficient at some non-closed point, then it is rank-deficient at any specialization. 
+\end{remark}
+Intuitively, we can view $X$ locally as the fiber of a map $\A^{n}_{k}\to\A^{r}_{k}$ defined by the $r$ polynomials $f_{1},\dots,f_{r}\in k[x_{1},\dots,x_{n}]$, and where $x$ being in the fiber over zero implies that the tangent space $T_{X,x}$ is the kernel of the map $(f_{1},\dots,f_{r})$ hence equal to the dimension of the fiber. 
+We introduce the notion of being geometrically smooth. 
+\begin{definition}[Geometrically Smooth Scheme]\label{def: geometrically smooth scheme}
+    Let $X$ be a scheme of finite type over a field $k$. $X$ is geometrically smooth if the base change $X_{\overline{k}}$ to the algebraic closure is smooth over $\overline{k}$. 
+\end{definition}
+This is in fact equivalent to the condition of being smooth. 
+\begin{lemma}\label{lem: smooth iff geometrically smooth}
+    Let $X$ be a scheme of finite type over a field $k$. $X$ is a smooth $k$-scheme if and only if it is geometrically smooth. 
+\end{lemma}
+\begin{proof}
+    We use the Cartesian square 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX3tcXG92ZXJsaW5le2t9fSJdLFswLDEsIlxcc3BlYyhcXG92ZXJsaW5le2t9KSJdLFsyLDAsIlgiXSxbMiwxLCJcXHNwZWMoaykiXSxbMCwyXSxbMiwzXSxbMCwxXSxbMSwzXV0=
+    \begin{tikzcd}
+        {X_{\overline{k}}} && X \\
+        {\spec(\overline{k})} && {\spec(k)}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    where using \Cref{prop: tensor exact sequence}, we have $\Omega_{X/k}^{1}\otimes\kappa(x)\cong\Omega^{1}_{X_{\overline{k}}/\overline{k}}\otimes\kappa(y)$ where $y$ is the closed point corresponding to $x$ in $X_{\overline{k}}$. This isomorphism of sheaves characterizes the Jacobian being full rank at $x,y$, hence the smoothness conditions are equivalent. 
+\end{proof}
+While smoothness depends on the structure of $X$ as a $k$-scheme, it is closely related to the absolute notion of regularity. 
+
+We recall the relevant definitons from commutative algebra. 
+\begin{definition}[Regular Local Ring]\label{def: regular local ring}
+    Let $(A,\mfrak)$ be a Noetherian local ring with residue field $\kappa=A/\mfrak$. $A$ is a regular local ring if $\dim(A)=\dim_{\kappa}(\frac{\mfrak}{\mfrak^{2}})$. 
+\end{definition}
+\begin{definition}[Regular Ring]\label{def: regular ring}
+    Let $A$ be a Noetherian ring. $A$ is ar egular ring if for all primes $\pfrak\subseteq A$, the localization $A_{\pfrak}$ is a regular local ring. 
+\end{definition}
+\begin{remark}
+    Checking regularity of an arbitrary Noetherian ring can be done on maximal ideals by reasoning analogous to that of \Cref{rmk: check smoothness on closed points}. 
+\end{remark}
+This allows us to define regularity of schemes. 
+\begin{definition}[Regular Scheme]\label{def: regular scheme}
+    Let $X$ be a locally Noetherian scheme. $X$ is regular if for all closed points $x\in X$, the local ring $\Ocal_{X,x}$ is regular. 
+\end{definition}
+\begin{remark}
+    By \Cref{def: regular ring}, this is equivalent to each point admitting an affine neighborhood given by the Zariski spectrum of a regular ring. 
+\end{remark}
+\begin{remark}
+    In contrast to \Cref{rmk: smoothness is relative}, regularity is absolute and does not depend on any structure map of $X$. 
+\end{remark}
+The notions of regularity and smoothness are connected by the following proposition. 
+\begin{proposition}\label{prop: smooth iff regular alg closed}
+    Let $X$ be a scheme of finite type over an algebraically closed field $k$. $X$ is $k$-smooth if and only if $X$ is regular. 
+\end{proposition}
+\begin{proof}
+    Both conditions can be checked affine-locally, so without loss of generality, we can take $X=V(\afrak)\subseteq\A^{n}_{k}$. By \Cref{prop: annihilator is differentials} the dimension of the Zariski tangent space of any $x\in X$ is dimension of the image of the map $D_{x}$ defined in \Cref{ex: map to hom}, which is equal to the rank of the Jacobian $J_{x}$. This is of rank equal to the Zariski tangent space (ie. $X$ is regular) if and only if the corank of the Jacobian is $\dim(X)$ (ie. $X$ is smooth). 
+\end{proof}
+Over general fields, smoothness implies regularity, but not the converse. 
+\begin{corollary}\label{corr: smooth implies regular}
+    Let $X$ be a scheme of finite type over a field $k$. If $X$ is $k$-smooth, then $X$ is regular. 
+\end{corollary}
+\begin{proof}
+    By locality, we reduce once more to $X=V(\afrak)\subseteq\A^{n}_{k}$. By smoothness, $D_{x}(\afrak)=\mathrm{rank}(J_{x})$ and by the short exact sequence (\ref{eqn: maxl ideal intersection SES}) we have 
+    $$\dim_{\kappa(\mfrak)}\left(\frac{\mfrak}{\mfrak^{2}}\right)=\dim_{\kappa(\mfrak)}\left(\frac{\widetilde{\mfrak}}{\widetilde{\mfrak}^{2}}\right)-\dim_{\mfrak}\left(\frac{\afrak}{\afrak\cap\widetilde{\mfrak}^{2}}\right)$$
+    showing that the dimension of the Zariski tangent space at $x$ is equal to the dimension of $X$, hence $X$ is regular. 
+\end{proof}
+We now see an example of a regular non-smooth scheme. 
+\begin{example}
+    Let $k$ be a field of characteristic $p$ and consider $X=V(x^{p}-a)\subseteq \A^{1}_{k}$ and where $a^{1/p}\notin k$. $\spec(\frac{k[x]}{(x^{p}-a)})$ is the Zariski spectrum of a field, hence regular, but $X$ is not geometrically smooth and hence not smooth. 
+\end{example}
