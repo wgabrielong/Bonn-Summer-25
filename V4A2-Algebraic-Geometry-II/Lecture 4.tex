@@ -1,0 +1,151 @@
+\section{Lecture 4 -- 17th April 2025}\label{sec: lecture 4}
+We prove another characterization of smoothness via freeness of the sheaf of K\"{a}hler differentials using the following lemma from commutative algebra, the proof of which we omit. 
+\begin{lemma}\label{lem: free modules over local rings}
+    Let $A$ be a Noetherian integral local ring with fraction field $K$ and residue field $\kappa$. If $M$ is a finite $A$-module then $M$ is free if and only if $\dim_{K}(M\otimes_{A}K)=\dim_{\kappa}(M\otimes_{A}\kappa)$. 
+\end{lemma}
+We now state and prove the proposition. 
+\begin{proposition}\label{prop: smooth iff differentials are free}
+    Let $X$ be locally of finite type over a field $k$ of pure dimension $d$. $X$ is $k$-smooth if and only if $\Omega_{X/k}^{1}$ is locally free of dimension $d$. 
+\end{proposition}
+\begin{proof}
+    By \Cref{lem: smooth iff geometrically smooth} and \Cref{prop: smooth iff regular alg closed}, $X$ being $k$-smooth is equivalent to $X$ being geometrically regular -- ie. $X_{\overline{k}}$ being regular. 
+
+    It thus suffices to show that that all closed points $y\in X_{\overline{k}}(\overline{k})$ $T_{X_{\overline{k}},y}=\dim(X)$. But $X$ being regular and \Cref{lem: free modules over local rings} show that this condition holds as
+    $$\dim(X)=\mathrm{trdeg}(K(X_{\overline{k}}))=\dim(\Omega^{1}_{X_{\overline{k}}/\overline{k}}\otimes\kappa(\eta))=\dim(\Omega_{X_{\overline{k}}/\overline{k}}^{1}\otimes\kappa(y))=\dim(T_{X_{\overline{k}},y})$$
+    as desired.
+\end{proof}
+\begin{corollary}
+    Let $X$ be a finite type integral $k$-scheme. $X$ is smooth if and only if $\Omega_{X/k}^{1}$ is locally free and $\kappa(x)/k$ is separable for all closed points $x\in X$.
+\end{corollary}
+\begin{proof}
+    $(\Rightarrow)$ By \Cref{prop: smooth iff differentials are free}, $\Omega_{X/k}^{1}$ is locally free of rank the dimension of $X$ so $\dim_{K(X)}(\Omega_{K(X)/k})=\dim(X)$ showing that the residue field of each closed point is separable. 
+
+    $(\Leftarrow)$ Using \Cref{prop: smooth iff differentials are free} the conclusion is immediate. 
+\end{proof}
+\begin{corollary}
+    Let $X$ be a finite type $k$-scheme where $k$ is a perfect field. $X$ is smooth if and only if $X$ is regular. 
+\end{corollary}
+\begin{proof}
+    $(\Rightarrow)$ Smoothness implies regularity in general by \Cref{corr: smooth implies regular}. 
+
+    $(\Leftarrow)$ Let $X$ be regular. Then $X$ is locally integral. Smoothness is local on source so without loss of generality $X=\spec(A)$ is integral and $x\in\spec(A)$ maximal. $\kappa(x)/k$ is finite and separable as $k$ was perfect. So $\Omega_{\kappa(x)/k}^{1}=0$ and $\frac{\mfrak}{\mfrak^{2}}\cong\Omega_{X/k}^{1}\otimes\kappa(x)$. Applying \Cref{lem: free modules over local rings} to $\Omega_{A/k}^{1}$, we have that the module of differentials is locally free, hence the claim. 
+\end{proof}
+We show that smoothess is in fact true on a nonempty open, and hence dense, subset of an integral scheme. 
+\begin{proposition}\label{prop: smooth on open}
+    Let $X$ be an integral finite type $k$ scheme and $K(X)/k$ separable. There exists a nonempty open set $U$ such that $U$ is $k$-smooth. 
+\end{proposition}
+\begin{proof}
+    $\kappa(x)/k$ is separable if and only if $\dim\Omega_{\kappa(x)/k}=\dim(X)$. Recall that for $X$ Noetherian and $\Fcal$ coherent, the function $x\mapsto\dim_{\kappa(x)}(\Fcal\otimes_{\Ocal_{X,x}}\kappa(x))$ is uppersemicontinuous. Denote 
+    $$Z_{n}=\{x\in X:\dim_{\kappa(x)}(\Omega_{X/k}^{1}\otimes\kappa(x))\}$$
+    which is closed. 
+
+    Let $U=X\setminus Z_{\dim(X)+1}$ which is open and nonempty as it contains the generic point. We have $\Omega^{1}_{U/k}=\Omega^{1}_{X/k}|_{U}$ which is constant rank at each stalk, hence locally free, showing that $U$ is smooth. 
+\end{proof}
+In particular this implies that the codimension of the non-smooth locus is at least 2 for $X$ normal and $K(X)/k$ separable. 
+
+We consider the following example where the extension is not separable, and the smooth locus is empty. 
+\begin{example}
+    Let $(x^{p}-a)\subseteq k[x]$ where $k$ is a field of characteristic $p$ and $a^{1/p}\notin k$. The quotient $k[x]/(x^{p}-a)$ is a field but not separable over $k$ and the smooth locus is empty. 
+\end{example}
+
+We now discuss smoothness of subschemes. 
+\begin{proposition}\label{prop: smoothness of closed subschemes}
+    Let $X$ be of finite type over a field $k$ and $Y\subseteq X$ a closed irreducible subscheme. $Y$ is $k$-smooth if and only if $\Omega_{Y/k}^{1}$ is locally free and the exact sequence $\Ical_{Y}/\Ical_{Y}^{2}\to\Omega_{X/k}^{1}|_{Y}\to\Omega_{Y/k}^{1}\to 0$ extends on the left to a short exact sequence. 
+\end{proposition}
+\begin{proof}
+    $(\Rightarrow)$ Consider 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEljYWxfe1l9L1xcSWNhbF97WX1eezJ9Il0sWzIsMCwiXFxPbWVnYV57MX1fe1gva318X3tZfSJdLFs0LDAsIlxcT21lZ2FeezF9X3tZL2t9Il0sWzYsMCwiMCJdLFsxLDEsIksiXSxbMCwyLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzQsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw0XSxbMCw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+    \begin{tikzcd}
+        {\Ical_{Y}/\Ical_{Y}^{2}} && {\Omega^{1}_{X/k}|_{Y}} && {\Omega^{1}_{Y/k}} && 0 \\
+        & K \\
+        0
+        \arrow[from=1-1, to=1-3]
+        \arrow[two heads, from=1-1, to=2-2]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-5, to=1-7]
+        \arrow[hook, from=2-2, to=1-3]
+        \arrow[from=3-1, to=2-2]
+    \end{tikzcd}$$
+    where $0\to K\to \Omega_{X/k}^{1}|_{Y}\to\Omega^{1}_{Y/k}\to0$ is a short exact sequence. Observe $K$ is a locally free sheaf of rank equal to the codimension of $Y$ in $X$. In particular, there are sections $s_{1},\dots,s_{c}$ whose images $\dform s_{1},\dots,\dform s_{c}$ generate $\Omega^{1}_{X/k}|_{Y}$ which locally freely generate $K$. Let $\Ical$ be the ideal generated by these sections $s_{1},\dots,s_{c}$ and $Y'=V(\Ical)$ the associated vanishing locus which contains $Y$. Arguing similarly, we get 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXEljYWwnL1xcSWNhbCdeezJ9Il0sWzIsMCwiXFxPbWVnYV57MX1fe1gva318X3tZJ30iXSxbNCwwLCJcXE9tZWdhXnsxfV97WScva30iXSxbNiwwLCIwIl0sWzEsMSwiSyciXSxbMCwyLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzQsMSwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbNSw0XSxbMCw0LCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+    \begin{tikzcd}
+        {\Ical'/\Ical'^{2}} && {\Omega^{1}_{X/k}|_{Y'}} && {\Omega^{1}_{Y'/k}} && 0 \\
+        & {K'} \\
+        0
+        \arrow[from=1-1, to=1-3]
+        \arrow[two heads, from=1-1, to=2-2]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-5, to=1-7]
+        \arrow[hook, from=2-2, to=1-3]
+        \arrow[from=3-1, to=2-2]
+    \end{tikzcd}$$
+    with the short exact sequence $0\to K'\to\Omega_{X/k}^{1}|_{Y'}\to\Omega_{Y'/k}^{1}\to0$. Since $\dform s_{1},\dots,\dform s_{c}$ generate freely a subsheaf of $\Omega^{1}_{X/k}|_{Y}$, $\dform s_{1}|_{Y'},\dots,\dform s_{c}|_{Y'}$ generate freely a subsheaf of $\Omega_{X/k}^{1}|_{Y'}$ hence $\Ical'/\Ical'^{2}\to K'$ is an isomorphism. By construction, $K'|_{Y}=K$ so $\Omega_{Y'/k}^{1}|_{Y}\cong\Omega_{Y/k}^{1}$ the latter being locally free, so $\Omega_{Y'/k}^{1}$ is locally free in a neighborhood of $Y$. $Y'$ is smooth of dimension equal to $Y$ and smoothness implies local integrability so $\Omega_{Y/k}^{1}$ is locally free, yielding the claim. 
+
+    $(\Leftarrow)$ It suffices to argue that the existence of a short exact sequence $0\to\Ical_{Y}/\Ical_{Y}^{2}\to\Omega_{X/k}^{1}|_{Y}\to\Omega_{Y/k}^{1}\to 0$ with $\Omega_{Y/k}^{1}$ locally free implies separability of $K(X)/k$. Note that under the hypotheses, the latter two terms of the short exact sequence are locally free, giving a splitting and showing in particular that $\Ical_{Y}/\Ical_{Y}^{2}$ is locally free of rank $r=\dim(X)-\mathrm{rank}(\Omega_{Y/k}^{1})$. In particular, we have $\dim(X)-r=\mathrm{rank}(\Omega_{Y/k}^{1})\geq\dim(Y)$ and by $\Ical_{Y}$ being locally generated by $r$ elements that $\dim(Y)\geq\dim(X)-r$ by Nakayama's lemma. This gives equality $\Omega_{Y/k}^{1}=\dim(Y)$ showing $Y$ is smooth. 
+\end{proof}
+The preceding discussion of closed subschemes motivates the following definition of locally complete intersections. 
+\begin{definition}[Locally Complete Intersection]\label{def: locally complete intersection}
+    Let $X$ be a smooth $k$ scheme locally of finite type and $Y\subseteq X$ a closed subscheme. $Y$ is a local complete intersection if $\Ical_{Y}$ is locally generated by $c$ elements, where $c=\mathrm{codim}_{X}(Y)=\dim(X)-\dim(Y)$. 
+\end{definition}
+Smooth closed subschemes are in particular local complete intersections. 
+\begin{example}
+    Let $X$ be a smooth $k$ scheme locally of finite type and $Y\subseteq X$ a closed subscheme. If $Y$ is smooth then $Y$ is local complete intersection. Using \Cref{prop: smoothness of closed subschemes}, the short exact sequence 
+    $$0\to\Ical_{Y}/\Ical_{Y}^{2}\to\Omega_{X/k}^{1}|_{Y}\to\Omega_{Y/k}^{1}\to0$$
+    gives that $\Ical_{Y}/\Ical_{Y}^{2}$ is locally free of rank the codimension of $Y$ in $X$. 
+\end{example}
+\begin{example}
+    Being a local complete intersection does not imply reducedness or integrality. For $Y=V(x^{2})\subseteq\A^{1}_{k}=\spec(k[x])$ the ideal sheaf is generated by one element, but $k[x]/(x^{2})$ is not reduced. 
+\end{example}
+As suggested by the prevalence of quotients of ideal sheaves $\Ical_{Y}/\Ical_{Y}^{2}$ in the preceding discussion, this plays an important role in the study of smoothness of schemes. 
+\begin{definition}[Conormal Sheaf]\label{def: conormal sheaf}
+    Let $X$ be a smooth $k$-scheme locally of finite type and $Y\subseteq X$ a local complete intersection closed subscheme. The conormal bundle $\Ncal_{Y/X}^{\vee}$ is the sheaf $\Ical_{Y}/\Ical_{Y}^{2}$. 
+\end{definition}
+Dualizing yields the normal sheaf. 
+\begin{definition}[Normal Sheaf]\label{def: normal sheaf}
+    Let $X$ be a smooth $k$-scheme locally of finite type and $Y\subseteq X$ a local complete intersection closed subscheme. The normal bundle $\Ncal_{Y/X}$ is the dual of the conormal sheaf $\underline{\Hom}_{\Mod_{\Ocal_{Y}}}(\Ical_{Y}/\Ical_{Y}^{2},\Ocal_{Y})$. 
+\end{definition}
+This gives the conormal bundle sequence. 
+\begin{proposition}[Conormal Bundle Sequence]\label{prop: conormal bundle sequence}
+    Let $X$ be a smooth $k$-scheme locally of finite type and $Y\subseteq X$ a local complete intersection closed subscheme. There is a short exact sequence 
+    $$0\to\Ncal_{Y/X}^{\vee}\to\Omega^{1}_{X/k}|_{Y}\to\Omega_{Y/k}^{1}\to 0$$
+    of sheaves on $Y$. 
+\end{proposition}
+\begin{proof}
+    This is immediate from \Cref{prop: smoothness of closed subschemes}. 
+\end{proof}
+Dual to the conormal and normal bundles, we can define tangent bundles. 
+\begin{definition}[Tangent Bundle]\label{def: tangent bundle}
+    Let $X$ be a smooth $k$-scheme locally of finite type. The tangent bundle $\Tcal_{X}$ is $\underline{\Hom}_{\Mod_{\Ocal_{X}}}(\Omega^{1}_{X/k},\Ocal_{X})$. 
+\end{definition}
+In particular, we record the following observation. 
+\begin{example}
+    Let $X$ be a smooth scheme. $(\Tcal_{X})_{x}=T_{X,x}$ the former being the tangent bundle and the latter the Zariski tangent space. 
+\end{example}
+Recalling that dualizing preserves exactness, we have the normal bundle sequence. 
+\begin{proposition}[Normal Bundle Sequence]\label{prop: normal bundle sequence}
+    Let $X$ be a smooth $k$-scheme locally of finite type and $Y\subseteq X$ a smooth closed subscheme. There is a short exact sequence 
+    $$0\to\Tcal_{Y}\to\Tcal_{X}|_{Y}\to\Ncal_{Y/X}\to 0$$
+    of sheaves on $Y$.
+\end{proposition}
+\begin{proof}
+    This is obtained by dualizng \Cref{prop: conormal bundle sequence}. 
+\end{proof}
+The construction of the sheaf of K\"{a}hler differentials in fact is closely connected to Serre duality, as alluded to in the lectures of the preceding semester. 
+\begin{definition}[Canonical Bundle]\label{def: canonical bundle}
+    Let $X$ be a smooth $k$-scheme locally of finite type of pure dimension $d$. The canonical bundle of $X$, $\omega_{X/k}$ is $\Omega^{d}_{X/k}=\bigwedge^{d}\Omega^{1}_{X/k}$. 
+\end{definition}
+The normal bundle sequence immediately gives the relationship between the canonical bundle of a smooth scheme and a smooth subscheme. 
+\begin{proposition}[Adjunction Formula]\label{prop: adjunction formula}
+    Let $X$ be a smooth $k$-scheme locally of finite type and $Y\subseteq X$ a smooth closed subscheme. Then 
+    $$\omega_{Y/k}\cong\omega_{X/k}|_{Y}\otimes\det(\Ncal_{Y/X}).$$
+\end{proposition}
+\begin{proof}
+    Note that for $0\to\Fcal'\to\Fcal\to\Fcal''\to0$ a short exact sequence, we have $\det(\Fcal)\cong\det(\Fcal')\otimes\det(\Fcal'')$, in which case the statement follows from the conormal bundle sequence \Cref{prop: conormal bundle sequence}. 
+\end{proof}
+\begin{example}
+    Let $X$ be a smooth $k$ scheme, $\Lcal\in\Pic(X)$, and $s\in H^{0}(X,\Lcal)$. $Y=(s)_{0}$ is a codimension 1 subscheme and there is an injective map $\Ocal_{X}\xrightarrow{s}\Lcal$. Defining the dual map $s^{\vee}:\Lcal^{\vee}\to\Ocal_{X}$ we can compose it with the surjection $\Ocal_{X}\to\Ocal_{Y}$ to observe that $\Ical_{Y}\cong\Lcal^{\vee}$. Tensoring the short exact sequence 
+    $0\to\Lcal^{\vee}\to\Ocal_{X}\to\Ocal_{Y}\to0$ by $\Lcal^{\vee}$ yields a short exact sequence $0\to \Lcal^{\otimes-2}\to\Lcal^{\vee}\to\Lcal^{\vee}|_{Y}\to0$ where $\Ical_{Y}/\Ical_{Y}^{2}\cong\Lcal^{\vee}|_{Y}$ implying $\Ncal_{Y/X}\cong\Lcal|_{Y}$. Now applying the normal bundle sequence, $\omega_{Y/k}\cong\omega_{X/k}\otimes\Lcal|_{Y}\cong(\omega_{X/k}\otimes\Lcal)|_{Y}$. 
+\end{example}
+\begin{example}
+    Let $X=\PP^{n}_{k}$ and $Y=V_{+}(f)$ for $f\in\Ocal_{\PP^{n}_{k}}(d)$ for some $d\geq0$. Recall that $\omega_{X/k}=\Ocal_{\PP^{n}_{k}}(-n-1)$. So $\omega_{Y/k}=\Ocal_{\PP^{n}_{k}}(d-n-1)|_{Y}$. 
+\end{example}
