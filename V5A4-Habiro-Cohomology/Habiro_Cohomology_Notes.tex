@@ -10,6 +10,9 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{color}
+\usepackage[bbgreekl]{mathbbol}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
 \input{shortcuts.tex}
 \setlength{\headheight}{40pt}
 
@@ -20,7 +23,7 @@
   {\end{proof}}
 \renewcommand\qedsymbol{$\blacksquare$}
 
-\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek, stmaryrd, marginnote, todonotes, euscript, lscape}
+\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, stmaryrd, marginnote, todonotes, euscript}
 \addbibresource{refs.bib}
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -44,13 +47,13 @@
 \urladdr{https://wgabrielong.github.io/}
 \maketitle
 \section*{Preliminaries}
-These notes roughly correspond to the course \textbf{V5A4 -- Habiro Cohomology} taught by Prof. Peter Scholze at the Universit\"{a}t Bonn in the Summer 2025 semester. These notes are \LaTeX-ed after the fact with significant alteration and are subject to misinterpretation and mistranscription. Use with caution. Any errors are undoubtedly my own and any virtues that could be ascribed to these notes ought be attributed to the instructor and not the typist. %Recordings of the lecture are availible at the following link:
-%\begin{center}
- % \href{https://archive.mpim-bonn.mpg.de/id/eprint/5132/}{\texttt{archive.mpim-bonn.mpg.de/id/eprint/5132/}}
-%\end{center}
+These notes roughly correspond to the course \textbf{V5A4 -- Habiro Cohomology} taught by Prof. Peter Scholze at the Universit\"{a}t Bonn in the Summer 2025 semester. These notes are \LaTeX-ed after the fact with significant alteration and are subject to misinterpretation and mistranscription. Use with caution. Any errors are undoubtedly my own and any virtues that could be ascribed to these notes ought be attributed to the instructor and not the typist. Recordings of the lecture are availible at the following link:
+\begin{center}
+  \href{https://archive.mpim-bonn.mpg.de/id/eprint/5155/}{\texttt{archive.mpim-bonn.mpg.de/id/eprint/5155/}}
+\end{center}
 
 \tableofcontents
-
+\include{Lecture 1}
 
 \printbibliography
 
