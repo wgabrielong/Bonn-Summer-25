@@ -303,7 +303,8 @@ TSWLatexianTemp*
 # option is specified. Footnotes are the stored in a file with suffix Notes.bib.
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
-V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.pdf V5A2-Rigid-Analytic-Geometry/Rigid_Analytic_Geometry_Notes.pdf
+V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.pdf 
+V5A2-Rigid-Analytic-Geometry/Rigid_Analytic_Geometry_Notes.pdf
 V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.pdf
 V4A1-Algebraic-Geometry-II/._wordcount_selection.tex
 V5A4-Habiro-Cohomology._wordcount_selection.tex
