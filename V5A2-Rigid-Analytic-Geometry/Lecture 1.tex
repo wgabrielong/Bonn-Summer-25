@@ -1,0 +1,143 @@
+\section{Lecture 1 -- 17th April 2025}\label{sec: lecture 1}
+We fix the following notation. 
+\begin{notation}
+    \begin{enumerate}[label=(\roman*)]
+        \item $K$ is a field complete with respect to a non-Archimedean norm. 
+        \item We denote the Tate algebra 
+        $$\TT_{n}=\left\{f\in\sum_{\alpha\in\NN^{n}}f_{\alpha}X^{\alpha}:\forall\varepsilon>0, |\{\alpha:|f_{\alpha}|_{K}\geq\varepsilon\}|<\infty\right\}\subseteq K[[X_{1},\dots,X_{n}]]$$
+        the subring of convergent power series, with norm $\Vert f|\TT_{n}\Vert=\max_{\alpha\in\NN^{n}}|f_{\alpha}|$. 
+    \end{enumerate}
+\end{notation}
+\begin{remark}
+    \begin{itemize}
+        \item [(i)] The norm $|\cdot|_{K}$ extends uniquely to any algebraic extension of $K$. 
+        \item [(ii)] The Tate algebra $\TT_{n}$ is Noetherian, hence all ideals are closed. 
+    \end{itemize}
+\end{remark}
+Affinoid algebras are quotients of Tate algebras. 
+\begin{definition}[Affiniod Algebra]\label{def: affinoid algebra}
+    A $K$-algebra $A$ is an affinoid $K$-algebra if it is of the form $\TT_{n}/I$. 
+\end{definition}
+There is an induced norm on the Tate algebra known as the residual norm. 
+\begin{definition}[Residual Norm]\label{def: residual norm}
+    Let $A$ be an affinoid $K$-algebra. The residue norm of $a\in A$ is 
+    $$\Vert a\Vert=\inf\{\Vert f|\TT_{n}\Vert:\overline{f}=a\}.$$
+\end{definition}
+\begin{remark}
+    \Cref{def: residual norm} is independent of the choice of representative. 
+\end{remark}
+As in algebraic geometry, affinoid algebras give rise to ringed spaces via the Tate spectrum. We discuss the construction by first defining the space, and the sheaf of rings on it. 
+\begin{definition}[Tate Spectrum -- Set]\label{def: space of Tate spectrum}
+    Let $A$ be an affinoid $K$-algebra. The set underlying the Tate spectrum $\Sp(A)$ is $\mathrm{mSpec}(A)$. 
+\end{definition}
+\begin{remark}
+    The Tate spectrum is endowed with the property that $[\kappa(x):K]<\infty$, where $\kappa(x)=A/\mfrak_{x}$ is a field as the ideal $\mfrak_{x}$ corresponding to $x$ is maximal. 
+\end{remark}
+The topology on the set is defined by rational sieves. 
+\begin{definition}[Rational Open Set]\label{def: rational set}
+    Let $\langle f_{0},\dots,f_{n}\rangle_{A}=A$. The rational open associated to the generators $R_{A}(f_{0}|f_{1},\dots,f_{n})$ is given by 
+    $$R_{A}(f_{0}|f_{1},\dots,f_{n})=\{x\in\Sp(A):|f_{0}(x)|<|f_{i}(x)|,1\leq i\leq n\}.$$
+\end{definition}
+\begin{remark}
+    Rational open subsets are preserved under finite intersection. For $\langle f_{0},\dots,f_{n}\rangle_{A},\langle g_{0},\dots,g_{m}\rangle_{A}$ generators of $A$, the intersection 
+    $$R_{A}(f_{0}|f_{1},\dots,f_{n})\cap R_{A}(g_{0}|g_{1},\dots,g_{m})=R_{A}(f_{0}g_{0}|f_{i}g_{j}, 1\leq i\leq n, 1\leq j\leq m).$$
+\end{remark}
+These rational open sets form the basis for the topology on the Tate spectrum $\Sp(A)$. 
+\begin{definition}[Tate Spectrum -- Topology]\label{def: topology of Tate spectrum}
+    Let $A$ be an affinoid $K$-algebra. The set underlying the Tate spectrum $\Sp(A)$ has a topology with basis consisting of the rational open sets $R_{A}(f_{0}|f_{1},\dots,f_{n})$ and with Grothendieck topology obtained by enforcing quasicompactness of the rational open sets. 
+\end{definition}
+In some simple cases, the underlying space of the Tate spectrum admits a description. 
+\begin{example}
+    Let $K=\overline K$. $\Sp(\TT_{n})= (K^{\circ})^{n}$, where $K^{\circ}$ is the subring of powerbounded elements of $K$. Each point $x\in\Sp(A)$ is taken to $(\xi_{i})_{i=1}^{n}$ where $\xi_{i}$ is the image of $X_{i}$ in $K\cong\kappa(x)$ and an $n$-tuple of powerbounded elements of $K$ is taken to the ideal of $\TT_{n}$ consisting of functoins vanishing at that tuple. In this case, the basis for the ordinary topology on the Tate spectrum is identified with non-Archimedean balls $d(\xi,\nu)=\max_{1\leq i\leq n}|\xi_{i}-\nu_{i}|$. 
+\end{example}
+We now want to define the structure sheaf on $\Sp(A)$ which will be valued in the category affinoid $K$-algebras $\Aff_{K}$. This is a full subcategory of the category of $K$-algebras as all maps between affinoid $K$-algebras are automatically continuous. 
+
+The structure sheaf is defined as follows. 
+\begin{definition}[Tate Spectrum -- Structure Sheaf]\label{def: structure sheaf of the Tate spectrum}
+    Let $A$ be an affinoid $K$-algebra. The functor $$R_{A}(f_{0}|f_{1},\dots,f_{n})\mapsto A\left\langle\frac{\varepsilon}{f_{0}}\right\rangle\left\langle\frac{f_{1}}{f_{0}},\dots,\frac{f_{n}}{f_{0}}\right\rangle$$ where $\varepsilon\in K^{\times}$ such that $\max_{0\leq i\leq n}|f_{i}(x)|\geq|\varepsilon|$ for all $x\in\Sp(A)$ represents the functor $\mathsf{Rat}_{A}^{\Opp}\to\Aff_{K}$
+    $$F_{\Omega}(B)=\left\{\varphi\in\Hom_{\Aff_{K}}(A,B):\Sp(\varphi)(\Sp(B))\subseteq\Omega\right\}.$$
+\end{definition}
+Summing up the preceding constructions, we have:
+\begin{definition}[Tate Spectrum -- Ringed Space]\label{def: Tate spectrum as a ringed space}
+    Let $A$ be an affinoid $K$-algebra. The Tate spectrum is given by:
+    \begin{itemize}
+        \item Topological space $\mathrm{mSpec}(A)$ with basis for the topology given by rational open subsets $R_{A}(f_{0}|f_{1},\dots,f_{n})$ with $\langle f_{0},\dots,f_{n}\rangle_{A}=A$. 
+        \item Sheaf of rings given by $R_{A}(f_{0}|f_{1},\dots,f_{n})\mapsto A\left\langle\frac{\varepsilon}{f_{0}}\right\rangle\left\langle\frac{f_{1}}{f_{0}},\dots,\frac{f_{n}}{f_{0}}\right\rangle$. 
+    \end{itemize}
+\end{definition}
+Here we used the fact that any sheaf on the base extends to a sheaf on the space. 
+\begin{remark}
+    \begin{enumerate}[label=(\roman*)]
+        \item There are identifications $\Ocal_{\Sp(\Ocal_{\Sp(A)}(\Omega))}\cong\Ocal_{\Sp(A)}|_{\Omega}$. 
+        \item By Tate acyclicity, the higher cohomology of $\Ocal_{\Sp(A)}$ vanishes.
+    \end{enumerate} 
+\end{remark}
+We state some additional results surrounding Tate acyclicity. 
+\begin{definition}[Laurent Order]\label{def: Laurent order}
+    Let $\Scal$ be a sieve on $\Sp(A)$. We define the Laurent order $\ofrak_{L}(\Scal)$ inductively as follows:
+    \begin{itemize}
+        \item $\ofrak_{L}(\Scal)=0$ if and only if is the all sieve. 
+        \item $\ofrak_{L}(\Scal)\leq k$ if there is $g\in\Ocal_{X}(\Omega)$ such that the restriction sieves $\Scal|_{R_{\Omega}(g|1)}$ and $\Scal|_{R_{\Omega}(1|g)}$ have Laurent order at most $k$. 
+        \item $\Scal$ is of Laurent order $k$ if $k$ is the smallest number such that $\Scal$ is of Laurent order at most $k$
+    \end{itemize}
+\end{definition}
+Finiteness of the Laurent order characterizes covering sieves. 
+\begin{proposition}\label{prop: finite Laurent order iff covering}
+    Let $\Scal$ be a sieve on $\Sp(A)$ for $A$ an affinoid $K$-algebra. $\Scal$ is a covering sieve if and only if $\ofrak_{L}(\Scal)<\infty$. 
+\end{proposition}
+This immediately gives a simple sufficient condition for Tate acyclicity. 
+\begin{corollary}\label{def: two set condition for acyclicity}
+    Let $\Fcal$ be a sheaf of Abelian groups on $\Sp(A)$. If 
+    $$0\to\Fcal(\Omega)\to\Fcal(R_{\Omega}(g|1))\oplus\Fcal(R_{\Omega}(1|g))\to\Fcal(R_{\Omega}(g|1)\cap R_{\Omega}(1|g))\to0$$
+    is exact for all $\Omega\subseteq\Sp(A)$ rational and $g\in\Ocal_{\Sp(A)}(\Omega)$ then $\Fcal$ is acyclic. 
+\end{corollary}
+We state two additional results concerning the unviersality of certain affinoid $K$-algebras. We first recall the following definitions. 
+\begin{definition}[nat Ring]\label{def: nat ring}
+    Let $A$ be a topological ring. $A$ is a nat ring if it has a basis of neighborhoods of zero consisting of open subgroups. 
+\end{definition}
+\begin{definition}[Tate Ring]\label{def: Tate ring}
+    A nat ring $A$ is Tate if if it has a powerbounded neighborhood of zero and has a topologically nilpotent unit known as a quasi-uniformizer. 
+\end{definition}
+In turn:
+\begin{proposition}\label{prop: unviersality of quotients}
+    Let $A$ be a Tate ring and 
+    $$A\langle f_{1},\dots,f_{n}\rangle=A\langle X_{1},\dots,X_{n}\rangle/\langle X_{1}-f_{1},\dots,X_{n}-f_{n}\rangle.$$
+    $A\langle f_{1},\dots,f_{n}\rangle$ is initial among nat $A$-algebras $B$ where $f_{1},\dots,f_{n}$ are powerbounded. Furthermore, $A\langle f_{1},\dots,f_{n}\rangle$ contains $A$ as a dense subring. 
+\end{proposition}
+\begin{proposition}\label{prop: universality of localizations}
+    Let $A$ be a Tate ring and 
+    $$A\left\langle\frac{1}{f_{1}},\dots,\frac{1}{f_{n}}\right\rangle=A\langle X_{1},\dots,X_{n}\rangle/\left\langle X_{1}-\frac{1}{f_{1}},\dots,X_{n}-\frac{1}{f_{n}}\right\rangle.$$
+    $A\langle\frac{1}{f_{1}},\dots,\frac{1}{f_{n}}\rangle$ is initial among nat $A$-algebras $B$ where $f_{1},\dots,f_{n}$ are units with $\frac{1}{f_{1}},\dots,\frac{1}{f_{n}}$ powerbounded. Furthermore, $A\langle\frac{1}{f_{1}},\dots,\frac{1}{f_{n}}\rangle$ contains $A[\frac{1}{f_{1}},\dots,\frac{1}{f_{n}}]$ as a dense subring. 
+\end{proposition}
+We are now ready to define coherent sheaves. 
+
+We begin with the following preparatory result. \marginpar{We now begin marginal labeling, which follows the lecture. \\\\ Proposition 2.1}
+\begin{proposition}\label{prop: flatness of section algebras}
+    Let $A$ be an affinoid algebra and $\Omega\subseteq\Sp(A)$ a rational subset. Then:
+    \begin{enumerate}[label=(\roman*)]
+        \item For $B=\Ocal_{\Sp(A)}(\Omega)$ and $\mfrak\in\Sp(B)$, there is an isomorphism of $K$-algebras $B_{\mfrak}^{\wedge}\cong A_{\widetilde{\mfrak}}^{\wedge}$ where $\widetilde{\mfrak}$ is the preimage of $\mfrak$ under the map $A\to B$ and $(-)^{\wedge}_{I}$ is the completion of a ring with respect to the ideal $I$. 
+        \item $B$ is flat as an $A$-algebra. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    We first show a claim:
+    \begin{itemize}
+        \item [($\dagger$)] For all $n\in\NN$, $A/\widetilde{\mfrak}^{n}\to B/\mfrak^{n}$ is an isomorphism. 
+    \end{itemize}
+    Note that $B/\mfrak^{n}$ is initial amongst affinoid $B$-algebras $C$ such that $\mfrak^{n}C=0$, while $A/\mfrak^{n}$ is initial amongst affinoid $A$-algebras $C'$ such that $\widetilde{\mfrak}^{n}C=0$. For $C$ as above, the image of $\Sp(C)$ in $\Sp(B)$ is $\mfrak$, while the image of $\Sp(C')$ in $\Sp(A)$ is $\widetilde{\mfrak}\in\Omega$. Applying the universal property twice, $C'$ can be endowed uniquely with the structure of a $B$-algebra, and by $\kappa(\mfrak)\cong\kappa(\widetilde{\mfrak})$ it follows that $C'$ is generated by $\widetilde{\mfrak}$ Thus both $A/\widetilde{\mfrak}^{n}, B/\mfrak^{n}$ satisfy the same universal property, hence isomorphic. 
+
+    The desired claim follows from ($\dagger$) by passage to the limit. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    By a standard result in commutative algebra, it suffices to show $B_{\mfrak}$ is $A$-flat for all $\mfrak\in\mathrm{mSpec}(B)$. $B$ being Noetherian, $B^{\wedge}_{\mfrak}$ is a faithfully flat $B_{\mfrak}$-algebra, whereby it is sufficient to show that $B^{\wedge}_{\mfrak}$ is flat over $A$. But $B^{\wedge}_{\mfrak}\cong A^{\wedge}_{\widetilde{\mfrak}}$ by (i), which is a flat $A$-module as $A$ is Noetherian, giving the claim. 
+\end{proof}
+As in the case of algebraic geometry, coherent sheaves are defined as $\widetilde{(-)}$-ifications of finitely generated modules. 
+\begin{definition}[$\widetilde{(-)}$]\label{def: tildeification}
+    Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module. The sheaf $\widetilde{M}$ is the sheafification of the presheaf $\Omega\mapsto M\otimes_{A}\Ocal_{\Sp(A)}(\Omega)$ on rational open subsets. 
+\end{definition}
+Exactness of the sequence 
+$$0\to\Ocal_{\Sp(A)}(\Omega)\to\Ocal_{\Sp(A)}(R_{\Omega}(1|g))\oplus\Ocal_{\Sp(A)}(R_{\Omega}(g|1))\to\Ocal_{\Sp(A)}(R_{\Omega}(g|1,g^{2}))\to0$$
+is preserved under $-\otimes_{A}M$ by \Cref{def: two set condition for acyclicity}. In particular, we have:
+\begin{proposition}\label{prop: tildeification is tensor}
+    Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module with associated sheaf $\widetilde{M}$. Then $\widetilde{M}(\Omega)=\Ocal_{\Sp(A)}(\Omega)\otimes_{A}M$ and $H^{p}(\Omega,\widetilde{M})=0$ for all $p>0$ and for all rational $\Omega$. 
+\end{proposition}
