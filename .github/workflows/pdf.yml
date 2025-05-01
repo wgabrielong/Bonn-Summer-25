@@ -16,7 +16,7 @@ jobs:
       # One filename per line, including relative path
       FILES: |
         V4A2-Algebraic-Geometry-II/Algebraic_Geometry_II_Notes.tex
-        V5A2-D-Modules/D_Modules_Notes.tex
+        V5A2-Rigid-Analytic-Geometry/Rigid_Analytic_Geometry_Notes.tex
         V5A4-Habiro-Cohomology/Habiro_Cohomology_Notes.tex
 
     steps:
