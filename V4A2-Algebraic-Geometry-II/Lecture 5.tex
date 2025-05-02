@@ -1,0 +1,107 @@
+\section{Lecture 5 -- 24th April 2025}\label{sec: lecture 5}
+We begin a discussion of flatness, which intuitively corresponds to varying ``nicely'' in a family over the base. As always, we first define these in the local case. 
+\begin{definition}[Flat Module]\label{def: flat module}
+    Let $A$ be a ring and $M$ an $A$-module. $M$ is a flat $A$-module if $-\otimes_{A}M$ is an exact functor. 
+\end{definition}
+Recall that for $A$-modules $M$, $-\otimes_{A}M$ is always a right exact functor so flatness is equivalent to being left exact, taking short exact sequences 
+$$0\to N_{1}\to N_{2}\to N_{3}\to 0$$
+to short exact sequences
+$$0\to N_{1}\otimes_{A}M\to N_{2}\otimes_{A}M_{2}\to N_{3}\otimes_{A}N_{3}\to0.$$
+In fact, it suffices to verify that for all ideals $\afrak\subseteq A$ that $\afrak\otimes_{A}M\to A\otimes_{A}M$ is injective. 
+
+We can apply this to the special case where an $A$-algebra $B$ is considered as an $A$-module. 
+\begin{definition}[Flat Algebra]\label{def: flat algebra}
+    Let $A$ be a ring and $B$ an $A$-algebra. $B$ is $A$-flat if $B$ is flat as an $A$-module. 
+\end{definition}
+Let us recall some further properties of flatness. 
+\begin{proposition}\label{prop: properties of flatness rings and modules}
+    Let $A$ be a ring. 
+    \begin{enumerate}[label=(\roman*)]
+        \item If $A$ is a local ring and $M$ is a finite $A$-module, then $M$ is flat if and only if $M$ is free. 
+        \item If $S\subseteq A$ is a multiplicative subset, $A\to S^{-1}A$ is flat. 
+        \item If $A\to B$ is a ring map and $M$ is a flat $A$-module then $M\otimes_{A}B$ is a flat $B$-module. 
+        \item If $A\to B$ is a flat ring map and $N$ is a flat $B$-module then its restriction of scalars $N|_{A}$ is a flat $A$-module. 
+        \item Let $M$ be an $A$-module. $M$ is flat if and only if $M_{\pfrak}$ is a flat $A_{\pfrak}$-module for all prime ideals (maximal ideals). 
+        \item Let $A\to B$ be a flat ring map between Noetherian local rings, and $b\in B$ such that $\overline{b}\in B/\mfrak_{A}B$ is a non-zerodivisor then $B/(b)$ is $A$-flat. 
+        \item For a coCartesian diagram 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDEsIkMiXSxbMiwxLCJCXFxvdGltZXNfe0N9QSJdLFswLDFdLFsxLDNdLFswLDJdLFsyLDNdXQ==
+        \begin{tikzcd}
+            A && B \\
+            C && {B\otimes_{C}A}
+            \arrow[from=1-1, to=1-3]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-3]
+        \end{tikzcd}$$
+        and $M$ a $B$-module that is $A$-flat, then $M\otimes_{B}(C\otimes_{A}B)$ is a flat $C$-module. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    See \cite[\href{https://stacks.math.columbia.edu/tag/00H9}{Tag 00H9}]{stacks-project}.
+\end{proof}
+We prove the following lemma about flatness on localizations at prime ideals. 
+\begin{lemma}\label{lem: flatness on stalks}
+    Let $\varphi:A\to B$ be a ring map. $\varphi$ is flat if and only if for all primes $\qfrak\subseteq B$, the map $A_{\varphi^{-1}(\qfrak)}\to B_{\qfrak}\cong A_{\varphi^{-1}(\qfrak)}\otimes_{A}B$ is a flat ring map. 
+\end{lemma}
+\begin{proof}
+    $(\Rightarrow)$ Suppose $A\to B$ is flat. Then any $A_{\varphi^{-1}(\qfrak)}\to B_{\qfrak}$ is factored as $A_{\varphi^{-1}(\qfrak)}\to B_{\varphi^{-1}(\qfrak)}\cong A_{\varphi^{-1}(\qfrak)}\otimes_{A}B\to(B_{\varphi^{-1}(\qfrak)})_{\qfrak}\cong B_{\qfrak}$ which is a composition of a flat map with a localization, the latter flat, hence the composition is flat too. 
+
+    $(\Leftarrow)$ Suppose we have an injection $M\to M'$ of $A$-modules. By exactness of localization, we have $M\otimes_{A}A_{\pfrak}\to M'\otimes_{A}A_{\pfrak}$. $B_{\qfrak}$ is $A_{\pfrak}$-flat so the map remains injective on base change to $B_{\qfrak}$ for all $\qfrak\subseteq B$ so taking $M=A,M'=B$ yields the claim in conjunction with \Cref{prop: properties of flatness rings and modules} (v). 
+\end{proof}
+We now describe the geometric case. 
+\begin{definition}[Flat Sheaves]\label{def: flat sheaves}
+    Let $f:X\to Y$ be a morphism of schemes and $\Fcal$ a quasicoherent sheaf on $X$. $\Fcal$ is flat over $Y$ if $\Fcal_{x}$ is flat as an $\Ocal_{Y,f(x)}$-module. 
+\end{definition}
+\begin{definition}[Flat Morphism]\label{def: flat morphism}
+    Let $f:X\to Y$ be a morphism of schemes. $f$ is a flat morphism if $\Ocal_{X}$ is flat over $Y$. 
+\end{definition}
+We consider some examples. 
+\begin{example}
+    Let $X$ be a scheme. $\id_{X}:X\to X$ is a flat morphism as affine-locally it is obtained by the identity ring map and rings are flat as modules over themselves. 
+\end{example}
+\begin{example}
+    Let $\Fcal$ be a coherent sheaf on $X$. $\Fcal$ is a flat $\Ocal_{X}$-module if and only if $\Fcal$ is locally free. In the reduced case, this can be checked by the function $x\mapsto\dim_{\kappa(x)}\Fcal_{x}\otimes_{\Ocal_{X,x}}\kappa(x)$ being locally constant. 
+\end{example}
+\begin{example}
+    \Cref{prop: properties of flatness rings and modules} (ii) shows that open immersions are flat, though closed immersions are often not flat uness they are isomorphisms. 
+\end{example}
+\begin{proposition}\label{prop: dimension criterion for flatness}
+    Let $f:X\to Y$ be a morphism between locally Noetherian schemes. Then $\dim(\Ocal_{X_{y}},x)\geq\dim(\Ocal_{X,x})-\dim(\Ocal_{Y,y})$ and equality occurs when $f$ is flat.\todo{Check}
+\end{proposition}
+\begin{proof}
+    By locality on source and target, we can reduce this to the case of $X=\spec(\Ocal_{X,x}),Y=\spec(\Ocal_{Y,y})$. Denote $B=\Ocal_{X,x},A=\Ocal_{Y,y}$. We proceed by induction on the dimension of $Y$. 
+
+    If $\dim(Y)=0$, then the nilradical is in the maximal ideal. In particular the qutoient by the nilradical is a field. Quotienting $B$ by its nilradical, we have $(B/\mfrak_{y}B)/(\Nil(B)/\mfrak_{y}B)\cong B/\Nil(B)$ by $\mfrak_{y}B\hookrightarrow\Nil(B)$. This gives 
+    $$\dim(\Ocal_{X,x})=\dim(B/\Nil(B))=\dim(B/\mfrak_{y}B)=\dim(\Ocal_{X_{y},x})$$
+    so 
+    $$\dim(\Ocal_{X_{y},x})\geq\dim(\Ocal_{X,x})-\underbrace{\dim(\Ocal_{Y,y})}_{=0}$$
+    giving the desired (in)equality. 
+
+    Suppose $Y$ is of dimension at least 1. By base changing to the reduction, we can take $Y$ to be reduced by \Cref{prop: properties of flatness rings and modules} (iii). 
+
+    In this case there exists $\pfrak\subsetneq\mfrak_{y}$ and an element $t\in\mfrak_{y}\setminus\pfrak$. In particular, $t$ is a non-zerodivisor. Using that $A$ is Noetherian, Krull's theorem implies every minimal prime over $(t)$ is of dimension 1 so $\dim(\Ocal_{Y,y}/(t))=\dim(\Ocal_{Y,y})-1$. Under $\varphi:A\to B$, $\varphi(t)$ may or may not be a zerodivisor giving $\dim(\Ocal_{Y,y})\geq\dim(\Ocal_{Y,y}/(t))-1$ but if $\varphi$ is flat then $\varphi(t)$ is a nonzerodivisor and gives equality. 
+\end{proof}
+In the case of locally finite type schemes, this can be detected fiberwise. 
+\begin{corollary}\label{corr: fiberwise flatness}
+    Let $f:X\to Y$ be a morphism of $k$-schemes where $X,Y$ are locally of finite type, $Y$ is irreducible, and $X$ equidimensional. If for all $y\in Y$, $X_{y}$ is equidimensional of $\dim(X)-\dim(Y)$ then $f$ is flat and surjective. 
+\end{corollary}
+\begin{proof}
+    Without loss of generality, let $X$ be irreducible and take $x\in X$ closed. Then $\dim(X_{y})=\dim(\Ocal_{X_{y},x})$. By hypothesis we have 
+    $$\dim(\Ocal_{X,x})=\dim(X)-\dim(\overline{\{x\}})$$
+    which holds for finite-type $k$-algebras. On the other hand, we have 
+    \begin{align*}
+        \dim(\Ocal_{Y,y}) &= \dim(Y)-\dim(\overline{\{y\}}) \\
+        &= \dim(Y)-\mathrm{trdeg}(\kappa(y)/k) \\
+        &= \dim(Y)-\dim\{\overline{x}\} \\
+        &= \dim(Y)-\dim(X)+\dim(\Ocal_{X,y})
+    \end{align*}
+    which gives the equality of \Cref{prop: dimension criterion for flatness} and from which the claim follows. 
+\end{proof}
+Moreover, flatness behaves especially well over smooth curves. 
+\begin{proposition}\label{prop: flatness over curves}
+    Let $f:X\to Y$ be a morphism of schemes where $Y$ is the spectrum of a discrete valuation. If $f$ is flat, then $\overline{X_{\eta}}=X$. 
+\end{proposition}
+In particular, there are no closed irreducible components $Z\subseteq Z$ over the (unique) closed point of $Y$. 
+\begin{proof}
+    Suppose $f$ is flat and there is $Z\subseteq Z$ irreducible in the fiber over the closed point $\mfrak\in Y$. Then $\dim(Z)\leq \dim(X_{\mfrak})=\dim(X)-1$. A contradiction to $X$ equidimensional. Otherwise, we apply \Cref{corr: fiberwise flatness} to $Z$ obtaining a contradiction once more. 
+\end{proof}

@@ -132,12 +132,19 @@ We begin with the following preparatory result. \marginpar{We now begin marginal
     By a standard result in commutative algebra, it suffices to show $B_{\mfrak}$ is $A$-flat for all $\mfrak\in\mathrm{mSpec}(B)$. $B$ being Noetherian, $B^{\wedge}_{\mfrak}$ is a faithfully flat $B_{\mfrak}$-algebra, whereby it is sufficient to show that $B^{\wedge}_{\mfrak}$ is flat over $A$. But $B^{\wedge}_{\mfrak}\cong A^{\wedge}_{\widetilde{\mfrak}}$ by (i), which is a flat $A$-module as $A$ is Noetherian, giving the claim. 
 \end{proof}
 As in the case of algebraic geometry, coherent sheaves are defined as $\widetilde{(-)}$-ifications of finitely generated modules. 
-\begin{definition}[$\widetilde{(-)}$]\label{def: tildeification}
+\begin{definition}[$\widetilde{(-)}$]\label{def: tildeification}\marginpar{Definition 2.1}
     Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module. The sheaf $\widetilde{M}$ is the sheafification of the presheaf $\Omega\mapsto M\otimes_{A}\Ocal_{\Sp(A)}(\Omega)$ on rational open subsets. 
 \end{definition}
 Exactness of the sequence 
 $$0\to\Ocal_{\Sp(A)}(\Omega)\to\Ocal_{\Sp(A)}(R_{\Omega}(1|g))\oplus\Ocal_{\Sp(A)}(R_{\Omega}(g|1))\to\Ocal_{\Sp(A)}(R_{\Omega}(g|1,g^{2}))\to0$$
 is preserved under $-\otimes_{A}M$ by \Cref{def: two set condition for acyclicity}. In particular, we have:
-\begin{proposition}\label{prop: tildeification is tensor}
+\begin{proposition}\label{prop: tildeification is tensor}\marginpar{Proposition 2.2}
     Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module with associated sheaf $\widetilde{M}$. Then $\widetilde{M}(\Omega)=\Ocal_{\Sp(A)}(\Omega)\otimes_{A}M$ and $H^{p}(\Omega,\widetilde{M})=0$ for all $p>0$ and for all rational $\Omega$. 
 \end{proposition}
+\begin{proof}
+    By flatness of $\Ocal_{\Sp(A)}(\Omega)$ as an $A$-algebra, exactness of the sequence for $\Omega$ rational, we have a short exact sequence 
+    $$0\to\Ocal_{\Sp(A)}(\Omega)\to\Ocal_{\Sp(A)}(\Omega_{1})\oplus\Ocal_{\Sp(A)}(\Omega_{2})\to\Ocal_{\Sp(A)}(\Omega_{1}\cap\Omega_{2})\to0$$
+    and by flatness of $\Ocal_{\Sp(A)}(\Omega)$ (vis. \cite[\href{https://stacks.math.columbia.edu/tag/00M5}{Tag 00M5}]{stacks-project}), we get that 
+    $$0\to\Ocal_{\Sp(A)}(\Omega)\otimes_{A}M\to(\Ocal_{\Sp(A)}(\Omega_{1})\oplus\Ocal_{\Sp(A)}(\Omega_{2}))\otimes_{A}M\to\Ocal_{\Sp(A)}(\Omega_{1}\cap\Omega_{2})\otimes_{A}M\to0$$
+    is exact, so by noting that $M\otimes_{A}\Ocal_{\Sp(A)}(\Omega)\cong\widetilde{M}(\Omega)$, we have that $\widetilde{M}$ is acyclic. 
+\end{proof}
