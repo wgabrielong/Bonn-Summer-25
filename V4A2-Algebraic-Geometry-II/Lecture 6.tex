@@ -1,0 +1,52 @@
+\section{Lecture 6 -- 28th April 2025}\label{sec: lecture 6}
+As a corollary of the previous discussion about flatness, we show that flatness can be extended over a closed fiber. 
+\begin{corollary}\label{corr: properness of the hilbert scheme}
+    Let $f:X\to Y\setminus\{y\}$ be flat and projective with $Y$ Dedekind and $y\in Y$ closed. 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYIl0sWzIsMCwiXFxQUF57bn1fe1lcXHNldG1pbnVzIFxce3lcXH19Il0sWzIsMSwiXFxQUF57bn1fe1l9Il0sWzAsMSwiXFxvdmVybGluZXtYfSJdLFswLDFdLFsxLDJdLFswLDNdLFszLDJdXQ==
+    \begin{tikzcd}
+        X && {\PP^{n}_{Y\setminus \{y\}}} \\
+        {\overline{X}} && {\PP^{n}_{Y}}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    Then the induced map $\overline{X}\to Y$ is flat. 
+\end{corollary}
+\begin{proof}
+    Recall that a Dedekind scheme is a Noetherian regular integral scheme of dimension 1. We have the diagram of the statement of the corollary and by \Cref{prop: flatness over curves} we have $X_{\eta}=(\overline{X})_{\eta}\subseteq\overline{X}$ which is dense and $X_{\eta}$ is dense in $X$ so $X_{\eta}\subseteq \overline{X}$ is dense. This shows that $\overline{X}$ is flat over $Y$. 
+\end{proof}
+We show that images of flat maps are dense. 
+\begin{proposition}\label{prop: flat implies dense image}
+    Let $f:X\to Y$ be a flat map of schemes with $Y$ irreducible. If $U\subseteq X$ is a nonempty open, then $f(U)\subseteq Y$ is dense. 
+\end{proposition}
+\begin{proof}
+    Without loss of generality, $Y=\spec(A)$ is affine and irreiducible so $A/\Nil(A)$ is integral and $\Frac(A/\Nil(A))=K$. For $U=\spec(B)$ affine, consider $B/\Nil(A)B=B\otimes_{A}(A/\Nil(A))$. Using the injection $A/\Nil(A)\hookrightarrow K$ and $-\otimes_{A}B$ being exact, we have an injective map $(A/\Nil(A))\otimes_{A}B\hookrightarrow K\otimes_{A}B$ injective, where $K\otimes_{A}B=\Ocal_{X}(U_{\eta})$, here denoting $U_{\eta}=\spec(B\otimes_{A}K)$. 
+
+    It suffices to rpove that $U_{\eta}$ is nonempty, or equivalently that $\Ocal_{X}(U_{\eta})$ is nonzero. If $K\otimes_{A}B$ was zero, then $\Nil(A)B=B$ and 1 is nilpotent, a contradiction. 
+\end{proof}
+We can show the following, weaker, version of a base change statement. 
+\begin{proposition}\label{prop: weak flat base change}
+    Let $f:X\to \spec(A)$ be a separated quasicompact morphism and $A\to A'$ a flat ring extension. The Cartesian diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc197QX1cXHNwZWMoQScpIl0sWzAsMSwiXFxzcGVjKEEnKSJdLFsyLDEsIlxcc3BlYyhBKSJdLFsyLDAsIlgiXSxbMywyLCJmIl0sWzAsMywiZyJdLFswLDFdLFsxLDJdXQ==
+    \begin{tikzcd}
+        {X\times_{A}\spec(A')} && X \\
+        {\spec(A')} && {\spec(A)}
+        \arrow["g", from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    induces for all quasicherent sheaves $\Fcal$ on $X$ an isomorphism 
+    $$H^{0}(X,\Fcal)\otimes_{A}A'\longrightarrow H^{0}(X\times_{A}\spec(A'),g^{*}\Fcal).$$
+\end{proposition}
+\begin{proof}
+    Choose an affine open covering $\{U_{i}\}$ of $X$. The sheaf condition gives an exact sequence of $A$-modules
+    $$0\to H^{0}(X,\Fcal)\to\prod_{i}H^{0}(U_{i},\Fcal|_{U_{i}})\to\prod_{i,j}H^{0}(U_{ij},\Fcal|_{U_{ij}}).$$
+    This remains exact after base changing to $A'$, which precisely the exact sequence for $g^{*}\Fcal$ on $X\times_{A}\spec(A')$. 
+\end{proof}
+Having set up some basic constructions surrounding flatness, we discuss its relation to the Hilbert polynomial. 
+\begin{definition}[Hilbert Polynomial]\label{def: hilbert polynomial}
+    Let $X$ be projective $k$-scheme with a choice of embedding $i:X\to\PP^{n}_{k}$ and $\Fcal$ a coherent sheaf on $X$. The Hilbert polynomial of $\Fcal$ is $P(X,\Fcal)(m)=\chi(X,\Fcal\otimes\Ocal_{\PP^{n}_{k}}(m)|_{X})$. 
+\end{definition}
+The Hilbert polynomial is in fact a numerical polynomial, that is, a map $\ZZ\to\ZZ$. Moreover, we can show that this polynomial characterizes flatness on the fibers.\todo{To finish.}
