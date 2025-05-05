@@ -66,20 +66,30 @@ We consider some examples.
     \Cref{prop: properties of flatness rings and modules} (ii) shows that open immersions are flat, though closed immersions are often not flat uness they are isomorphisms. 
 \end{example}
 \begin{proposition}\label{prop: dimension criterion for flatness}
-    Let $f:X\to Y$ be a morphism between locally Noetherian schemes. Then $\dim(\Ocal_{X_{y}},x)\geq\dim(\Ocal_{X,x})-\dim(\Ocal_{Y,y})$ and equality occurs when $f$ is flat.\todo{Check}
+    Let $f:X\to Y$ be a morphism between locally Noetherian schemes. Then $\dim(\Ocal_{X_{y}},x)\geq\dim(\Ocal_{X,x})-\dim(\Ocal_{Y,y})$ and equality occurs when $f$ is flat.
 \end{proposition}
 \begin{proof}
-    By locality on source and target, we can reduce this to the case of $X=\spec(\Ocal_{X,x}),Y=\spec(\Ocal_{Y,y})$. Denote $B=\Ocal_{X,x},A=\Ocal_{Y,y}$. We proceed by induction on the dimension of $Y$. 
+    We proceed by induction. Since the property is local on target, we can take $Y$ to be affine, and since flatness is preserved by base change, we can take $Y=\spec(\Ocal_{Y,y})$ and $X=\spec(\Ocal_{X,x})$. 
 
-    If $\dim(Y)=0$, then the nilradical is in the maximal ideal. In particular the qutoient by the nilradical is a field. Quotienting $B$ by its nilradical, we have $(B/\mfrak_{y}B)/(\Nil(B)/\mfrak_{y}B)\cong B/\Nil(B)$ by $\mfrak_{y}B\hookrightarrow\Nil(B)$. This gives 
-    $$\dim(\Ocal_{X,x})=\dim(B/\Nil(B))=\dim(B/\mfrak_{y}B)=\dim(\Ocal_{X_{y},x})$$
-    so 
-    $$\dim(\Ocal_{X_{y},x})\geq\dim(\Ocal_{X,x})-\underbrace{\dim(\Ocal_{Y,y})}_{=0}$$
-    giving the desired (in)equality. 
+    We proceed by induction on $\dim(Y)$. If $\dim(Y)=0$, the nilradical is contained in the maximal ideal. Using the inclusion $\mfrak_{x}B\hookrightarrow\Nil(B)$ we have 
+    $$\dim(\Ocal_{X,x})=\dim(B/\Nil(B))=\dim(B/\mfrak_{x}B)=\dim(\Ocal_{X_{y},x})$$ 
+    by $(B/\Nil(B))/(\Nil(B)/\mfrak_{x}B)\cong B/\Nil(B)$ so we in fact have equality $\dim(\Ocal_{X_{y},x})=\dim(\Ocal_{X,x})$ as $\dim(\Ocal_{Y,y})=0$. In particular, the desired inequality holds. 
 
-    Suppose $Y$ is of dimension at least 1. By base changing to the reduction, we can take $Y$ to be reduced by \Cref{prop: properties of flatness rings and modules} (iii). 
+    If $\dim(Y)\geq 1$, we can, without loss of generality, take $Y$ to be reduced by base changing to the reduction -- an operation that preserves all dimensions involved. Let $t\in\Ocal_{Y,y}$ be neither a zerodivisor nor invertible with image $\overline{t}$ in $\Ocal_{X,x}$. We then have 
+    $$\dim(\Ocal_{Y,y}/(t))=\dim(\Ocal_{Y,y})-1, \dim(\Ocal_{X,x}/(\overline{t}))\geq\dim(\Ocal_{X,x})-1$$
+    where if $f$ is flat, then $\Ocal_{X,x}$ is flat over $\Ocal_{Y,y}$ and $t$ is a non-zerodivisor in $\Ocal_{X,x}$ giving $\dim(\Ocal_{X,x}/(\overline{t}))=\dim(\Ocal_{X,x})-1$. 
 
-    In this case there exists $\pfrak\subsetneq\mfrak_{y}$ and an element $t\in\mfrak_{y}\setminus\pfrak$. In particular, $t$ is a non-zerodivisor. Using that $A$ is Noetherian, Krull's theorem implies every minimal prime over $(t)$ is of dimension 1 so $\dim(\Ocal_{Y,y}/(t))=\dim(\Ocal_{Y,y})-1$. Under $\varphi:A\to B$, $\varphi(t)$ may or may not be a zerodivisor giving $\dim(\Ocal_{Y,y})\geq\dim(\Ocal_{Y,y}/(t))-1$ but if $\varphi$ is flat then $\varphi(t)$ is a nonzerodivisor and gives equality. 
+    Now set $Y'=\spec(\Ocal_{Y,y}/(t))$ and $X'=\spec(\Ocal_{X,x}\otimes_{\Ocal_{Y,y}}(\Ocal_{Y,y}/(t)))\cong\spec(\Ocal_{X,x}/(\overline{t}))$ where by the induction hypothesis we have 
+    \begin{equation}\label{eqn: flat induction}
+        \dim(\Ocal_{X'_{y},x})\geq\dim(\Ocal_{X',x})-\dim(\Ocal_{Y',y})
+    \end{equation}
+    which is an equality if $f$ is flat since flatness is preserved under base change. But on the fiber we have $X'_{y}=X_{y}$ since $X_{y}$ is the fiber over $y\in\spec(\Ocal_{Y,y}/(t))\subseteq\spec(\Ocal_{Y,y})$ so we have 
+    \begin{align*}
+        \dim(\Ocal_{X'_{y},x}) &\geq \dim(\Ocal_{X',x})-\dim(\Ocal_{Y,y}) \\
+        &= (\dim(\Ocal_{X,x})-1) - (\dim(\Ocal_{Y,y})-1) \\
+        &= \dim(\Ocal_{X,x})-\dim(\Ocal_{Y,y}) 
+    \end{align*}
+    with equality in the flat case by the (\ref{eqn: flat induction}), as desired. 
 \end{proof}
 In the case of locally finite type schemes, this can be detected fiberwise. 
 \begin{corollary}\label{corr: fiberwise flatness}

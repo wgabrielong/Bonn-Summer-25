@@ -37,7 +37,7 @@ We can show the following, weaker, version of a base change statement.
         \arrow["f", from=1-3, to=2-3]
         \arrow[from=2-1, to=2-3]
     \end{tikzcd}$$
-    induces for all quasicherent sheaves $\Fcal$ on $X$ an isomorphism 
+    induces for all quasicoherent sheaves $\Fcal$ on $X$ an isomorphism 
     $$H^{0}(X,\Fcal)\otimes_{A}A'\longrightarrow H^{0}(X\times_{A}\spec(A'),g^{*}\Fcal).$$
 \end{proposition}
 \begin{proof}
@@ -49,4 +49,50 @@ Having set up some basic constructions surrounding flatness, we discuss its rela
 \begin{definition}[Hilbert Polynomial]\label{def: hilbert polynomial}
     Let $X$ be projective $k$-scheme with a choice of embedding $i:X\to\PP^{n}_{k}$ and $\Fcal$ a coherent sheaf on $X$. The Hilbert polynomial of $\Fcal$ is $P(X,\Fcal)(m)=\chi(X,\Fcal\otimes\Ocal_{\PP^{n}_{k}}(m)|_{X})$. 
 \end{definition}
-The Hilbert polynomial is in fact a numerical polynomial, that is, a map $\ZZ\to\ZZ$. Moreover, we can show that this polynomial characterizes flatness on the fibers.\todo{To finish.}
+The Hilbert polynomial is in fact a numerical polynomial, that is, a map $\ZZ\to\ZZ$. Moreover, we can show that this polynomial characterizes flatness on the fibers. The proof of the statement is the globalization of the followimg lemma. 
+\begin{lemma}\label{lem: local constant hilbert polynomial}
+    Let $A$ be an integral Noetherian local ring and $\Fcal$ a coherent sheaf on $\PP^{n}_{A}$. The following are equivalent:\todo{Finish proof.}
+    \begin{enumerate}[label=(\alph*)]
+        \item $\Fcal$ is flat over $\spec(A)$. 
+        \item $H^{0}(X,\Fcal(m))$ is a free $A$-module for $m$ sufficiently large. 
+        \item The Hilbert polynomial $P(\PP^{n}_{\kappa(\pfrak)},\Fcal|_{\kappa(\pfrak)})(m)$ is independent of $\pfrak$.
+    \end{enumerate}
+\end{lemma}
+%\begin{proof}
+    %(a)$\Rightarrow$(b) We use the standard \v{C}ech cover of $\PP^{n}_{A}$ to observe that by flatness of $\Fcal$, each term $C^{i}(\Ucal,\Fcal(m))$ is a flat $A$-module. Taking $m$ large enough such that $\Fcal(m)$ has vanishing higher cohomology, we note that the long exact sequence 
+    %$$0\to H^{0}(X,\Fcal(m))\to C^{0}(\Ucal,\Fcal(m))\to C^{1}(X,\Fcal(m))\to\dots\to C^{n}(X,\Fcal(m))\to0$$
+    %is an acyclic resolution of $H^{0}(X,\Fcal(m))$. This implies that sequences of the form 
+    %\begin{align*}
+        %0&\to\ker(C^{i}(X,\Fcal(m))\to C^{i+1}(X,\Fcal(m)))\\
+        %&\hspace{0.5cm}\to C^{i}(X,\Fcal(m))\to\coker(C^{i+1}(X,\Fcal(m))\to C^{i+2}(X,\Fcal(m)))\to0
+    %\end{align*}
+    %are short exact. The middle term $C^{i}(X,\Fcal(m))$ is flat over an integral Noetherian local ring, hence free by a result in commutative algebra (vis. \cite[\href{https://stacks.math.columbia.edu/tag/00NZ}{Tag 00NZ}]{stacks-project}). 
+%\end{proof}
+\begin{proposition}\label{prop: constant hilbert polynomial}
+    Let $f:X\to Y$ be a projective morphism with $Y$ integral Noetherian. Let $\Fcal$ be a coherent sheaf on $Y$. $f$ is flat if and only if the Hilbert polynomial of $\Fcal$ on the fibers is constant. 
+\end{proposition}
+\begin{proof}
+    The question is local on target, and flatness is preserved along base change, so it suffices to check the condition along the base change $\spec(\Ocal_{Y,y})\to Y$, putting us in the situation of \Cref{lem: local constant hilbert polynomial}, in which case the desired statement is immediate. 
+\end{proof}
+\begin{example}
+    Blowups are not flat. Let $f$ be the projection from the blowup of $\A^{2}_{k}$ at the origin to $\A^{2}_{k}$. The fiber over the origin is of a higher dimension. 
+\end{example}
+This applies in particular to the structure sheaf. 
+\begin{corollary}\label{corr: flatness by Hilbert polynomial}
+    Let $f:X\to Y$ be a projective morphism with $Y$ integral Noetherian. $f$ is flat if and only if $P(X_{y},\Ocal_{X_{y}})(m)$ is constant.
+\end{corollary}
+\begin{proof}
+    This is an immediate application of \Cref{prop: constant hilbert polynomial} to $\Ocal_{X}=\Fcal$. 
+\end{proof}
+Moreover, we can show that flatness is open and universally open. 
+\begin{proposition}\label{prop: flatness is universally open}
+    Let $f:X\to Y$ be a finite type morphism of schemes with $Y$ Noetherian. Then $f$ is open and universally open.\todo{Check.}
+\end{proposition}
+\begin{proof}
+    We use the following input from the theory of spectral spaces: 
+    \begin{itemize}
+        \item If $f:X\to Y$ is a finite type morphism with $Y$ Noetherian then the image of $f$ is constructible in $Y$\cite[\href{https://stacks.math.columbia.edu/tag/054K}{Tag 054K}]{stacks-project}.
+        \item Let $V\subseteq Y$ be a subset. $V$ is constructible and stable under specializations if and only if $V$ is open in $Y$ \cite[\href{https://stacks.math.columbia.edu/tag/0542}{Tag 0542}]{stacks-project}. 
+    \end{itemize}
+    It suffices to show that $f(X)$ is open. We know already $f(X)$ is constructible so it suffices to show that $f(X)$ is stable under generalizations. Take $x\in X$ and $y=f(x)\in Y$. Assume $y\in\overline{\{y'\}}$. We want to show $y'\in f(X)$. Let $B=\Ocal_{X,x}$ with $x\in U\subseteq X$ and $A=\Ocal_{Y,y}$ which contains the prime ideal $\pfrak_{y'}$. The ring map $A\to B$ is a local homomorphism of local rings so $\mfrak_{x}\cap A=\mfrak_{y}$ and $\pfrak_{y'}B\subseteq\mfrak_{y}B\subseteq\mfrak_{x}\subsetneq B$ showing $B\otimes_{A}A_{\pfrak_{y'}}\neq0$. If it were zero, then for all $b\in B$ there would be $t\in A_{\pfrak_{y'}}$ such that $tb=0$ but the multiplication by $t$-map $A\to A$ is injective and remains injective after base-changing to $B$. This shows that $B\otimes_{A_{\pfrak_{y'}}}\kappa(\pfrak_{y'})$ is nonzero, and hence lies in the image. 
+\end{proof}
