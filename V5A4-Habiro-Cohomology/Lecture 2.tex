@@ -1,0 +1,176 @@
+\section{Lecture 2 -- 2nd May 2025}\label{sec: lecture 2}
+The goal of this course is to develop a theory of Habiro cohomology, a functor that associates to a smooth $\ZZ$-scheme $X$ its Habiro cohomology -- a module over the Habiro ring, or more generally its ``category of constructible sheaves'' which in this case we tentatively denote $\Dscr_{\Hab}(X)$ of ``variations of Habiro structure.''
+
+We begin with an exploration of what these structures are in terms of coordinates, and we will later show that the constructions we discuss are in fact independent of these coordinates. Let us make the notion of coordinates precise. 
+\begin{definition}[Framed Algebra]\label{def: framed algebra}
+    A framed algebra is a pair $(R,\square)$ where $R$ is a smooth $\ZZ$-algebra and a map $\square:\spec(R)\to\A^{d}_{\ZZ}$ or $\square:\spec(R)\to\GG_{m}^{d}$. 
+\end{definition}
+\begin{remark}
+    It is often simpler to consider the case where the coordinates are invertible, that is, the case of $\GG_{m}^{d}$. 
+\end{remark}
+As a first pass, let us contemplate these constructions in the case where $X$ is affine and equal to either $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ and only later consider the generalization to the case where $X$ is \'{e}tale over one of these spaces. Moreover, under these assumptions, we need not make any completions and one can work over $\ZZ[q^{\pm}]$.
+
+Recall Habiro cohomology subsumes de Rham cohomology in an appropriate sense, and takes the $q$-derivative -- the Gaussian $q$-analogue of the derivative -- as an input. These $q$-derivatives were first investigated by Jackson \cite{Jackson}.
+\begin{definition}[$q$-Derivative]\label{def: q-derivative}
+    Let $R$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The $q$-derivative $\nabla_{i}^{q}:R\to R$ for $1\leq i\leq d$ is defined by 
+    $$\nabla_{i}^{q}(f(T_{1},\dots,T_{d}))=\frac{f(T_{1},\dots,qT_{i},\dots,T_{d})-f(T_{1},\dots,T_{i},\dots,T_{d})}{qT_{i}-T_{i}}.$$
+\end{definition}
+\begin{remark}
+    More explicitly, this operation is given on monomials by 
+    $$\nabla_{i}^{q}(T_{1}^{n_{1}}\dots T_{d}^{n_{d}})=[n_{i}]_{q}\cdot T_{1}^{n_{1}}\dots T_{i}^{n_{i}-1}\dots T_{d}^{n_{d}}$$
+    where $[n]_{q}=\frac{1-q^{n}}{1-q}$ is the Gaussian $q$-analogue of $n$. 
+\end{remark}
+\begin{remark}\label{rmk: gamma i maps}
+    $\nabla_{i}^{q}$ is closely related $\gamma_{i}:R\to R$ the automorphism by 
+    $$T_{j}\mapsto\begin{cases}
+        T_{j} & j\neq i \\
+        qT_{i} & j=i
+    \end{cases}$$
+    allowing us to write $\nabla_{i}^{q}(f)=\frac{\gamma_{i}(f)-f}{(q-1)T_{i}}$. 
+\end{remark}
+The $q$-derivative does not satisfy the Leibniz rule on the nose, but does so up to a twist by the automorphism $\gamma_{i}$ of \Cref{rmk: gamma i maps}. 
+\begin{lemma}\label{lem: twisted q-leibniz}
+    Let $R$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. Then for $f,g\in R$ we have equalities 
+    $$\nabla_{i}^{q}(fg)=\gamma_{i}(f)\cdot\nabla_{i}^{q}(g)+g\cdot\nabla_{i}^{q}(f)=f\cdot\nabla_{i}^{q}(g)+\gamma_{i}(g)\cdot\nabla^{i}_{q}(f).$$
+\end{lemma}
+\begin{proof}
+    We first show the second equality. We use \Cref{rmk: gamma i maps} to observe that the latter two terms are given by 
+    $$\gamma_{i}(f)\cdot\frac{\gamma_{i}(g)-g}{(q-1)T_{i}}+g\cdot\frac{\gamma_{i}(f)-f}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-\gamma_{i}(f)g+\gamma_{i}(f)g-fg}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-fg}{(q-1)T_{i}}$$
+    and 
+    $$f\cdot\frac{\gamma_{i}(g)-g}{(q-1)T_{i}}+\gamma_{i}(g)\frac{\gamma_{i}(f)-f}{(q-1)T_{i}}=\frac{\gamma_{i}(g)f-fg+\gamma_{i}(f)\gamma_{i}(g)-\gamma_{i}(g)f}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-fg}{(q-1)T_{i}}$$
+    respectively, which are evidently equal. 
+
+    For the first equality, it suffices to observe that $\gamma_{i}(fg)=\gamma_{i}(f)\gamma_{i}(g)$ since the $R$-automorphism $T_{i}\to qT_{i}$ and fixing everything else commutes with multiplication in which case we have 
+    $$\frac{\gamma_{i}(fg)-fg}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-fg}{(q-1)T_{i}}$$
+    whence the claim. 
+\end{proof}
+We can now define the $q$-de Rham complex following Aomoto \cite{Aomoto}. 
+\begin{definition}[$q$-de Rham Complex of $\A^{d}_{\ZZ}$ and $\GG_{m}^{d}$]\label{def: q-dR complex}
+    Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The $q$-de Rham complex of $\spec(R)$ is the complex
+    \begin{equation}\label{eqn: q-dR complex of R}
+        \footnotesize 
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxiaWdvcGx1c197aTxqfVxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs0LDAsIlxcZG90cyJdLFszLDEsIlxcZG90cyJdLFs0LDEsIlxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs1LDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbMyw0XSxbNiw3XV0=
+        \begin{tikzcd}
+            0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\bigoplus_{i<j}\ZZ[q^{\pm}][\underline{T}]} & \dots \\
+            &&& \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=2-4, to=2-5]
+            \arrow[from=2-5, to=2-6]
+        \end{tikzcd}
+        \normalsize
+    \end{equation}
+    with differentials given by the differentials for the Koszul complex of commuting operators $\nabla_{1}^{q},\dots,\nabla_{n}^{q}$. 
+\end{definition}
+\begin{remark}
+    Recall that these are precisely the differentials for the classical de Rham complex. See \cite[\href{https://stacks.math.columbia.edu/tag/0FKF}{Tag 0FKF}]{stacks-project} for an explicit description via equations. 
+\end{remark}
+\begin{remark}
+    Since the first differential $\ZZ[q^{\pm}][\underline{T}]\to\ZZ[q^{\pm}][\underline{T}]^{\oplus d}$ by $(\nabla_{1}^{q},\dots,\nabla_{d}^{q})$ does not satisfy the ordinary Leibniz rule, the complex (\ref{eqn: q-dR complex of R}) is not a differential graded algebra. Later, we will see that working in the derived ($\infty$-)category, one can endow this with the structure of a commutative ring.  
+\end{remark}
+The complex (\ref{eqn: q-dR complex of R}) computes $q$-de Rham cohomology, or Aomoto-Jackson cohomology of $\spec(R)$. But to compute Habiro cohomology, we use a closely related variant based on a modified $q$-derivative. 
+\begin{definition}[Modified $q$-Derivative]\label{def: modified q-derivative}
+    Let $R$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The modified $q$-derivative is given by 
+    $$\widetilde{\nabla}_{i}^{q}(f(T_{1},\dots,T_{d}))=\frac{f(T_{1},\dots,qT_{i},\dots,T_{d})-f(T_{1},\dots,T_{i},\dots,T_{d})}{T_{i}}.$$
+\end{definition}
+\begin{remark}
+    In other words, $\widetilde{\nabla}_{i}^{q}(f)=(q-1)\nabla_{i}^{q}(f)=\frac{\gamma_{i}(f)-f}{T_{i}}$.  
+\end{remark}
+Recomputing everything using this modified derivative gives the $q$-Hodge complex. 
+\begin{definition}[$q$-Hodge Complex of $\A^{d}_{\ZZ}$ and $\GG_{m}^{d}$]\label{def: q-Hodge complex}
+    Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The $q$-Hodge complex of $\spec(R)$ is the complex
+    \begin{equation}\label{eqn: q-Hodge complex of R}
+        \footnotesize 
+        % https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxiaWdvcGx1c197aTxqfVxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs0LDAsIlxcZG90cyJdLFszLDEsIlxcZG90cyJdLFs0LDEsIlxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs1LDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbMyw0XSxbNiw3XV0=
+        \begin{tikzcd}
+            0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\bigoplus_{i<j}\ZZ[q^{\pm}][\underline{T}]} & \dots \\
+            &&& \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=2-4, to=2-5]
+            \arrow[from=2-5, to=2-6]
+        \end{tikzcd}
+        \normalsize
+    \end{equation}
+    with differentials given by the differentials for the Koszul complex of commuting operators $\widetilde{\nabla}_{1}^{1},\dots,\widetilde{\nabla}_{d}^{q}$. 
+\end{definition}
+\begin{remark}
+    The nomenclature of \Cref{def: q-dR complex,def: q-Hodge complex} are justified by the fact that they recover the ordinary de Rham and Hodge complexes at $q=1$.
+\end{remark} 
+\begin{remark}
+    An automorphism of $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ would give rise to an automorphism of the complexes (\ref{eqn: q-dR complex of R}) and (\ref{eqn: q-Hodge complex of R}), at least as an object in the derived category, but it is extremely difficult to understand these automorphisms from this explicit perspective. 
+\end{remark}\marginpar{The instructor remarks that he does not believe in non-flat connections. We will henceforth omit the adjective ``flat.'' \\\\ Note that a $q$-connection is additional data on a module.}
+The classical correspondence between $D$-modules and modules with flat connection suggest that an appropriate category of modules with connection could play the role of $\Dscr_{\Hab}(X)$ alluded to earlier. To make this precise, we consider modules with $q$-connection. To simplify matters, we make these considerations on the Abelian and not $\infty$-categorical level. 
+\begin{definition}[$q$-Connections on Modules]\label{def: q-connections on modules}
+    Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. A module with (flat) $q$-connection is a $\ZZ[q^{\pm}][\underline{T}]$-module with commuting $\ZZ[q^{\pm}]$-linear operations $\nabla_{i,M}^{q}:M\to M$ which satisfy the $q$-Leibniz rule 
+    $$\nabla_{i,M}^{q}(fm)=\gamma_{i}(f)\cdot\nabla_{i,M}^{q}(m)+\nabla_{i}^{q}(f)\cdot m$$
+    for $f\in \ZZ[q^{\pm}][\underline{T}]$ and $m\in M$.
+\end{definition}
+\begin{remark}
+    To unwind any possible confusion between the similar-looking $\nabla_{i}^{q}:\ZZ[q^{\pm}][\underline{T}]\to\ZZ[q^{\pm}][\underline{T}],\nabla_{i,M}^{q}:M\to M$, we have 
+    $$\underbrace{\underbrace{\gamma_{i}(f)}_{\in \ZZ[q^{\pm}][\underline{T}]}\cdot\underbrace{\nabla_{i,M}^{q}(m)}_{\in M}}_{\in M}+\underbrace{\underbrace{\nabla_{i}^{q}(f)}_{\in \ZZ[q^{\pm}][\underline{T}]}\cdot\underbrace{m}_{\in M}}_{\in M}$$
+    so everything type-checks. 
+\end{remark}
+\begin{example}
+    If $X=\A^{1}_{\ZZ}$ then recall that modules with connection are equivalent to modules over the Weyl algebra $\ZZ[q^{\pm}]\{T,\partial_{q}\}/(qT\partial_{q}-\partial_{q}T+1)$ since we have the operators $T\partial_{q},\partial_{q}T$ take $T^{n}$ to $q[n]_{q}T^{n},[n+1]_{q}T^{n}$, respectively, but $q[n]_{q}-[n+1]_{q}=q\cdot\frac{1-q^{n}}{1-q}-\frac{1-q^{n+1}}{1-q}=-1$. Passing to the associated-graded of the degree filtration, one gets commuting variables with the correct $q$-twists. 
+\end{example}
+Similarly, we can construct modules with a modified $q$-connection. 
+\begin{definition}[Modified $q$-Connections on Modules]\label{def: modified q-connections on modules}
+    Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. A module with modified $q$-connection is a $\ZZ[q^{\pm}][\underline{T}]$-module with commuting $\ZZ[q^{\pm}]$-linear operations $\widetilde{\nabla}_{i,M}^{q}:M\to M$ which satisfy the $q$-Leibniz rule 
+    $$\widetilde{\nabla}_{i,M}^{q}(fm)=\gamma_{i}(f)\cdot\widetilde{\nabla}_{i,M}^{q}(m)+\widetilde{\nabla}_{i}^{q}(f)\cdot m$$
+    for $f\in \ZZ[q^{\pm}][\underline{T}]$ and $m\in M$.
+\end{definition}
+\begin{remark}\label{rmk: invertible case}
+    Let $T_{i}$ be invertible. Unwinding the definition of the modified $q$-derivative, we have
+    $$\widetilde{\nabla}_{i,M}^{q}(fm)=\gamma_{i}(f)\cdot\widetilde{\nabla}_{i,M}^{q}(m)+(q-1)\nabla_{i}^{q}(f)\cdot m$$
+    where in particular we observe that the second summand has denominator $T_{i}$. Define a new operator 
+    $$\widetilde{\widetilde{\nabla}}_{i,M}^{q}=T_{i}\cdot\widetilde{\nabla}_{i,M}^{q}$$
+    which satisfies 
+    \begin{align*}
+        \widetilde{\widetilde{\nabla}}_{i,M}^{q}(fm) &= \gamma_{i}(f)\cdot\widetilde{\widetilde{\nabla}}_{i,M}^{q}(m)+(\gamma_{i}(f)-f)m \\
+        &= \gamma_{i}(f)\left(\widetilde{\widetilde{\nabla}}_{i,M}^{q}(m)+m\right)-fm.
+    \end{align*}
+    In particular, 
+    $$\left(\widetilde{\widetilde{\nabla}}_{i,M}^{q}+\id_{M}\right)(fm) = \gamma_{i}(f)\left(\widetilde{\widetilde{\nabla}}_{i,M}^{q}+\id_{M}\right)(m)$$
+    so denoting $\gamma_{i,M}=\left(\widetilde{\widetilde{\nabla}}_{i,M}^{q}+\id_{M}\right)$, we have $\gamma_{i,M}(fm)=\gamma_{i}(f)\gamma_{i,M}(m)$ simplyfing the relation. 
+\end{remark}
+The preceding discussion of \Cref{rmk: invertible case} implies the following. 
+\begin{corollary}\label{corr: equivalence of q-connection modules and semilinear}
+    Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. There is an equivalence of categories between $R$-modules with modified $q$-connection and $R$-modules with commuting $\gamma_{i}:R\to R$-semilinear endomorphisms $\gamma_{i,M}:M\to M$. 
+\end{corollary}
+Note that for $R=\ZZ[q^{\pm}][\underline{T}]$, $(-)\otimes_{R}(-)$ does not define a symmetric monoidal structure on the category of modules with $q$-connection: for $(M,\nabla_{i,M}^{q}),(N,\nabla_{i,N}^{q})$ two modules with $q$-connecition, $$(M\otimes_{R} N,\nabla_{i,M}^{q}\otimes_{R}\id_{N}+\id_{M}\otimes_{R}\nabla_{i,N}^{q})$$ is not a module with $q$-connection. One needs instead to take the twist $$(M\otimes_{R} N,\nabla_{i,M}^{q}\otimes_{R}\id_{N}+\gamma_{i,M}\otimes_{R}\nabla_{i,N}^{q}),$$
+defining $\gamma_{i,M}:M\to M$ in an analogous way to \Cref{rmk: invertible case}. While \emph{a priori} appearing assymetric in $M,N$, there is in fact a canonical isomorphism between them. 
+\begin{proposition}
+    Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The category of $R$-modules with $q$-connection is symmetric monoidal. 
+\end{proposition}
+\begin{proof}[Proof Outline]
+    Using the equivalence of \Cref{corr: equivalence of q-connection modules and semilinear}, the latter category is symmetric monoidal, hence the former can be promoted to a symmetric monoidal category. 
+\end{proof}
+\begin{proposition}
+    Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. There is a fully faithful embedding from $(q-1)$-torsion free $R$-modules with $q$-connection and $R$-modules with modified $q$-connection by $(M,\nabla_{i,M}^{q})\mapsto(M,\widetilde{\nabla}_{i,M}^{q})$ with essential image those that are $(q-1)$-torsion free and such that $\widetilde{\nabla}_{i,M}^{q}\equiv0\pmod{(q-1)}$. 
+\end{proposition}
+The discussion thus far has been done entirely in terms of coordinates. This prompts:
+\begin{question}
+    To what extent are the cohomologies and categories discussed thus far independent of coordinates? 
+\end{question}
+Let us consider the following example. 
+\begin{example}\marginpar{The instructor remarks that in the theory of analytic geometry the quotient would be the Tate elliptic curve for $d=1$. See \cite{AnalyticStacks}.}
+    Let $X=\GG_{m}^{d}$. The modules with modified $q$-connection are quasicoherent sheaves on $(\GG_{m}/q^{\ZZ})^{d}$ -- the $\gamma_{i}$'s act by multiplication by $q$ on the coordinates so the data of the endomorphisms $\gamma_{i,M}$ on the modules prescribe descent data to the quotient stack (ie. as an fpqc quotient).
+\end{example}
+Let us relate the discussion of complexes \Cref{def: q-dR complex,def: q-Hodge complex}, their cohomologies, and these categories of modules with (modified) $q$-connections. 
+\begin{proposition}
+    \begin{enumerate}[label=(\roman*)]
+        \item The $q$ de Rham complex computes $R\Hom(\mathbbm{1},\mathbbm{1})$ in the derived category of modules with $q$-connection on $\spec(R)$. 
+        \item The $q$-Hodge complex computes $R\Hom(\mathbbm{1},\mathbbm{1})$ in the derived category of modules with modified $q$-connection on $\spec(R)$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof Outline of (i)]
+    Using the equvialence between modules with $q$-connection and modules over the Weyl algebra, we can pass to a free resolution by the Weyl algebra and compute $R\Hom(-,R)$ over the Weyl algebra, which are the $q$-derivatives $\nabla_{i}^{q}$, as desired. 
+\end{proof}
+\begin{corollary}
+    The $q$-de Rham complex and $q$-Hodge complex have canonical structures as $\EE_{\infty}$-rings. 
+\end{corollary}
