@@ -40,7 +40,7 @@ The $q$-derivative does not satisfy the Leibniz rule on the nose, but does so up
     $$f\cdot\frac{\gamma_{i}(g)-g}{(q-1)T_{i}}+\gamma_{i}(g)\frac{\gamma_{i}(f)-f}{(q-1)T_{i}}=\frac{\gamma_{i}(g)f-fg+\gamma_{i}(f)\gamma_{i}(g)-\gamma_{i}(g)f}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-fg}{(q-1)T_{i}}$$
     respectively, which are evidently equal. 
 
-    For the first equality, it suffices to observe that $\gamma_{i}(fg)=\gamma_{i}(f)\gamma_{i}(g)$ since the $R$-automorphism $T_{i}\to qT_{i}$ and fixing everything else commutes with multiplication in which case we have 
+    We now show the first equality. Note that $\gamma_{i}$ is an automorphism $R\to R$, and in particular a homomorphism so $\gamma_{i}(fg)=\gamma_{i}(f)\gamma_{i}(g)$ in which case we have 
     $$\frac{\gamma_{i}(fg)-fg}{(q-1)T_{i}}=\frac{\gamma_{i}(f)\gamma_{i}(g)-fg}{(q-1)T_{i}}$$
     whence the claim. 
 \end{proof}
@@ -115,7 +115,7 @@ The classical correspondence between $D$-modules and modules with flat connectio
     $$\underbrace{\underbrace{\gamma_{i}(f)}_{\in \ZZ[q^{\pm}][\underline{T}]}\cdot\underbrace{\nabla_{i,M}^{q}(m)}_{\in M}}_{\in M}+\underbrace{\underbrace{\nabla_{i}^{q}(f)}_{\in \ZZ[q^{\pm}][\underline{T}]}\cdot\underbrace{m}_{\in M}}_{\in M}$$
     so everything type-checks. 
 \end{remark}
-\begin{example}
+\begin{example}\label{ex: A1 with Weyl algebra}
     If $X=\A^{1}_{\ZZ}$ then recall that modules with connection are equivalent to modules over the Weyl algebra $\ZZ[q^{\pm}]\{T,\partial_{q}\}/(qT\partial_{q}-\partial_{q}T+1)$ since we have the operators $T\partial_{q},\partial_{q}T$ take $T^{n}$ to $q[n]_{q}T^{n},[n+1]_{q}T^{n}$, respectively, but $q[n]_{q}-[n+1]_{q}=q\cdot\frac{1-q^{n}}{1-q}-\frac{1-q^{n+1}}{1-q}=-1$. Passing to the associated-graded of the degree filtration, one gets commuting variables with the correct $q$-twists. 
 \end{example}
 Similarly, we can construct modules with a modified $q$-connection. 
@@ -169,8 +169,14 @@ Let us relate the discussion of complexes \Cref{def: q-dR complex,def: q-Hodge c
     \end{enumerate}
 \end{proposition}
 \begin{proof}[Proof Outline of (i)]
-    Using the equvialence between modules with $q$-connection and modules over the Weyl algebra, we can pass to a free resolution by the Weyl algebra and compute $R\Hom(-,R)$ over the Weyl algebra, which are the $q$-derivatives $\nabla_{i}^{q}$, as desired. 
+    Using the equvialence between modules with $q$-connection and modules over the Weyl algebra, we compute a resolution of the symmetric monoidal unit $\ZZ[q^{\pm}][\underline{T}]$ in the category of modules over the Weyl algebra -- which precisely recovers the de Rham complex, whence the claim. 
 \end{proof}
+\begin{example}
+    Consider the case $\ZZ[q^{\pm}][T]$. We compute $R\Hom(\ZZ[q^{\pm}][T],\ZZ[q^{\pm}][T])$ as $R\Hom(-,\ZZ[q^{\pm}][T])$ of a free resolution of $\ZZ[q^{\pm}][T]$ in the category of modules over the Weyl algebra $\ZZ[q^{\pm}]\{T,\partial_{q}\}/(qT\partial_{q}-\partial_{q}T+1)$ (vis. \Cref{ex: A1 with Weyl algebra}). This produces 
+    $$0\to\ZZ[q^{\pm}][T]\xrightarrow{\nabla_{1}^{q}}\ZZ[q^{\pm}][T]\to0$$
+    which is the $q$-de Rham complex (after passing back to modules with $q$-connection along the equivalence). 
+\end{example}
+Moreover, in the setting of higher algebra, these promote canonically to commutative algebra objects. 
 \begin{corollary}
     The $q$-de Rham complex and $q$-Hodge complex have canonical structures as $\EE_{\infty}$-rings. 
 \end{corollary}
