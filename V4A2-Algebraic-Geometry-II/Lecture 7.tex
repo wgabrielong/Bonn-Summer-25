@@ -8,10 +8,10 @@ We state without proof flatness in another setting.
 \end{proof}
 Having discussed flatness, we can turn to a discussion of smoothness of morphisms, generalizing \Cref{def: smooth scheme}. 
 \begin{definition}[Smooth Morphism at a Point]\label{def: smooth morphism}
-    Let $f:X\to Y$ be a morphism locally of finite type. $f$ is smooth at $x\in X$ if $f$ is flat at $X$ and each fiber $X_{f(x)}$ is smooth over $\kappa(f(x))$. 
+    Let $f:X\to Y$ be a morphism locally of finite type. $f$ is smooth at $x\in X$ if $f$ is flat at $x$ and the fiber $X_{f(x)}$ is smooth over $\kappa(f(x))$. 
 \end{definition}
 \begin{remark}
-    That is, $\Ocal_{X,x}$ is a flat $\Ocal_{Y,f(x)}$-module and $X_{f(x)}=X\times_{Y}\spec(\kappa(f(x)))$ is a $\kappa(f(x))$-scheme by the Cartesian diagram 
+    That is, $\Ocal_{X,x}$ is a flat $\Ocal_{Y,f(x)}$-module and $X_{f(x)}=X\times_{Y}\spec(\kappa(f(x)))$ is a smooth $\kappa(f(x))$-scheme by the Cartesian diagram 
     $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX3tmKHgpfSJdLFswLDEsIlxcc3BlYyhcXGthcHBhKGYoeCkpKSJdLFsyLDAsIlgiXSxbMiwxLCJZLiJdLFswLDJdLFsyLDNdLFsxLDNdLFswLDFdXQ==
     \begin{tikzcd}
         {X_{f(x)}} && X \\
@@ -82,7 +82,7 @@ As it turns out, smoothness of morphisms can be determined by $\Omega^{1}_{X/Y}$
    Iterating this process, we arrive at the desired $W$. 
 \end{proof}
 \begin{example}
-    Let $X=\{y\}\hookrightarrow Y$ a closed point. $\Omega_{X/Y}^{1}=0$ and the fiber dimension is 0, but taking $Z=Y$, $\id_{Y}:Y\to Y$ is smooth. 
+    Let $X=\{y\}\hookrightarrow Y$ a closed point. $\Omega_{X/Y}^{1}=0$ and the fiber dimension is 0, but taking $W=Y$, $\id_{Y}:Y\to Y$ is smooth. 
 \end{example}
 We now state and prove the desired result. 
 \begin{proposition}\label{prop: smoothness via relative cotangent}
