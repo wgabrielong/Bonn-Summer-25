@@ -1,0 +1,78 @@
+\section{Lecture 2 -- 24th April 2025}\label{sec: lecture 2}
+We define coherent sheaves. 
+\begin{definition}[Coherent Sheaves]\label{def: coherent sheaves}\marginpar{Definition 2.2}
+    Let $A$ be an affinoid $K$-algebra and $\Fcal$ an $\Ocal_{\Sp(A)}$-module. $\Fcal$ is coherent if it is of the form $\widetilde{M}$ for some finitely generated $A$-module $M$. 
+\end{definition}
+The coherence condition can be shown to be local in the sense that any sheaf of modules for which there exists a covering sieve consisting of a trivialization by a cover by rational opens on which the modules are finitely generated is coherent. We show this as a consequence of a sequence of results. 
+\begin{proposition}\label{prop: asymptotic sections of structure sheaf}\marginpar{Proposition 2.3}
+  Let $A$ be an affinoid $K$-algebra and $\Omega_{1},\Omega_{2}$ a rational cover of $\Sp(A)$ with intersection $\Omega_{12}$. If $f_{12}\in\Ocal_{\Sp(A)}(\Omega_{12})$ then $f_{12}=f_{1}|_{\Omega_{12}}+f_{2}|_{\Omega_{12}}$ for $f_{i}\in\Ocal_{\Sp(A)}(\Omega_{i})$ with $\Vert f_{i}\Vert=O(\Vert f_{12}\Vert)$. 
+\end{proposition}
+\begin{proof}
+    Omitted. 
+\end{proof}
+\begin{lemma}\label{lem: weak bound for double intersection elements}\marginpar{Lemma 2.1}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1},\Omega_{2}$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. If $m_{12}\in\Mcal(\Omega_{12})$ then there are $m_{i}\in\Mcal(\Omega_{i})$ with $\Vert m_{i}|\Mcal(\Omega_{i})\Vert=O(\Vert m_{12}\Vert)$ (the constant independent of $m_{12}$) and such that 
+    $$\left\Vert m_{12}-m_{1}|_{\Omega_{12}}-m_{2}|_{\Omega_{12}}\right\Vert\leq\frac{1}{2}\left\Vert m_{12}\right\Vert.$$
+\end{lemma}\todo{Finish proof.}
+%\begin{proof}
+    %Let $(m_{j}^{(1)})_{j=1}^{N_{1}},(m_{j}^{(2)})_{j=1}^{N_{2}},(m_{j}^{(12)})_{j=1}^{N_{12}}$ be generators for $M_{1},M_{2},M_{12}$, respectively. Note that all $\mu^{(12)}$ with $\max_{1\leq j\leq N_{12}}\Vert \mu^{(12)}-m_{j}^{(12)}\Vert\leq\frac{1}{2}$ generate $\Mcal(\Omega_{12})$. By density of $\Mcal(\Omega_{i})$ in $\Mcal(\Omega_{12})$ these can be chosen from $\Mcal(\Omega_{i})|_{\Omega_{12}}$. Thus, without loss of generality, we can take $(m^{(1)}_{j}|_{\Omega_{12}})_{j=1}^{N_{1}}$. 
+
+    %We write 
+    %$$m_{12}=\sum_{j=1}^{N_{1}}f_{j}\cdot(m_{j}^{(1)}|_{\Omega_{12}})$$
+    %with $f_{j}\in\Ocal_{\Sp(A)}(\Omega_{12})$
+%\end{proof}
+\begin{lemma}\label{lem: module element decomposition}\marginpar{Lemma 2.2}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1},\Omega_{2}$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. If $m_{12}\in \Mcal(\Omega_{12})$ then 
+    $$m_{12}=m_{1}|_{\Omega_{12}}+m_{2}|_{\Omega_{12}}$$
+    where $m_{i}\in\Mcal(\Omega_{i})$ and $\Vert m_{i}|\Mcal(\Omega_{i})\Vert=O(\Vert m_{12}|\Mcal(\Omega_{12})\Vert)$ with the implied constant independent of $m_{12}$. 
+\end{lemma}
+\begin{proof}
+    Let $C$ be the implied constant of \Cref{lem: weak bound for double intersection elements}. We can define recursively 
+    \begin{align*}
+        m_{12} = m_{12}^{(0)} &= m_{1}^{(0)}|_{\Omega_{12}}+m_{2}^{(0)}|_{\Omega_{12}}+m_{12}^{(1)} \\
+        m_{12}^{(1)} &= m_{1}^{(1)}|_{\Omega_{12}} + m_{2}^{(0)}|_{\Omega_{12}} + m_{12}^{(2)} \\
+        \vdots &\hspace{2cm}\vdots
+    \end{align*}
+    where $\Vert m_{12}^{(i+2)}|\Mcal(\Omega_{12})\Vert\leq\frac{1}{2}\Vert m_{12}^{(i)}|\Mcal(\Omega_{12})\Vert$ and $\Vert m_{j}^{(i)}|\Mcal(\Omega_{j})\Vert\leq C\Vert m_{12}^{(i)}|\Mcal(\Omega_{12})\Vert$, hence $\Vert m_{12}^{(i)}|\Mcal(\Omega_{12})\Vert\leq \frac{1}{2^{i}}\Vert m_{12}|\Mcal(\Omega_{12})\Vert$ and $\Vert m_{j}^{(i)}|\Mcal(\Omega_{j})\Vert\leq\frac{C}{2^{i}}\Vert m_{12}|\Mcal(\Omega_{12})\Vert$ and the assertion follows with $m_{j}=\sum_{i=0}^{\infty}m_{j}^{(i)}\in\Mcal(\Omega_{j})$ with the implied constant $C$. 
+\end{proof}
+From this we deduce: 
+\begin{corollary}\label{corr: sum decomposition smaller than epsilon}\marginpar{Corollary 2.1}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1},\Omega_{2}$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. If $m_{12}\in\Mcal(\Omega_{12})$ and $\varepsilon>0$ then there are $m_{i}\in\Mcal(\Omega_{i})$ such that $m_{12}=m_{1}|_{\Omega_{12}}+m_{2}|_{\Omega_{12}}$ and $\Vert m_{2}|\Mcal(\Omega_{2})\Vert<\varepsilon$. 
+\end{corollary}
+\begin{proof}
+    Choose $m_{2}'\in\Mcal(\Omega_{2})$ such that $\Vert m_{12}-m_{2}|_{\Omega_{12}}|\Mcal(\Omega_{12})\Vert<\delta$ then $m_{12}-m_{2}'=m_{1}+m_{2}''$ with $\Vert m_{1}|\Mcal(\Omega_{1})\Vert+\Vert m_{2}''|\Mcal(\Omega_{2})\Vert\leq C\cdot\delta$ with $C$ as in \Cref{lem: module element decomposition}. Then choose $\delta$ such that $C\cdot\delta<\varepsilon$. 
+\end{proof}
+\begin{corollary}\label{corr: generating tuple}\marginpar{Corollary 2.2}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1},\Omega_{2}$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. There are $(\mu_{j})_{j=1}^{N_{1}}\in\Mcal(\Omega)$ such that the $\mu_{j}|_{\Omega_{1}}$ generate $\Mcal(\Omega_{1})$. 
+\end{corollary}
+\begin{proof}
+    By \Cref{corr: sum decomposition smaller than epsilon}, $m_{j}^{(1)}|_{\Omega_{12}}=\mu_{j}^{1}|_{\Omega_{12}}+\mu_{j}^{(2)}|_{\Omega_{12}}$ where $\mu_{j}^{(k)}\in\Mcal(\Omega_{k})$ and $\Vert \mu_{j}^{(1)}|\Mcal(\Omega)\leq\varepsilon$ for any $\varepsilon$. Let 
+    \begin{align*}
+        \mu_{j}|_{\Omega_{1}} &= m_{j}^{(1)} - \mu_{j}^{(1)} \\
+        \mu_{j}|_{\Omega_{2}} &= \mu_{j}^{(2)}
+    \end{align*}
+    then $\Vert \mu_{j}|_{\Omega_{1}}-m_{j}^{(1)}|\Mcal(\Omega_{j})\Vert\leq\varepsilon$ and when $\varepsilon=\frac{1}{2}$ the assertion follows. 
+\end{proof}
+It follows that the set 
+$$\{g^{-k}\cdot m_{1}|_{\Omega_{12}}|m_{1}\in\Mcal(\Omega_{1})\}$$
+is dense in $\Mcal(\Omega_{12})$, recalling here that $\Omega_{1}=R_{A}(1|g)$. 
+\begin{corollary}\label{corr: fractional sum decomposition}\marginpar{Corollary 2.3}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1}=R_{A}(1|g),\Omega_{2}=R_{A}(g|1)$ for $g\in A$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. If $m_{12}\in\Mcal(\Omega_{12})$ and $\varepsilon>0$ then 
+    $$m_{12}=g^{-k}\cdot m_{1}|_{\Omega_{12}}+m_{2}|_{\Omega_{12}}$$
+    where $m_{i}\in\Mcal(\Omega_{i})$ and $\Vert m_{2}|\Mcal(\Omega_{2})\Vert\leq\varepsilon$. 
+\end{corollary}
+\begin{proof}
+    One need only repeat the arguments of \Cref{corr: sum decomposition smaller than epsilon}
+\end{proof}
+\begin{corollary}\label{corr: generate restriction to Omega2}\marginpar{Corollary 4}
+    Let $\Mcal$ be a sheaf of $\Ocal_{\Sp(A)}$-modules on $\Sp(A)$ and $\Omega_{1}=R_{A}(1|g),\Omega_{2}=R_{A}(g|1)$ for $g\in A$ a rational cover of $\Sp(A)$ on which $\Mcal|_{\Omega_{i}}=M_{i}$ with $M_{i}$ finitely generated. There are $(\mu_{j}^{(2)})_{j=1}^{N_{2}}\in\Mcal(\Omega)$ such that $\mu_{j}|_{\Omega_{2}}$ generate $\Mcal(\Omega_{2})$. 
+\end{corollary}
+\begin{proof}
+    Write 
+    \begin{align*}
+        m_{j}^{(2)}|_{\Omega_{12}} &= g^{-k}\mu_{j}^{(1)}|_{\Omega_{12}} + \mu_{j}^{(2)}|_{\Omega_{12}} \\
+        \mu_{j}|_{\Omega_{2}}&=\mu_{j}^{(1)} \\
+        \mu_{j}|_{\Omega_{2}}&= g^{k}(m_{j}^{(2)}-\mu_{j}^{(2)})
+    \end{align*}
+    and the assertion follows when $\varepsilon\leq\frac{1}{2}$ in which case $\Vert m_{j}^{(2)} - g^{k}\cdot \mu_{j}|\Mcal(\Omega_{2})\Vert\leq\frac{1}{2}$. 
+\end{proof}
