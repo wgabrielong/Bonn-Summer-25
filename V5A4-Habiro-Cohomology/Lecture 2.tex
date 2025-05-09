@@ -3,7 +3,7 @@ The goal of this course is to develop a theory of Habiro cohomology, a functor t
 
 We begin with an exploration of what these structures are in terms of coordinates, and we will later show that the constructions we discuss are in fact independent of these coordinates. Let us make the notion of coordinates precise. 
 \begin{definition}[Framed Algebra]\label{def: framed algebra}
-    A framed algebra is a pair $(R,\square)$ where $R$ is a smooth $\ZZ$-algebra and a map $\square:\spec(R)\to\A^{d}_{\ZZ}$ or $\square:\spec(R)\to\GG_{m}^{d}$. 
+    A framed algebra is a pair $(R,\square)$ where $R$ is a smooth $\ZZ$-algebra and an \'{e}tale map $\square:\spec(R)\to\A^{d}_{\ZZ}$ or $\square:\spec(R)\to\GG_{m}^{d}$. 
 \end{definition}
 \begin{remark}
     It is often simpler to consider the case where the coordinates are invertible, that is, the case of $\GG_{m}^{d}$. 
@@ -31,7 +31,7 @@ Recall Habiro cohomology subsumes de Rham cohomology in an appropriate sense, an
 The $q$-derivative does not satisfy the Leibniz rule on the nose, but does so up to a twist by the automorphism $\gamma_{i}$ of \Cref{rmk: gamma i maps}. 
 \begin{lemma}\label{lem: twisted q-leibniz}
     Let $R$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. Then for $f,g\in R$ we have equalities 
-    $$\nabla_{i}^{q}(fg)=\gamma_{i}(f)\cdot\nabla_{i}^{q}(g)+g\cdot\nabla_{i}^{q}(f)=f\cdot\nabla_{i}^{q}(g)+\gamma_{i}(g)\cdot\nabla^{i}_{q}(f).$$
+    $$\nabla_{i}^{q}(fg)=\gamma_{i}(f)\cdot\nabla_{i}^{q}(g)+g\cdot\nabla_{i}^{q}(f)=f\cdot\nabla_{i}^{q}(g)+\gamma_{i}(g)\cdot\nabla^{q}_{i}(f).$$
 \end{lemma}
 \begin{proof}
     We first show the second equality. We use \Cref{rmk: gamma i maps} to observe that the latter two terms are given by 
@@ -104,7 +104,7 @@ Recomputing everything using this modified derivative gives the $q$-Hodge comple
 \begin{remark}
     An automorphism of $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ would give rise to an automorphism of the complexes (\ref{eqn: q-dR complex of R}) and (\ref{eqn: q-Hodge complex of R}), at least as an object in the derived category, but it is extremely difficult to understand these automorphisms from this explicit perspective. 
 \end{remark}\marginpar{The instructor remarks that he does not believe in non-flat connections. We will henceforth omit the adjective ``flat.'' \\\\ Note that a $q$-connection is additional data on a module.}
-The classical correspondence between $D$-modules and modules with flat connection suggest that an appropriate category of modules with connection could play the role of $\Dscr_{\Hab}(X)$ alluded to earlier. To make this precise, we consider modules with $q$-connection. To simplify matters, we make these considerations on the Abelian and not $\infty$-categorical level. 
+In parallel to the correspondence between algebraic $D$-modules and modules with flat connection, one would expect the existence of a category of modules with an approrpiate connection to play the role of $\Dscr_{\Hab}(X)$ alluded to earlier. To make this precise, we consider modules with $q$-connection. To simplify matters, we make these considerations on the Abelian and not $\infty$-categorical level. 
 \begin{definition}[$q$-Connections on Modules]\label{def: q-connections on modules}
     Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. A module with (flat) $q$-connection is a $\ZZ[q^{\pm}][\underline{T}]$-module with commuting $\ZZ[q^{\pm}]$-linear operations $\nabla_{i,M}^{q}:M\to M$ which satisfy the $q$-Leibniz rule 
     $$\nabla_{i,M}^{q}(fm)=\gamma_{i}(f)\cdot\nabla_{i,M}^{q}(m)+\nabla_{i}^{q}(f)\cdot m$$
