@@ -25,4 +25,9 @@ We prove the locality statement earlier alluded to.
 
     Dually, if $\Mcal$ is coherent in the sense of \Cref{rmk: finitely generated modules over sites}, we can use locality of coherence \Cref{prop: coherent module is local} to observe that the global sections generating $\Mcal$ and the kernel sheaf $\Kcal$ give rise to $A$-modules $M,K$ such that $M$ is the cokernel of $K\to A^{n}$. 
 \end{example}
-This concludes our discussion of coherent sheaves.\todo{This is half of lecture 3.}
+This concludes our discussion of coherent sheaves.
+
+Recall that $\Sp(\TT_{1})$ for $K$ algebraically closed has van der Put points $\xi$ given by the balls of radius $\leq R$ for $R\in|K|\subseteq\RR_{\geq0}$. Denote $\Kfrak_{\leq R}$ of all balls $K_{\leq R}(X)$ for $x\in\Sp(A)$. For a van der Put point $\xi$ of $\Sp(A)$, we can define $M_{\xi}$ to be the set of all $r\in [0,1)\cap |K^{\times}|$ for which there exists an $x\in\Kfrak_{\leq r}\cap\xi$ -- that is, $\xi$ contains a ball of radius $r$. Denote $K_{\leq R}(\xi)$ be set of rational open sets of radius at most $R$ in the van der Put point $\xi$. 
+\begin{example}
+    If $R$ is arbitrarily small, then $K_{\leq R}(\xi)=\{x\}$. In this case, $x\in\Omega$ if and only if $R(f_{0}|f_{1},\dots,f_{n})=\Omega\in\xi$ if and only if $\nu(f_{0})\geq\nu(f_{i})$ where $\nu(f)=|f(x)|$ for all $1\leq i\leq n$. 
+\end{example}
