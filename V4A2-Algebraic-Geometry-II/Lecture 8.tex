@@ -1,0 +1,114 @@
+\section{Lecture 8 -- 8th May 2025}\label{sec: lecture 8}
+We can now state and prove the algebraic variant of Sard's theorem. 
+\begin{theorem}[Algebraic Sard]\label{thm: algebraic sard}
+    Let $X,Y$ be smooth integral $k$-schemes with $k$ of charactersitic 0 and $f:X\to Y$ a morphism of $k$-schemes. There exists a dense set $V\subseteq Y$ such that $f^{-1}(V)\to V$ is smooth. 
+\end{theorem}
+\begin{remark}
+    Note that $V$ is nonempty but $f^{-1}(V)=\emptyset$ can occur, for example where $f$ is a closed embedding. 
+\end{remark}
+\begin{proof}
+    Denote the set 
+    $$X_{r}=\overline{\left\{x\in X_{\mathrm{cl}}:\mathrm{rank}(T_{X,x}\to T_{Y,f(x)}\otimes\kappa(x))\leq r\right\}}$$
+    where we have $\dim(\overline{f(X_{r})})\leq r$ by \Cref{lem: rank locus is bounded}. Apply this to $r=\dim(Y)-1$ so $\overline{f(X_{\dim(Y)-1})}$ is a proper closed subset. Let $V$ be its open complement in $Y$ which is nonempty since $\overline{f(X_{\dim(Y)-1})}$ is a proper closed subset. For all points $x\in X$, with image contained in $V$, we have that $T_{X,x}\to T_{Y,f(x)}\otimes\kappa(x)$ cannot have rank smaller than the dimension of $Y$, so the map is surjective as a map of $\kappa(x)$-vector spaces, hence smooth by \Cref{prop: surjectivity of tangent spaces and smoothness}. 
+\end{proof}
+There is an easy counterexample in positive characteristic. 
+\begin{example}
+    Let $k$ be of characteristic $p$. The relative Frobenius $\A^{2}_{k}\to\A^{2}_{k}$ with all fibers non-reduced, so the morphism is nowhere smooth. 
+\end{example}
+Algebraic Sard's theorem allows us to show that smoothness is generic on hyperplane sections of a scheme, in the sense that the set of smooth hyperplane sections of a quasiprojective scheme is dense in the set of hyperplanes. Let us be more precise: let $X\subseteq\PP^{n}_{k}$ be a smooth quasiprojective variety. For a line bundle $\Lcal\in\Pic(X)$ and $V\subseteq H^{0}(X,\Lcal)$ a basepoint free linear subspace, we can define a morphism $\varphi_{V}:X\to\PP(V^{\vee})$ with the property that $f^{*}\Ocal_{\PP(V^{\vee})}(1)\cong\Lcal$. There exists a nonempty open $U\subseteq V$ such that for all $s\in U$, $V_{X}(s)=\varphi^{-1}(V_{+}(s))\subseteq X$ is smooth. 
+
+For this, we recall the following facts about the universal hypersurface. 
+\begin{lemma}\label{lem: universal hypersurface}
+    Let $\Ucal_{n,1}\subseteq\PP^{n}_{k}\times_{k}\PP^{N}_{k}$ for $N=n$ be the universal hyperplane defined by $\sum_{i=0}^{n}a_{i}x_{i}$. Then $\pr_{\PP^{N}_{k}}$ is a projective bundle of dimension $n-1$. 
+\end{lemma}
+\begin{proof}
+    It suffices to observe that the fiber over any point $(a_{0},\dots,a_{n})$ is the hyperplane $V_{+}(\sum_{i=0}^{n}a_{i}x_{i})\subseteq\PP^{n}_{k}$. 
+\end{proof}
+With this in hand, we state and prove the desired result. 
+\begin{theorem}[Bertini]\label{thm: Bertini}
+    Let $X\subseteq\PP^{n}_{k}$ be a smooth quasiprojective variety with $k$ algebraically closed of characteristic 0. For a line bundle $\Lcal\in\Pic(X)$ and $V\subseteq H^{0}(X,\Lcal)$ a basepoint free linear subspace. There is a nonempty open subset $U\subseteq V$ such that for all $s\in U$, $V_{X}(s)\subseteq X$ is smooth. 
+\end{theorem}
+\begin{proof}
+    Construct the universal hyperplane 
+    $$% https://q.uiver.app/#q=WzAsNCxbMiwwLCJcXFVjYWxfe24sMX0iXSxbNCwwLCJcXFBQXntOfV97a309fFxcT2NhbF97XFxQUChWXntcXHZlZX0pfSgxKXwiXSxbMiwxLCJcXFBQKFZee1xcdmVlfSkiXSxbMCwwLCJcXFBQKFZee1xcdmVlfSlcXHRpbWVzX3trfVxcUFBee059X3trfSJdLFswLDIsIlxccHJfe1xcUFAoVl57XFx2ZWV9KX0iLDJdLFswLDEsIlxccHJfe1xcUFBee059X3trfX0iXSxbMCwzLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dXQ==
+    \begin{tikzcd}
+        {\PP(V^{\vee})\times_{k}\PP^{N}_{k}} && {\Ucal_{n,1}} && {\PP^{N}_{k}=|\Ocal_{\PP(V^{\vee})}(1)|} \\
+        && {\PP(V^{\vee})}
+        \arrow[hook', from=1-3, to=1-1]
+        \arrow["{\pr_{\PP^{N}_{k}}}", from=1-3, to=1-5]
+        \arrow["{\pr_{\PP(V^{\vee})}}"', from=1-3, to=2-3]
+    \end{tikzcd}$$
+    We have that $\pr_{\PP^{N}_{k}}:\Ucal_{n,1}\to\PP^{N}_{k}$ is a projective bundle isomorphic to $\PP(\Ecal)$ where 
+    $$\Ecal=\ker\left(H^{0}(\PP(V^{\vee}),\Ocal_{\PP(V^{\vee})}(1))\otimes\Ocal_{\PP(V^{\vee})}(1)\to\Ocal_{\PP(V^{\vee})}(1)\right)$$
+    since we have a diagram 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwxLCJYXFx0aW1lc197a31cXFBQXntufV97a30iXSxbMCwyLCJcXFhjYWw9WFxcdGltZXNfe1xcUFAoVl57XFx2ZWV9KX1cXFVjYWxfe24sMX0iXSxbMiwxLCJcXFBQKFZee1xcdmVlfSlcXHRpbWVzX3trfVxcUFBee059X3trfSJdLFs0LDEsIlxcVWNhbF97biwxfSJdLFs1LDAsIlxcUFAoVl57XFx2ZWV9KSJdLFs1LDIsIlxcUFBee059X3trfSJdLFsxLDAsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzMsMiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMyw1LCJcXHByX3tcXFBQXntOfV97a319IiwyXSxbMCwyLCJcXHZhcnBoaVxcdGltZXNcXGlkX3tcXFBQXntOfV97a319Il0sWzMsNCwiXFxwcl97XFxQUChWXntcXHZlZX0pfSJdXQ==
+    \begin{tikzcd}
+        &&&&& {\PP(V^{\vee})} \\
+        {X\times_{k}\PP^{n}_{k}} && {\PP(V^{\vee})\times_{k}\PP^{N}_{k}} && {\Ucal_{n,1}} \\
+        {\Xcal=X\times_{\PP(V^{\vee})}\Ucal_{n,1}} &&&&& {\PP^{N}_{k}}
+        \arrow["{\varphi\times\id_{\PP^{N}_{k}}}", from=2-1, to=2-3]
+        \arrow["{\pr_{\PP(V^{\vee})}}", from=2-5, to=1-6]
+        \arrow[hook', from=2-5, to=2-3]
+        \arrow["{\pr_{\PP^{N}_{k}}}"', from=2-5, to=3-6]
+        \arrow[hook, from=3-1, to=2-1]
+    \end{tikzcd}$$
+    where in particular $\pr_{\PP^{N}_{k}}$ is a $\PP^{\dim(V)-2}_{k}$-bundle. Denote $\pi$ the composite $\Xcal\to\PP^{N}_{k}$ obtained by the diagram above. Apply \Cref{thm: algebraic sard} to $\pi$ so there exists $W\subseteq\PP^{N}_{k}$ open such that $\pi^{-1}(W)\to W$ is smooth. For $g:V\setminus\{0\}\to (V\setminus\{0\})/k^{\times}$ be the quotient map and define $U=g^{-1}(W\cap(\PP^{n}_{k})_{\mathrm{cl}})$. Then for all $s\in U$, $V_{+}(s)$ is smooth. 
+\end{proof}
+\begin{remark}
+    If $k$ is not algebraically closed, we need that $W\cap (V\setminus\{0\})/k^{\times}=W(k)$ is nonempty.  
+\end{remark}
+\begin{remark}
+    The set $U$ is open only if $X$ is projective. 
+\end{remark}
+\begin{remark}
+    By passing to the Veronese embedding, the proof of Bertini's theorem holds for hypersurface sections. 
+\end{remark}
+We can now see some examples. 
+\begin{example}[Katz]
+    Let $k=\FF_{q}$. $V_{+}(\sum_{i=0}^{n}x_{i}y_{i}^{q}-x^{q}_{i}y_{i})\subseteq\PP^{2n+1}_{k}$ is smooth but no hyperplane section of $X$ is smooth. 
+\end{example}
+\begin{example}[Poonen]
+    Fix $\FF_{q}$. For $n\geq 2,d\geq1$ there exists $X\subseteq\PP^{n}_{\FF_{q}}$ of degree $d$ such that all hypersurface sections of degree at most $d$ are singular. 
+\end{example}
+\begin{example}[Poonen]
+    Recall the definition of the zeta function of a scheme $\zeta_{X}(s)=\exp(\sum_{i=0}^{\infty}\frac{X(\FF_{q^{r}})}{r}q^{-rs})$. Fix $X\subseteq\PP^{n}_{\FF_{q}}$ smooth. 
+    $$\frac{\{f\in\FF_{q}[x_{0},\dots,x_{n}]_{d}:V_{+}(f)\cap X\text{ smooth}\}}{\{f\in\FF_{q}[x_{0},\dots,x_{n}]_{d}\}}\sim_{d\to\infty}\zeta_{X}(\dim(X)).$$
+\end{example}
+\begin{example}
+    Let $\Ucal_{n,d}$ be the universal hypersurface of degree $d$ in $\PP^{n}_{k}$. There is a proper closed subset of $|\Ocal_{\PP^{n}_{k}}(d)|$ parametrizing the singular hypersurfaces of degree $(d-1)^{n+1}(n+3)$. 
+\end{example}
+We begin a discussion of unramified morphisms. 
+\begin{definition}[Unramified Morphism at a Point]\label{def: unramified morphism at a point}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is unramified at $x\in X$ with image $y=f(x)$ if $\mfrak_{y}\Ocal_{X,x}=\mfrak_{x}$ and $\kappa(x)/\kappa(y)$ is separable. 
+\end{definition}
+\begin{definition}[Unramified Morphism]\label{def: unramified morphism at a point}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is unramified if it is unramified at all $x\in X$. 
+\end{definition}
+\begin{remark}
+    Unramified morphisms are the algebro-geometric analogue of immersions in differential topology. 
+\end{remark}
+Let us now consider some examples. 
+\begin{example}
+    Let $K/k$ be a separable algebraic extension. Then $\spec(K)\to\spec(k)$ is unramified. 
+\end{example}
+\begin{example}
+    Let $L/K/\QQ$ be number fields inducing on rings of integers $\ZZ\to\Ocal_{K}\xrightarrow{\varphi}\Ocal_{L}$. This induces a map $\spec(\Ocal_{L})\to\spec(\Ocal_{K})$. The map is unramified at the generic point and at all closed points $\qfrak\subseteq\Ocal_{L},\pfrak=\varphi^{-1}(\qfrak)$ that $(\qfrak\cap\Ocal_{K,\pfrak})\Ocal_{L,\qfrak}=\qfrak\subseteq\Ocal_{L,\qfrak}$. 
+\end{example}
+\begin{example}
+    $\A^{1}_{k}\to\A^{1}_{k}$ by $x\mapsto x^{2}$ is ramified at $(x)$ as $k[x]_{(x)}$ is not generated by $x^{2}$, but unramified at all nonzero points away from characteristic 2. Conversely, the morphism is ramified everywhere in characteristic 2. 
+\end{example}
+\begin{example}
+    Closed and open immersions are always unramified. 
+\end{example}
+\begin{example}
+    $\spec(k[x]/(f))\to\spec(k)$ is unramifed over the factors $f_{i}$ of $f$ that $k[x]/(f_{i})$ are separable. 
+\end{example}
+As it turns out, unramifiedness can be tested on the relative K\"{a}hler differentials, or equivalently on the diagonal being an open embedding. To show this, we will first require the following lemma. 
+\begin{lemma}\label{lem: fiberwise unramifiedness}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is unramified if and only if for all points $y\in Y$, the fiber $X_{y}$ is reduced, locally finite, and for all $x\in X_{y}$ the field extension $\kappa(x)/\kappa(y)$ is separable. 
+\end{lemma}
+\begin{proof}
+    $(\Rightarrow)$ Assume that $f$ is unramified. We have that $\Ocal_{X_{y},x}\cong\Ocal_{X,x}/\mfrak_{y}\Ocal_{X,x}$ where by unramifiedness, $\mfrak_{y}\Ocal_{X,x}\cong\mfrak_{x}$ so $\Ocal_{X_{y},x}\cong\kappa(x)$ is reduced so the fiber is reduced and locally finite. 
+
+    $(\Leftarrow)$ Suppose for all $y\in Y$, the fiber $X_{y}$ is reduced, locally finite, and the extension of residue fields is separable. We have an injection $\kappa(y)\hookrightarrow\Ocal_{X_{y},x}$ so $\Ocal_{X_{y},x}$ is zero-dimensional, reduced, and locally finite so $\Ocal_{X_{y},x}=\kappa(x)$ showing $\mfrak_{y}\Ocal_{X,x}=\mfrak_{x}$, as desired. 
+\end{proof}
