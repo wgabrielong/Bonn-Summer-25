@@ -1,0 +1,168 @@
+\section{Lecture 9 -- 12th May 2025}\label{sec: lecture 9}
+We characterize unramifiedness in terms of triviality of the sheaf of relative K\"{a}hler differentials. 
+\begin{proposition}\label{prop: unramified iff trivial relative differentials}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is unramified if and only if $\Omega^{1}_{X/Y}=0$. 
+\end{proposition}
+\begin{proof}
+    $(\Rightarrow)$ For $y\in Y$, we have $\Omega^{1}_{X/Y}|_{X_{y}}=\Omega^{1}_{X_{y}/\kappa(y)}$ so $\Omega^{1}_{X/Y}\otimes\kappa(x)\cong\Omega^{1}_{X_{y}/\kappa(y)}\otimes\kappa(x)$. \Cref{lem: fiberwise unramifiedness}, we have locally $X_{y}=\spec(\kappa(x))$ and $\kappa(x)/\kappa(y)$ separable, so $\Omega^{1}_{\kappa(x)/\kappa(y)}=0$. So since for each $y\in Y$ we have $\Omega^{1}_{X_{y}/\kappa(y)}=0$, $\Omega^{1}_{X/Y}=0$ too. 
+
+    $(\Leftarrow)$ Assume $\Omega^{1}_{X/Y}=0$ and $X_{y}=\spec(A)$ locally finite type over $\kappa(y)$. We have $\Omega^{1}_{X_{y}/\kappa(y)}=\Omega^{1}_{X/Y}|_{X_{y}}=0$. Using the exact sequence 
+    $$\mfrak_{x}/\mfrak_{x}^{2}\to\Omega^{1}_{A/\kappa(y)}\to\Omega^{1}_{\kappa(x)/\kappa(y)}\to0$$
+    we have $\Omega^{1}_{A/\kappa(y)}=0$ by assumption and $\Omega^{1}_{\kappa(x)/\kappa(y)}$ by separability. Thus $\mfrak_{x}/\mfrak_{x}^{2}=0$ and using Nakayama's lemma, $\mfrak_{x}=0$ as well. Thus $\mfrak_{y}\Ocal_{X,x}=\mfrak_{x}$ showing $\mfrak_{y}=0$. We can then conclude $f$ is unramified by \Cref{lem: fiberwise unramifiedness}. 
+\end{proof}
+\begin{example}
+    Let $X$ be the nodal affine plane curve. The map from the normalization is unramified. 
+\end{example}
+We show the property alluded to in \Cref{rmk: immersion}. 
+\begin{lemma}\label{lem: unramified implies immersion}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. If $f$ is unramified, then $T_{X,x}\to T_{Y,y}\otimes\kappa(x)$ is injective. 
+\end{lemma}
+\begin{proof}
+    Dualizing, we show that $\frac{\mfrak_{y}}{\mfrak_{y}^{2}}\otimes_{\Ocal_{Y,y}}\kappa(x)\to\frac{\mfrak_{x}}{\mfrak_{x}^{2}}$ is surjective. We can write $\mfrak_{x}=\mfrak_{y}\otimes\Ocal_{X,x}$ so there is an obvious surjection $\frac{(\mfrak_{y}\otimes\Ocal_{X,x})}{(\mfrak_{y}\otimes\Ocal_{X,x})^{2}}\to\frac{\mfrak_{x}}{\mfrak_{x}^{2}}$, whence the claim. 
+\end{proof}
+\begin{lemma}\label{lem: unramified implies surjective differentials}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is unramified if and only if $f^{*}\Omega_{Y/k}^{1}\to\Omega^{1}_{X/k}$ is surjective. 
+\end{lemma}
+\begin{proof}
+    The cokernel of $f^{*}\Omega_{Y/k}^{1}\to\Omega^{1}_{X/k}$ has cokernel $\Omega^{1}_{X/Y}$ so the map is surjective if and only if $\Omega^{1}_{X/Y}=0$, that is, if $f$ is unramified. 
+\end{proof}
+We can now define \'{e}taleness. 
+\begin{definition}[\'{E}tale Morphism at a Point]\label{def: etale at point}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes and $x\in X$. $f$ is \'{e}tale at $x$ if $f$ is flat and unramified at $x$. 
+\end{definition}
+\begin{definition}[\'{E}tale Morphism]\label{def: etale morphism}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. $f$ is \'{e}tale if $f$ is flat and unramified. 
+\end{definition}
+The normalization of the nodal affine plane curve is not \'{e}tale. 
+\begin{example}
+    Let $X$ be the nodal affine plane curve. The map from the normalization is unramified, but not \'{e}tale, as it is not flat. 
+\end{example}
+We can characterize \'{e}taleness as follows. 
+\begin{proposition}\label{prop: tfae etale}
+    Let $f:X\to Y$ be a locally finite type morphism betewen locally Noetherian schemes. The map from the normalization is unramified. The following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item $f$ is \'{e}tale. 
+        \item $f$ is flat and unramified. 
+        \item $f$ is flat and $\Omega^{1}_{X/Y}=0$. 
+        \item $f$ is smooth of relative dimension 0. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (i)$\Leftrightarrow$(ii) This is the definition. 
+
+    (ii)$\Leftrightarrow$(iii) This is \Cref{prop: unramified iff trivial relative differentials}. 
+
+    (iii)$\Rightarrow$(iv) This is \Cref{prop: smoothness via relative cotangent}.
+
+    (iv)$\Rightarrow$(iii) Suppose $f$ is smooth of relative dimension 0. Then $f$ is flat by definition. Smoothness implies further that $\Omega^{1}_{X/Y}$ is locally free of rank $\dim(X)-\dim(Y)=0$, hence trivial. 
+\end{proof}
+\'{E}taleness gives surjectivity on tangent spaces, so we have that \'{e}tale morphisms induce isomorphisms on Zariski tangent spaces since these are in particular unramified (cf. \Cref{lem: unramified implies immersion}). 
+\begin{lemma}\label{lem: etale is local diffeo}
+    Let $f:X\to Y$ be an \'{e}tale morphism between locally Noetherian schemes. Then $T_{X,x}\to T_{Y,y}\otimes\kappa(x)$ is an isomorphism. 
+\end{lemma}
+\begin{proof}
+    \'{E}tale morphisms are in particular unramifed so $T_{X,x}\to T_{Y,y}\otimes\kappa(x)$ is injective by \Cref{lem: unramified implies immersion}. Flatness implies $\mfrak_{y}\otimes\Ocal_{X,x}=\mfrak_{y}\Ocal_{X,x}=\mfrak_{x}$ so the induced map on Zariski tangent spaces is surjective too. 
+\end{proof}
+Generalizing \Cref{lem: unramified implies surjective differentials}, we can show that for $f$ \'{e}tale, $f^{*}\Omega_{Y/k}^{1}\to\Omega_{X/k}^{1}$ is an isomorphism. For this we will require the following lemma. 
+\begin{lemma}\label{lem: unramified implies open relative diagonal}
+    Let $f:X\to Y$ be an unramified morphism between locally finite type $k$-schemes. Then $\Delta_{X/Y}$ is an open immersion.\todo{To do.} 
+\end{lemma}
+We now begin the proof in earnest. 
+\begin{proposition}\label{prop: etale implies isomorphic differentials}
+    Let $f:X\to Y$ be an \'{e}tale morphism between locally finite type $k$-schemes. Then $f^{*}\Omega_{Y/k}^{1}\to\Omega_{X/k}^{1}$ is an isomorphism. 
+\end{proposition}
+\begin{proof}
+    We use the exact sequence 
+    $$f^{*}\Omega^{1}_{Y/k}\to\Omega^{1}_{X/k}\to\Omega^{1}_{X/Y}\to0$$
+    where $\Omega^{1}_{X/Y}=0$ since \'{e}tale morphisms are in particular unramified so $f^{*}\Omega_{X/k}^{1}\to\Omega^{1}_{Y/k}$ is surjective as in \Cref{lem: unramified implies surjective differentials}. It remains to show that the induced map on K\"{a}hler differentials is injective. If $X,Y$ are $k$-smooth, then we are done, as $f^{*}\Omega_{X/k}^{1}\to\Omega^{1}_{Y/k}$ is a surjection of locally free sheaves of the same rank, hence an isomorphism. In the general case, we can reduce to where $X,Y$ are affine and $X$ is the spectrum of a finitely generated $\Gamma(Y,\Ocal_{Y})$-algebra. Using the diagrams 
+    $$% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYXFx0aW1lc197a31YIl0sWzIsMCwiWCJdLFsyLDEsIlkiXSxbMCwxLCJYXFx0aW1lc197a31ZIl0sWzUsMCwiWVxcdGltZXNfe2t9WCJdLFs1LDEsIllcXHRpbWVzX3trfVkiXSxbNywwLCJYIl0sWzcsMSwiWSJdLFsxLDIsImYiXSxbMywyXSxbMCwxXSxbMCwzXSxbNCw2XSxbNiw3LCJmIl0sWzQsNV0sWzUsN11d
+    \begin{tikzcd}
+        {X\times_{k}X} && X &&& {Y\times_{k}X} && X \\
+        {X\times_{k}Y} && Y &&& {Y\times_{k}Y} && Y
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow[from=1-6, to=1-8]
+        \arrow[from=1-6, to=2-6]
+        \arrow["f", from=1-8, to=2-8]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=2-6, to=2-8]
+    \end{tikzcd}$$
+    we use the preservation of flatness under base change to observe that $X\times_{k}X\to X\times_{k}Y,Y\times_{k}X\to Y\times_{k}Y$ are flat, and under the isomorphism $X\times_{k}Y\cong Y\times_{k}X$ we have that the composite $X\times_{k}X\to Y\times_{k}Y$ is flat. Now for 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJYXFx0aW1lc197WX1YIl0sWzIsMSwiWSJdLFs0LDAsIlhcXHRpbWVzX3trfVgiXSxbNCwxLCJZXFx0aW1lc197a31ZIl0sWzAsMCwiWCJdLFs0LDAsIlxcRGVsdGFfe1gvWX0iLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFs0LDEsImYiLDJdLFswLDEsInAiLDJdLFsxLDMsIlxcRGVsdGFfe1l9IiwyXSxbMiwzXSxbMCwyLCJpIl1d
+    \begin{tikzcd}
+        X && {X\times_{Y}X} && {X\times_{k}X} \\
+        && Y && {Y\times_{k}Y}
+        \arrow["{\Delta_{X/Y}}", hook, from=1-1, to=1-3]
+        \arrow["f"', from=1-1, to=2-3]
+        \arrow["i", from=1-3, to=1-5]
+        \arrow["p"', from=1-3, to=2-3]
+        \arrow[from=1-5, to=2-5]
+        \arrow["{\Delta_{Y}}"', from=2-3, to=2-5]
+    \end{tikzcd}$$
+    with square Cartesian we have that $p$ is flat and $i$ is closed as $\Delta_{Y}$ is. Denote $\Ical,\Jcal$ the ideal sheaves of $i,\Delta_{Y}$, respectively. We have $p^{*}(\Jcal/\Jcal^{2})\cong\Ical/\Ical^{2}$ by flatness of $p$ and $p^{*}(\Jcal/\Jcal^{2})\cong p^{*}\Omega^{1}_{Y/k}$ by definition. So we compute 
+    \begin{align*}
+        f^{*}\Omega_{Y/k}^{1} &\cong\Delta_{X/Y}^{*}(p^{*}\Omega^{1}_{Y/k}) \\
+        &\cong \Delta^{*}_{X/Y}(\Ical/\Ical^{2}).
+    \end{align*}
+    By $i\circ\Delta_{X/Y}=\Delta_{X}:X\to X\times_{k}X$ and $\Delta_{X/Y}$ is an open immersion by \Cref{lem: unramified implies open relative diagonal}, we have that $\Delta^{*}_{X/Y}(\Ical/\Ical^{2})=\Kcal/\Kcal^{2}$ where $\Kcal$ is the ideal sheaf of $X\to X\times_{k}X$, that is, $\Omega^{1}_{X/k}$, as desired. 
+\end{proof}
+We now consider some geometric consequences of \'{e}taleness and unramfiedness. 
+
+Let $X,Y$ be smooth integral $k$-schemes and $f:X\to Y$ a dominant morphism such that $K(X)/K(Y)$ is finite and $\alpha:f^{*}\Omega^{1}_{Y/k}\to\Omega^{1}_{X/k}$ the induced map on the K\"{a}hler differentials. Passing to the fiber at the generic point yields a morphism $\Omega^{1}_{K(Y)/k}\otimes K(X)\to\Omega^{1}_{K(X)/k}$ which is an isomorphism by separability, implying that $f^{*}\Omega^{1}_{Y/k}\otimes K(X)\to\Omega^{1}_{X/k}\otimes K(X)$ is an isomorphism as well. So the support of $\ker(\alpha)$ is a proper closed subset of $X$ which is empty by $f^{*}\Omega^{1}_{Y/k}$ locally free. $\alpha$ induces a canonical map $f^{*}\omega_{Y/k}\to\omega_{X/k}$ which can be viewed as a global section $s\in H^{0}(X,f^{*}\omega_{Y/k}^{\vee}\otimes\omega_{X/k})$, the vanishing locus of which can be studied. 
+\begin{definition}[Ramification Divisor]\label{def: ramification divisor}
+    Let $f:X\to Y$ be a dominant morphism for $X,Y$ smooth integral $k$-schemes. The ramification divisor $R_{f}$ is the vanishing $V_{X}(s)$ for $s\in H^{0}(X,f^{*}\omega_{Y/k}^{\vee}\otimes\omega_{X/k})$ uniquely determined by the map $f^{*}\omega_{Y/k}\to\omega_{X/k}$. 
+\end{definition}
+We record some elementary properties of the ramification divisor. 
+\begin{lemma}\label{lem: properties of ramification divisor}
+    Let $f:X\to Y$ be a dominant morphism for $X,Y$ smooth integral $k$-schemes with ramification divisor $R_{f}$. 
+    \begin{enumerate}[label=(\roman*)]
+        \item $f|_{X\setminus R_{f}}:X\setminus R_{f}\to Y$ is unramified. 
+        \item $\omega_{X/k}\cong f^{*}\omega_{Y/k}\otimes\Ocal_{X}(R_{f})$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}[Proof of (i)]
+    On the complement of $R_{f}$ the induced morphism on K\"{a}hler differentials is an isomorphism which can be checked stalkwise, so the sheaf of relative K\"{a}hler differentials vanishes, whence the claim. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    We observe that $\Ocal_{X}(R_{f})$ is the determinant of the normal bundle of $R_{f}$ in $X$, whence the claim follows by the adjunction formula \Cref{prop: adjunction formula}. 
+\end{proof}
+Let us consider some examples. 
+\begin{example}
+    $\A^{1}_{k}\to\A^{1}_{k}$ by $x\mapsto x^{2}$ has ramification divisor $(x)$. More generally for the map $x\mapsto x^{n}$ and with the characteristicof $k$ not dividing $n$, the ramification divisor is $(x)$ to order $n-1$. 
+\end{example}
+\begin{example}\label{ex: etale map has empty ramification divisor}
+    If $f$ is \'{e}tale, then $R_{f}=\emptyset$. 
+\end{example}
+This is especially interesting in the case of curves, giving the Riemann-Hurwitz formula. 
+\begin{proposition}[Riemann-Hurwitz Formula]\label{prop: Riemann-Hurwitz}
+    Let $f:X\to Y$ be a dominant morphism for $X,Y$ smooth integral curves over $k$ and with $K(X)/K(Y)$ separable. Then 
+    $$2g_{X}-2=\deg(f)(2g_{Y}-2)+\deg(R_{f}).$$
+\end{proposition}
+\begin{proof}
+    Note that $\omega_{X/k},\omega_{Y/k}$ are of degrees $2g_{X}-2,2g_{Y}-2$, respectively. Then using \Cref{lem: properties of ramification divisor} (ii), we compute 
+    \begin{align*}
+        \deg(\omega_{X/k}) &= \deg\left(f^{*}\omega_{Y/k}\otimes\Ocal_{X}(R_{f})\right) \\
+        2g_{X}-2 &= \deg(f^{*}\omega_{Y/k})+\deg(\Ocal_{X}(R_{f})) \\
+        &= \deg(f)(2g_{Y}-2)+\deg(R_{f})
+    \end{align*}
+    as desired. 
+\end{proof}
+\begin{example}
+    If $f$ is \'{e}tale then $2g_{X}-2=\deg(f)(2g_{Y}-2)$ (cf. \Cref{ex: etale map has empty ramification divisor}). 
+\end{example}
+\begin{example}
+    A degree 2 map $\PP^{1}_{k}\to\PP^{1}_{k}$ by squaring has a ramification divisor of degree 2 given by $\{[0:1],[1:0]\}$. 
+\end{example}
+\begin{example}
+    If $f:X\to\PP^{1}_{k}$ is a degree 2 map of curves and $\deg(R_{f})=4$ then $g_{X}=1$. If $X$ has a rational point, then $X$ is an elliptic curve. Without loss of generality, we can take the image of $R_{f}$ to be $\{[0:1],[1:0],[1:1],[\lambda:1]\}$. $\lambda$ determines $X$ uniquely. 
+\end{example}
+Another interesting consequence is that of Lur\"{o}th's problem. 
+\begin{corollary}[Lur\"{o}th's Problem]\label{corr: Luroth problem}
+    Let $k$ be algebraically closed and $X$ a smooth projective curve over $k$. For a tower $k\subsetneq K\subseteq L$ where $L$ is purely transcendental of transcendence degree 1, then $K$ is purely transcendental of transcendence degree 1 with $L=K$. 
+\end{corollary}
+\begin{proof}
+    Recall that $k(t)$ is the function field of $\PP^{1}_{k}$ and for $L$ as above, there exists a unique smooth projective curve $Y$ over $k$ such that $K=K(Y)$. $K\subseteq k(t)$ can be viewed as induced by a morphism $\PP^{1}_{k}\to X$ which is dominant. By the Riemann-Hurwitz formula, we have 
+    $$-2=\deg(f)(2g_{X}-2)+\deg(R_{f})$$
+    but the quantity on the right is $\geq0$ if $g_{X}>0$ so $g_{X}=0$, ie. $X\cong\PP^{1}_{k}$ and the function fields are isomorphic. 
+\end{proof}
