@@ -1,0 +1,130 @@
+\section{Lecture 10 -- 15th May 2025}\label{sec: lecture 10}
+Having stated and proved the Riemann-Hurwitz formula \Cref{prop: Riemann-Hurwitz}, we continue with a discussion of unramifiedness and \'{e}taleness in the case of curves and their consequences. 
+
+Let $f:X\to Y$ be a morphism of smooth projective integral curves over a field $k$. Let $x\in X$ and $y=f(x)\in Y$ be closed points. Recall that the stalks $\Ocal_{X,x},\Ocal_{Y,y}$ are discrete valuation rings and that the map of local rings $\Ocal_{Y,y}\to\Ocal_{X,x}$ extends to a map to $\ZZ$ by taking the value of the image of the uniformizer $\pi_{y}$, for any local ring homomorphisms of discrete valuation rings takes the uniformizer of the source to a power of the uniformizer of the target. This preempts the notion of ramification for morphisms of curves.
+\begin{definition}[Ramification Points of Morphisms of Curves]\label{def: ramification points}
+    Let $f:X\to Y$ be a morphism of smooth projective integral curves over a field $k$. Let $x\in X$ and $y=f(x)\in Y$ be closed points. $f$ is ramified at $x$ if $\nu_{x}(\pi_{y})=e_{x}>1$ for $\nu_{x}$ the valuation on $\Ocal_{X,x}$ and $\pi_{y}$ the uniformizer of $\Ocal_{Y,y}$. 
+\end{definition}
+\begin{definition}[Tamely Ramified Morphism of Curves at a Point]\label{def: tamely ramified morphism at a point}
+    Let $f:X\to Y$ be a morphism of smooth projective integral curves over a field $k$ ramifed at $x\in X$. $f$ is tamely ramified at $x$ if $\mathrm{char}(k)\nmid e_{x}=\nu_{x}(\pi_{y})$ and $\kappa(x)/\kappa(y)$ is separable. 
+\end{definition}
+\begin{definition}[Tamely Ramified Morphism of Curves]\label{def: tamely ramified morphism}
+    Let $f:X\to Y$ be a morphism of smooth projective integral curves over a field $k$. $f$ is a tamely ramified morphism of curves if it is tamely ramified at each ramification point $x\in X$. 
+\end{definition}
+This coincides with the language of unramifiedness \Cref{def: unramified morphism at a point,def: unramified morphism}. 
+\begin{lemma}\label{lem: unramifiedness notions agree}
+    Let $f:X\to Y$ be a morphism of smooth projective integral curves over a field $k$. The following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item $f$ is unramified in the sense of \Cref{def: unramified morphism}: for all $x\in X$ with image $y\in Y$ $\mfrak_{y}\Ocal_{X,x}=\mfrak_{x}$ and $\kappa(x)/\kappa(y)$ is separable. 
+        \item $f$ is not ramified in the sense of \Cref{def: ramification points}: for all $x\in X$ with image $y\in Y$, $\nu_{x}(\pi_{y})=1$ and $\kappa(x)/\kappa(y)$ is separable. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    (a)$\Rightarrow$(b) If $\mfrak_{y}\Ocal_{X,x}=\mfrak_{y}$ for all $x\in X$ with image $y\in Y$ and $\kappa(x)/\kappa(y)$ is separable then the valuation $\nu_{x}(\pi_{y})=1$ as $\pi_{y}$ generates $\mfrak_{y}\subseteq\Ocal_{Y,y}$ and hence $\mfrak_{x}\subseteq\Ocal_{X,x}$. 
+
+    (b)$\Rightarrow$(a) Suppose $\nu_{x}(\pi_{y})=1$ then $\pi_{y}$ generates $\mfrak_{y}\subseteq\Ocal_{Y,y}$ and hence $\mfrak_{x}\subseteq\Ocal_{X,x}$. 
+\end{proof}
+Ramification allows us to compute the size of finite automorphism groups of curves of genus at least 2. 
+\begin{proposition}\label{prop: bound on automorphism groups of curves}
+    Let $X$ be a smooth integral projective curve over an algebraically closed field $k$ of characteristic 0 of genus at least 2. Then if $\Aut_{k}(X)$ is finite, $|\Aut_{k}(X)|\leq 84(g-1)$. 
+\end{proposition}
+\begin{proof}
+    Recall the antiequivalence of categories between smooth integral projective curves over algebraically closed fields $k$ and extensions of $k$ of transcendence degree 1. Let $G\leq\Aut_{k}(X)$ be a subgroup. Define $K(Y)=K(X)^{G}$ which corresponds to a map $F:X\to Y$ of curves. By construction $F$, is $G$-equivariant so for all $y\in Y$ with fiber $\{x_{1},\dots,x_{r}\}\subseteq X$ $G$ acts transitively on the fiber. In particular, the degree of $F$ is the order of $G$ as a group. Applying the Riemann-Hurwitz formula \Cref{prop: Riemann-Hurwitz}, we have 
+    \begin{equation}\label{eqn: RH for automorphisms}
+        2g_{X}-2=|G|(2g_{Y}-2+\sum_{y\in Y}\frac{e_{y}-1}{e_{y}}).
+    \end{equation}
+    We consider several cases: 
+    \begin{itemize}
+        \item If $g_{Y}\geq2$ then $2g_{Y}-2\geq2$ so (\ref{eqn: RH for automorphisms}) is at least 2, showing $|G|\leq g_{X}-1$. 
+        \item If $g_{Y}=1$ then $2g_{Y}-2=0$ and $2g_{X}-2=\sum_{y\in Y}\frac{e_{y}-1}{e_{y}}$ which is at least $\frac{1}{2}$ -- if $f$ is unramified then $2g_{X}-2=g_{Y}=0$ a contradiction as the genus of $X$ is at least 2 -- so $\frac{1}{2}|G|\leq 2g_{X}-2$ and thus $|G|\leq 4g_{X}-1$.
+        \item If $g_{Y}=0$ then $2g_{X}=\sum_{y\in Y}\frac{e_{y}-1}{e_{y}}$. Let $n=|\{y\in Y:e_{y}>1\}|$. So 
+        $$2g_{X}\geq\begin{cases}
+            \geq\frac{1}{2} & n\geq 5 \\ \frac{1}{10} & n=4 \\ \frac{1}{42} & n=3.
+        \end{cases}$$
+    \end{itemize}
+    This yields the claim. 
+\end{proof}
+\begin{remark}
+    A deformation theory argument is used to show that the automorphism groups of curves are in fact finite, which we do not produce here. 
+\end{remark}
+We can see some (counter)examples of this phenomenon. 
+\begin{example}
+    Let $X=V_{+}(x^{3}y+y^{3}z+z^{3}x)\subseteq\PP^{2}_{k}$ be the Klein quartic curve. $X$ is of genus $\frac{(4-1)(4-2)}{2}=3$ and $|\Aut_{k}(X)|=168$. This is a Hurwitz curve of genus 3. There exist genera $g\in\NN$ for which there is no Hurwitz curve of genus $g$ -- in particular, for $2\leq g\leq 11$ only $g=3,g=7$ admit Hurwitz curves. In these cases $g_{Y}=0$ in the proof above and the bound is attained. 
+\end{example}
+\begin{example}
+    In positive characteristic, one can produce larger automorphism groups (which remain finite). 
+\end{example}
+We consider some local properties of \'{e}tale morphisms. 
+\begin{proposition}\label{prop: smooth is etale and project}
+    Let $f:X\to Y$ be smooth of relative dimension $d$. Then for all $x\in X$ there is an affine neighborhood $U\subseteq X$ of $x$ with image contained in an affine open $V\subseteq Y$ such that there exists a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCJYIl0sWzAsMSwiWSJdLFsyLDAsIlUiXSxbMiwxLCJWIl0sWzQsMCwiXFxBXntkfV97Vn0iXSxbMCwxLCJmIiwyXSxbMiwwLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6ImJvdHRvbSJ9fX1dLFszLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoiYm90dG9tIn19fV0sWzIsM10sWzIsNCwiaSJdLFs0LDNdXQ==
+    \begin{tikzcd}
+        X && U && {\A^{d}_{V}} \\
+        Y && V
+        \arrow["f"', from=1-1, to=2-1]
+        \arrow[hook', from=1-3, to=1-1]
+        \arrow["i", from=1-3, to=1-5]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-5, to=2-3]
+        \arrow[hook', from=2-3, to=2-1]
+    \end{tikzcd}$$
+    where $i$ is \'{e}tale. 
+\end{proposition}
+\begin{proof}
+    See \cite[\href{https://stacks.math.columbia.edu/tag/039P}{Tag 039P}]{stacks-project}.
+\end{proof}
+\begin{example}
+    Let $X$ be a smooth $k$-scheme of dimension $d$. Then there locally exists a map to $\A^{d}_{k}$, but this map need not be an open immersion. Moreover, there are rarely open immersions $\A^{d}_{k}\to X$. 
+\end{example}
+We introduce the notion of standard \'{e}taleness. 
+\begin{definition}[Standard \'{E}tale]\label{def: standard etale}
+    Let $f:X\to Y$ be a locally finite type morphism between Noetherian affine schemes. $f$ is standard \'{e}tale if it is of the form $\spec(A[t]_{f}/(g))\to\spec(A)$ where $g$ is monic with dierivative invertible in the localization $A[t]_{f}/(g)$. 
+\end{definition}
+Any \'{e}tale morphism can be factored over a standard \'{e}tale one. 
+\begin{proposition}\label{prop: etale factors as standard etale}
+    Let $f:X\to Y$ be an \'{e}tale morphism. Then for all $x\in X$ there exists an affine neighborhood $U\subseteq X$ of $x$ with image contained in an affine open $V\subseteq Y$ such that $f|_{U}:U\to V$ is standard \'{e}tale as a map of affine schemes. 
+\end{proposition}
+\begin{proof}
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02GT}{Tag 02GT}]{stacks-project}.
+\end{proof}
+We consider formal variants of \'{e}tale, smoothness, and unramifiedness. These are characterized very similarly to the valuative criterion. 
+\begin{definition}[Formally Smooth]\label{def: formally smooth}
+    Let $f:X\to Y$ be a locally finite type morphism between Noetherian affine schemes. $f$ is formally smooth if for all solid diagrams 
+    \begin{equation}\label{eqn: formally smooth unramified etale lifting diagram}
+        % https://q.uiver.app/#q=WzAsNCxbMiwwLCJYIl0sWzIsMSwiWSJdLFswLDEsIlxcc3BlYyhBKSJdLFswLDAsIlxcc3BlYyhBL0kpIl0sWzMsMF0sWzAsMV0sWzMsMl0sWzIsMV0sWzIsMCwiIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    \begin{tikzcd}
+        {\spec(A/I)} && X \\
+        {\spec(A)} && Y
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[dashed, from=2-1, to=1-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}
+    \end{equation}
+    where $I$ is a nilpotent ideal, there is at least one morphism $\spec(A)\to X$ rendering the entire diagram commutative. 
+\end{definition}
+\begin{definition}[Formally Unramified]\label{def: formally unramified}
+    Let $f:X\to Y$ be a locally finite type morphism between Noetherian affine schemes. $f$ is formally unramified if for all solid diagrams (\ref{eqn: formally smooth unramified etale lifting diagram}) where $I$ is a nilpotent ideal, there is at most one morphism $\spec(A)\to X$ rendering the entire diagram commutative. 
+\end{definition}
+\begin{definition}[Formally \'{E}tale]\label{def: formally etale}
+    Let $f:X\to Y$ be a locally finite type morphism between Noetherian affine schemes. $f$ is formally \'{e}tale if for all solid diagrams (\ref{eqn: formally smooth unramified etale lifting diagram}) where $I$ is a nilpotent ideal, there is a unique morphism $\spec(A)\to X$ rendering the entire diagram commutative. 
+\end{definition}
+These agree with \Cref{def: smooth morphism,def: unramified morphism,def: etale morphism} we have already seen, as we made these constructions in the case of $f$ locally finite type betewen locally Noetherian schemes. 
+\begin{proposition}\label{prop: formal is ordinary}
+    Let $f:X\to Y$ be a locally finite type morphism between locally Noetherian schemes. Then:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ is smooth in the sense of \Cref{def: smooth morphism} if and only if it is formally smooth in the sense of \Cref{def: formally smooth}. 
+        \item $f$ is unramified in the sense of \Cref{def: unramified morphism} if and only if it is formally unramified in the sense of \Cref{def: formally unramified}. 
+        \item $f$ is \'{e}tale in the sense of \Cref{def: etale morphism} if and only if it is formally \'{e}tale in the sense of \Cref{def: formally etale}. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02H6}{Tag 02H6}]{stacks-project}.
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02HE}{Tag 02HE}]{stacks-project}.
+\end{proof}
+\begin{proof}[Proof of (iii)]
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02HM}{Tag 02HM}]{stacks-project}.
+\end{proof}
