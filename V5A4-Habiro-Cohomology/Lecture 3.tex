@@ -1,0 +1,82 @@
+\section{Lecture 3 -- 9th May 2025}\label{sec: lecture 3}
+In \Cref{sec: lecture 2}, we constructed the $q$-de Rham and $q$-Hodge complexes for $\A^{d}_{\ZZ},(\GG_{m})^{d}$ using the $q$-derivatives $\nabla_{i}^{q}$ and modifited $q$-derivatives $\widetilde{\nabla}_{i}^{q}$, respectively. 
+
+We now consider the construction of the $q$-de Rham and $q$-Hodge complexes more generally in the case where the $T_{i}$ are invertible and using the logarithmic $q$-derivative $\nabla_{i}^{q,\log}=T_{i}\nabla_{i}^{q}$. In particular, we define the logarithmic $\nabla^{q,\log}_{i}$ and modified logarithmic $q$-derivative $\widetilde{\nabla}^{q,\log}_{i}$ by
+$$f\mapsto\frac{\gamma_{i}(f)-f}{q-1}, f\mapsto\gamma_{i}(f)-f,$$
+respectively. 
+\begin{remark}
+    The commutation relation for the ordinary logarithmic $q$-derivative are given by $\gamma_{i}T_{i}=qT_{i}\gamma_{i}$ since multiplying by $T_{i}$ and applying the map $T_{i}\mapsto qT_{i}$ is the same as applying the map $T_{i}\mapsto qT_{i}$ and multiplying by $qT_{i}$. 
+\end{remark}
+For simplicity, take $X=\spec(R)$ to be affine for some smooth $\ZZ$-algebra $R$ and $\square:X\to(\GG_{m})^{d}$ its (\'{e}tale) framing induced by an \'{e}tale ring map $\ZZ[T_{1}^{\pm},\dots,T_{d}^{\pm}]=\ZZ[\underline{T}^{\pm}]\to R$. Na\"{i}vely we want a to define a category of $R[q^{\pm}]$-modules with commuting semilinear endomorphisms $\gamma_{i,M}:M\to M$ for each such module $M$. However, such semilinearity first requires a choice of $\gamma_{i,R}:R[q^{\pm}]\to R[q^{\pm}]$ extending the map $\gamma_{i}:\ZZ[q^{\pm}][\underline{T}^{\pm}]\to\ZZ[q^{\pm}][\underline{T}^{\pm}]$ but such a map need not exist. Geometrically speaking, the automorphisms $\gamma_{i}$ on $(\GG_{m})^{d}$ need not lift along the map $\square:X\to(\GG_{m})^{d}$. This is where $(q-1)$-adic completion enters the picture: after $(q-1)$-adic completion, there are unique such $\gamma_{i,R}:R[[q-1]]\to R[[q-1]]$ which reduce to the identity modulo $(q-1)$ induced by the infinitesmal lifting property of \'{e}tale maps. 
+
+To wit, there is an equivalence of categories 
+$$\left\{\substack{\text{\'{e}tale }\ZZ[q^{\pm}][\underline{T}^{\pm}]/(q-1)^{n} \\ \text{algebras}}\right\}\simeq\left\{\substack{\text{\'{e}tale }\ZZ[\underline{T}^{\pm}] \\ \text{algebras}}\right\}.$$
+On \'{e}tale $\ZZ[q^{\pm}][\underline{T}^{\pm}]/(q-1)^{n}$-algebras, there are endomorphisms $\gamma_{i}^{*}$ induced by $\gamma_{i}:\ZZ[q^{\pm}][\underline{T}^{\pm}]\to\ZZ[q^{\pm}][\underline{T}^{\pm}]$ which reduce to the identity on $\ZZ[\underline{T}^{\pm}]$-algebras. In particular, the identity map on a $\ZZ[q^{\pm}][\underline{T}^{\pm}]/(q-1)^{n}$-algebra and $\gamma_{i}^{*}$ are both lifts of the identity along the equivalence, showing that $\gamma_{i}^{*}$ is the identity by functoriality. Thus, after $(q-1)$-adic completion, the automorphisms $\gamma_{i}$ on $(\GG_{m})^{d}$ are infinitesmally close to 1, and hence lift uniquely along the framing map $\square$, and allowing us to define $q$-derivatives and the categories of modules with (modified) $q$-connection. 
+\begin{theorem}[Bhatt-Scholze, {\cite[\S 16]{PrismsPrismatic}}; Wagner, {\cite[Thm. 1.5]{WagnerQWittQHodge}}]
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The complex $q\Omega_{(R,\square)/\ZZ[[q-1]]}$ given by 
+    $$R[[q-1]]\xrightarrow{(\nabla_{i}^{q})_{i=1}^{d}}\bigoplus_{i=1}^{d}R[[q-1]]\longrightarrow\dots$$
+    as an object of $\Dscr(\ZZ[[q-1]])$ is canonically independent of the choice of coordinates. 
+\end{theorem}
+\begin{example}\label{ex: translation between connections and q-connections}
+    Consider the case of a smooth framed $\QQ$-algebra $(R,\square)$ where $\square:\spec(R)\to\GG_{m}$. We can use Taylor's theorem to write 
+    $$f(qT)=f(T)+\log(q)(\nabla^{\log}f)(T)+\frac{1}{2}\log(q)^{2}((\nabla^{\log})^{2}f)(T)+\dots$$
+    where $\log(q)=\sum_{n\geq0}(-1)^{n-1}\frac{(q-1)^{n}}{n}\in\QQ[[q-1]]$ so 
+    $$\nabla^{q,\log}=\frac{\log(q)}{q-1}\nabla^{\log}+\frac{1}{2}\frac{\log(q)^{2}}{q-1}(\nabla^{\log})^{2}+\dots$$
+    and taking $\widetilde{\nabla}^{q,\log}=\log(q)\nabla^{q,\log}$, we get $\widetilde{\nabla}^{q,\log}=\exp(\widetilde{\nabla}^{\log})-1$. 
+\end{example}
+\Cref{ex: translation between connections and q-connections} yields the following more general result. 
+\begin{proposition}\label{prop: R-modules with ordinary connection}
+    Let $(R,\square)$ be a smooth framed $\QQ$-algebra. There is an symmetric monoidal equivalence of categories 
+    $$\left\{\substack{(q-1)\text{-adically complete }R[[q-1]] \\ \text{-modules with }q\text{-connection}}\right\}\simeq\left\{\substack{(q-1)\text{-adically complete }R[[q-1]] \\ \text{-modules with connection}}\right\}.$$
+\end{proposition}
+This proves coordinate independence, since the latter category is coordinate independent.
+\begin{corollary}\label{corr: modules with q-connection are coordinate independent}
+    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with $q$-connection by $q\Mod_{R[[q-1]]}$. The $q$-de Rham complex $q\Omega_{(R,\square)/\QQ}$ computes $R\Hom_{q\Mod_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
+\end{corollary}
+
+The case of modified $q$-connections is more subtle. 
+\begin{definition}[Logarithmic $q$-Connections]\label{def: logarithmic q-connection}
+    Let $R$ be a $\QQ$-algebra. A $h$-connection over $R[h]$ is an $R[h]$-module $M$ with a map $\widetilde{\nabla}_{M}:M\to M\otimes_{R}\Omega^{1}_{R/\QQ}$ satisfying $(\widetilde{\nabla}_{M})^{2}=0$ and 
+    $$\widetilde{\nabla}_{M}(fm)=h\cdot\nabla(f)\cdot m+f\cdot\widetilde{\nabla}_{M}(m).$$
+\end{definition}
+Such constructions appear in Hodge and twistor theory under the name of Higgs fields. 
+
+We would like to see an analogue of \Cref{prop: R-modules with ordinary connection}. 
+\begin{proposition}\label{prop: R-modules with modified connection}
+    Let $(R,\square)$ be a smooth framed $\QQ$-algebra. There is an symmetric monoidal equivalence of categories 
+    $$\left\{\substack{(q-1)\text{-adically complete }R[[q-1]]\text{-modules} \\ \text{with modified }q\text{-connection s.t. }\widetilde{\nabla}^{q,\log}_{i,M}\text{'s are top. nil.}}\right\}\simeq\left\{\substack{h\text{-adically complete }R[[q-1]]\text{-modules} \\ \text{with }h\text{-connection s.t. }\widetilde{\nabla}_{M}\text{ is top. nil.}}\right\}$$
+    $$% https://q.uiver.app/#q=WzAsMixbMiwwLCJcXGxlZnQoTSwoXFx3aWRldGlsZGV7XFxuYWJsYX1fe2ksTX1ee1xcbG9nfSlfe2k9MX1ee2R9XFxyaWdodCkiXSxbMCwwLCJcXGxlZnQoTSwoXFx3aWRldGlsZGV7XFxuYWJsYX1ee3EsXFxsb2d9X3tpLE19KV97aT0xfV57ZH1cXHJpZ2h0KSJdLFswLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+    \begin{tikzcd}
+        {\left(M,(\widetilde{\nabla}^{q,\log}_{i,M})_{i=1}^{d}\right)} && {\left(M,(\widetilde{\nabla}_{i,M}^{\log})_{i=1}^{d}\right)}
+        \arrow[maps to, from=1-3, to=1-1]
+    \end{tikzcd}$$
+    where $\widetilde{\nabla}^{q,\log}_{i,M}=\exp(\widetilde{\nabla}^{\log}_{i,M})-1$. 
+\end{proposition}
+\begin{remark}
+    The topological nilpotence of the endomorphisms ensure covergence of the exponential. 
+\end{remark}
+Once again, observing that the right hand side is coordinate independent, we get coordinate independence for modules with modified $q$-connections. 
+\begin{corollary}\label{corr: modules with modified q-connection are coordinate independent}
+    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with modified $q$-connection where the operators $\widetilde{\nabla}_{i,M}^{q,\log}$ are topologically nilpotent by $q\widetilde{\Mod}_{R[[q-1]]}$. The $q$-Hodge complex $q\Hdg_{(R,\square)/\QQ}$ computes $R\Hom_{q\widetilde{\Mod}_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
+\end{corollary}
+Deferring the discussion of coordinate independence integrally -- which can be done by similarly isolating subcategories of modules with convergence conditions on their $q$-connections -- we seek to understand the preceding constructions not just in the $(q-1)$-adically complete case to the Habiro case, namely at all roots of unity. 
+
+In the preceding discussion, $(q-1)$-adic completion allowed us to leverage \'{e}taleness of the map to produce a unique lift of the endomorphism on $\ZZ[q^{\pm}][\underline{T}^{\pm}]$ since $\gamma_{i}$ was infinitesmally close to the identity after $(q-1)$-adic completion. But noticing that $\zeta_{p}$ is $p$-adically close to 1, we can attempt a similar approach. 
+\begin{example}
+    Let $(R,\square)$ be a framed $\ZZ$-algebra with $\square:\spec(R)\to\GG_{m}$. This gives a map 
+    $$\ZZ[T^{\pm}]_{p}^{\wedge}[[q-1]]\longrightarrow R_{p}^{\wedge}[[q-1]]$$
+    which on specialization to $q=\zeta_{p}$ yields 
+    $$\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle\longrightarrow R_{p}^{\wedge}[\zeta_{p}]$$
+    where using that $\zeta_{p}$ is close to 1 $p$-adically, $\gamma:\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle\to\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle$ by $T\mapsto qT$ lifts uniquely to an endomorphism $\gamma_{R}:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$. However, $R[\zeta_{p}]\hookrightarrow R^{\wedge}_{p}[\zeta_{p}]$ may not have image stable under $\gamma_{R}$, for example, in the case of $\GG_{m}\setminus\{1\}$.  
+\end{example}
+So as seen in the example above, we will require an alternative description. For this, we produce an endomorphism of $R_{p}^{\wedge}[\zeta_{p}]$ that does globalize using the Frobenius map $\varphi:\ZZ[T^{\pm}]\to\ZZ[T^{\pm}]$ by $T\mapsto T^{p}$ lifts uniquely to $R^{\wedge}_{p}$ and reduces to the Frobenius map on $R/(p)$. This produces an isomorphism
+$$\ZZ[T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R_{p}^{\wedge}\longrightarrow R_{p}^{\wedge}$$ by $T^{1/p}\mapsto T$ and thus 
+$$\ZZ[\zeta_{p},T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R^{\wedge}_{p}\longrightarrow R_{p}^{\wedge}[\zeta_{p}]$$
+by the Frobenius once more. The map $\gamma:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$ is induced by the map $\id_{R^{\wedge}_{p}}\otimes(T^{1/p}\mapsto \zeta_{p}T^{1/p})$ but $\ZZ[\zeta_{p},T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R^{\wedge}_{p}$ contains $R\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p},T^{\pm 1/p}]$ as a subring, and since $\gamma$ is the identity on $R$, $\gamma$ is stable as an endomorphism. 
+\begin{definition}
+    Let $m\geq 1$. $\ZZ[\zeta_{m},\underline{T}^{\pm}]$-algebra $R^{(m)}=R\otimes_{\ZZ[\underline{T}^{\pm}]}\ZZ[\zeta_{m},\underline{T}^{\pm 1/m}]$ with algebra structure given by $T_{i}\mapsto T_{i}^{1/m}$ with action by $\gamma^{(m)}_{i}=\id_{R}\otimes(T_{i}\mapsto \zeta_{m}T_{i})$ lifting $T_{i}\mapsto\zeta_{m}T_{i}$ on $\ZZ[\zeta_{m},\underline{T}^{\pm}]$. 
+\end{definition}
+\begin{example}
+    Let $X=\GG_{m}\setminus\{1\}$ and $R=\ZZ[T^{\pm},\frac{1}{1-T}]$. Then $R^{(m)}=\ZZ[T^{\pm},\frac{1}{1-T^{m}}]$ with the structure of a $\ZZ[\zeta_{m},T^{\pm}]$-algebra by $T\mapsto T^{1/m}$.
+\end{example}
+By uniqueness of deformation for \'{e}tale algebras, we can deform from $q=\zeta_{m}$ to the completion at $\Phi_{m}(q)$, the $m$th cyclotomic polynomial, yielding a (formally) \'{e}tale $\ZZ[q,\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}$-algebra $R_{m}$ with lifts $\gamma_{i,m}:R_{m}\to R_{m}$. So for any $m$ we can define the categories and complexes as before. While only defined at each $m$ separately, we can use the fact that $\zeta_{m}$ and $\zeta_{pm}$ agree in characteristic $p$ to glue the construction globally using the Frobenius, yielding a complex over the Habiro ring $\Hcal_{(R,\square)}$. 
