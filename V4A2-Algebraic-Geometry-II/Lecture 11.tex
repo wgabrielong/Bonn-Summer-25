@@ -1,0 +1,167 @@
+\section{Lecture 11 -- 19th May 2025 -- Interlude: The \'{E}tale Toplogy}\label{sec: lecture 11}
+We briefly discuss the \'{e}tale topology on schemes. A comprehensive treatment would require an entire course. 
+
+Recall that the Zariski topology is intrinsically defined on a scheme, but it does come with some drawbacks. Two notable ones are that constant sheaves are acyclic on irreducible schemes, and that local triviality in the Zariski topology is at times too strong a condition in practice. We will see examples in what follows. 
+
+We begin by definign the small \'{e}tale site. 
+\begin{definition}[Small \'{E}tale Site]\label{def: small etale site}
+    Let $X$ be a locally Noetherian scheme. Define $X_{\et}$ to be the full subcategory of $\Sch_{/X}$ spanned by objects $U\to X$ where $U\to X$ is \'{e}tale. 
+\end{definition}
+\begin{remark}
+    A morphism in the small \'{e}tale site $U\to U'$ is given by a diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJVIl0sWzIsMCwiVSciXSxbMSwxLCJYIl0sWzAsMl0sWzEsMl0sWzAsMV1d
+    \begin{tikzcd}
+        U && {U'} \\
+        & X
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-2]
+        \arrow[from=1-3, to=2-2]
+    \end{tikzcd}$$
+    where $U\to X,U'\to X$ is \'{e}tale, so $U\to U'$ is \'{e}tale by cancellation for \'{e}tale morphisms \cite[\href{https://stacks.math.columbia.edu/tag/02GW}{Tag 02GW}]{stacks-project}. Additionally, being \'{e}tale is preserved under composition and base change, and isomorphisms are \'{e}tale -- these are the necessary conditions to define a Grothendieck pretopology. 
+\end{remark}
+We want the \'{e}tale site to behave like a topological space. In particular, we want a notion of coverings. 
+\begin{definition}[\'{E}tale Covering]\label{def: etale covering}
+    Let $X$ be a locally Noetherian scheme and $X_{\et}$ its small \'{e}tale site. If $U\in X_{\et}$ then a family of morphisms $\{U_{i}\to U\}_{i\in I}$ in $X_{\et}$ is a covering if $\sqcup_{i\in I}U_{i}\to U$ is surjective. 
+\end{definition}
+Let us consider a simple example. 
+\begin{example}
+    $\A^{1}_{k}\setminus\{0\}\to\A^{1}_{k}\setminus\{0\}$ by $z\mapsto z^{2}$ is \'{e}tale. The two-element family $$\left\{\A^{1}_{k}\setminus\{0\}\xrightarrow{z\mapsto z^{2}}\A^{1}_{k},\A^{1}_{k}\setminus\{1\}\xrightarrow{\id_{\A^{1}_{k}\setminus\{1\}}}\A^{1}_{k}\right\}$$ 
+    is an \'{e}tale covering since the maps are jointly surjective. 
+\end{example}
+We can compare this to the Zariski site associated to the Zariski topology. 
+\begin{definition}[Zariski Site]\label{def: Zariski site}
+    Let $X$ be a locally Noetherian scheme. Define $X_{\Zar}$ to be the full subcategory of $\Sch_{/X}$ spanned by the objects $U\to X$ where $U\to X$ is an open immersion. 
+\end{definition}
+\begin{remark}
+    As before, open immersions satisfy cancellation, so any morphism $U\to U'$ in $X_{\Zar}$ is automatically an open immersion. 
+\end{remark}
+Note that open immersions are in particular \'{e}tale so the Zariski site includes into the \'{e}tale site -- in other words, the \'{e}tale site contains more morphisms than the Zariski site. The functor $F:X_{\et}\to X_{\Zar}$ is continuous since the preimage $F^{-1}([U\to X])$ is a map in the \'{e}tale topology for an open immersion $[U\to X]$ in $X_{\Zar}$. 
+
+We can define sheaves and presheaves over the \'{e}tale site. 
+\begin{definition}[\'{E}tale Presheaves]\label{def: etale presheaves}
+    Let $X$ be a locally Noetherian scheme and $X_{\et}$ its \'{e}tale site. An \'{e}tale presheaf on $X_{\et}$ is a functor $\Fcal:X_{\et}^{\Opp}\to\AbGrp$. 
+\end{definition}
+\begin{definition}[\'{E}tale Sheaves]\label{def: etale sheaves}
+    Let $X$ be a locally Noetherian scheme and $X_{\et}$ its \'{e}tale site. An \'{e}tale sheaf on $X_{\et}$ is an \'{e}tale presheaf $\Fcal$ such that for all \'{e}tale coverings $\{U_{i}\to U\}_{i\in I}$ in $X_{\et}$ the sequence 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCIwIl0sWzEsMCwiXFxGY2FsKFUpIl0sWzIsMCwiXFxwcm9kX3tpXFxpbiBJfVxcRmNhbChVX3tpfSkiXSxbMywwLCJcXHByb2Rfe2ksalxcaW4gSX1cXEZjYWwoVV97aX1cXHRpbWVzX3tVfVVfe2p9KSJdLFswLDFdLFsxLDJdLFsyLDMsIiIsMix7Im9mZnNldCI6LTF9XSxbMiwzLCIiLDIseyJvZmZzZXQiOjF9XV0=
+    \begin{tikzcd}
+        0 & {\Fcal(U)} & {\prod_{i\in I}\Fcal(U_{i})} & {\prod_{i,j\in I}\Fcal(U_{i}\times_{U}U_{j})}
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[shift left, from=1-3, to=1-4]
+        \arrow[shift right, from=1-3, to=1-4]
+    \end{tikzcd}$$
+    is an equalizer. 
+\end{definition}
+We can define a functor $F_{*}:\Sh(X_{\et})\to\Sh(X_{\Zar})$ by $\Fcal\mapsto[[U\to X]\mapsto\Fcal(U)]$ by restriction. More generally for a morphism $f:X\to Y$ of locally Noetherian schemes there we can define $f_{*}:\Sh(X_{\et})\to \Sh(Y_{\et}),f^{-1}:\Sh(Y_{\et})\to\Sh(X_{\et})$. 
+\begin{definition}[Global Sections of \'{E}tale Sheaves]\label{def: global sections of etale sheaves}
+    Let $X$ be a locally Noetherian scheme and $\Fcal$ a sheaf of Abelian groups on $X_{\et}$. The global sections of $\Fcal$ is defined to be $\Gamma(X_{\et},\Fcal)=\Hom_{\PSh(X_{\et})}(*,\Fcal)$ where $*$ is the final object in $\PSh(X_{\et})$. 
+\end{definition}
+Moreover, the category of Abelian sheaves on a site has enough injectives \cite[\href{https://stacks.math.columbia.edu/tag/01DL}{Tag 01DL}]{stacks-project}, so this allows us to define all higher cohomology groups. 
+\begin{definition}[Cohomology of \'{E}tale Sheaves]\label{def: global sections of etale sheaves}
+    Let $X$ be a locally Noetherian scheme and $\Fcal$ a sheaf of Abelian groups on $X_{\et}$. The cohomology of $\Fcal$ is defined to be $H^{i}(X_{\et},\Fcal)$ is the cohomology of an injective resolution of $\Fcal$.  
+\end{definition}
+\begin{remark}
+    The notation $H^{i}_{\et}(X,\Fcal)$ is also used in the literature. 
+\end{remark}
+We can make the analogous constructions for the structure sheaf, stalks, and derived pushforwards. 
+\begin{remark}\label{rmk: commutes for QCoh}
+    The diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFNoKFhfe1xcWmFyfSkiXSxbMiwwLCJcXFNoKFhfe1xcZXR9KSJdLFswLDEsIlxcQWJHcnAiXSxbMiwxLCJcXEFiR3JwIl0sWzAsMiwiSF57aX0oWCwtKSIsMl0sWzEsMywiSF57aX0oWF97XFxldH0sLSkiXSxbMCwxXSxbMiwzLCI/IiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZG90dGVkIn19fV1d
+    \begin{tikzcd}
+        {\Sh(X_{\Zar})} && {\Sh(X_{\et})} \\
+        \AbGrp && \AbGrp
+        \arrow[from=1-1, to=1-3]
+        \arrow["{H^{i}(X,-)}"', from=1-1, to=2-1]
+        \arrow["{H^{i}(X_{\et},-)}", from=1-3, to=2-3]
+        \arrow["{?}"', dotted, from=2-1, to=2-3]
+    \end{tikzcd}$$
+    need not commute, but does so for quasicoherent sheaves. 
+\end{remark}
+As a consequence of \Cref{rmk: commutes for QCoh}, we have the following comparison between the ordinary and the \'{e}tale Picard groups. 
+\begin{proposition}\label{prop: picard group comparison}
+    Let $X$ be a locally Noetherian scheme. There is an isomorphism of Abelian groups $H^{1}(X,\Ocal_{X}^{\times})\cong H^{1}(X_{\et},\GG_{m})$. 
+\end{proposition}
+Though already on the level of second cohomology, there are schemes $X$ for which $H^{2}(X,\Ocal_{X}^{\times})\not\cong H^{2}(X_{\et},\GG_{m})$. 
+
+Let us consider more examples of \'{e}tale sheaves. 
+\begin{example}
+    Consider the sheaves $\GG_{m},\GG_{a},\mu_{n}$ as sheaves on the \'{e}tale site taking $[U\to X]$ to $\Gamma(U,\Ocal_{U}^{\times}), \Gamma(U,\Ocal_{U}), \{s\in\Ocal_{U}(U):s^{n}=1_{U}\}$. 
+\end{example}
+The \'{e}tale sheaves $\GG_{m},\mu_{n}$ fit together in the Kummer sequence. 
+\begin{proposition}[Kummer Sequence]\label{prop: Kummer sequence}
+    Let $X$ be a locally Noetherian $k$ scheme and $n$ an integer not divisible by the characteristic of $k$. Then there is a short exact sequence of \'{e}tale sheaves in $X_{\et}$
+    $$0\to\mu_{n}\to\GG_{m}\xrightarrow{(-)^{n}}\GG_{m}\to0.$$
+\end{proposition}
+Taking \'{e}tale cohomology of the Kummer sequence of \Cref{prop: Kummer sequence} yields a long exact sequence 
+$$% https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiSF57MH0oWF97XFxldH0sXFxtdV97bn0pIl0sWzEsMSwiSF57MX0oWF97XFxldH0sXFxtdV97bn0pIl0sWzIsMSwiSF57MX0oWF97XFxldH0sXFxHR197bX0pIl0sWzMsMSwiSF57MX0oWF97XFxldH0sXFxHR197bX0pIl0sWzQsMSwiXFxkb3RzLiJdLFsyLDAsIkheezB9KFhfe1xcZXR9LFxcR0dfe219KSJdLFszLDAsIkheezB9KFhfe1xcZXR9LFxcR0dfe219KSJdLFsyLDNdLFszLDRdLFs0LDVdLFswLDFdLFsxLDZdLFs2LDddLFs3LDJdXQ==
+\begin{tikzcd}
+	0 & {H^{0}(X_{\et},\mu_{n})} & {H^{0}(X_{\et},\GG_{m})} & {H^{0}(X_{\et},\GG_{m})} \\
+	& {H^{1}(X_{\et},\mu_{n})} & {H^{1}(X_{\et},\GG_{m})} & {H^{1}(X_{\et},\GG_{m})} & {\dots.}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}$$
+We provide a more explicit description the behavior of the first cohomology groups: 
+\begin{itemize}
+    \item $H^{1}(X_{\et},\mu_{n})=\{(\Lcal,\varphi):\varphi:\Lcal^{\otimes n}\xrightarrow{\sim}\Ocal_{X}\}$. 
+    \item $H^{1}(X_{\et},\GG_{m})\to H^{1}(X_{\et},\GG_{m})$ by $\Lcal\mapsto\Lcal^{\otimes n}$. 
+\end{itemize}
+We can consider related phenomena. 
+\begin{example}
+    $H^{1}(X,\mathrm{PGL}_{n})\not\cong H^{1}(X_{\et},\mathrm{PGL}_{n})$. If $P\to X$ is is a morphism for which there exists an \'{e}tale cover $\{U_{i}\to X\}_{i\in I}$ such that $P\times_{X}U_{i}\cong\PP^{n-1}_{U_{i}}$, we cannot concldue that $P$ is also Zariski-locally a projective space. It is possible that there exists no Zarksi open cover such that the fibers are locally projective spaces. 
+\end{example}
+\begin{example}
+    Let $\GG_{m}=P\to X=\GG_{m}$. The squaring map is \'{e}tale so we get a diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMSwyLCJcXEdHX3ttfSJdLFszLDIsIlxcR0dfe219PVgiXSxbMywxLCJcXEdHX3ttfT1QIl0sWzEsMSwiXFxHR197bX1cXHRpbWVzX3tcXEdHX3ttfX1cXEdHX3ttfSJdLFswLDAsIlxcR0dfe219XFxjb3Byb2RcXEdHX3ttfSJdLFsyLDFdLFswLDEsIigtKV57Mn0iLDJdLFszLDBdLFszLDJdLFs0LDIsIihcXGlkLCgtKV57LTF9KSIsMCx7ImN1cnZlIjotMn1dLFs0LDAsIihcXGlkLFxcaWQpIiwyLHsiY3VydmUiOjJ9XSxbNCwzLCJcXHNpbSJdXQ==
+    \begin{tikzcd}
+        {\GG_{m}\coprod\GG_{m}} \\
+        & {\GG_{m}\times_{\GG_{m}}\GG_{m}} && {\GG_{m}=P} \\
+        & {\GG_{m}} && {\GG_{m}=X}
+        \arrow["\sim", from=1-1, to=2-2]
+        \arrow["{(\id,(-)^{-1})}", curve={height=-12pt}, from=1-1, to=2-4]
+        \arrow["{(\id,\id)}"', curve={height=12pt}, from=1-1, to=3-2]
+        \arrow[from=2-2, to=2-4]
+        \arrow[from=2-2, to=3-2]
+        \arrow[from=2-4, to=3-4]
+        \arrow["{(-)^{2}}"', from=3-2, to=3-4]
+    \end{tikzcd}$$
+    which is once again \'{e}tale locally trivial, but not Zariski locally trivial as there does not exist a nonempty open subset $U\subseteq \GG_{m}$ for which $P_{U}=U\coprod U$. 
+\end{example}
+\begin{example}
+    Let $X$ be an elliptic curve over $\CC$ and $x_{0}\in X[2]$ a 2-torsion point. The map $x\mapsto x+x_{0}$ defines a $\ZZ/2\ZZ$ action on $X$. Define $Y$ the quotient of $X$ by this automorphism so $X\to Y$ is \'{e}tale of degree 2. But this map is not Zariski locally trivial. Every nonempty open subset of $U$ has preimage which is not a disjoint union as $X$ is irreducible. 
+\end{example}
+The technology of the \'{e}tale site also allows us to define an analogue of singular cohomology on schemes. 
+\begin{theorem}[Artin -- Comparison Isomorphism]\label{thm: Artin comparison isomorphism}
+    Let $X$ be a finite type smooth $\CC$-scheme. Let $X^{\mathsf{an}}$ the set $X(\CC)$ with the complex-analytic topology and $\Lambda$ a finite Abelian group. There is an isomorphism $H^{i}(X_{\et},\underline{\Lambda})\cong H^{i}(X^{\mathsf{an}},\Lambda)$ where on the left we are computing constant sheaf cohomology in the \'{e}tale site and on the right singular cohomology of the complex manifold with $\Lambda$-coefficients. 
+\end{theorem}
+The reason this holds true is that any \'{e}tale morphism $U\to X$ induces open maps $B_{i}\to X^{\mathsf{an}}$ in the analytic topology where $\bigcup B_{i}$ form an analytic cover of $U^{\mathsf{an}}$ as a complex manifold. 
+\begin{remark}
+    The comparison map $H^{1}(X_{\et},\GG_{m})\to H^{1}(X^{\mathsf{an}},\Ocal_{X}^{\times})$ beteween \'{e}tale line bundles and complex analytic ones is not in general an isomorphism, but is in the case where $X$ is projective by Serre's GAGA principle. 
+\end{remark}
+We conclude with a discussion of the \'{e}tale fundamental group. 
+\begin{definition}[Finite \'{E}tale Category]\label{def: finite etale category}
+    Let $X$ be a locally Noetherian scheme. Denote $\mathsf{FET}(X)$ to be the full category of $\Sch_{/X}$ spanned by finite \'{e}tale maps $Y\to X$. 
+\end{definition}
+This allows us to define the \'{e}tale fundamental group as follows. 
+\begin{definition}[\'{E}tale Fundamental Group]\label{def: etale fundamental group}
+    Let $X$ be a locally Noetherian scheme with $x\in X$ and $F:\mathsf{FET}(X)\to\Sets$ by $[Y\to X]\mapsto\Mor_{\Sch_{/X}}(\overline{x},Y)$ where $\overline{x}$ is a finite separable extension of $\kappa(x)$. The \'{e}tale fundamental group $\pi_{1}^{\et}(X,x)$ is defined to be the automorphism group of the functor $F$. 
+\end{definition}
+This does not agree in general with the toplogical fundamental group. 
+\begin{example}
+    Let $X$ be a smooth projective surface over $\CC$ and $\sigma\in\Aut(\CC)$. Consider the Cartesian square 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXntcXHNpZ21hfSJdLFswLDEsIlxcc3BlYyhcXENDKSJdLFsyLDEsIlxcc3BlYyhcXENDKSJdLFsyLDAsIlgiXSxbMSwyLCJcXHNpZ21hIiwyXSxbMywyXSxbMCwzXSxbMCwxXV0=
+    \begin{tikzcd}
+        {X^{\sigma}} && X \\
+        {\spec(\CC)} && {\spec(\CC)}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow["\sigma"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+    The \'{e}tale fundamental groups of $X,X^{\sigma}$ agree, but there is no induced map on the analytic manifolds that makes the map on fundamental groups an isomorphism. 
+\end{example}
