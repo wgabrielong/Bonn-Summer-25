@@ -78,16 +78,18 @@ We can make the analogous constructions for the structure sheaf, stalks, and der
     \end{tikzcd}$$
     need not commute, but does so for quasicoherent sheaves. 
 \end{remark}
+
+Let us consider more examples of \'{e}tale sheaves. 
+\begin{example}
+    Consider the sheaves $\GG_{m},\GG_{a},\mu_{n}$ as sheaves on the \'{e}tale site taking $[U\to X]$ to $\Gamma(U,\Ocal_{U}^{\times}), \Gamma(U,\Ocal_{U}), \{s\in\Ocal_{U}(U):s^{n}=1_{U}\}$. 
+\end{example}
+
 As a consequence of \Cref{rmk: commutes for QCoh}, we have the following comparison between the ordinary and the \'{e}tale Picard groups. 
 \begin{proposition}\label{prop: picard group comparison}
     Let $X$ be a locally Noetherian scheme. There is an isomorphism of Abelian groups $H^{1}(X,\Ocal_{X}^{\times})\cong H^{1}(X_{\et},\GG_{m})$. 
 \end{proposition}
 Though already on the level of second cohomology, there are schemes $X$ for which $H^{2}(X,\Ocal_{X}^{\times})\not\cong H^{2}(X_{\et},\GG_{m})$. 
 
-Let us consider more examples of \'{e}tale sheaves. 
-\begin{example}
-    Consider the sheaves $\GG_{m},\GG_{a},\mu_{n}$ as sheaves on the \'{e}tale site taking $[U\to X]$ to $\Gamma(U,\Ocal_{U}^{\times}), \Gamma(U,\Ocal_{U}), \{s\in\Ocal_{U}(U):s^{n}=1_{U}\}$. 
-\end{example}
 The \'{e}tale sheaves $\GG_{m},\mu_{n}$ fit together in the Kummer sequence. 
 \begin{proposition}[Kummer Sequence]\label{prop: Kummer sequence}
     Let $X$ be a locally Noetherian $k$ scheme and $n$ an integer not divisible by the characteristic of $k$. Then there is a short exact sequence of \'{e}tale sheaves in $X_{\et}$
@@ -151,7 +153,7 @@ This allows us to define the \'{e}tale fundamental group as follows.
 \begin{definition}[\'{E}tale Fundamental Group]\label{def: etale fundamental group}
     Let $X$ be a locally Noetherian scheme with $x\in X$ and $F:\mathsf{FET}(X)\to\Sets$ by $[Y\to X]\mapsto\Mor_{\Sch_{/X}}(\overline{x},Y)$ where $\overline{x}$ is a finite separable extension of $\kappa(x)$. The \'{e}tale fundamental group $\pi_{1}^{\et}(X,x)$ is defined to be the automorphism group of the functor $F$. 
 \end{definition}
-This does not agree in general with the toplogical fundamental group. 
+This does not agree in general with the topological fundamental group. 
 \begin{example}
     Let $X$ be a smooth projective surface over $\CC$ and $\sigma\in\Aut(\CC)$. Consider the Cartesian square 
     $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXntcXHNpZ21hfSJdLFswLDEsIlxcc3BlYyhcXENDKSJdLFsyLDEsIlxcc3BlYyhcXENDKSJdLFsyLDAsIlgiXSxbMSwyLCJcXHNpZ21hIiwyXSxbMywyXSxbMCwzXSxbMCwxXV0=
