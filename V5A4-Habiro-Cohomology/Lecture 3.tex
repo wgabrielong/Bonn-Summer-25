@@ -73,50 +73,117 @@ As in the case of $(\GG_{m})^{d}$ in \Cref{prop: algebra structures on RHom unit
 \begin{corollary}\label{corr: modules with q-connection are coordinate independent}
     Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with $q$-connection by $q\Mod_{R[[q-1]]}$. The $q$-de Rham complex $q\Omega_{(R,\square)/\QQ}$ computes $R\Hom_{q\Mod_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
 \end{corollary}
-\todo{Semi-final up to here.}
-The case of modified $q$-connections is more subtle as the convergence of the logarithm becomes problematic. 
-\begin{definition}[Logarithmic $q$-Connections]\label{def: logarithmic q-connection}
-    Let $R$ be a $\QQ$-algebra. A $h$-connection over $R[h]$ is an $R[h]$-module $M$ with a map $\widetilde{\nabla}_{M}:M\to M\otimes_{R}\Omega^{1}_{R/\QQ}$ satisfying $(\widetilde{\nabla}_{M})^{2}=0$ and 
+We seek to treat the case of modified $q$-connections expressing logarithmic connections in terms of ordinary ones, but the case of modified $q$-connections is more subtle as the convergence of the exponential becomes problematic. 
+
+To that end, we introduce the following notion. 
+\begin{definition}[$h$-Connections]\label{def: h-connection}
+    Let $R$ be a $\QQ$-algebra. A $h$-connection over $R[h]$ is an $R[h]$-module $M$ with a map $\widetilde{\nabla}_{M}:M\to M\otimes_{R}\Omega^{1}_{R/\QQ}$ satisfying $(\widetilde{\nabla}_{M})^{2}:M\to M\otimes_{R}\Omega^{2}_{R/\QQ}$ the zero map and 
     $$\widetilde{\nabla}_{M}(fm)=h\cdot\nabla(f)\cdot m+f\cdot\widetilde{\nabla}_{M}(m).$$
 \end{definition}
-Such constructions appear in Hodge and twistor theory under the name of Higgs fields. 
+\begin{remark}
+    Such constructions are known as $\lambda$-connections in the literature and appear in Hodge and twistor theory. Specialization at $h=1$ recovers the ordinary notion of a connection, while specialization at $h=0$ gives a Higgs field (cf. \cite[\S 2.3]{MorrowTsuji}). 
+\end{remark} 
 
 We would like to see an analogue of \Cref{prop: R-modules with ordinary connection}. 
 \begin{proposition}\label{prop: R-modules with modified connection}
     Let $(R,\square)$ be a smooth framed $\QQ$-algebra. There is an symmetric monoidal equivalence of categories 
-    $$\left\{\substack{(q-1)\text{-adically complete }R[[q-1]]\text{-modules} \\ \text{with modified }q\text{-connection s.t. }\widetilde{\nabla}^{q,\log}_{i,M}\text{'s are top. nil.}}\right\}\simeq\left\{\substack{h\text{-adically complete }R[[q-1]]\text{-modules} \\ \text{with }h\text{-connection s.t. }\widetilde{\nabla}_{M}\text{ is top. nil.}}\right\}$$
+    $$\left\{\substack{(q-1)\text{-adically complete }R[[q-1]]\text{-modules} \\ \text{with modified }q\text{-connection s.t. }\widetilde{\nabla}^{q,\log}_{i,M}\text{'s are top. nil.}}\right\}\simeq\left\{\substack{h\text{-adically complete }R[[h]]\text{-modules} \\ \text{with }h\text{-connection s.t. }\widetilde{\nabla}_{M}\text{ is top. nil.}}\right\}$$
     $$% https://q.uiver.app/#q=WzAsMixbMiwwLCJcXGxlZnQoTSwoXFx3aWRldGlsZGV7XFxuYWJsYX1fe2ksTX1ee1xcbG9nfSlfe2k9MX1ee2R9XFxyaWdodCkiXSxbMCwwLCJcXGxlZnQoTSwoXFx3aWRldGlsZGV7XFxuYWJsYX1ee3EsXFxsb2d9X3tpLE19KV97aT0xfV57ZH1cXHJpZ2h0KSJdLFswLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
     \begin{tikzcd}
         {\left(M,(\widetilde{\nabla}^{q,\log}_{i,M})_{i=1}^{d}\right)} && {\left(M,(\widetilde{\nabla}_{i,M}^{\log})_{i=1}^{d}\right)}
         \arrow[maps to, from=1-3, to=1-1]
     \end{tikzcd}$$
-    where $\widetilde{\nabla}^{q,\log}_{i,M}=\exp(\widetilde{\nabla}^{\log}_{i,M})-1$. 
+    where $h=(q-1)$ and $\widetilde{\nabla}^{q,\log}_{i,M}=\exp(\widetilde{\nabla}^{\log}_{i,M})-1$. Moreover, these categories are independent of choice of coordinates on $R[[q-1]]\cong R[[h]]$. 
 \end{proposition}
+\begin{proof}[Proof Outline]
+    Observing that the topological nilpotence of the operators imply convergence of the exponential, the proof outline of \Cref{prop: R-modules with ordinary connection} goes through verbatim. 
+\end{proof}
 \begin{remark}
-    The topological nilpotence of the endomorphisms ensure covergence of the exponential. 
+    This is likely the best construction one can hope for. It is unlikely that one can produce an equivalence on larger categories.  
 \end{remark}
 Once again, observing that the right hand side is coordinate independent, we get coordinate independence for modules with modified $q$-connections. 
 \begin{corollary}\label{corr: modules with modified q-connection are coordinate independent}
-    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with modified $q$-connection where the operators $\widetilde{\nabla}_{i,M}^{q,\log}$ are topologically nilpotent by $q\widetilde{\Mod}_{R[[q-1]]}$. The $q$-Hodge complex $q\Hdg_{(R,\square)/\QQ}$ computes $R\Hom_{q\widetilde{\Mod}_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
+    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with modified $q$-connection where the operators $\widetilde{\nabla}_{i,M}^{q,\log}$ are topologically nilpotent by $q\dash\widetilde{\Mod}_{R[[q-1]]}$. The $q$-Hodge complex $q\dash\Hdg_{(R,\square)/\QQ}$ given by 
+    $$R[[q-1]]\xrightarrow{(\widetilde{\nabla}_{i}^{q})_{i=1}^{d}}\bigoplus_{i=1}^{d}R[[q-1]]\longrightarrow\dots$$
+    computes $R\Hom_{q\dash\widetilde{\Mod}_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
 \end{corollary}
-Deferring the discussion of coordinate independence integrally -- which can be done by similarly isolating subcategories of modules with convergence conditions on their $q$-connections -- we seek to understand the preceding constructions not just in the $(q-1)$-adically complete case to the Habiro case, namely at all roots of unity. 
+\begin{remark}
+    The topological nilpotence condition is typically satisfied in practice. 
+\end{remark}
+\begin{remark}
+    The operators are topologically nilpotent on the symmetric monoidal unit as they are defined by mutliplying the ordinary operator by $(q-1)$. Moreover, the $\Ext$-terms classify extensions, which remain topologically nilpotent. Thus the $R\Hom(-,-)$ computation in this case remains unaffected by passage to the subcategory where the operations are topologically nilpotent. 
+\end{remark}
+Deferring the discussion of coordinate independence integrally -- which can be done by similarly isolating subcategories of modules with convergence conditions on their $q$-connections -- we seek to understand the preceding constructions of modules with (modified) $q$-connections not just in the $(q-1)$-adically complete but more generally in the Habiro case, namely at all roots of unity. 
 
-In the preceding discussion, $(q-1)$-adic completion allowed us to leverage \'{e}taleness of the map to produce a unique lift of the endomorphism on $\ZZ[q^{\pm}][\underline{T}^{\pm}]$ since $\gamma_{i}$ was infinitesmally close to the identity after $(q-1)$-adic completion. But noticing that $\zeta_{p}$ is $p$-adically close to 1, we can attempt a similar approach. 
-\begin{example}
+In the preceding discussion, $(q-1)$-adic completion allowed us to leverage \'{e}taleness of the map to produce a unique lift of the endomorphism on $\ZZ[q^{\pm}][\underline{T}^{\pm}]$ since $\gamma_{i}$ was infinitesmally close to the identity after $(q-1)$-adic completion. But noticing that $\zeta_{p}$ is $p$-adically close to 1, we can attempt a similar approach using $(q-\zeta_{p})$-adic completion. 
+\begin{example}\label{ex: not stable under aut}
     Let $(R,\square)$ be a framed $\ZZ$-algebra with $\square:\spec(R)\to\GG_{m}$. This gives a map 
     $$\ZZ[T^{\pm}]_{p}^{\wedge}[[q-1]]\longrightarrow R_{p}^{\wedge}[[q-1]]$$
     which on specialization to $q=\zeta_{p}$ yields 
     $$\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle\longrightarrow R_{p}^{\wedge}[\zeta_{p}]$$
-    where using that $\zeta_{p}$ is close to 1 $p$-adically, $\gamma:\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle\to\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle$ by $T\mapsto qT$ lifts uniquely to an endomorphism $\gamma_{R}:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$. However, $R[\zeta_{p}]\hookrightarrow R^{\wedge}_{p}[\zeta_{p}]$ may not have image stable under $\gamma_{R}$, for example, in the case of $\GG_{m}\setminus\{1\}$.  
+    where using that $\zeta_{p}$ is close to 1 $p$-adically, $\gamma:\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle\to\ZZ_{p}[\zeta_{p}]\langle T^{\pm}\rangle$ by $T\mapsto \zeta_{p}T$ lifts uniquely to an endomorphism $\gamma_{R}:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$. However, $R[\zeta_{p}]\hookrightarrow R^{\wedge}_{p}[\zeta_{p}]$ may not have image stable under $\gamma_{R}$, for example, $\GG_{m}\setminus\{1\}$ is not stable under multiplication by $\zeta_{p}$. 
 \end{example}
-So as seen in the example above, we will require an alternative description. For this, we produce an endomorphism of $R_{p}^{\wedge}[\zeta_{p}]$ that does globalize using the Frobenius map $\varphi:\ZZ[T^{\pm}]\to\ZZ[T^{\pm}]$ by $T\mapsto T^{p}$ lifts uniquely to $R^{\wedge}_{p}$ and reduces to the Frobenius map on $R/(p)$. This produces an isomorphism
-$$\ZZ[T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R_{p}^{\wedge}\longrightarrow R_{p}^{\wedge}$$ by $T^{1/p}\mapsto T$ and thus 
-$$\ZZ[\zeta_{p},T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R^{\wedge}_{p}\longrightarrow R_{p}^{\wedge}[\zeta_{p}]$$
-by the Frobenius once more. The map $\gamma:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$ is induced by the map $\id_{R^{\wedge}_{p}}\otimes(T^{1/p}\mapsto \zeta_{p}T^{1/p})$ but $\ZZ[\zeta_{p},T^{\pm 1/p}]\otimes_{\ZZ[T^{\pm}]}R^{\wedge}_{p}$ contains $R\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p},T^{\pm 1/p}]$ as a subring, and since $\gamma$ is the identity on $R$, $\gamma$ is stable as an endomorphism. 
-\begin{definition}
-    Let $m\geq 1$. $\ZZ[\zeta_{m},\underline{T}^{\pm}]$-algebra $R^{(m)}=R\otimes_{\ZZ[\underline{T}^{\pm}]}\ZZ[\zeta_{m},\underline{T}^{\pm 1/m}]$ with algebra structure given by $T_{i}\mapsto T_{i}^{1/m}$ with action by $\gamma^{(m)}_{i}=\id_{R}\otimes(T_{i}\mapsto \zeta_{m}T_{i})$ lifting $T_{i}\mapsto\zeta_{m}T_{i}$ on $\ZZ[\zeta_{m},\underline{T}^{\pm}]$. 
+So as seen in the example above, we will require an alternative description. For this, we produce an endomorphism of $R_{p}^{\wedge}[\zeta_{p}]$ that does globalize to all of $R$ using the Frobenius. 
+\begin{example}\label{ex: endomorphism on Rp}
+    The Frobenius map $\varphi:\ZZ[T^{\pm}]\to\ZZ[T^{\pm}]$ by $T\mapsto T^{p}$ lifts uniquely to $R_{p}^{\wedge}$ and reduces to the $p$th power map $\varphi_{R/(p)}:R/(p)\to R/(p)$ modulo $(p)$. Via the Frobenius, we get an isomorphism  
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXntcXHdlZGdlfV97cH1cXG90aW1lc197XFxaWltUXntcXHBtfV19XFxaWltUXntcXHBtMS9wfV0iXSxbMiwwLCJSXntcXHdlZGdlfV97cH0iXSxbMCwxLCJUXnsxL3B9Il0sWzIsMSwiVCJdLFswLDEsIlxcdmFycGhpIl0sWzIsMywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+    \begin{tikzcd}
+        {R^{\wedge}_{p}\otimes_{\ZZ[T^{\pm}]}\ZZ[T^{\pm1/p}]} && {R^{\wedge}_{p}} \\
+        {T^{1/p}} && T
+        \arrow["\varphi", from=1-1, to=1-3]
+        \arrow[maps to, from=2-1, to=2-3]
+    \end{tikzcd}$$
+    since after $p$-completion $R_{p}^{\wedge}$ is finite free over itself -- $R_{p}^{\wedge}$ contains itself as a subring where ``only $p$-powers are allowed.''
+\end{example}
+\begin{example}\label{ex: endomorphism Rp with root of unity}
+    Building on \Cref{ex: endomorphism on Rp}, we similarly have an isomorphism 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXntcXHdlZGdlfV97cH1cXG90aW1lc197XFxaWltUXntcXHBtfV19XFxaWltcXHpldGFfe3B9XVtUXntcXHBtMS9wfV0iXSxbMiwwLCJSXntcXHdlZGdlfV97cH1bXFx6ZXRhX3twfV0iXSxbMCwxLCJUXnsxL3B9Il0sWzIsMSwiVCJdLFswLDEsIlxcdmFycGhpIl0sWzIsMywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+    \begin{tikzcd}
+        {R^{\wedge}_{p}\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p}][T^{\pm1/p}]} && {R^{\wedge}_{p}[\zeta_{p}]} \\
+        {T^{1/p}} && T
+        \arrow["\varphi", from=1-1, to=1-3]
+        \arrow[maps to, from=2-1, to=2-3]
+    \end{tikzcd}$$
+    where the automorphism $\gamma_{R_{p}^{\wedge}[\zeta_{p}]}:R_{p}^{\wedge}[\zeta_{p}]\to R_{p}^{\wedge}[\zeta_{p}]$ by $T\mapsto\zeta_{p}T$ lifts to the automorphism $\id_{R_{p}^{\wedge}}\otimes[T^{1/p}\mapsto\zeta_{p}T^{1/p}]$ on $R^{\wedge}_{p}\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p}][T^{\pm1/p}]$. Observe that since $T\in R^{\wedge}_{p}\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p}][T^{\pm1/p}]$ is sent to $T^{p}\in R_{p}^{\wedge}[\zeta_{p}]$, it is fixed by $\gamma_{R_{p}^{\wedge}[\zeta_{p}]}$ as $\gamma_{R_{p}^{\wedge}[\zeta_{p}]}(T^{p})=(\zeta_{p}T)^{p}=T^{p}$. Evidently we have an inclusion into the $p$-completion
+    $$R\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p}][T^{\pm 1/p}]\hookrightarrow R^{\wedge}_{p}\otimes_{\ZZ[T^{\pm}]}\ZZ[\zeta_{p}][T^{\pm1/p}]$$
+    but since $\gamma_{R_{p}^{\wedge}[\zeta_{p}]}$ is given by the identity on the $R^{\wedge}_{p}$ factor, it is stable under the automorphism, resolving the issue posed at the end of \Cref{ex: not stable under aut}. 
+\end{example}
+This motivates the following definiton. 
+\newpage
+\begin{definition}[Root of Unity Algebra]\label{def: root of unity algebra}\marginpar{The notation here is that of the author, not of the instructor. }
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra and $m\geq 1$. Define the $m$th root of unity algebra $R^{(m)}$ to be the \'{e}tale $\ZZ[\zeta_{m},\underline{T}^{\pm}]$-algebra 
+    $$R^{(m)}=R\otimes_{\ZZ[\underline{T}^{\pm}]}\ZZ[\zeta_{m}][\underline{T}^{\pm 1/m}]$$ 
+    where $\ZZ[\zeta_{m},\underline{T}^{\pm}]$-algebra structure on $R^{(m)}$ is by $T_{i}\mapsto T_{i}^{1/m}$ and equipped with the automorphism $\gamma^{(m)}_{i}=\id_{R}\otimes[T_{i}\mapsto \zeta_{m}T_{i}]$ lifting $T_{i}\mapsto\zeta_{m}T_{i}$ on $\ZZ[\zeta_{m},\underline{T}^{\pm}]$. 
 \end{definition}
+This gives a well-defined construction. 
 \begin{example}
-    Let $X=\GG_{m}\setminus\{1\}$ and $R=\ZZ[T^{\pm},\frac{1}{1-T}]$. Then $R^{(m)}=\ZZ[T^{\pm},\frac{1}{1-T^{m}}]$ with the structure of a $\ZZ[\zeta_{m},T^{\pm}]$-algebra by $T\mapsto T^{1/m}$.
+    Let $X=\GG_{m}\setminus\{1\}=\spec(\ZZ[T^{\pm},\frac{1}{1-T}])$. The associated root of unity algebra $R^{(m)}$ is given by $\ZZ[\zeta_{m}][T^{\pm},\frac{1}{1-T^{m}}]$ and the Zariski spectrum is visibly stable under $T\mapsto \zeta_{m}T$. 
 \end{example}
-By uniqueness of deformation for \'{e}tale algebras, we can deform from $q=\zeta_{m}$ to the completion at $\Phi_{m}(q)$, the $m$th cyclotomic polynomial, yielding a (formally) \'{e}tale $\ZZ[q,\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}$-algebra $R_{m}$ with lifts $\gamma_{i,m}:R_{m}\to R_{m}$. So for any $m$ we can define the categories and complexes as before. While only defined at each $m$ separately, we can use the fact that $\zeta_{m}$ and $\zeta_{pm}$ agree in characteristic $p$ to glue the construction globally using the Frobenius, yielding a complex over the Habiro ring $\Hcal_{(R,\square)}$. 
+By unique deformations of \'{e}tale algebras, the construction of \Cref{def: root of unity algebra} extends from the specialization at $q=\zeta_{m}$ to $\Phi_{m}(q)$-adic completion, where $\Phi_{m}(q)$ is the $m$th cyclotomic polynomial. More formally: 
+\begin{definition}[Completed Root of Unity Algebra]\label{def: completed root of unity algebra}\marginpar{Once again, author's notation.}
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra and $m\geq 1$. Define the completed $m$th root of unity algebra $R_{m}$ to be the formally \'{e}tale $\ZZ[q^{\pm}][\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}$-algebra $(R^{(m)}[q^{\pm}])_{\Phi_{m}(q)}^{\wedge}$ and equipped with the automorphism $\gamma_{i,R_{m}}:R_{m}\to R_{m}$ lifting $\gamma_{i}:\ZZ[q^{\pm}][\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}\to\ZZ[q^{\pm}][\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}$. 
+\end{definition}
+\begin{remark}
+    The lifting diagram is given by 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFpaW3Fee1xccG19XVtcXHVuZGVybGluZXtUfV57XFxwbX1dXntcXHdlZGdlfV97XFxQaGlfe219KHEpfSJdLFsyLDAsIlJfe219Il0sWzIsMSwiUi4iXSxbMCwxLCJSX3ttfSJdLFswLDEsIlxcc3F1YXJlXFxjaXJjXFxnYW1tYV97aX0iXSxbMSwyLCJcXHBtb2R7XFxQaGlfe219KHEpfSJdLFswLDMsIlxcc3F1YXJlIiwyXSxbMywyLCJcXHBtb2R7XFxQaGlfe219KHEpfSIsMl0sWzMsMSwiXFxleGlzdHMhXFxnYW1tYV97aSxSX3ttfX0iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkb3R0ZWQifX19XV0=
+    \begin{tikzcd}
+        {\ZZ[q^{\pm}][\underline{T}^{\pm}]^{\wedge}_{\Phi_{m}(q)}} && {R_{m}} \\
+        {R_{m}} && {R.}
+        \arrow["{\square\circ\gamma_{i}}", from=1-1, to=1-3]
+        \arrow["\square"', from=1-1, to=2-1]
+        \arrow["{\pmod{\Phi_{m}(q)}}", from=1-3, to=2-3]
+        \arrow["{\exists!\gamma_{i,R_{m}}}"{description}, dotted, from=2-1, to=1-3]
+        \arrow["{\pmod{\Phi_{m}(q)}}"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+\end{remark}
+Having produced these \'{e}tale algebras $R_{m}$ and their endomorphisms $\gamma_{i,R_{m}}$ for each root of unity $\zeta_{m}$, we can similarly define derivatives and modules with (modified) connections over these rings. \emph{A priori}, these give distinct constructions for each $m\geq0$, but we can seek to combine them using a ``Habiro ring''-like construction in a by gluing where roots of unity meet in positive characteristic. In particular, $\zeta_{pm}=\zeta_{m}$ in characteristic $p$, so the Frobenius gives an isomorphism 
+\footnotesize
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXnsocG0pfS8ocClcXGNvbmcgUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe3BtfSxcXHVuZGVybGluZXtUfV57XFxwbSAxL3BtfVxccmlnaHRdIl0sWzIsMCwiUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe219LFRee1xccG0gMS9tfVxccmlnaHRdXFxjb25nIFJeeyhtKX0vKHApIl0sWzAsMSwiVF57MS9wbX0iXSxbMiwxLCJUXnsxL219Il0sWzAsMV0sWzIsMywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+\begin{tikzcd}
+	{R^{(pm)}/(p)\cong R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{pm},\underline{T}^{\pm 1/pm}\right]} && {R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{m},T^{\pm 1/m}\right]\cong R^{(m)}/(p)} \\
+	{T^{1/pm}} && {T^{1/m}.}
+	\arrow[from=1-1, to=1-3]
+	\arrow[maps to, from=2-1, to=2-3]
+\end{tikzcd}$$
+\normalsize
+Moreover, these constructions deform uniquely over the $\Phi_{m}(q)$-adic completions allowing us to define the Habiro ring of a framing and repeat the process to define categories of modules with (modified) $q$-connections over the Habiro ring of a framing.\todo{Rough definitions of HR of etale map and HR of torus were given. Add to it following the next lecture.}
