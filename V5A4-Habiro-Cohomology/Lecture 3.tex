@@ -1,5 +1,5 @@
 \section{Lecture 3 -- 9th May 2025}\label{sec: lecture 3}
-In \Cref{sec: lecture 2}, we constructed the $q$-de Rham and $q$-Hodge complexes for $\A^{d}_{\ZZ},(\GG_{m})^{d}$ using the $q$-derivatives $\nabla_{i}^{q}$ and modifited $q$-derivatives $\widetilde{\nabla}_{i}^{q}$, respectively. 
+In Lecture \ref{sec: lecture 2}, we constructed the $q$-de Rham and $q$-Hodge complexes for $\A^{d}_{\ZZ},(\GG_{m})^{d}$ using the $q$-derivatives $\nabla_{i}^{q}$ and modified $q$-derivatives $\widetilde{\nabla}_{i}^{q}$, respectively. 
 
 We now consider the construction of the $q$-de Rham and $q$-Hodge complexes more generally in the case where the $T_{i}$ are invertible and using the logarithmic $q$-derivative $\nabla_{i}^{q,\log}=T_{i}\nabla_{i}^{q}$. We first define these in the case $R=\ZZ[q^{\pm}][\underline{T}^{\pm}]=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. 
 \begin{definition}[Logarithmic $q$-Derivative]\label{def: logarithmic q-derivative}
@@ -41,7 +41,7 @@ More formally, $\square:\ZZ[\underline{T}^{\pm}]\to R$ is \'{e}tale, and \'{e}ta
     See \cite[\href{https://stacks.math.columbia.edu/tag/039R}{Tag 039R}]{stacks-project}. 
 \end{proof}
 \begin{theorem}[Bhatt-Scholze, {\cite[\S 16]{PrismsPrismatic}}; Wagner, {\cite[Thm. 1.5]{WagnerQWittQHodge}}]
-    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The complex $q\Omega_{(R,\square)/\ZZ[[q-1]]}$ given by 
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The $q$-de Rham complex $q\dash\Omega_{(R,\square)/\ZZ[[q-1]]}^{\bullet}$ given by 
     $$R[[q-1]]\xrightarrow{(\nabla_{i}^{q})_{i=1}^{d}}\bigoplus_{i=1}^{d}R[[q-1]]\longrightarrow\dots$$
     as an object of $\Dscr(\ZZ[[q-1]])$ is canonically independent of the choice of coordinates. 
 \end{theorem}
@@ -71,7 +71,7 @@ Such coordinate independence is somewhat easy to deduce in the case where $R$ is
 \end{proof}
 As in the case of $(\GG_{m})^{d}$ in \Cref{prop: algebra structures on RHom unit Ad and Gm} (i), we have in this case the following result. 
 \begin{corollary}\label{corr: modules with q-connection are coordinate independent}
-    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with $q$-connection by $q\Mod_{R[[q-1]]}$. The $q$-de Rham complex $q\Omega_{(R,\square)/\QQ}$ computes $R\Hom_{q\Mod_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
+    Let $(R,\square)$ be a framed $\QQ$-algebra and denote the category of $(q-1)$-adically complete $R[[q-1]]$-modules with $q$-connection by $q\dash\Mod_{R[[q-1]]}$. The $q$-de Rham complex $q\dash\Omega_{(R,\square)/\QQ}^{\bullet}$ computes $R\Hom_{q\dash\Mod_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
 \end{corollary}
 We seek to treat the case of modified $q$-connections expressing logarithmic connections in terms of ordinary ones, but the case of modified $q$-connections is more subtle as the convergence of the exponential becomes problematic. 
 
@@ -99,7 +99,7 @@ We would like to see an analogue of \Cref{prop: R-modules with ordinary connecti
     Observing that the topological nilpotence of the operators imply convergence of the exponential, the proof outline of \Cref{prop: R-modules with ordinary connection} goes through verbatim. 
 \end{proof}
 \begin{remark}
-    This is likely the best construction one can hope for. It is unlikely that one can produce an equivalence on larger categories.  
+    The topological nilpotence condition is typically satisfied in practice. Regardless, this is likely the best construction one can hope for -- it is unlikely that one can produce an equivalence on larger categories.  
 \end{remark}
 Once again, observing that the right hand side is coordinate independent, we get coordinate independence for modules with modified $q$-connections. 
 \begin{corollary}\label{corr: modules with modified q-connection are coordinate independent}
@@ -107,9 +107,6 @@ Once again, observing that the right hand side is coordinate independent, we get
     $$R[[q-1]]\xrightarrow{(\widetilde{\nabla}_{i}^{q})_{i=1}^{d}}\bigoplus_{i=1}^{d}R[[q-1]]\longrightarrow\dots$$
     computes $R\Hom_{q\dash\widetilde{\Mod}_{R[[q-1]]}}(\mathbbm{1},\mathbbm{1})$ and is canonically independent of coordinates. 
 \end{corollary}
-\begin{remark}
-    The topological nilpotence condition is typically satisfied in practice. 
-\end{remark}
 \begin{remark}
     The operators are topologically nilpotent on the symmetric monoidal unit as they are defined by mutliplying the ordinary operator by $(q-1)$. Moreover, the $\Ext$-terms classify extensions, which remain topologically nilpotent. Thus the $R\Hom(-,-)$ computation in this case remains unaffected by passage to the subcategory where the operations are topologically nilpotent. 
 \end{remark}
