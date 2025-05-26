@@ -174,13 +174,18 @@ By unique deformations of \'{e}tale algebras, the construction of \Cref{def: roo
     \end{tikzcd}$$
 \end{remark}
 Having produced these \'{e}tale algebras $R_{m}$ and their endomorphisms $\gamma_{i,R_{m}}$ for each root of unity $\zeta_{m}$, we can similarly define derivatives and modules with (modified) connections over these rings. \emph{A priori}, these give distinct constructions for each $m\geq0$, but we can seek to combine them using a ``Habiro ring''-like construction in a by gluing where roots of unity meet in positive characteristic. In particular, $\zeta_{pm}=\zeta_{m}$ in characteristic $p$, so the Frobenius gives an isomorphism 
-\footnotesize
-$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXnsocG0pfS8ocClcXGNvbmcgUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe3BtfSxcXHVuZGVybGluZXtUfV57XFxwbSAxL3BtfVxccmlnaHRdIl0sWzIsMCwiUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe219LFRee1xccG0gMS9tfVxccmlnaHRdXFxjb25nIFJeeyhtKX0vKHApIl0sWzAsMSwiVF57MS9wbX0iXSxbMiwxLCJUXnsxL219Il0sWzAsMV0sWzIsMywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
-\begin{tikzcd}
-	{R^{(pm)}/(p)\cong R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{pm},\underline{T}^{\pm 1/pm}\right]} && {R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{m},T^{\pm 1/m}\right]\cong R^{(m)}/(p)} \\
-	{T^{1/pm}} && {T^{1/m}.}
-	\arrow[from=1-1, to=1-3]
-	\arrow[maps to, from=2-1, to=2-3]
-\end{tikzcd}$$
-\normalsize
-Moreover, these constructions deform uniquely over the $\Phi_{m}(q)$-adic completions allowing us to define the Habiro ring of a framing and repeat the process to define categories of modules with (modified) $q$-connections over the Habiro ring of a framing.\todo{Rough definitions of HR of etale map and HR of torus were given. Add to it following the next lecture.}
+\begin{equation}\label{eqn: gluing map Frobenius}
+    \tiny
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJSXnsocG0pfS8ocClcXGNvbmcgUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe3BtfSxcXHVuZGVybGluZXtUfV57XFxwbSAxL3BtfVxccmlnaHRdIl0sWzIsMCwiUi8ocClcXG90aW1lc197XFxGRl97cH1bXFx1bmRlcmxpbmV7VH1ee1xccG19XX1cXEZGX3twfVxcbGVmdFtcXHpldGFfe219LFRee1xccG0gMS9tfVxccmlnaHRdXFxjb25nIFJeeyhtKX0vKHApIl0sWzAsMSwiVF57MS9wbX0iXSxbMiwxLCJUXnsxL219Il0sWzAsMV0sWzIsMywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+    \begin{tikzcd}
+        {R^{(pm)}/(p)\cong R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{pm},\underline{T}^{\pm 1/pm}\right]} && {R/(p)\otimes_{\FF_{p}[\underline{T}^{\pm}]}\FF_{p}\left[\zeta_{m},T^{\pm 1/m}\right]\cong R^{(m)}/(p)} \\
+        {T^{1/pm}} && {T^{1/m}.}
+        \arrow[from=1-1, to=1-3]
+        \arrow[maps to, from=2-1, to=2-3]
+    \end{tikzcd}
+    \normalsize
+\end{equation}
+Moreover, these constructions deform uniquely over the $\Phi_{m}(q)$-adic completions allowing us to define the Habiro ring of a framing and repeat the process to define categories of modules with (modified) $q$-connections over the Habiro ring of a framing $\Hcal_{(R,\square)}$ which is an algebra over the Habiro ring of the torus $\Hcal_{\ZZ[\underline{T}^{\pm}]}$, where we have defined the latter to be as follows. 
+\begin{definition}[Habiro Ring of $(\GG_{m})^{d}$]\label{def: Habiro ring of base}
+    The Habiro ring of $(\GG_{m})^{d}$ is given by the completion $\Hcal_{\ZZ[\underline{T}^{\pm}]}=\lim_{n\in\NN}\ZZ[q^{\pm}][\underline{T}^{\pm}]^{\wedge}_{\Phi_{n}(q)}$ where $\Phi_{n}(q)$ is the $n$th cyclotomic polynomial. 
+\end{definition}
