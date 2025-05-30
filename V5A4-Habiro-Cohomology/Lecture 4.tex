@@ -1,13 +1,13 @@
 \section{Lecture 4 -- 23rd May 2025}\label{sec: lecture 4}
 Using the gluing procedure of (\ref{eqn: gluing map Frobenius}) gives a procedure to correcting of the overspecification of prescribing a local algebra $R^{(m)}$ for each positive integer $m$ in characteristic $p$ -- that is, gluing $R^{(m)},R^{(m')}$ where $m_{0}$ is coprime to $p$ and $m=m_{0}p^{a},m'=m_{0}p^{b}$ using the Frobenius. 
-\begin{definition}[Habiro Ring of $(R,\square)$]\label{def: Habiro ring of framing}\todo{PS writes this as a proposition, but we didn't formally define the Habiro ring of the framing before. So isn't this just a definition? The discussion of finite index stuff seems to indicate that $\Hcal_{(R,\square)}$ can similarly be defined as the limit over completions of cyclotomic polynomials?}
+\begin{proposition}\label{prop: explicit elements of HR}
     Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The Habiro ring $\Hcal_{(R,\square)}$ of $(R,\square)$ is given by 
     {\footnotesize
     \begin{equation}\label{eqn: Habiro ring of framed algebra}
         \Hcal_{(R,\square)}=\left\{(f_{m})_{m\geq 1}\in\prod_{m\geq 1}R^{(m)}[[q-\zeta_{m}]]:\substack{\forall m\in\NN,\text{ }\forall p\text{ prime} \\\varphi_{p}(f_{pm})=f_{m}\in (R^{(m)})_{p}^{\wedge}[[q-\zeta_{m}]]\cong (R^{(pm)})_{p}^{\wedge}[[q-\zeta_{pm}]]}\right\}
     \end{equation}
     \normalsize}where $\varphi_{p}$ lifts the Frobenius on $R^{(m)}/(p)$ by raising each variable to the $p$-th power and fixes $q$ and $\zeta_{m}$. 
-\end{definition}
+\end{proposition}
 \begin{remark}
     There is an obvious map from the Habiro ring of the torus \Cref{def: Habiro ring of base} $\Hcal_{\ZZ[\underline{T}^{\pm}]}\to\Hcal_{(R,\square)}$ endowing the Habiro ring of $(R,\square)$ with the structure of a $\Hcal_{\ZZ[\underline{T}^{\pm}]}$-algebra.  
 \end{remark}
@@ -19,7 +19,7 @@ Let us consider some explicit elements of the Habiro ring.
     $$\left[\substack{k_{1}+\dots+k_{d} \\ k_{1}\text{ }\dots\text{ }k_{d}}\right]_{q}=\frac{(q;q)_{k_{1}+\dots+k_{d}}}{(q;q)_{k_{1}}\dots(q;q)_{k_{d}}}$$
     is the $q$-deformation of the multinomial $\binom{k_{1}+\dots+k_{d}}{k_{1}\dots k_{d}}$. More generally, explicit elements of the Habiro ring can be constructed by considering $q$-deformations of rational functions (vis. \Cref{ex: legendre family} and surrounding discussion). 
 \end{example}
-Returning to a discussion of Habiro cohomology of a smooth $\ZZ$-algebra with framing $\square:\spec(R)\to(\GG_{m})^{d}$, we recall that there are lifts of the automorphism $\gamma_{i}$ to $\Hcal_{(R,\square)}$\todo{Is this just using that any element of $\Hcal_{(R,\square)}$ is an element of some $R^{(m)}$ and using $\gamma_{i}^{(m)}$ of \Cref{def: root of unity algebra} and that this works because it is compatible with Frobenii?}. This produces a $\ZZ^{d}$-action on $\Hcal_{(R,\square)}$, and we can define Habiro-Hodge cohomology to be the group cohomology of the action of $\ZZ^{d}$ on $\Hcal_{(R,\square)}$. 
+Returning to a discussion of Habiro cohomology of a smooth $\ZZ$-algebra with framing $\square:\spec(R)\to(\GG_{m})^{d}$, we recall that there are lifts of the automorphism $\gamma_{i}$ to $\Hcal_{(R,\square)}$: more explicitly, for a section $(f_{m})_{m\geq0}$, the action $\gamma_{i}$ acts by $(f_{m})_{m\geq1}\mapsto (\gamma_{i}^{(m)}(f_{m}))_{m\geq1}$ where $\gamma_{i}^{(m)}$ is the automorphism given in \Cref{def: root of unity algebra}. This produces a $\ZZ^{d}$-action on $\Hcal_{(R,\square)}$, and we can define Habiro-Hodge cohomology to be the group cohomology of the action of $\ZZ^{d}$ on $\Hcal_{(R,\square)}$. 
 \begin{definition}[$q$-Habiro-Hodge Cohomology]\label{def: q-Habiro-Hodge cohomology}
     Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The $q$-Habiro-Hodge cohomology is the cohomology of the complex $q\dash\HHdg_{(R,\square)}$ given by 
     $$\Hcal_{(R,\square)}\xrightarrow{(\gamma_{i}-1)_{i=1}^{d}}\bigoplus_{i=1}^{d}\Hcal_{(R,\square)}\longrightarrow\dots.$$
