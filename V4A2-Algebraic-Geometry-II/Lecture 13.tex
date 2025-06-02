@@ -1,0 +1,56 @@
+\section{Lecture 13 -- 26th May 2025 -- Interlude: On Algebraic Varieties}\label{sec: lecture 13}
+We consider the more classicial theory of algebraic varieties with the theory of schemes in hand. For this lecture, we fix an algebraically closed field $k=\overline{k}$ of characteristic zero. 
+\begin{definition}[Affine Space]\label{def: affine space}
+    Affine space $\A^{n}_{k}$ is the set underlying the $k$-vector space of dimension $n$ endowed with the Zariski topology where sets of the form $V(\afrak)=\{(x_{1},\dots,x_{n})\in\A^{n}_{k}:f(x_{1},\dots,x_{n})=0,\forall f\in \afrak\}$ for ideals $\afrak$ are taken to be closed. 
+\end{definition}
+We can similarly define projective space. 
+\begin{definition}[Projective Space]\label{def: projective space}
+    Projective space $\PP^{n}_{k}$ is the set underlying the projectivization of $k^{n+1}\setminus\{0\}$ endowed with the Zariski topology where sets of the form $V_{+}(\afrak)=\{(x_{0},\dots,x_{n})\in\A^{n}_{k}:f(x_{0},\dots,x_{n})=0,\forall f\in \afrak\}$ for homogeneous ideal s$\afrak$ are taken to be closed. 
+\end{definition}
+\begin{remark}
+    One easily verifies that \Cref{def: affine space,def: projective space} satisfies the axioms of the closed sets of a topological space.
+\end{remark}
+This naturally recovers algebraic sets as those closed sets of affine and projective space with the Zariski topology. 
+\begin{definition}[Algebraic Set]\label{def: algebraic set}
+    A set $X\subseteq\A^{n}_{k}$ (resp. $X\subseteq\PP^{n}_{k}$) is an affine (resp. projective) algebraic set if it is closed in the Zariski topology of $\A^{n}_{k}$ (resp. $\PP^{n}_{k}$). 
+\end{definition}
+Varieties arise as a specific class of algebraic sets. 
+\begin{definition}[Algebraic Variety]\label{def: algebraic variety}
+    An algebraic variety is an algebraic set whose underlying topological space is irreducible. 
+\end{definition}
+We can define quasiaffine and quasiprojective varieties as open subsets of affine and projective varieties, respectively. 
+\begin{definition}[Quasiaffine Variety]\label{def: quasiaffine variety}
+    A quasiaffine variety is an open subset of an affine variety. 
+\end{definition}
+\begin{definition}[Quasiprojective Variety]\label{def: quasiprojective variety}
+    A quasiprojective variety is an open subset of a projective variety. 
+\end{definition}
+Affine and projective varieties are themselves quasiaffine and quasiprojective, respectively, and quasiaffine varieties are quaisprojective by the open embedding of $\A^{n}_{k}\to\PP^{n}_{k}$. 
+
+We can consider the category of all varieties. 
+\begin{definition}[Category of Varieties]\label{def: varieties}
+    The category $\Var_{k}$ has objects quasiprojective varieties and morphisms given by regular functions -- those functions that are locally rational. 
+\end{definition}
+By the preceding discussion, $\Var_{k}$ contains affine, projective, and quasiaffine varieties. 
+\begin{theorem}\label{thm: fully faithful embedding}
+    Let $k$ be an algebraically closed field. There exists a fully fatihful embedding from $k$-varieties $\Var_{k}$ to $k$-schemes $\Sch_{k}$
+    $$t:\Var_{k}\longrightarrow\Sch_{k}.$$
+\end{theorem}
+\begin{proof}[Outline of Proof]
+    For a $k$-variety $X$, let $t(X)$ be its set of irreducible components endowed with the topology that sets of the form $t(Z)$ are closed for $Z\subseteq X$ closed. By reduction to the case of affine varieties, the map $t$ takes $X$ to $\spec(A(X))$ with inverse (on the level of topological spaces) given by taking $\mathrm{mSpec}(\Gamma(t(X),\Ocal_{t(X)}))$. The structure sheaf is induced by the obvious inclusion $\mathrm{mSpec}(A(X))\to\spec(A(X))$ for $A$ the coordinate ring of $X$ which can be seen to be fully faithful. 
+\end{proof}
+We can also define abstract varieties and consider its embedding into $k$-schemes. 
+\begin{definition}[Abstract Varieties]\label{def: abstract varieties}
+    The category of abstract variteies $\AbsVar_{k}$ is the full category of $\Sch_{k}$ spanned by integral separated $k$-schemes of finite type. 
+\end{definition}
+\Cref{thm: fully faithful embedding} implies that there is a fully faithful embedding $\Var_{k}\to\AbsVar_{k}$ but this is not essentially surjective, with a counterexample given by Hironaka. 
+
+We now consider function fields of varieties. 
+\begin{definition}[Function Field]\label{def: function field}
+    Let $X$ be an algebraic variety. Its function field $K(X)$ is the field of equivalence classes of rational functions which agree on a nonempty open subset of their intersection. 
+\end{definition}
+The function field of a variety is equivalent to the function field of $t(X)$. 
+\begin{definition}[Birational]\label{def: birational}
+    Two algebraic varieties $X,Y$ are isomorphic if $K(X)\cong  K(Y)$ as $k$-algebras. 
+\end{definition}
+This in turn allows us to define birationality of integral separated finite type $k$-schemes. 
