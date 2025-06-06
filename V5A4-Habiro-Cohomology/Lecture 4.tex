@@ -1,5 +1,12 @@
 \section{Lecture 4 -- 23rd May 2025}\label{sec: lecture 4}
-Using the gluing procedure of (\ref{eqn: gluing map Frobenius}) gives a procedure to correcting of the overspecification of prescribing a local algebra $R^{(m)}$ for each positive integer $m$ in characteristic $p$ -- that is, gluing $R^{(m)},R^{(m')}$ where $m_{0}$ is coprime to $p$ and $m=m_{0}p^{a},m'=m_{0}p^{b}$ using the Frobenius. 
+Using the gluing procedure of (\ref{eqn: gluing map Frobenius}) allows us to correct for the overspecification of prescribing a local algebra $R^{(m)}$ for each positive integer $m$ in characteristic $p$ -- that is, gluing $R^{(m)},R^{(m')}$ where $m_{0}$ is coprime to $p$ and $m=m_{0}p^{a},m'=m_{0}p^{b}$ using the Frobenius. 
+
+More generally, we can define the Habiro ring of a smooth framed $\ZZ$-algebra $(R,\square)$ by passing to the limit of the rings $R_{n}$ where there are surjective transition maps $R_{pm}\to R_{m}$ given by the (necessarily unique) lift of the isomorphism (\ref{eqn: gluing map Frobenius}) along the (necessarily unique) deformation of \'{e}tale algebras $R^{(m)}$ to $R_{m}$.  
+\begin{definition}[Habiro Ring of Framed Algebra]\label{def: Habiro ring of framed algebra}
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The Habiro ring $\Hcal_{(R,\square)}$ is given by the limit 
+    $$\Hcal_{(R,\square)}=\lim_{n\in\NN}R_{n}$$
+    where $R_{n}$ is the completed root of unity algebra of \Cref{def: completed root of unity algebra}. 
+\end{definition}
 \begin{proposition}\label{prop: explicit elements of HR}
     Let $(R,\square)$ be a smooth framed $\ZZ$-algebra. The Habiro ring $\Hcal_{(R,\square)}$ of $(R,\square)$ is given by 
     {\footnotesize
@@ -31,9 +38,9 @@ $$H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)\cong R^{\oplus\binom{d}{i}}\
 and is therefore independent of coordinates since the middle term is so. 
 \begin{remark}
     While \emph{a priori} we only have a isomorphism to a free module of a certain rank, there is additonal structure that allows us to identify this with the module of K\"{a}hler differentials: the Bockstein map associated to the triangle 
-    $$q\dash\HHdg_{(R,\square)}/(1-q)\xrightarrow{\times(1-q)}q\dash\HHdg_{(R,\square)}/(1-q)^{2}\longrightarrow q\dash\HHdg_{(R,\square)}/(1-q)$$
-    $$\hspace{9cm}\longrightarrow \left(q\dash\HHdg_{(R,\square)}/(1-q)\right)[1]$$
-    inducing 
+    {\footnotesize 
+    $$q\dash\HHdg_{(R,\square)}/(1-q)\xrightarrow{\times(1-q)}q\dash\HHdg_{(R,\square)}/(1-q)^{2}\longrightarrow q\dash\HHdg_{(R,\square)}/(1-q)\longrightarrow \left(q\dash\HHdg_{(R,\square)}/(1-q)\right)[1]$$
+    \normalsize}inducing 
     $$H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)\longrightarrow H^{i+1}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)$$
     which gives a derivation 
     $$H^{0}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)\longrightarrow H^{1}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)$$

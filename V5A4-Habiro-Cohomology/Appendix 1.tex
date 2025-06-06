@@ -1,2 +1,32 @@
 \section{Explicit Elements of the Habiro Ring \\ (d'apr\`{e}s Garoufalidis-Wheeler)}\label{appdx: explicit elements}
-This appendix contains the proof of \Cref{ex: element of Habiro ring}.\todo{Which is to be completed.}
+This appendix contains the proof sketch of \Cref{ex: element of Habiro ring}. The interested reader is encouraged to consult \cite{GWClassesHabiroCoh} for further details. 
+
+We seek to show that for $R=\ZZ[T_{1},\dots,T_{d},\frac{1}{1-T_{1}-\dots-T_{d}}]$ that the element 
+\begin{equation}\label{eqn: Habiro element}
+    \sum_{k_{1},\dots,k_{d}\geq0}\left[\substack{k_{1}+\dots+k_{d} \\ k_{1}\text{ }\dots\text{ }k_{d}}\right]_{q}T_{1}^{k_{1}}\dots T_{d}^{k_{d}}\in\ZZ[q^{\pm}][[\underline{T}]]
+\end{equation}
+lies in $\Hcal_{(R,\square)}$ where $\square:\ZZ[q^{\pm}][\underline{T}]\to R$ is the obvious map. For this, it sufficse to show that $R^{(m)}[[q-\zeta_{m}]]\subseteq\ZZ[\zeta_{m}][[\underline{T},q-\zeta_{m}]]$. 
+
+We have that 
+$$R^{(m)}=\ZZ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots -T_{d}^{m}}\right]$$
+and that the Frobenius gluing is already completely determined by the injectivity $R^{(m)}[[q-\zeta_{m}]]\hookrightarrow\ZZ[\zeta_{m}][[\underline{T},q-\zeta_{m}]]$ as it can be checked after $\underline{T}$-adic completion. Note, furthermore, that 
+{\footnotesize
+$$\ZZ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots-T_{d}^{m}}\right]=\QQ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots-T_{d}^{m}}\right]\bigcap\ZZ[[T_{1},\dots,T_{d}]]$$
+\normalsize}as subrings of $\QQ[[T_{1},\dots,T_{d}]]$, so it suffices to verify the statement rationally. Using $q=\zeta_{m}\exp(h)$, we get an isomorphism $\QQ(\zeta_{m})[[q-\zeta_{m}]]\cong\QQ(\zeta_{m})[[h]]$ and seek to develop (\ref{eqn: Habiro element}) as a power series in $h$. Using that 
+$$\left[\substack{k_{1}+\dots+k_{d} \\ k_{1}\text{ }\dots\text{ }k_{d}}\right]_{q}=\binom{k_{1}+\dots+k_{d}}{k_{1}\dots k_{d}}\cdot O(h)$$
+where $O(h)$ is a power series in $h$ with coefficients in $\QQ[k_{1},\dots,k_{d}]$, we have that each term in the power series expansion in $h$ at $m=1$ is of the form 
+\begin{equation}\label{eqn: h series expansion}
+    \sum_{k_{1},\dots,k_{d}\geq0}\binom{k_{1}+\dots+k_{d}}{k_{1}\dots k_{d}}P(k_{1},\dots,k_{d})T_{1}^{k_{1}}\dots T_{d}^{k_{d}}.
+\end{equation}
+We then use the following lemma. 
+\begin{lemma}
+    Let $P(k_{1},\dots, k_{d})\in\QQ[k_{1},\dots,k_{d}]$ as in (\ref{eqn: h series expansion}) lies in $$R=\QQ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}-\dots-T_{d}}\right].$$ 
+\end{lemma}
+\begin{proof}
+    Without loss of generality, we can take $P$ to be a monomial $k_{1}^{a_{1}}\dots k_{d}^{a_{d}}$. We get, up to a constant, that $(\nabla_{1}^{\log})^{a_{1}}\dots(\nabla_{d}^{\log})^{a_{d}}$ of $\frac{1}{1-T_{1}-\dots-T_{d}}$ lies in $R$. 
+\end{proof}
+More generally the power series expansion at $m$ is given by 
+\begin{equation}\label{eqn: h series expansion at m}
+    \sum_{k_{1},\dots,k_{d}\geq0}\binom{mk_{1}+\dots+mk_{d}}{mk_{1}\dots mk_{d}}P(k_{1},\dots,k_{d})T_{1}^{mk_{1}}\dots T_{d}^{mk_{d}}
+\end{equation}
+which by similar arguments can be shown to lie in $R$ as well. 
