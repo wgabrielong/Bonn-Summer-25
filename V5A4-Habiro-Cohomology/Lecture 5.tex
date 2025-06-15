@@ -1,0 +1,154 @@
+\section{Lecture 5 -- 30th May 2025}\label{sec: lecture 5}
+Recall from \Cref{def: q-Habiro-Hodge cohomology} that the $q$-Habiro-Hodge cohomology is defined to be the cohomology of the $q$-Habiro-Hodge complex $q\dash\HHdg_{(R,\square)}$ of (\ref{eqn: q-Habiro-Hodge complex}), or equivalently, the group cohomology of $\ZZ^{d}$ on the $\ZZ[\ZZ^{d}]$-module $\Hcal_{(R,\square)}$. More explicitly, for each $m\geq 1$ we have the commutative differential graded algebra
+\begin{equation}\label{eqn: q-Habiro-Hodge CDGA}
+    \left(H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right),\times(1-q^{m})\right)
+\end{equation}
+with the Bockstein operator of multiplication by $(1-q^{m})$ as in \Cref{rmk: Bockstein operator}. 
+
+Let us consider the case of rational coefficients as an example. 
+\begin{example}
+    Note that $\QQ[q^{\pm}]/(1-q^{m})\cong\prod_{d|m}\QQ(\zeta_{d})$ by $q\mapsto(\zeta_{d})_{d|m}$. After base change to $\QQ$, we the commutative differential graded algebra of (\ref{eqn: q-Habiro-Hodge CDGA}) splits as a product of commutative differential graded algebras. A factor of this product is 
+    $$H^{\bullet}\left(q\dash\HHdg_{(R,\square)}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)$$
+    where by construction we have that 
+    \begin{equation}\label{eqn: rationalized q-Habiro-Hodge is rationalized R}
+        q\dash\HHdg_{(R,\square)}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\cong R\otimes_{\ZZ[\underline{T}^{\pm}]}\QQ(\zeta_{d})[\underline{T}^{\pm}]
+    \end{equation}
+    where the $\ZZ[\underline{T}^{\pm}]$-algebra structure on $\QQ(\zeta_{d})[\underline{T}^{\pm}]$ is by $T_{i}\mapsto T_{i}^{d}$ and the operators are given by $\id_{R}\otimes[T_{i}\mapsto \zeta_{d}T_{i}]$ (cf. \Cref{def: root of unity algebra}). Recalling that 0th group cohomology recovers invariants, we observe that the invariants under this action consists of consists of polynomials with $d$th roots, and the action does not extract additional roots of the coordinates giving a canonical isomorphism 
+    $$H^{0}\left(q\dash\HHdg_{(R,\square)}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)\cong R\otimes_{\ZZ}\QQ(\zeta_{d}).$$
+    Having explicitly determined $H^{0}$, the universal property (cf. Proof of \Cref{thm: surjection from q witt vectors}) implies that there is a morphism of commutative differential graded algebras 
+    $$\Omega^{\bullet}_{R\otimes_{\ZZ}\QQ(\zeta_{d})/\ZZ}\longrightarrow H^{\bullet}\left(q\dash\HHdg_{(R,\square)}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right).$$
+\end{example}
+This map can be shown to be an isomorphism. 
+\begin{proposition}\label{prop: rationalized Habiro cohomology}
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra and fix $m\geq0$. For each $d|m$, there is an isomorphism of commutative differential graded algebras 
+    $$\Omega^{\bullet}_{R\otimes_{\ZZ}\QQ(\zeta_{d})/\ZZ}\xrightarrow{\sim} H^{\bullet}\left(q\dash\HHdg_{(R,\square)}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right).$$
+\end{proposition}
+\begin{proof}
+    Using the identification of (\ref{eqn: rationalized q-Habiro-Hodge is rationalized R}) above, we note that the action by the commuting operators is trivial. So both modules are in each degree free of the same rank and are isomorphic in degree 0. Observing that the complex maps on source and target agree yields the claim. 
+\end{proof}
+In other words, rationally, $q$-Habiro-Hodge cohomology at a fixed root of unity $m$ is entirely determined by the algebraic de Rham cohomology at each of its factors. 
+\begin{proposition}\label{prop: Habiro cohomology is ZZ torsion free}
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra and fix $m\geq0$. Each $H^{i}(q\dash\HHdg_{(R,\square)}/(1-q^{m}))$ is $\ZZ$-torsion free and there exists an injection 
+    \begin{equation}\label{eqn: ZZ-torsion-free injective}
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJIXntpfVxcbGVmdChxXFxkYXNoXFxISGRnX3soUixcXHNxdWFyZSl9LygxLXFee219KVxccmlnaHQpIl0sWzIsMCwiXFxwcm9kX3tkfG19XFxPbWVnYV57aX1fe1JcXG90aW1lc197XFxaWn1cXFFRKFxcemV0YV97ZH0pL1xcWlp9LiJdLFswLDEsIi1cXG90aW1lc197XFxaWn1cXFFRIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+        \begin{tikzcd}
+            {H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)} && {\prod_{d|m}\Omega^{i}_{R\otimes_{\ZZ}\QQ(\zeta_{d})/\ZZ}.}
+            \arrow["{-\otimes_{\ZZ}\QQ}", hook, from=1-1, to=1-3]
+        \end{tikzcd}
+    \end{equation}
+\end{proposition}
+The proof is fairly elementary, albeit computational, and hence omitted. Moreover, the target is manifestly canonically independent of coordinates, and we can show that $H^{i}(q\dash\HHdg_{(R,\square)}/(1-q^{m}))$ is independent of coordinates by showing its image is so. 
+\begin{theorem}[Wagner]\label{thm: image after rationalization is independent}
+    Let $(R,\square)$ be a smooth framed $\ZZ$-algebra and fix $m\geq0$. The image of the map (\ref{eqn: ZZ-torsion-free injective})
+    $$% https://q.uiver.app/#q=WzAsMixbMCwwLCJIXntpfVxcbGVmdChxXFxkYXNoXFxISGRnX3soUixcXHNxdWFyZSl9LygxLXFee219KVxccmlnaHQpIl0sWzIsMCwiXFxwcm9kX3tkfG19XFxPbWVnYV57aX1fe1JcXG90aW1lc197XFxaWn1cXFFRKFxcemV0YV97ZH0pL1xcWlp9LiJdLFswLDEsIi1cXG90aW1lc197XFxaWn1cXFFRIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+    \begin{tikzcd}
+        {H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)} && {\prod_{d|m}\Omega^{i}_{R\otimes_{\ZZ}\QQ(\zeta_{d})/\ZZ}.}
+        \arrow["{-\otimes_{\ZZ}\QQ}", hook, from=1-1, to=1-3]
+    \end{tikzcd}$$
+    is given by the degree $i$ piece of the $q$-de Rham-Witt complex $q\dash W_{m}\Omega_{R/\ZZ}^{i}$ and hence independent of coordinates. 
+\end{theorem}
+\begin{proof}[Proof Outline]
+    Recall that the $q$-de Rham-Witt complex $q\dash W_{m}\Omega_{R/\ZZ}^{\bullet}$ of \Cref{prop: q-Witt vectors} is a commutative differential graded algebra whose degree zero piece is the $q$-Witt vectors $q\dash W_{m}(R)$. By a universal property argument, there is a surjection 
+    $$% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXE9tZWdhX3txXFxkYXNoIFdfe219KFIpL1xcWlp9XntcXGJ1bGxldH0iXSxbMiwwLCJIXntcXGJ1bGxldH1cXGxlZnQocVxcZGFzaFxcSEhkZ197KFIsXFxzcXVhcmUpfS8oMS1xXnttfSlcXHJpZ2h0KSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dXQ==
+    \begin{tikzcd}
+        {\Omega_{q\dash W_{m}(R)/\ZZ}^{\bullet}} && {H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)}
+        \arrow[two heads, from=1-1, to=1-3]
+    \end{tikzcd}$$
+    which factors over the $q$-de Rham-Witt complex. By explicitly identifying the relations of the surjection $\Omega^{\bullet}_{q\dash W_{m}(R)/\ZZ}\twoheadrightarrow q\dash W_{m}\Omega^{\bullet}_{R/\ZZ}$, the relations on $\Omega^{\bullet}_{q\dash W_{m}(R)/\ZZ}$ can be seen to coincide with the relations of the image of (\ref{eqn: ZZ-torsion-free injective}) in $\prod_{d|m}\Omega^{i}_{R\otimes_{\ZZ}\QQ(\zeta_{d})/\ZZ}$ producing the desired isomorphism
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXE9tZWdhX3txXFxkYXNoIFdfe219KFIpL1xcWlp9XntcXGJ1bGxldH0iXSxbMiwwLCJIXntcXGJ1bGxldH1cXGxlZnQocVxcZGFzaFxcSEhkZ197KFIsXFxzcXVhcmUpfS8oMS1xXnttfSlcXHJpZ2h0KSJdLFsxLDEsInFcXGRhc2ggV197bX1cXE9tZWdhXntcXGJ1bGxldH1fe1IvXFxaWn0iXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwyLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMiwxLCJcXHNpbSIsMl1d
+    \begin{tikzcd}
+        {\Omega_{q\dash W_{m}(R)/\ZZ}^{\bullet}} && {H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)} \\
+        & {q\dash W_{m}\Omega^{\bullet}_{R/\ZZ}}
+        \arrow[two heads, from=1-1, to=1-3]
+        \arrow[two heads, from=1-1, to=2-2]
+        \arrow["\sim"', from=2-2, to=1-3]
+    \end{tikzcd}$$
+\end{proof}
+\begin{remark}
+    Note that the $q$-de Rham-Witt complex $q\dash W_{m}\Omega^{\bullet}_{R}$ is distinct from the intial free commutative differential graded algebra over the $q$-Witt vectors $q\dash W_{m}(R)$, the (ordinary) de Rham complex of the $q$-Witt vectors $\Omega^{\bullet}_{q\dash W_{m}(R)}$.
+\end{remark}
+\begin{remark}
+    The $q$-Witt vectors are not $q$-analogues of the Witt vectors, in the sense that specialization at $q=1$ does not recover the ordinary construction. Regardless, these are closely related constructions as exhibited in \Cref{prop: q-Witt vectors}. 
+\end{remark}
+While the preceding constructions show the richness of specializations of $q$-Habiro-Hodge cohomology at roots of unity, we show that this construction does not globalize. In particular, we show (an variant of) Wagner's theorem \cite[Thm. 5.1]{WagnerQWittQHodge}: a no-go result showing that the framing is a necessary part of the definition of the $q$-Habiro-Hodge complex. 
+\begin{theorem}[Wagner; {\cite[Thm. 5.1]{WagnerQWittQHodge}}]\label{thm: Wagner no-go}
+    There is no functor from smooth $\ZZ$-algebras to the commutative algebra objects of the derived $\infty$-category $\Dscr(\ZZ[q^{\pm}])$
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCJcXG1hdGhzZntBbGd9XntcXG1hdGhzZntzbX19X3tcXFpafSJdLFsyLDAsIlxcbWF0aHNme0NBbGd9XFxsZWZ0KFxcRHNjcihcXFpaW3Fee1xccG19XSlcXHJpZ2h0KSJdLFszLDAsIjsiXSxbNCwwLCJSIl0sWzYsMCwicVxcZGFzaFxcSEhkZ197Un0iXSxbMCwxXSxbMyw0LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
+    \begin{tikzcd}
+        {\mathsf{Alg}^{\mathsf{sm}}_{\ZZ}} && {\CAlg\left(\Dscr(\ZZ[q^{\pm}])\right)} & {;} & R && {q\dash\HHdg_{R}}
+        \arrow[from=1-1, to=1-3]
+        \arrow[maps to, from=1-5, to=1-7]
+    \end{tikzcd}$$
+    such that the following hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item For all \'{e}tale framings $\square:\ZZ[\underline{T}^{\pm}]\to R$ there is an isomorphism of $\Dscr(\ZZ[q^{\pm}])$ commutative algebras $q\dash\HHdg_{R}\simeq(\Hcal_{(R,\square)})^{h\ZZ^{d}}$. 
+        \item The isomorphism of (i) induces an isomorphism $H^{0}\left(q\dash\HHdg_{R}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)\cong R\otimes_{\ZZ}\QQ(\zeta_{d})$. 
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    In the statement of the theorem, the commutative algebra object $q\dash\HHdg_{R}$ is not the $q$-Habiro-Hodge complex $q\dash\HHdg_{(R,\square)}$ of \Cref{def: q-Habiro-Hodge cohomology} which depends on the framing $\square:\ZZ[\underline{T}^{\pm}]\to R$. 
+\end{remark}
+\begin{remark}
+    It is likely that the theorem holds true without condition (ii), but it may be possible to write down for any $R$ some arbitrarily complicated framing $\square:\ZZ[\underline{T}^{\pm}]\to R$ and some arbitrarily complicated isomorphism $q\dash\HHdg_{R}\simeq(\Hcal_{(R,\square)})^{h\ZZ^{d}}$ for algebras in sufficiently many variables. Condition (ii) prescribes the additional data needed to avoid the situation of the preceding discussion by requiring that the putative object $q\dash\HHdg_{R}$ at least has degree 0 cohomology that agrees with what we have constructed thus far. 
+\end{remark}
+\begin{remark}
+    The statement of \Cref{thm: Wagner no-go} differs from \cite[Thm. 5.1]{WagnerQWittQHodge} in several ways: Wagner works only with specializations modulo $(1-q^{m})$ in terms of $q$-de Rham Witt forms, but is also able to conduct the proof using only the module structure. 
+\end{remark}
+The proof of \Cref{thm: Wagner no-go} will require significant $\infty$-categorical machinery, in particular the language of animation, which we recall in \Cref{appdx: on animation}. For the proof, we will require some results about the cotangent complex. 
+\begin{lemma}\label{lem: vanishing of cotangent complex of perfect Fp algebras}\marginpar{The instructor attributes this result as one of the inspiration for the tilting construction in prismatic cohomology.}
+    Let $R$ be a perfect $\FF_{p}$-algebra. Then $\LL_{R/\FF_{p}}=0$. 
+\end{lemma}
+\begin{proof}
+    Since $R$ is perfect, we compute that for any $x\in R$, 
+    $$\mathrm{d}x=\mathrm{d}x^{p}=px^{p-1}\mathrm{d}x=0.$$
+    Moreover, the Frobenius map gives an isomorphism $\Omega^{1}_{R/\FF_{p}}\to\Omega^{1}_{R/\FF_{p}}$ which is zero by the computation above. The animation of the Frobenius map $\LL_{R/\FF_{p}}\to\LL_{R/\FF_{p}}$ remains an isomorphism, and is zero since the animation of the zero functor is zero. In particular, the zero map gives an isomorphism $\LL_{R/\FF_{p}}\xrightarrow{\sim}\LL_{R/\FF_{p}}$, showing that $\LL_{R/\FF_{p}}=0$. 
+\end{proof}
+Note that this only gives vanishing of the cotangent complex over $\FF_{p}$. However, in the case of $\ZZ$-algebras, we can show the following. 
+\begin{lemma}\label{lem: mod p q-Hodge is R mod p}
+    Let $R$ be a flat $\ZZ$-algebra such that $R/(p)$ is a perfect $\FF_{p}$-algebra. Then for $q\dash\HHdg_{R}$ as in \Cref{thm: Wagner no-go}, $\left(q\dash\HHdg_{R}/^{L}(p,1-q)\right)\cong R/(p)[0]$. 
+\end{lemma}
+\begin{proof}
+    Observe that $q\dash\HHdg_{R}/(1-q)$ has a canonical exhaustive filtration by $$\tau^{\leq i}\left(q\dash\HHdg_{R}/(1-q)\right)$$ with $i$th associated graded $\Omega^{i}_{R/\ZZ}[-i]$ as in (\ref{eqn: de Rham complex at trivial root of unity}). So animating the functor $R\mapsto q\dash\HHdg_{R}/(p,1-q)$ we observe that $\left(q\dash\HHdg_{R}/^{L}(p,1-q)\right)$ has an exhaustive filtration with associated gradeds $(\LL^{i}_{R/\ZZ}/^{L}(p))[-i]$, but we have $\LL^{i}_{R/\ZZ}/^{L}(p)\cong\LL^{i}_{(R/^{L}(p))/\FF_{p}}$ which vanishes for all strictly positive $i$ by the factorization of the functor $\LL^{i}_{(-/^{L}(p))/\FF_{p}}$ as 
+    $$\Ani\left(\bigwedge^{i}(-)\right)\circ\Ani\left(\Omega^{1}_{(-/(p))/\FF_{p}}\right)$$
+    and we just observe that in degree 0 we simply recover the quotient $R/(p)$. 
+\end{proof}
+\begin{corollary}\label{corr: p-completion mod 1-q}
+    Let $R$ be a flat $\ZZ$-algebra such that $R/(p)$ is a perfect $\FF_{p}$-algebra. Then for $q\dash\HHdg_{R}$ as in \Cref{thm: Wagner no-go},
+    $$\left(q\dash\HHdg_{R}/^{L}(1-q)\right)^{\wedge}_{p}\cong (R^{\wedge}_{p})[0].$$
+\end{corollary}
+\begin{proof}
+    The $p$-adic completion $\left(q\dash\HHdg_{R}/^{L}(1-q)\right)^{\wedge}_{p}$ is the unique lift of the quotient $\left(q\dash\HHdg_{R}/^{L}(p,1-q)\right)$ to characteristic zero, and the unique lift of $R/(p)[0]$ computed in \Cref{lem: mod p q-Hodge is R mod p} is precisely $(R^{\wedge}_{p})[0]$.  
+\end{proof}
+We now proceed with the proof of \Cref{thm: Wagner no-go}. 
+\begin{proof}[Proof Outline of \Cref{thm: Wagner no-go}]
+    Pick $R$ admitting some \'{e}tale framing $\square:\ZZ[\underline{T}^{\pm}]\to R$ and consider $(R,\square)$ as a smooth framed $\ZZ$-algebra. By (i), there exists an isomorphism 
+    \begin{equation}\label{eqn: assumption i identification}
+        H^{0}\left(q\dash\HHdg_{R}/(1-q^{m})\right)\cong \left(\Hcal_{(R,\square)}/(1-q^{m})\right)^{h\ZZ^{d}}.
+    \end{equation}
+    Thus $H^{0}\left(q\dash\HHdg_{R}/(1-q^{m})\right)$ is $\ZZ$-torsion free, as the right hand side -- which by unwinding the definitions is $H^{0}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)$ -- is $\ZZ$-torsion free by \Cref{prop: Habiro cohomology is ZZ torsion free} so there is an embedding into $\prod_{d|m}H^{0}\left(q\dash\HHdg_{R}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)$ by rationalization inducing the diagram
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIXnswfVxcbGVmdChxXFxkYXNoXFxISGRnX3tSfS8oMS1xXnttfSlcXHJpZ2h0KSJdLFsyLDAsIlxccHJvZF97ZHxtfUheezB9XFxsZWZ0KHFcXGRhc2hcXEhIZGdfe1J9XFxvdGltZXNfe1xcWlpbcV57XFxwbX1dfVxcUVEoXFx6ZXRhX3tkfSlcXHJpZ2h0KSJdLFsyLDEsIlxccHJvZF97ZHxtfVJcXG90aW1lc197XFxaWn1cXFFRKFxcemV0YV97ZH0pIl0sWzAsMSwiLVxcb3RpbWVzX3tcXFpafVxcUVEiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFsxLDIsIlxcd3IgXFxoc3BhY2V7MC4yY219XFx0ZXh0eyhpaSl9Il0sWzAsMiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XV0=
+    \begin{tikzcd}
+        {H^{0}\left(q\dash\HHdg_{R}/(1-q^{m})\right)} && {\prod_{d|m}H^{0}\left(q\dash\HHdg_{R}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)} \\
+        && {\prod_{d|m}R\otimes_{\ZZ}\QQ(\zeta_{d})}
+        \arrow["{-\otimes_{\ZZ}\QQ}", hook, from=1-1, to=1-3]
+        \arrow[hook, from=1-1, to=2-3]
+        \arrow["{\wr \hspace{0.2cm}\text{(ii)}}", from=1-3, to=2-3]
+    \end{tikzcd}$$
+    with the isomorphism on the right by assumption (ii) of the theorem. The image of the map $H^{0}\left(q\dash\HHdg_{R}/(1-q^{m})\right)\hookrightarrow\prod_{d|m}R\otimes_{\ZZ}\QQ(\zeta_{d})$ is necessarily the $q$-Witt vectors $q\dash W_{m}(R)$ after using the identification of (\ref{eqn: assumption i identification}) and applying \Cref{thm: image after rationalization is independent}. This shows 
+    $$H^{0}\left(q\dash\HHdg_{R}/(1-q^{m})\right)\cong q\dash W_{m}(R)$$
+    and is further compatible with specializations at $\zeta_{d}$ for $d$ dividing $m$. The universal property then induces a surjective map of commutative differential graded algebras 
+    $$% https://q.uiver.app/#q=WzAsMixbMiwwLCJcXGxlZnQoSF57XFxidWxsZXR9XFxsZWZ0KHFcXGRhc2hcXEhIZGdfe1J9LygxLXFee219KVxccmlnaHQpLCBcXHRpbWVzKDEtcV57bX0pXFxyaWdodCkiXSxbMCwwLCJcXE9tZWdhXntcXGJ1bGxldH1fe3FcXGRhc2ggV197bX0oUikvXFxaWn0iXSxbMSwwLCIiLDAseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XV0=
+    \begin{tikzcd}
+        {\Omega^{\bullet}_{q\dash W_{m}(R)/\ZZ}} && {\left(H^{\bullet}\left(q\dash\HHdg_{R}/(1-q^{m})\right), \times(1-q^{m})\right)}
+        \arrow[two heads, from=1-1, to=1-3]
+    \end{tikzcd}$$
+    which is surjective, inducing an isomorphism $q\dash W_{m}\Omega^{i}_{R/\ZZ}\xrightarrow{\sim}H^{i}\left(q\dash\HHdg_{R}/(1-q^{m})\right)$ after a choice of framing -- note that after taking the quotient by $(1-q^{m})$, the we have $H^{i}\left(q\dash\HHdg_{R}/(1-q^{m})\right)\cong H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)\cong q\dash W_{m}\Omega^{i}_{R/\ZZ}$, the first isomorphism by the framing-independence at specializations result of \Cref{thm: surjection from q witt vectors} and the second as discussed in the proof of \Cref{thm: image after rationalization is independent}.\marginpar{The instructor remarks that multiple proofs in this lecture were statements about the empty set, which may very well be the author's favorite set.}
+
+    We show the failure at the trivial root of unity, and other roots of unity can be treated by a a similar argument using a Frobenius twist of the element. By \Cref{corr: p-completion mod 1-q} and uniqueness of deformations of \'{e}tale algebras, we have an isomorphism 
+    $$\left(R_{p}^{\wedge}[[q-1]]\right)[0]\xrightarrow{\sim}\left(q\dash\HHdg_{R}\right)^{\wedge}_{(p,1-q)}$$
+    giving us an explicit description of $q\dash\HHdg_{R}$ after $(p,q-1)$-adic completion. To get a contradiction, let $R=\ZZ_{p}\langle t^{1/p^{\infty}}\rangle/(t-p)$ and we have $(\LL_{R/\ZZ})_{p}^{\wedge}\cong R[1]$. So $(\LL^{i}_{R/\ZZ})_{p}^{\wedge}\cong R[i]$ so $\left(q\dash\HHdg_{R}\right)^{\wedge}_{(p,1-q)}$ is $R$ concentrated in degree 0. In particular, there must exist a map 
+    $$\left(q\dash\HHdg_{\ZZ_{p}\langle t^{1/p^{\infty}}\rangle}\right)^{\wedge}_{(p,q-1)}\longrightarrow\left(q\dash\HHdg_{R}\right)^{\wedge}_{(p,1-q)}$$
+    by functoriality. The source is given by $\left(\ZZ_{p}\langle t^{1/p^{\infty}}\rangle[[q-1]]\right)[0]$ by the above, and $\left(q\dash\HHdg_{R}\right)^{\wedge}_{(p,1-q)}$ is given by adjoining $q$-divided powers of $(t-p)$ to the source. The element $t-p$ in the source must map to the unique element of the form $\frac{t-p}{q-1}$ as the source is $(q-1)$-torsion free. 
+    
+    Similarly, at other roots of unity, $t-p$ in the source maps to the unique element $\frac{\varphi_{p}(t-p)-[p]_{q}\delta_{p}(t-p)}{1-q^{p}}$ where here we have used the $\delta$-ring structure on the $q$-de Rham-Witt complex. From here, we can observe that $\delta(t-p)$ is a unit vanishing in $R/(p)$ so $R\cong 0$ by applying the derived Nakayama lemma, a contradiction. 
+\end{proof}

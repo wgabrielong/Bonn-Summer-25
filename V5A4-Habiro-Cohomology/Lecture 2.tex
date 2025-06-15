@@ -48,21 +48,20 @@ We can now define the $q$-de Rham complex following Aomoto \cite{Aomoto}.
 \begin{definition}[$q$-de Rham Complex of $\A^{d}_{\ZZ}$ and $\GG_{m}^{d}$]\label{def: q-dR complex}
     Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The $q$-de Rham complex $q\dash\Omega^{\bullet}_{R/\ZZ}$ of $\spec(R)$ is the complex
     \begin{equation}\label{eqn: q-dR complex of R}
-        \footnotesize 
-        % https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxiaWdvcGx1c197aTxqfVxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs0LDAsIlxcZG90cyJdLFszLDEsIlxcZG90cyJdLFs0LDEsIlxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs1LDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbMyw0XSxbNiw3XV0=
-        \begin{tikzcd}
-            0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\bigoplus_{i<j}\ZZ[q^{\pm}][\underline{T}]} & \dots \\
-            &&& \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
-            \arrow[from=1-1, to=1-2]
-            \arrow[from=1-2, to=1-3]
-            \arrow[from=1-3, to=1-4]
-            \arrow[from=1-4, to=1-5]
-            \arrow[from=2-4, to=2-5]
-            \arrow[from=2-5, to=2-6]
-        \end{tikzcd}
-        \normalsize
+    \footnotesize
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzXFxiaW5vbXtkfXsyfX0iXSxbNCwwLCJcXGRvdHMiXSxbNSwwLCJcXFpaW3Fee1xccG19XVtcXHVuZGVybGluZXtUfV0iXSxbNiwwLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzQsNV0sWzUsNl1d
+    \begin{tikzcd}
+        0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus\binom{d}{2}}} & \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=1-5, to=1-6]
+        \arrow[from=1-6, to=1-7]
+    \end{tikzcd}
+    \normalsize
     \end{equation}
-    with differentials given by the differentials for the Koszul complex of commuting operators $\nabla_{1}^{q},\dots,\nabla_{n}^{q}$. 
+    with differentials given by the differentials for the Koszul complex of commuting operators $\nabla_{1}^{q},\dots,\nabla_{n}^{q}$.
 \end{definition}
 \begin{remark}
     Recall that these are precisely the differentials for the classical de Rham complex. See \cite[\href{https://stacks.math.columbia.edu/tag/0FKF}{Tag 0FKF}]{stacks-project} for an explicit description via equations. 
@@ -82,19 +81,18 @@ Recomputing everything using this modified derivative gives the $q$-Hodge comple
 \begin{definition}[$q$-Hodge Complex of $\A^{d}_{\ZZ}$ and $\GG_{m}^{d}$]\label{def: q-Hodge complex}
     Let $R=\ZZ[q^{\pm}][\underline{T}]$ be $\ZZ[q^{\pm}][T_{1},\dots,T_{d}]$ or $\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The $q$-Hodge complex $q\dash\Hdg_{R}$ of $\spec(R)$ is the complex
     \begin{equation}\label{eqn: q-Hodge complex of R}
-        \footnotesize 
-        % https://q.uiver.app/#q=WzAsOCxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxiaWdvcGx1c197aTxqfVxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs0LDAsIlxcZG90cyJdLFszLDEsIlxcZG90cyJdLFs0LDEsIlxcWlpbcV57XFxwbX1dW1xcdW5kZXJsaW5le1R9XSJdLFs1LDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbNSw2XSxbMyw0XSxbNiw3XV0=
-        \begin{tikzcd}
-            0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\bigoplus_{i<j}\ZZ[q^{\pm}][\underline{T}]} & \dots \\
-            &&& \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
-            \arrow[from=1-1, to=1-2]
-            \arrow[from=1-2, to=1-3]
-            \arrow[from=1-3, to=1-4]
-            \arrow[from=1-4, to=1-5]
-            \arrow[from=2-4, to=2-5]
-            \arrow[from=2-5, to=2-6]
-        \end{tikzcd}
-        \normalsize
+    \footnotesize
+    % https://q.uiver.app/#q=WzAsNyxbMCwwLCIwIl0sWzEsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dIl0sWzIsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzIGR9Il0sWzMsMCwiXFxaWltxXntcXHBtfV1bXFx1bmRlcmxpbmV7VH1dXntcXG9wbHVzXFxiaW5vbXtkfXsyfX0iXSxbNCwwLCJcXGRvdHMiXSxbNSwwLCJcXFpaW3Fee1xccG19XVtcXHVuZGVybGluZXtUfV0iXSxbNiwwLCIwIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzQsNV0sWzUsNl1d
+    \begin{tikzcd}
+        0 & {\ZZ[q^{\pm}][\underline{T}]} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus d}} & {\ZZ[q^{\pm}][\underline{T}]^{\oplus\binom{d}{2}}} & \dots & {\ZZ[q^{\pm}][\underline{T}]} & 0
+        \arrow[from=1-1, to=1-2]
+        \arrow[from=1-2, to=1-3]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=1-5, to=1-6]
+        \arrow[from=1-6, to=1-7]
+    \end{tikzcd}
+    \normalsize
     \end{equation}
     with differentials given by the differentials for the Koszul complex of commuting operators $\widetilde{\nabla}_{1}^{1},\dots,\widetilde{\nabla}_{d}^{q}$. 
 \end{definition}
