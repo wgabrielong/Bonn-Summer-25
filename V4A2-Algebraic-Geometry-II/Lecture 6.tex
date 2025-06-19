@@ -44,6 +44,25 @@ We can show the following, weaker, version of a base change statement.
     Choose an affine open covering $\{U_{i}\}$ of $X$. The sheaf condition gives an exact sequence of $A$-modules
     $$0\to H^{0}(X,\Fcal)\to\prod_{i}H^{0}(U_{i},\Fcal|_{U_{i}})\to\prod_{i,j}H^{0}(U_{ij},\Fcal|_{U_{ij}}).$$
     This remains exact after base changing to $A'$, which precisely the exact sequence for $g^{*}\Fcal$ on $X\times_{A}\spec(A')$. 
+\end{proof} 
+We omit the proof of the strong variant, which requires spectral sequences. 
+\begin{proposition}\label{prop: flat base change}
+    Let $f:X\to Y$ be a separated quasicompact morphism and $g:Y'\to Y$ a flat morphism. The Cartesian diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc197WX1ZJyJdLFswLDEsIlknIl0sWzIsMSwiWSJdLFsyLDAsIlgiXSxbMywyLCJmIl0sWzAsMywiZyciXSxbMCwxLCJmJyIsMl0sWzEsMiwiZyIsMl1d
+    \begin{tikzcd}
+        {X\times_{Y}Y'} && X \\
+        {Y'} && Y
+        \arrow["{g'}", from=1-1, to=1-3]
+        \arrow["{f'}"', from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow["g"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+    induces for all quasicoherent sheaves $\Fcal$ on $X$ an isomorphism 
+    $$g^{*}R^{i}f_{*}\Fcal\cong R^{i}f'_{*}g'^{*}\Fcal$$
+    for all $i\geq 0$. If further $Y=\spec(A),Y'=\spec(A')$ then $H^{i}(X,\Fcal)\otimes_{A}A'\cong H^{i}(X',g'^{*}\Fcal)$. 
+\end{proposition}
+\begin{proof}
+    See \cite[\href{https://stacks.math.columbia.edu/tag/02KH}{Tag 02KH}]{stacks-project}.
 \end{proof}
 Having set up some basic constructions surrounding flatness, we discuss its relation to the Hilbert polynomial. 
 \begin{definition}[Hilbert Polynomial]\label{def: hilbert polynomial}
