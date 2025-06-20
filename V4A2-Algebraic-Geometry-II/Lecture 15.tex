@@ -1,0 +1,244 @@
+\section{Lecture 15 -- 5th June 2025}\label{sec: lecture 15}
+We make preparations towards the proof of the theorem of formal functions. 
+\begin{definition}[Faithfully Flat]\label{def: faithfully flat}
+    Let $\varphi:A\to B$ be a ring map. $\varphi$ is faithfully flat if exactness of $0\to M_{1}\to M_{2}\to M_{3}\to 0$ in $\Mod_{A}$ is equivalent to exactness of $0\to M_{1}\otimes_{A}B\to M_{2}\otimes_{A}B\to M_{3}\otimes_{A}B\to0$ in $\Mod_{B}$. 
+\end{definition}
+We consider some properties thereof. 
+\begin{proposition}\label{prop: faithful flatness properties}
+    Let $\varphi:A\to B$ be a ring map. 
+    \begin{enumerate}[label=(\roman*)]
+        \item If $\varphi$ is faithfully flat, then $\varphi$ is injective. 
+        \item If $\varphi$ is faithfully flat then for $I\subseteq A$ an ideal, $IB\cap A=I$. 
+        \item If $\varphi$ is a flat local homomorphism of local rings then $\varphi$ is faithfully flat. 
+        \item If $A$ is a Noetherian local ring, then $A\hookrightarrow\widehat{A}$ is faithfully flat. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    Consider the morphism 
+    $$\varphi\otimes\id_{B}=\widetilde{\varphi}:B=A\otimes_{A}B\to B\to B\otimes_{A}B.$$
+    Note that the composition $B\xrightarrow{\widetilde{\varphi}}B\otimes_{A}B\xrightarrow{b\otimes b'\mapsto bb'}B$ is the identity as $a\otimes b=\varphi(a)b\mapsto \varphi(a)\otimes b\mapsto \varphi(a)b$ for all $a\in A,b\in B$. Thus $\widetilde{\varphi}$ is injective. And since $\widetilde{\varphi}$ is injective (as a map of $B$-modules), $\varphi$ is injective as well (as a map of $A$-modules). 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    By (i), $\varphi$ is a ring extension so we have $A\cap IB\subseteq I$ and thus a (not necessarily exact) sequence $0\to IB\cap A\to A\to A/I\to0$. But applying $\otimes_{A}B$ this yields $0\to IB\to B\to B/IB\to 0$ which is exact, so $0\to IB\cap A\to A\to A/I\to0$ was exact to begin with. 
+\end{proof}
+\begin{proof}[Proof of (iii)]
+    Let $\phi:M\to N$ be a homomorphism of $A$-modules such that its base extension $\widetilde{\phi}:M\otimes_{A}B\to N\otimes_{A}B$ is injective. We have that $\ker(\phi)\otimes_{A}B=0$. Let $m\in \ker(\phi)$ and consider $I=\{a\in A:am=0\}\subsetneq A$. The morphism $A\to \ker(\phi)$ by $a\mapsto am$ has kernel $I$ so $A/I\hookrightarrow \ker(\phi)$. By flatness, $A/I\otimes_{A}B=B/IB\hookrightarrow \ker(\phi)\otimes_{A}B=0$ so $B/IB=0$. Since $I$ is an ideal of the local ring $A$, either $I=0$ or $I=\mfrak_{A}$. In the first case, $B=0$ since the quotient by the trivial ideal is an isomorphism. In the second case $B/\mfrak B=0$ implies $B=0$ by Nakayama's lemma. This yields a contradiction in both cases as the zero ring is not a local ring. 
+\end{proof}
+\begin{proof}[Proof of (iv)]
+    This is trivial from (iii) as \Cref{prop: completions of rings} (iii) shows that $A\hookrightarrow \widehat{A}$ is flat. 
+\end{proof}
+With the language of faithful flatness and completions in hand, we can prove the following characteriziation of \'{e}tale morphisms in a special case. 
+\begin{proposition}\label{prop: etaleness by completions}
+    Let $\varphi:A\to B$ be a local homomorphism of Noetherian local rings where $A,B$ are furthermore $k=A/\mfrak_{A}\cong B/\mfrak_{B}$-algebras. Then $\varphi$ is \'{e}tale if and only if $\widehat{\varphi}:\widehat{A}\to\widehat{B}$ is an isomorphism. 
+\end{proposition}
+\begin{proof}
+    $(\Rightarrow)$ Since $\varphi$ is \'{e}tale, it is in particular flat and unramified \Cref{def: etale at point}. Thus $\varphi$ is injective by \Cref{prop: faithful flatness properties} (i). Moreover, since $\varphi$ is uramified, we have $\mfrak_{A}B=\mfrak_{B}$. Thus since $A/\mfrak_{A}\cong B/\mfrak_{B}$ we have 
+    $$B\cong A+\mfrak_{B}\cong A+\mfrak_{A}B\cong A+\mfrak_{A}(A+\mfrak_{A}B)=A+\mfrak_{A}^{2}B\cong\dots$$
+    so $B\cong A+\mfrak_{B}^{d}$ for each $d\geq0$. The homomorphism $\varphi_{d}:A/\mfrak_{A}^{d}\to B/\mfrak_{B}^{d}$ fits into a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQS9cXG1mcmFrX3tBfV57ZH0iXSxbMSwxLCJCL1xcbWZyYWtfe0J9XntkfSJdLFswLDEsIiIsMCx7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFswLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6ImVwaSJ9fX1dLFsxLDIsIlxcdmFycGhpX3tkfSJdXQ==
+    \begin{tikzcd}
+        A && {A/\mfrak_{A}^{d}} \\
+        & {B/\mfrak_{B}^{d}}
+        \arrow[two heads, from=1-1, to=1-3]
+        \arrow[two heads, from=1-1, to=2-2]
+        \arrow["{\varphi_{d}}", from=1-3, to=2-2]
+    \end{tikzcd}$$
+    where the composition $A\to B\to B/\mfrak_{B}^{d}$ is surjective being the composition of an injective and a surjective map. Thus by cancellation, $\varphi_{d}$ is surjective too. The kernel of $\varphi_{d}$ is $(A\cap \mfrak_{B}^{d})\cap\mfrak_{A}^{d}$, but $A\cap\mfrak_{B}^{d}=A\cap\mfrak_{A}^{d}B=\mfrak_{A}^{d}$ by (i) above, so $\varphi_{d}$ is an isomorphism for each $d\geq0$. This induces an isomorphism on each of the terms of the filtration, and thus an isomorphism on completion. 
+
+    $(\Leftarrow)$ Suppose that $\widehat{\varphi}:\widehat{A}\to\widehat{B}$ is an isomorphism. Then we have by \Cref{prop: completions of rings} (v) that 
+    $$\gr^{\bullet}_{\mfrak_{A}}(A)\cong\gr^{\bullet}_{\widehat{\mfrak_{A}}}(\widehat{A})\cong\gr^{\bullet}_{\widehat{\mfrak_{B}}}(\widehat{B})\cong\gr^{\bullet}_{\mfrak_{B}}(B).$$
+    and in particular $\mfrak_{A}/\mfrak_{A}^{2}\cong\widehat{\mfrak_{A}}/\widehat{\mfrak_{A}}^{2}\cong\widehat{\mfrak_{B}}/\widehat{\mfrak_{B}}^{2}\cong\mfrak_{B}/\mfrak_{B}^{2}$. In particular, $\mfrak_{B}\cong\mfrak_{A}B+\mfrak_{B}^{2}$. We have finite $B$-mdoules $\mfrak_{A}B\subseteq\mfrak_{B}$ both finite $B$-modules with $\mfrak_{B}=\mfrak_{A}B+\mfrak_{B}^{2}$ so by Nakayama's lemma we have $\mfrak_{A}B=\mfrak_{B}$. This shows that $\varphi$ is unramified. It remains to show $\varphi$ is flat. We have a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiQiJdLFswLDEsIlxcd2lkZWhhdHtBfSJdLFsyLDEsIlxcd2lkZWhhdHtCfSJdLFswLDEsIlxcdmFycGhpIl0sWzIsMywiXFx3aWRlaGF0e1xcdmFycGhpfSIsMl0sWzAsMl0sWzEsM11d
+    \begin{tikzcd}
+        A && B \\
+        {\widehat{A}} && {\widehat{B}}
+        \arrow["\varphi", from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow["{\widehat{\varphi}}"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+    with vertical maps completions at $\mfrak_{A},\mfrak_{B}$, respectively. $A\to\widehat{A}$ is faithfully flat by \Cref{prop: completions of rings} (iii) and \Cref{prop: faithful flatness properties} (iii), and $\widehat{\varphi}$ is an isomorphism hence faithfully flat, and $B\to\widehat{B}$ is faithfully flat once again by \Cref{prop: completions of rings} (iii) and \Cref{prop: faithful flatness properties} (iii). It suffices to show that for $M\hookrightarrow N$ an injection of $A$-modules that $M\otimes_{A}B\to N\otimes_{A}B$ is injective as a map of $B$-modules. Suppose to the contrary that $M\otimes_{A}B\to N\otimes_{A}B$ is not injective, yielding an exact sequence of $B$-modules
+    $$0\to \ker(M\otimes_{A}B\to N\otimes_{A}B)\to M\otimes_{A}B\to N\otimes_{A}B$$
+    and by faithful flatness of $B\to\widehat{B}$ an exact sequence 
+    $$0\to \ker(M\otimes_{A}B\to N\otimes_{A}B)\otimes_{B}\widehat{B}\to M\otimes_{A}\widehat{B}\to N\otimes_{A}\widehat{B}$$
+    of $\widehat{B}$-modules. We have that $\ker(M\otimes_{A}B\to N\otimes_{A}B)\otimes_{B}\widehat{B}=0$ as $A\to \widehat{A}\to\widehat{B}$ is faithfully flat. So by faithful flatness of $B\to\widehat{B}$, $\ker(M\otimes_{A}B\to N\otimes_{A}B)=0$ as well, showing that $-\otimes_{A}B$ preserves injectivity, and thus flatness of $A\to B$. 
+\end{proof}
+\begin{remark}
+    The statement of \Cref{prop: etaleness by completions} should be thought of to be the situation $f:X\to Y$ a morphism of $k$-schemes, $x\in X(k)$, $y=f(x)$, with the induced local homomorphism of local rings $\Ocal_{Y,y}\mapsto\Ocal_{X,x}$, showing that \'{e}taleness can be checked on the induced morphism $\widehat{\Ocal_{Y,y}}\to\widehat{\Ocal_{X,x}}$. 
+\end{remark}
+We now set up the statement of the theorem of formal functions: a result that allows us to compute cohomology of stalks in terms of a limit of cohomologies of thickenings. Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes. For $\Fcal\in\Coh(X)$ a coherent sheaf, is higher direct image $R^{i}f_{*}\Fcal\in\Coh(Y)$. For $y\in Y$, we have a Cartesian square 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHNwZWMoXFxrYXBwYSh5KSkiXSxbMiwxLCJZIl0sWzIsMCwiWCJdLFswLDAsIlhfe3l9Il0sWzIsMSwiZiJdLFswLDEsIlxcaW90YSIsMl0sWzMsMiwiXFxpb3RhJyJdLFszLDAsImYnIiwyXV0=
+\begin{tikzcd}
+	{X_{y}} && X \\
+	{\spec(\kappa(y))} && Y
+	\arrow["{\iota'}", from=1-1, to=1-3]
+	\arrow["{f'}"', from=1-1, to=2-1]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow["\iota"', from=2-1, to=2-3]
+\end{tikzcd}$$
+which by left exactness of global sections induces a natural transformation of functors $(\iota^{*}\circ f_{*})(-)\to (f'_{*}\circ\iota'^{*})(-)$. Observe that for $\Fcal\in\Coh(X)$ applying the source to $\Fcal$ yields $(\iota^{*}\circ f_{*})(\Fcal)$ which can be identified with $(f_{*}\Fcal)_{y}$, and applying the target functor to $\Fcal$ can be similarly identified with $\Gamma(X_{y},\Fcal|_{X_{y}})$ recalling that $\iota'^{*}$ is restriction and $f'_{*}$ the direct image to a point computes cohomology. Using the universal property of $\delta$-functors, we can pass to $\delta$-functors to get morphisms $(R^{i}f_{*}\Fcal)_{y}\to H^{i}(X_{y},\Fcal|_{X_{y}})$ for all $i\geq0$. For any $n\geq0$ we can more generally consider the Cartesian diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXHNwZWMoXFxPY2FsX3tZLHl9L1xcbWZyYWtfe3l9XntufSkiXSxbMiwxLCJZIl0sWzIsMCwiWCJdLFswLDAsIlhfe3l9Xnsobil9Il0sWzIsMSwiZiJdLFswLDFdLFszLDJdLFszLDAsImZfe259IiwyXV0=
+\begin{tikzcd}
+	{X_{y}^{(n)}} && X \\
+	{\spec(\Ocal_{Y,y}/\mfrak_{y}^{n})} && Y
+	\arrow[from=1-1, to=1-3]
+	\arrow["{f_{n}}"', from=1-1, to=2-1]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}$$
+where $X_{y}^{(n)}$ is the $n$-th order thickening of the fiber $X_{y}$. Repeating the argument for $\delta$-functors above, we get for $\Fcal\in\Coh(X)$ morphisms $(f_{*}\Fcal)\otimes_{\Ocal_{Y,y}}(\Ocal_{Y,y}/\mfrak_{y}^{n})\to \Gamma(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})$ inducing 
+\begin{equation}\label{eqn: stepwise map on cohomology}
+    (R^{i}f_{*}\Fcal)\otimes_{\Ocal_{Y,y}}(\Ocal_{Y,y}/\mfrak_{y}^{n})\to H^{i}(X_{y}^{(n)},\Fcal_{X_{y}^{(n)}})
+\end{equation}
+for each fixed $n$. Moreover, these maps are compatible with the restriction maps on thickenings $X_{y}^{(n-1)}\hookrightarrow X_{y}^{(n)}$ in the sense that there are commutative diagrams 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGxlZnQoUl57aX1mX3sqfVxcRmNhbFxccmlnaHQpXFxvdGltZXNfe1xcT2NhbF97WSx5fX1cXGxlZnQoXFxPY2FsX3tZLHl9L1xcbWZyYWtfe3l9XntufVxccmlnaHQpIl0sWzAsMSwiXFxsZWZ0KFJee2l9Zl97Kn1cXEZjYWxcXHJpZ2h0KVxcb3RpbWVzX3tcXE9jYWxfe1kseX19XFxsZWZ0KFxcT2NhbF97WSx5fS9cXG1mcmFrX3t5fV57bi0xfVxccmlnaHQpIl0sWzIsMCwiSF57aX1cXGxlZnQoWF97eX1eeyhuKX0sXFxGY2FsfF97WF97eX1eeyhuKX19XFxyaWdodCkiXSxbMiwxLCJIXntpfVxcbGVmdChYX3t5fV57KG4tMSl9LFxcRmNhbHxfe1hfe3l9Xnsobi0xKX19XFxyaWdodCkiXSxbMSwzXSxbMCwyXSxbMiwzXSxbMCwxXV0=
+\begin{tikzcd}
+	{\left(R^{i}f_{*}\Fcal\right)\otimes_{\Ocal_{Y,y}}\left(\Ocal_{Y,y}/\mfrak_{y}^{n}\right)} && {H^{i}\left(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}}\right)} \\
+	{\left(R^{i}f_{*}\Fcal\right)\otimes_{\Ocal_{Y,y}}\left(\Ocal_{Y,y}/\mfrak_{y}^{n-1}\right)} && {H^{i}\left(X_{y}^{(n-1)},\Fcal|_{X_{y}^{(n-1)}}\right)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}$$
+induced by the diagram 
+$$% https://q.uiver.app/#q=WzAsNixbNCwwLCJYIl0sWzQsMSwiWSJdLFsyLDAsIlhfe3l9Xnsobil9Il0sWzIsMSwiXFxzcGVjKFxcT2NhbF97WSx5fS9cXG1mcmFrX3t5fV57bn0pIl0sWzAsMCwiWF97eX1eeyhuLTEpfSJdLFswLDEsIlxcc3BlYyhcXE9jYWxfe1kseX0vXFxtZnJha197eX1ee24tMX0pIl0sWzIsMF0sWzMsMV0sWzIsM10sWzUsM10sWzQsMl0sWzQsNV0sWzAsMV1d
+\begin{tikzcd}
+	{X_{y}^{(n-1)}} && {X_{y}^{(n)}} && X \\
+	{\spec(\Ocal_{Y,y}/\mfrak_{y}^{n-1})} && {\spec(\Ocal_{Y,y}/\mfrak_{y}^{n})} && Y
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=1-5]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-1, to=2-3]
+	\arrow[from=2-3, to=2-5]
+\end{tikzcd}$$
+with rightmost square and outer rectangle Cartesian, implying that the leftmost square is Cartesian. The maps of (\ref{eqn: stepwise map on cohomology}) assemble to a diagram 
+$$% https://q.uiver.app/#q=WzAsMTAsWzAsMSwiXFxsZWZ0KFJee2l9Zl97Kn1cXEZjYWxcXHJpZ2h0KVxcb3RpbWVzX3tcXE9jYWxfe1kseX19XFxsZWZ0KFxcT2NhbF97WSx5fS9cXG1mcmFrX3t5fV57bn1cXHJpZ2h0KSJdLFswLDIsIlxcbGVmdChSXntpfWZfeyp9XFxGY2FsXFxyaWdodClcXG90aW1lc197XFxPY2FsX3tZLHl9fVxcbGVmdChcXE9jYWxfe1kseX0vXFxtZnJha197eX1ee24tMX1cXHJpZ2h0KSJdLFsyLDEsIkhee2l9XFxsZWZ0KFhfe3l9Xnsobil9LFxcRmNhbHxfe1hfe3l9Xnsobil9fVxccmlnaHQpIl0sWzIsMiwiSF57aX1cXGxlZnQoWF97eX1eeyhuLTEpfSxcXEZjYWx8X3tYX3t5fV57KG4tMSl9fVxccmlnaHQpIl0sWzAsMCwiXFx2ZG90cyJdLFsyLDAsIlxcdmRvdHMiXSxbMCwzLCJcXHZkb3RzIl0sWzIsMywiXFx2ZG90cyJdLFswLDQsIihSXntpfWZfeyp9XFxGY2FsKV97eX0iXSxbMiw0LCJIXntpfVxcbGVmdChYX3t5fSxcXEZjYWx8X3tYX3t5fX1cXHJpZ2h0KSJdLFsxLDNdLFswLDJdLFsyLDNdLFswLDFdLFs0LDBdLFs1LDJdLFszLDddLFsxLDZdLFs3LDldLFs2LDhdLFs4LDldXQ==
+\begin{tikzcd}
+	\vdots && \vdots \\
+	{\left(R^{i}f_{*}\Fcal\right)\otimes_{\Ocal_{Y,y}}\left(\Ocal_{Y,y}/\mfrak_{y}^{n}\right)} && {H^{i}\left(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}}\right)} \\
+	{\left(R^{i}f_{*}\Fcal\right)\otimes_{\Ocal_{Y,y}}\left(\Ocal_{Y,y}/\mfrak_{y}^{n-1}\right)} && {H^{i}\left(X_{y}^{(n-1)},\Fcal|_{X_{y}^{(n-1)}}\right)} \\
+	\vdots && \vdots \\
+	{(R^{i}f_{*}\Fcal)_{y}} && {H^{i}\left(X_{y},\Fcal|_{X_{y}}\right)}
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=4-1, to=5-1]
+	\arrow[from=4-3, to=5-3]
+	\arrow[from=5-1, to=5-3]
+\end{tikzcd}$$
+and hence induces a map on the limits 
+\begin{equation}\label{eqn: map on limits}
+    \widehat{(R_{i}f_{*}\Fcal)}\longrightarrow \lim_{n\in\NN} H^{i}\left(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}}\right)
+\end{equation}
+where $\widehat{(R^{i}f_{*}\Fcal)}$ is the completion of $(R^{i}f_{*}\Fcal)_{y}$ as an $\Ocal_{Y,y}$-module with respect to the ideal $\mfrak_{y}$. The theorem of formal functions states that (\ref{eqn: map on limits}) is an isomorphism. Before we formally state and prove the theorem, we make a few reductions necessary for the proof. 
+\begin{lemma}\label{lem: reduction to affine case}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes, $\Fcal\in\Coh(X)$, and $y\in Y$. Consider the Cartesian square 
+    \begin{equation}\label{eqn: affine reduction cartesian square}
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJXIl0sWzAsMSwiXFxzcGVjKFxcT2NhbF97WSx5fSkiXSxbMiwxLCJZIl0sWzIsMCwiWCJdLFsxLDJdLFszLDIsImYiXSxbMCwzXSxbMCwxLCJnIiwyXV0=
+        \begin{tikzcd}
+            W && X \\
+            {\spec(\Ocal_{Y,y})} && Y.
+            \arrow[from=1-1, to=1-3]
+            \arrow["g"', from=1-1, to=2-1]
+            \arrow["f", from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-3]
+        \end{tikzcd}
+    \end{equation}
+    Then there are isomorphisms $(R^{i}f_{*}\Fcal)\otimes_{\Ocal_{Y,y}}(\Ocal_{Y,y}/\mfrak_{y}^{n})\cong(R^{i}g_{*}\Fcal|_{W})\otimes_{\Ocal_{Y,y}}(\Ocal_{Y,y}/\mfrak_{y}^{n})$ and $H^{i}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})\cong H^{i}(W_{y}^{(n)},\Fcal|_{W_{y}^{(n)}})$. In particular, $\widehat{(R^{i}f_{*}\Fcal)}\cong\widehat{(R^{i}g_{*}\Fcal|_{W})}$. 
+\end{lemma}
+\begin{proof}
+    For any $V\subseteq Y$ affine containing $y$, the morphism $\spec(\Ocal_{Y,y})\to Y$ factors as $\spec(\Ocal_{Y,y})\to V\to Y$. We have that $\spec(\Ocal_{Y,y})\to V$ is flat as it is a localization, and $V\to Y$ flat as it is an open immersion. In particular the bottom horizontal map of (\ref{eqn: affine reduction cartesian square}) is flat. By flat base change \Cref{prop: flat base change} we have isomorphisms $R^{i}f_{*}\Fcal\cong R^{i}g_{*}\Fcal|_{W}$. 
+    
+    For the second isomorphism, we use the diagram 
+    $$% https://q.uiver.app/#q=WzAsNixbNCwwLCJYIl0sWzQsMSwiWSJdLFsyLDAsIlciXSxbMiwxLCJcXHNwZWMoXFxPY2FsX3tZLHl9KSJdLFswLDEsIlxcc3BlYyhcXE9jYWxfe1kseX0vXFxtZnJha197eX1ee259KSJdLFswLDAsIlhfe3l9Xnsobil9Il0sWzAsMSwiZiJdLFs1LDJdLFsyLDBdLFszLDFdLFsyLDNdLFs1LDRdLFs0LDNdXQ==
+    \begin{tikzcd}
+        {X_{y}^{(n)}} && W && X \\
+        {\spec(\Ocal_{Y,y}/\mfrak_{y}^{n})} && {\spec(\Ocal_{Y,y})} && Y
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=1-5]
+        \arrow[from=1-3, to=2-3]
+        \arrow["f", from=1-5, to=2-5]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=2-3, to=2-5]
+    \end{tikzcd}$$
+    where the rightmost square and outer rectangle are Cartesian. This implies that the leftmost square is Cartesian giving an isomorphism $W_{y}^{(n)}\cong X_{y}^{(n)}$ inducing the isomorphism on cohomology $H^{i}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})\cong H^{i}(W_{y}^{(n)},\Fcal|_{W_{y}^{(n)}})$. 
+
+    The final statement is obtained from the first on passage to the limit. 
+\end{proof}
+\begin{lemma}\label{lem: module statement}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes with $Y=\spec(A)$ for a Noetherian local ring $A$ with maximal ideal $\mfrak$, $\Fcal\in\Coh(X)$, and $y\in Y$. There is an isomorphism $\widehat{(R^{i}f_{*}\Fcal)}\cong H^{i}(X,\Fcal)\otimes_{A}\widehat{A}$ and $H^{i}(X_{\mfrak}^{(n)},\Fcal|_{X_{\mfrak}^{(n)}})\cong H^{i}(X,\Fcal/\mfrak^{n}\Fcal)$.
+\end{lemma}
+\begin{proof}
+    Since $Y=\spec(A)$ is affine, $R^{i}f_{*}\Fcal$ is a coherent sheaf on $\spec(A)$ corresponding to a unique finitely generated $A$-module $H^{i}(X,\Fcal)$. The isomorphism $\widehat{(R^{i}f_{*}\Fcal)}\cong H^{i}(X,\Fcal)\otimes_{A}\widehat{A}$ is immediate from \Cref{prop: completions of rings} (ii). For the second isomorphism, we use the Cartesian square 
+    $$% https://q.uiver.app/#q=WzAsNCxbMiwwLCJYIl0sWzIsMSwiWSJdLFswLDAsIlhfe1xcbWZyYWt9Xnsobil9Il0sWzAsMSwiXFxzcGVjKEEvXFxtZnJha157bn0pIl0sWzAsMSwiZiJdLFsyLDAsImpfe259Il0sWzMsMV0sWzIsM11d
+    \begin{tikzcd}
+        {X_{\mfrak}^{(n)}} && X \\
+        {\spec(A/\mfrak^{n})} && Y
+        \arrow["{j_{n}}", from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    where we use that $j_{n}$ is affine as it is obtained from the affine morphism $\spec(A/\mfrak^{n})\to \spec(A)=Y$ by base change along $f$. Along affine morphisms there is an isomorphism $H^{i}(X^{(n)}_{\mfrak},\Fcal|_{X_{\mfrak}^{(n)}})\cong H^{i}(X,\Fcal/\mfrak^{n}\Fcal)$ since $j_{n*}$ is the quotient by $\mfrak^{n}$. 
+\end{proof}
+We are now prepared to state and prove the theorem of formal functions. 
+\begin{theorem}[Formal Functions]\label{thm: formal functions}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes, $\Fcal\in\Coh(X)$, and $y\in Y$. Denote the $\mfrak_{y}$-adic completion of the $\Ocal_{Y,y}$-module $(R^{i}f_{*}\Fcal)_{y}$ by $\widehat{(R^{i}f_{*}\Fcal)}$ and $X_{y}^{(n)}$ the $n$-th order thickening of the fiber $X\times_{Y}\spec(\Ocal_{Y,y}/\mfrak_{y}^{n})$. The morphism (\ref{eqn: map on limits}) is an isomorphism 
+    $$\widehat{(R^{i}f_{*}\Fcal)}\cong\lim_{n\in\NN}H^{i}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}}).$$
+\end{theorem}
+\begin{proof}
+    Without loss of generality, we can take $Y$ to be affine by \Cref{lem: reduction to affine case}. We can then apply \Cref{lem: module statement} in which case we can take $Y=\spec(A)$ with $A=\Ocal_{Y,y}$ and observe it suffices to prove that there is an isomorphism 
+    $$H^{i}(X,\Fcal)\otimes_{A}\widehat{A}\longrightarrow\lim_{n\in\NN}H^{i}\left(X,\Fcal/\mfrak^{n}\Fcal\right).$$
+
+    Note that we have a short exact sequence $0\to\mfrak^{n}\Fcal\to\Fcal\to\Fcal/\mfrak^{n}\Fcal\to0$ inducing by the long exact sequence in cohomology 
+    $$H^{i}(X,\mfrak_{n}\Fcal)\xrightarrow{a_{n}} H^{i}(X,\Fcal)\xrightarrow{b_{n}}H^{i}(X,\Fcal/\mfrak^{n}\Fcal)\xrightarrow{c_{n}}H^{i+1}(X,\mfrak^{n}\Fcal)\xrightarrow{d_{n}}H^{i+1}(X,\Fcal).$$
+    We seek to show that the induced maps $\beta_{n}H^{i}(X,\Fcal)/\img(a_{n})\to H^{i}(X,\Fcal/\mfrak^{n}\Fcal)$ which on passage to the limit gives
+    $$\beta:\lim_{n\in\NN}H^{i}(X,\Fcal)/\img(a_{n})\to\lim_{n\in\NN}H^{i}(X,\Fcal/\mfrak^{n}\Fcal)$$
+    is isomorphic to $H^{i}(X,\Fcal)\otimes_{A}\widehat{A}\to\lim_{n\in\NN}H^{i}\left(X,\Fcal/\mfrak^{n}\Fcal\right)$.
+
+    We first show that $\lim_{n\in\NN}H^{i}(X,\Fcal)/\img(a_{n})\cong H^{i}(X,\Fcal)\otimes_{A}\widehat{A}$. By the Artin-Rees lemma \Cref{thm: Artin-Rees}, it suffices to show that the filtrations $\{\img(a_{n})\}$ and $\{\mfrak^{n}H^{i}(X,\Fcal)\}$ of $H^{i}(X,\Fcal)$ are equivalent in the sense of \Cref{def: equivalent filtrations}. Observe that for every $n\geq0$ that $\mfrak^{n}H^{i}(X,\Fcal)\subseteq\img(a_{n})$ as for each $x\in\mfrak^{n}$ we have a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIXntpfShYLFxcRmNhbCkiXSxbMiwwLCJIXntpfShYLFxcRmNhbCkiXSxbMSwxLCJIXntpfShYLFxcbWZyYWtee259XFxGY2FsKSJdLFswLDEsIlxcY2RvdCB4Il0sWzAsMiwiXFxjZG90IHgiLDJdLFsyLDEsImFfe259IiwyXV0=
+    \begin{tikzcd}
+        {H^{i}(X,\Fcal)} && {H^{i}(X,\Fcal).} \\
+        & {H^{i}(X,\mfrak^{n}\Fcal)}
+        \arrow["{\cdot x}", from=1-1, to=1-3]
+        \arrow["{\cdot x}"', from=1-1, to=2-2]
+        \arrow["{a_{n}}"', from=2-2, to=1-3]
+    \end{tikzcd}$$
+    Conversely for each $n\geq0$ there is $m\geq0$ such that $\img(a_{m})\subseteq\mfrak^{n}H^{i}(X,\Fcal)$. Consider the $A$-algebra $\bigoplus_{j\geq0}\mfrak^{j}$ and the $\Ocal_{X}$-algebra $\Acal=\bigoplus_{j\geq0}\mfrak^{j}\Ocal_{X}$. We have a Cartesian diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYJ1xcY29uZ1xcdW5kZXJsaW5le1xcc3BlY30oXFxBY2FsKSJdLFswLDEsIlxcc3BlYyhTKSJdLFsyLDAsIlgiXSxbMiwxLCJZIl0sWzIsMywiZiJdLFswLDJdLFswLDFdLFsxLDNdXQ==
+    \begin{tikzcd}
+        {X'\cong\underline{\spec}(\Acal)} && X \\
+        {\spec(S)} && Y.
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    The morphism $\spec(S)\to Y$ is affine, so $X'\to X$ is affine and since $X'\to\spec(S)$ is proper the quasicoherent sheaf $\Ecal\bigoplus_{j\geq0}\mfrak^{j}\Fcal$ on $X$ is finitely generated as an $\Acal$-module and thus $\Ecal$ is the direct image of $\Ecal'$ on $X'$. But since $X'\to X$ is affine, we have 
+    $$H^{i}(X',\Ecal')=H^{i}(X,\Ecal)=H^{i}(X,\Fcal)\oplus H^{i}(X,\mfrak\Fcal)\oplus\dots.$$
+    By coherence of $\Ecal'$, the cohomology $H^{i}(X,\Ecal')$ is finitely generated as an $S$-module. By the Artin-Rees lemma \Cref{thm: Artin-Rees}, the filtration $\{a_{j}\left(H^{i}(X,\mfrak^{j}\Fcal)\right)\}$ of $H^{i}(X,\Fcal)$ is $\mfrak$-stable in the sense that $\mfrak\cdot a_{j}\left(H^{i}(X,\mfrak^{j}\Fcal)\right)=a_{j+1}\left(H^{i}(X,\mfrak^{j+1}\Fcal)\right)$ for all $j\geq c$ for some fixed $c\geq0$. So 
+    $$\img(a_{n+c})=a_{n+c}\left(H^{i}(X,\mfrak^{n+c}\Fcal)\right)=\mfrak^{n}\cdot a_{c}\left(H^{i}(X,\mfrak^{c}\Fcal)\right)\subseteq\mfrak^{n}H^{i}(X,\Fcal)$$
+    showing that the filtrations agree -- that is, $\lim_{n\in\NN}H^{i}(X,\Fcal)/\img(a_{n})\cong H^{i}(X,\Fcal)\otimes_{A}\widehat{A}$. 
+
+    To show that $\beta$ is an isomorphism, we have a short exact sequence 
+    $$0\to H^{i}(X,\Fcal)/\img(a_{n})\xrightarrow{\beta_{n}}H^{i}(X,\Fcal/\mfrak^{n}\Fcal)\to\ker(d_{n})\to0.$$
+    Observe that the map $H^{i}(X,\Fcal)/\img(a_{n+1})\to H^{i}(X,\Fcal)/\img(a_{n})$ is surjective for each $n\geq0$. By \Cref{prop: completions of rings} (i), we get an exact sequence on passage to limits 
+    $$0\to\lim_{n\in\NN}H^{i}(X,\Fcal)/\img(a_{n})\xrightarrow{\beta} \lim_{n\in\NN}H^{i}(X,\Fcal/\mfrak^{n}\Fcal)\to \lim_{n\in\NN}\ker(d_{n})\to0.$$
+    It remains to show that $\lim_{n\in\NN}\ker(d_{n})=0$. The multiplication maps $\mfrak\times\ker(d_{n})\to\ker(d_{n+1})$, so $\Qcal=\bigoplus_{j\geq0}\ker(d_{n})$ is an $S$-module for which we choose a set of homogeneous generators with degree at most $N$. Since $\ker(d_{n})=\img(c_{n})$, and the image of $c_{n}$ is zero after multiplication by $\mfrak^{n}$ as $\Fcal/\mfrak^{n}\Fcal$ is. Thus $\ker(d_{n})$ is zero after multiplication by $\mfrak^{n}$ as well. That is, $\Qcal$ is zero after multiplication by $\mfrak^{N}S$ of $S$. Consider the composition $\mfrak^{r}\otimes\ker(d_{n})\xrightarrow{\times}\ker(d_{n+r})\xrightarrow{\mfrak^{n+r}\Fcal\hookrightarrow\mfrak^{n}\Fcal}\ker(d_{n})$. The multiplication map is surjective for $r\geq0$ and $n\in\NN$. So the composition is zero if $r\geq n$. The restriction $\ker(d_{n+r})\to\ker(d_{n})$ is zero if $r,n\geq N$. In particular the limit vanishes, giving the desired isomorphsim. 
+\end{proof}
+We conclude with a quick corollary of the theorem of formal functions. 
+\begin{corollary}\label{corr: vanishing of derived pushforwards}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes and $r$ the maximal dimension of the fibers of $f$. Then $R^{i}f_{*}\Fcal=0$ for all $i>r$ and $\Fcal\in\Coh(X)$.  
+\end{corollary}
+\begin{proof}
+    Fix $y\in Y$ and $i>r$. For every $n\geq 1$ the topological space underlying $X_{y}^{(n)}$ is homeomorphic to $X_{y}$ of dimension at most $r$. Thus $H^{i}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})=0$ for all $n$. By the theorem on formal functions $\widehat{(R^{i}f_{*}\Fcal)}=0$ and the morphism to the completion is an injection, so $(R^{i}f_{*}\Fcal)_{y}=0$. But $Y$ was arbitrary, so $R^{i}f_{*}\Fcal=0$. 
+\end{proof}
