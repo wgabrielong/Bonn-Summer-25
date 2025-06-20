@@ -1,0 +1,112 @@
+\section{Lecture 16 -- 16th June 2025}\label{sec: lecture 16}
+We discuss some consequences of the theorem of formal functions \Cref{thm: formal functions}. 
+
+We begin with the following definition. 
+\begin{definition}[$\Ocal$-Connected]\label{def: O-connected}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes. $f$ is $\Ocal$-connected if $f_{*}\Ocal_{X}\cong\Ocal_{Y}$. 
+\end{definition}
+The first consequence of the theorem of formal functions is that $\Ocal$-connectedness implies connectedness of fibers in the ordinary sense. 
+\begin{proposition}\label{prop: O-connected implies connected fibers}
+    Let $f:X\to Y$ be an $\Ocal$-connected morphism of locally Noetherian schemes. Then the fibers $X_{y}$ for all $y\in Y$ are connected. 
+\end{proposition}
+\begin{proof}
+    Suppose to the contrary that $X_{y}$ is not connected for some $y$. For such $y$, we can reduce to by induction to the case of two connected components and write $X_{y}=X_{1}\sqcup X_{2}$ with $X_{1},X_{2}$ both open and closed in the fiber. Define $e_{i}\in H^{0}(X_{y},\Ocal_{X_{y}})$ to be the function taking value 1 on $X_{i}$ and 0 otherwise. We have $\widehat{\Ocal_{Y}}\cong\widehat{(f_{*}\Ocal_{X})}\cong\lim_{n\in\NN}H^{0}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})$ with the first isomorphism by $\Ocal$-connectedness and the second by the theorem of formal functions \Cref{thm: formal functions} since $f$ is proper as it is $\Ocal$-connected. Note that there are elements satisfiying the conditions of $e_{1},e_{2}$ in each term of the limit $H^{0}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})$. So $\widehat{\Ocal_{Y}}$ contains elements $e_{1},e_{2}$ such that $e_{1}e_{2}=0$ so $e_{1},e_{2}\in\mfrak_{y}$ which implies $e_{1}+e_{2}=1\in\mfrak_{y}$, a contradiction. 
+\end{proof}
+\begin{remark}
+    The converse of \Cref{prop: O-connected implies connected fibers} is false. $\spec(A/I)\subseteq\spec(A)$ has connected fibers since the empty set is connected, but is clearly not $\Ocal$-connected as the direct image of the structure sheaf is the algebra sheaf $\widetilde{A/I}$. 
+\end{remark}
+The theorem of formal functions gives ways to factorize morphisms: the Stein factorization, Zariski's main theorem, and Grothendieck's variant of Zariski's main theorem. 
+\begin{theorem}[Stein -- Factorization]\label{thm: Stein factorization}
+    Let $f:X\to Y$ be a proper morphism of locally Noetherian schemes. $f$ admits a factorization as $X\xrightarrow{g}Y'\xrightarrow{\pi}Y$ with $g$ $\Ocal$-connected and $\pi$ finite. 
+\end{theorem}
+\begin{proof}
+    Define $Y'=\underline{\spec}(f_{*}\Ocal_{X})$ and let $\pi:Y'\to Y$ be the structure morphism. By properness of $f$, $f_{*}\Ocal_{X}$ is finitely generated as an $\Ocal_{Y}$ module showing $\pi$ is finite. We want to show that $g:X\to Y'$ is $\Ocal$-connected. By the adjunction $\Mor_{\Sch_{Y}}(X,\underline{\spec}(\Acal))\cong\Mor_{\Alg_{\Ocal_{Y}}}(\Acal,f_{*}\Ocal_{X})$ natural in $\Ocal_{Y}$-algebras $\Acal$, we get a unique map $g:X\to Y'$ induced by the identity along that equivalence. To see that $g$ is $\Ocal$-connected, it suffices to check after composition with $\pi$. $(\pi\circ g)_{*}\Ocal_{X}\cong\pi_{*}\Ocal_{Y'}\cong f_{*}\Ocal_{X}$
+\end{proof}
+For Zariski's main theorem, we will need to introduce some additional language. 
+\begin{definition}[Birational Morphism]\label{def: birational morphism}
+    Let $f:X\to Y$ be a morphism. $f$ is a birational morphism if $f$ admits an inverse as a rational map. 
+\end{definition}
+In particular, $f|_{U}:U\to V$ is an isomorphism for nonempty dense open sets $U\subseteq X,V\subseteq Y$. 
+
+Moreover, we will require the following preparatory lemma. 
+\begin{lemma}\label{lem: birational with normal target is isomorphism}
+    Let $f:X\to Y$ be a finite birational morphism between integral varieties such that $Y$ is normal. Then $f$ is an isomorphism. 
+\end{lemma}
+\begin{proof}
+    Finite morphisms are in particular affine, so without loss of generality we can take $Y=\spec(A),X=\spec(B)$ and $f$ induced by the ring map $A\to B$. Since $f$ is dominant, $A\hookrightarrow B$ is injective and by birationality, we have $A\hookrightarrow B\hookrightarrow\Frac(B)=\Frac(A)$ with the last equality by birationality. $A$ is normal, hence integrally closed, and $B$ is an $A$-algebra that is finite as an $A$-module so $A\hookrightarrow B$ is an integral extension, but $A$ was integrally closed, so $A\cong B$ yielding the claim. 
+\end{proof}
+We can now state and prove Zariski's main theorem in earnest. 
+\begin{theorem}[Zariski -- Main]\label{thm: Zariski main theorem}
+    Let $f:X\to Y$ be a proper birational morphism between integral varieties such that $Y$ is normal. Then $f$ is $\Ocal$-connected. 
+\end{theorem}
+\begin{proof}
+    Apply the Stein factorization \Cref{thm: Stein factorization} to get $f$ as a composite $X\xrightarrow{g}Y'\xrightarrow{\pi}Y$ where $g$ is $\Ocal$-connected and $\pi$ is finite. $g$ is $\Ocal$-connected and we claim that $\pi$ is an isomorphism. $\pi$ is birational as $\pi\circ(g\circ f^{-1}\circ\pi)=\pi$ shows that $g\circ f^{-1}$ is an inverse to $\pi$ as a rational map. In particular, $\pi$ is birational and proper as it is finite, so $\pi$ is surjective, and $g\circ f^{-1}\circ\pi=\pi^{-1}$. In particular, $\pi$ is a finite birational morphism between integral varities with normal target so \Cref{lem: birational with normal target is isomorphism} completes the proof. 
+\end{proof}
+\begin{example}
+    Let $X$ be smooth and projective over $k$ and $\beta:\widetilde{X}\to X$ be the blowing up of $X$ smooth at a $k$-rational point $x$. We have $(R^{i}\beta_{*}\Ocal_{\widetilde{X}})_{x'}=0$ for all $i>0$ and $x'\neq x$ since $\beta$ is an isomorphism there. It remains tos how that the stalk at $x$ is also zero. For $X$ of dimension $d$, we have $E_{x}X\cong\PP^{d-1}_{k}$ and by the theorem of formal functions $\widehat{(R^{i}\beta_{*}\Ocal_{\widetilde{X}})}=0$ as the structure sheaf cohomology of projective space is acyclic and thus is zero on every thickeing of the fiber. 
+\end{example}
+Note that in general the blowups have cohomology that differs from the base. 
+
+We now show Grothendieck's generalization of Zariski's main theorem. For this we introduce some further language. 
+\begin{definition}[Isolated in Fiber]\label{def: isolated in fiber}
+    Let $f:X\to Y$ be a proper morphism and $x\in X$ with image $f(x)=y\in Y$. $x$ is isolated in its fiber if $x$ is an irreducible connected component of the fiber $X_{y}$. 
+\end{definition}
+Let us consider some elementary properties of this notion. 
+\begin{lemma}\label{lem: properties of O-connected morphisms}
+    Let $f:X\to Y$ be an $\Ocal$-connected morphism. Then:
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ is surjective. 
+        \item $x\in X$ is isolated in its fiber if and only if $f$ is unramified at $x$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}[Proof of (i)]
+    Properness implies that the image of $X$ in $Y$ is closed and $\Ocal$-connectedness implies $f$ is dominant, that is, has dense image. But any closed dense subset of $Y$ is $Y$ itself, hence $f$ is surjective. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    $(\Rightarrow)$ Suppose that $f$ is unramified at $x$. We obtain by base change $f|_{X_{y}}:X_{y}\to\spec(\kappa(y))$ which is quasifinite as $f$ is unramified at $x$. Since further $f$ is locally of finite type, $x$ is isolated in its fiber. 
+
+    $(\Leftarrow)$ If $x$ is isolated in its fiber, we seek to show $f^{\sharp}:\Ocal_{Y}\to f_{*}\Ocal_{X}$ is an isomorphism. But this is precisely $\Ocal$-connectedness and implies unramifiedness. It suffices to show that for every $U\subseteq X$ containing $x$ there is $V\subseteq Y$ open such that $f^{-1}(V)\subseteq U$. But by properness, $X\setminus U$ is closed so $f(X\setminus U)$ is closed. So $Y\setminus f(X\setminus U)$ satisfies the required conditions. 
+\end{proof}
+We are now prepared to show Grothendieck's variant of Zariski's main theorem. 
+\begin{theorem}[Grothendieck -- Zariski's Main Theorem]\label{thm: Grothendieck ZMT}
+    Let $f:X\to Y$ be a proper morphism. Then there exists a diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMSwwLCJYIl0sWzAsMSwiWF97MH0iXSxbMiwxLCJZJyJdLFsxLDIsIlkiXSxbMSwyLCJpIiwwLHsibGFiZWxfcG9zaXRpb24iOjQwLCJjdXJ2ZSI6MSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJ0b3AifX19XSxbMCwzLCJmIiwxLHsibGFiZWxfcG9zaXRpb24iOjcwLCJjdXJ2ZSI6LTF9XSxbMSwwLCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDIsImciXSxbMiwzLCJcXHBpIl0sWzEsMywiZnxfe1hfezB9fSIsMl1d
+    \begin{tikzcd}
+        & X \\
+        {X_{0}} && {Y'} \\
+        & Y
+        \arrow["g", from=1-2, to=2-3]
+        \arrow["f"{description, pos=0.7}, curve={height=-6pt}, from=1-2, to=3-2]
+        \arrow[hook, from=2-1, to=1-2]
+        \arrow["i"{pos=0.4}, curve={height=6pt}, hook, from=2-1, to=2-3]
+        \arrow["{f|_{X_{0}}}"', from=2-1, to=3-2]
+        \arrow["\pi", from=2-3, to=3-2]
+    \end{tikzcd}$$
+    where:
+    \begin{itemize}
+        \item $X_{0}\subseteq X$ is the open subset of points isolated in their fiber, 
+        \item $f|_{X_{0}}$ factors as $\pi\circ i$ where $i$ is an open embedding and $i$ is finite, 
+        \item and $f=\pi\circ g$. 
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Take the Stein factorization $X\xrightarrow{g}Y'\xrightarrow{\pi}X$. Let $X_{0}$ be the set of points isolated in their fiber with respect to $f$. But $X_{0}$ is also the set of points isolated in their fiber with respect to $g$ as $\pi$ is finite. Every point of $Y'$ is isolated in its fiber and $X_{0}$ is the set of $x\in X$ such that $g$ is unramified at $x$ by \Cref{lem: properties of O-connected morphisms} (ii) and thus $X_{0}$ is open by openness of the unramified locus. 
+
+    It remains to show $g|_{X_{0}}:X_{0}\to Y'\setminus g(X\setminus X_{0})$ is an isomorphism. By the proof of \Cref{lem: properties of O-connected morphisms} (i) $g|_{X_{0}}$ is surjective and injective an injective by \Cref{prop: O-connected implies connected fibers} and using that each point is isolated in its fiber and injective. So $g$ is a homeomorphism that is $\Ocal$-connected, and hence an isomorphism. 
+\end{proof}
+We conclude with a proof of the equivalence of some conditions of morphisms. 
+\begin{corollary}\label{corr: equivalent conditions on morphisms}
+    Let $f:X\to Y$ be a morphism of locally Noetherian schemes. The following are equivalent: 
+    \begin{enumerate}[label=(\roman*)]
+        \item $f$ is finite.
+        \item $f$ is affine and proper.
+        \item $f$ is proper and quasifinite. 
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    (a)$\Rightarrow$(b) and (a)$\Rightarrow$(c) are immediate. 
+    
+    (b)$\Rightarrow$(a) If $f$ is affine and proper, and for $V=\spec(A)\subseteq Y$ with preimage $U=f^{-1}(V)=\spec(B)\subseteq X$ since $f$ is affine, we have by properness of $f|_{U}$that $\pi_{*}\Ocal_{U}$ is a coherent $\Ocal_{V}$-module so $B$ is finitely generated over $A$ showing $f|_{U}$ and thus $f$ is finite. 
+
+    (c)$\Rightarrow$(a) Suppose $f$ is proper and quasifinite. So $X=X_{0}$ where $X_{0}$ is the set of points isolated in their fiber since if $x\in X$ with image $y=f(x)$ we have $f|_{X_{y}}:X_{y}\to \spec(\kappa(y))$ is proper and quasifinite and hence finite with $X_{y}$ the disjoint union of the Zariski spectra of finite extensions of $\kappa(y)$. By \Cref{thm: Grothendieck ZMT}, $f$ admits a factorization as $\pi\circ g$ where $g:X\to Y$ is an open immersion and $\pi$ is finite. But $g$ is proper and hence a closed immersion, thus finite as the composition of two finite morphisms. 
+\end{proof}
