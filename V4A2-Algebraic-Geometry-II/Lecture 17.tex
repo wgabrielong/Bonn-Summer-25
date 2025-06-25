@@ -1,0 +1,119 @@
+\section{Lecture 17 -- 23rd June 2025}\label{sec: lecture 17}
+We begin a discussion of base-change theorems. The setting is as follows: for $f:X\to Y$ projective with $Y$ Noetherian and $\Fcal\in\Coh(X)$we have that $R^{i}f_{*}\Fcal$ are coherent and for $\spec(A)\subseteq Y$ an affine open subset there are isomorphisms $R^{i}f_{*}\Fcal|_{\spec(A)}\cong H^{i}(X\times_{Y}\spec(A),\Fcal|_{X\times_{Y}\spec(A)})$. The theorem of formal functions \Cref{thm: formal functions} states that the completion $H^{i}(X\times_{Y}\spec(A),\Fcal|_{X\times_{Y}\spec(A)})$ at $y$ can be computed as the limit of cohomologies of the fiber $\lim_{n\in\NN}H^{i}(X_{y}^{(n)},\Fcal|_{X_{y}^{(n)}})$ though it is not in general true that $R^{i}f_{*}\Fcal\otimes\kappa(y)\cong H^{i}(X_{y},\Fcal|_{X_{y}})$. We seek to understand the connection between the stalk of $R^{i}f_{*}\Fcal$ and $H^{i}(X_{y},\Fcal_{y})$, or, more generally, for a Cartesian square 
+\begin{equation}\label{eqn: proper base change}
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJYJyJdLFswLDEsIlknIl0sWzIsMCwiWCJdLFsyLDEsIlkiXSxbMCwyLCJnJyJdLFsyLDMsImYiXSxbMCwxLCJmJyIsMl0sWzEsMywiZyIsMl1d
+    \begin{tikzcd}
+        {X'} && X \\
+        {Y'} && Y
+        \arrow["{g'}", from=1-1, to=1-3]
+        \arrow["{f'}"', from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow["g"', from=2-1, to=2-3]
+    \end{tikzcd}
+\end{equation}
+the relationship between $g^{*}R^{i}f_{*}\Fcal$ and $R^{i}f'_{*}g'^{*}\Fcal$ for $\Fcal\in\Coh(X)$. Evidently, the relationship between $R^{i}f_{*}\Fcal\otimes\kappa(y)$ and $H^{i}(X_{y},\Fcal|_{X_{y}})$ is recovered from the preceding discussion by taking $g:\spec(\kappa(y))=Y'\to Y=\spec(\Ocal_{Y,y})$. 
+
+In the case where $\Fcal\in\Coh(X)$ is $Y$-flat, this is the content of the proper base change theorem. We follow the exposition of \cite[p. 46]{Mumford}, keeping the notation of (\ref{eqn: proper base change}).
+\begin{theorem}[Proper Base Change]\label{thm: proper base change}
+    Let $f:X\to Y$ be a projective morphism with $Y=\spec(A)$ a Noetherian affine scheme and $\Fcal\in\Coh(X)$ that is $Y$-flat. There exists a finite complex $K^{\bullet}=0\to K^{0}\to K^{1}\to\dots\to K^{n}\to0$ of finite projective $A$-modules $K^{i}$ such that for all $A\to B$ there is an isomorphism 
+    $$H^{i}(X\times_{Y}\spec(B),g'^{*}\Fcal)\cong H^{i}(K^{\bullet}\otimes_{A}B).$$
+\end{theorem}
+We defer the proof to the subsequent lecture, and turn now to a discussion of applications. 
+
+For our first application, we will require the following lemma. 
+\begin{lemma}\label{lem: tensor residue field is closed}
+    Let $A$ be a Noetherian ring and $\varphi:M_{1}\to M_{2}$ a morphism between finite $A$-modules. Then 
+    $$\{\pfrak\in\spec(A):\varphi\otimes\id_{\kappa(\pfrak)}:M_{1}\otimes_{A}\kappa(\pfrak)\to M_{2}\otimes_{A}\kappa(\pfrak)\text{ is the zero map}\}\subseteq\spec(A)$$
+    is closed. 
+\end{lemma}
+We now state and prove the proposition of interest. 
+\begin{proposition}\label{prop: upper semicontinuity of local cohomology}
+    Let $f:X\to Y$ be projective with $Y$ Noetherian and $\Fcal\in\Coh(X)$ $Y$-flat. Then:
+    \begin{enumerate}[label=(\roman*)]
+        \item The function $Y\to\ZZ$ by $y\mapsto h^{i}(X_{y},\Fcal|_{X_{y}})$ is upper semicontinuous: for all $c$ the set of points where $h^{i}(X_{y},\Fcal|_{X_{y}})\geq c$ is closed in $Y$. 
+        \item The function $Y\to \ZZ$ by $y\mapsto \chi(X_{y},\Fcal|_{X_{y}})$ is locally constant. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    By locality on target, we can, without loss of generality, take $Y=\spec(\Ocal_{Y,y}),Y'=\spec(\kappa(y))$ and apply \Cref{thm: proper base change} to observe that $H^{i}(X_{y},\Fcal|_{X_{y}})\cong H^{i}(K^{\bullet}\otimes_{A}\kappa(y))$. In particular 
+    \begin{align*}
+        h^{i}(X_{y},\Fcal|_{X_{y}})&=\dim(\ker(d^{i}\otimes\id_{\kappa(y)})) - \dim(\img(d^{i}\otimes\id_{\kappa(y)})) \\
+        &= \dim\ker(d^{i}\otimes\id_{\kappa(y)})-\dim(\img(d^{i}\otimes\id_{\kappa(y)})) - \dim(\img(d^{i-1}\otimes\id_{\kappa(y)}))
+    \end{align*}
+    so to show that $h^{i}$ is upper semicontinuous it suffices to show that $\dim(\img(d^{i}\otimes\id_{\kappa(y)})) + \dim(\img(d^{i-1}\otimes\id_{\kappa(y)}))$ is lower semicontinuous. Applying \Cref{lem: tensor residue field is closed} to $M_{1}=\bigwedge^{c}K^{i},M_{2}=\bigwedge^{c}K^{i+1}$, we know that $\dim(\img(d^{i}\otimes\id_{\kappa(y)}))<c$ if and only if $\bigwedge^{c}(d^{i}\otimes\id_{\kappa(y)})=0$ if and only if $\varphi\otimes\id_{\kappa(y)}=0$ where $\varphi:\bigwedge^{c}K^{i}\to\bigwedge^{c}K^{i+1}$. In our case, we can take $\bigwedge^{c}K^{i}=A^{\oplus n},\bigwedge^{c}K^{i+1}=A^{\oplus m}$ so $\varphi\otimes\kappa(\pfrak)$ is given by an $n\times m$ matrix which vanishes if and only if each entry of the matrix lies in $\pfrak$. That is, the function $\varphi\otimes\id_{\kappa(y)}$ decreases in rank on the closed subset defined by the vanishing locus of the matrix entries, ie. is lower semicontinuous, showing the claim. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    Using the second line of the displayed equation in the proof of (i), we have 
+    \begin{align*}
+        \chi(X_{y},\Fcal|_{X_{y}})&=\sum_{i\geq0}(-1)^{i}h^{i}(X_{y},\Fcal|_{X_{y}})\\ 
+        &=\sum_{i\geq0}(-1)^{i}\dim(K^{i}\otimes\id_{\kappa(y)})\\
+        &=\sum_{i\geq0}(-1)^{i}\mathrm{rank}(K^{i})
+    \end{align*}
+    which is constant by \Cref{thm: proper base change}. 
+\end{proof}
+\begin{remark}
+    We note that we may not drop the $Y$-flatness assumption on $\Fcal\in\Coh(X)$. Let $f:\Bl_{0}\A^{2}_{k}\to\A^{2}_{k}$ and $E_{0}\A^{2}_{k}\cong\PP^{1}_{k}$. Let $\Fcal\cong\Ocal_{\Bl_{0}\A^{2}_{k}}(E_{0}\A^{2}_{k})$. $\Fcal$ is not $\A^{2}_{k}$-flat as $f$ is not so -- the fiber dimension is not constant. For a closed point $y\in\A^{2}_{k}$, $(\Bl_{0}\A^{2}_{k})_{y}$ is either a point or $\PP^{1}_{k}$ so 
+    $$\Fcal_{y}=\begin{cases}
+        \spec(\kappa(y)) & y\neq0 \\
+        \Ocal_{\Bl_{0}\A^{2}_{k}}(E_{0}\A^{2}_{k})|_{E_{0}\A^{2}_{k}} & y=0.
+    \end{cases}$$
+
+    \Cref{prop: upper semicontinuity of local cohomology} (ii) also requires the $Y$-flatness assumption. $\id_{X}:X\to X$ for $X$ connected is a flat morphism. For $x\in X$ a closed point, the skyscraper sheaf $\Fcal=\iota_{x}\kappa(x)$ is a coherent sheaf but $\Fcal$ is not flat as
+    $$h^{0}(X_{y},\Fcal_{y})=\begin{cases}
+        0 & y\neq x \\ 1 & y=x
+    \end{cases}$$
+    and $h^{i}(X_{y},\Fcal_{y})=0$ for all $i\geq 1$ so the Euler characteristic is
+    $$\chi(X_{y},\Fcal_{y})=\begin{cases}
+        1 & y\neq x \\ 0 & y=x
+    \end{cases}$$
+    which is not constant. 
+\end{remark}
+We now relate constancy of the cohomological dimension functor with local freeness of the higher direct images. 
+\begin{proposition}\label{prop: constant cohomology dimension iff higher direct images are locally free}
+    Let $f:X\to Y$ be a projective morphism with $Y$ Noetherian and $\Fcal\in\Coh(X)$ $Y$-flat. Then: 
+    \begin{enumerate}[label=(\alph*)]
+        \item  $y\mapsto h^{i}(X_{y},\Fcal|_{X_{y}})$ is constant. 
+        \item $R^{i}f_{*}\Fcal$ is locally free and there is an isomorphism $R^{i}f_{*}\Fcal\cong H^{i}(X_{y},\Fcal|_{X_{y}})$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (a)$\Rightarrow$(b) This is the statement of \Cref{ex: local flatness}. 
+
+    (b)$\Rightarrow$(a) If $R^{i}f_{*}\Fcal$ is locally free and $R^{i}f_{*}\Fcal\cong H^{i}(X_{y},\Fcal|_{X_{y}})$ then the local cohomological dimension is constant. 
+\end{proof}
+\begin{corollary}\label{corr: also free in -1}
+    Let $f:X\to Y$ be a projective morphism with $Y$ Noetherian and $\Fcal\in\Coh(X)$ $Y$-flat. If $y\mapsto h^{i}(X_{y},\Fcal|_{X_{y}})$ is constant then $R^{i-1}f_{*}\Fcal\otimes\kappa(y)\cong H^{i-1}(X_{y},\Fcal|_{X_{y}})$. 
+\end{corollary}
+\begin{remark}
+    Note that in \Cref{corr: also free in -1} $R^{i-1}f_{*}\Fcal\otimes\kappa(y)$ need not be locally free -- that is, $h^{i-1}(X_{y},\Fcal|_{X_{y}})$ need not be (locally) constant. 
+\end{remark}
+\begin{corollary}\label{corr: vanishing in degree -1}
+    Let $f:X\to Y$ be projective with $Y$ Noetherian and $\Fcal\in\Coh(X)$ $Y$-flat. If $H^{i}(X_{y},\Fcal|_{X_{y}})=0$ for all $y\in Y$ then $R^{i-1}f_{*}\Fcal\otimes\kappa(y)\cong H^{i}(X_{y},\Fcal|_{X_{y}})$. 
+\end{corollary}
+We can also show a vanishing result. 
+\begin{proposition}\label{prop: cohomology base change vanishing}
+    Let $f:X\to Y$ be a projective morphism with $Y$ Noetherian and $\Fcal\in\Coh(X)$ $Y$-flat. Fix $i_{0}\in\NN$. If $R^{i}f_{*}\Fcal=0$ for all $i\geq i_{0}$ then $H^{i}(X_{y},\Fcal_{y})=0$ for all $i\geq i_{0}$. 
+\end{proposition}
+\begin{proof}
+    We know that $H^{i}(X_{y},\Fcal|_{X_{y}})=0$ for $i>\dim(X)$. So we can assume $H^{i}(X_{y},\Fcal|_{X_{y}})=0$ for all $i>i_{0}$. By \Cref{corr: vanishing in degree -1}, $R^{i-1}f_{*}\Fcal\otimes\kappa(y)\cong H^{i-1}(X_{y},\Fcal|_{X_{y}})\cong H^{i}(X_{y},\Fcal|_{X_{y}})=0$ giving the claim. 
+\end{proof}
+An especially nice situation is when the map $g:Y'\to Y$ of (\ref{eqn: proper base change}) is flat. 
+\begin{theorem}[Flat Base Change]\label{thm: flat base change}
+    Let $f:X\to Y$ be a projective morphism with $Y$ Noetherian, $\Fcal\in\Coh(X)$ $Y$-flat, and $g:Y'\to Y$ flat inducing a Cartesian diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYJyJdLFswLDEsIlknIl0sWzIsMCwiWCJdLFsyLDEsIlkiXSxbMCwyLCJnJyJdLFsyLDMsImYiXSxbMCwxLCJmJyIsMl0sWzEsMywiZyIsMl1d
+    \begin{tikzcd}
+        {X'} && X \\
+        {Y'} && Y.
+        \arrow["{g'}", from=1-1, to=1-3]
+        \arrow["{f'}"', from=1-1, to=2-1]
+        \arrow["f", from=1-3, to=2-3]
+        \arrow["g"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+    Then the natural morphism $g^{*}R^{i}f_{*}\Fcal\to R^{i}f'_{*}g'^{*}\Fcal$ is an isomorphism. 
+\end{theorem}
+We have encountered this statement before as \Cref{prop: flat base change}.
+\begin{proof}
+    Isomorphisms of quasicoherent sheaves can be checked affine-locally. It thus suffices to consider the case $Y'=\spec(A'),Y=\spec(A)$ affine. Then the assertion follows by observing 
+    $$H^{i}(K^{\bullet})\otimes_{A}A'\longrightarrow H^{i}(K^{\bullet}\otimes_{A}A')$$
+    is an isomorphism by flatness of $A'$ over $A$. 
+\end{proof}
