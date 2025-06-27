@@ -1,0 +1,130 @@
+\section{Lecture 6 -- 20th June 2025}\label{sec: lecture 6}
+Despite Wagner's negative result in \Cref{thm: Wagner no-go}, things can still be made to work in certain situations.\marginpar{The first third of this lecture was dedicated to a discussion of the proof of \Cref{thm: Wagner no-go}. We have used this to produce an imporoved exposition of the proof in Lecture \ref{sec: lecture 5} in place of repeating the content here.} The general idea around these positive results is that things work after inverting small primes. The following is the subject of work in progress by Wagner. 
+\begin{conjecture}[Wagner]\label{conj: Wagner primes up to dimension inverted}
+    There exists a symmetric monoidal functor 
+    $$\left\{\substack{\textrm{smooth }\ZZ\textrm{-algebras }R\textrm{ s.t.} \\ \frac{1}{d!}\in R, d=\dim(R)}\right\}\longrightarrow\Dscr(\Hcal)$$
+    by $R\mapsto q\dash\HHdg_{R}$ such that the following hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item For all \'{e}tale framings $\square:\ZZ[\underline{T}^{\pm}]\to R$ there is an isomorphism of $\Dscr(\Hcal)$ commutative algebras $q\dash\HHdg_{R}\simeq(\Hcal_{(R,\square)})^{h\ZZ^{d}}$. 
+        \item The isomorphism of (i) induces an isomorphism $H^{0}\left(q\dash\HHdg_{R}\otimes_{\ZZ[q^{\pm}]}\QQ(\zeta_{d})\right)\cong R\otimes_{\ZZ}\QQ(\zeta_{d})$. 
+    \end{enumerate}
+\end{conjecture}
+\begin{remark}
+    Note that the symmetric monoidal structure on the category of smooth algebras in \Cref{conj: Wagner primes up to dimension inverted} above is not the na\"{i}ve one -- one has to invert the factorial of the dimension of $R\otimes_{\ZZ}R'$ for $R,R'$ in this category. 
+\end{remark}
+Another perspective yielding positive results is the relation between $q$-de Rham cohomology and topological Hochschild homology relative to the complex $K$-theory spectrum $\KU$.\marginpar{The instructor remarks here on his distaste for abbreviations, and defends that $\KU$ is not an abbreviation but in fact the official name for the complex $K$-theory spectrum.} We recall here the definition. 
+\begin{definition}[Topological Hochschild Homology]\label{def: THH}
+    Let $R$ be an $\EE_{1}$-ring. Then 
+    $$\THH(R)=R\otimes_{R\otimes_{\SSS}R^{\Opp}}R.$$
+\end{definition}
+This extends the relationship between prismatic cohomology and topological Hochschild homology. In particular Devalapukar and Raksit has observed that relative to $\KU$ these $q$-deformations appear naturally. 
+\begin{conjecture}
+    There is an equivalence of cyclotomic $\EE_{\infty}$ rings 
+    $$\tau_{\geq0}\ku^{tC_{p}}\simeq\THH(\ZZ_{p}[\zeta_{p}]/\SSS[q])^{\wedge}_{p}.$$
+\end{conjecture}
+This was shown in Devalapurkar's thesis.  
+\begin{theorem}[Devalapurkar; {\cite[Thm. 6.4.1 (a)]{Devalapurkar}}]
+    Let $p>2$ and $\ZZ_{p}[\zeta_{p}]$ an $\SSS[[q^{1/p}-1]]$-algebra by $q^{1/p}\mapsto\zeta_{p}$. There is an $S^{1}\times\ZZ_{p}^{\times}$-equivariant equivalence of cyclotomic $\EE_{\infty}\dash\SSS[[q-1]]$-algebras 
+    $$\ku_{p}^{(-1)}\simeq\THH(\ZZ_{p}[\zeta_{p}]/\SSS[[q^{1/p}-1]]).$$
+\end{theorem}
+This connects the seemingly disparate objects of the complex $K$-theory spectrum with topological Hochschild homology and prismatic cohomology. 
+
+The construction here proceeds as follows. For a smooth $\ZZ$-algebra $R$ admitting a flat lift $\ku_{R}$ to $\ku$, then $\pi_{*}\THH(\ku_{R}/\ku)^{hS^{1}}$ is extremely closeley related to $(q\dash\HHdg_{R})^{\wedge}_{(q-1)}$. But $\THH$ has genuine equivariance, so we can consider $$\left(\THH(\ku_{R}/\ku)^{C_{m}}\right)^{h(S^{1}/C_{m})}$$ where $(-)^{C_{m}}$ are the genuine fixed points whose homotopy groups are closely related to $(q\dash\HHdg_{R})^{\wedge}_{(q^{m}-1)}$.\marginpar{The instructor remarks that it is these connections with homotopy theory that reinvigorated his hope for the existence of Habiro cohomology.} If $R$ was further \'{e}tale, there would be a unique such flat lift which recovers the Habiro ring of $R$. To wit, the Habiro completion at all roots of unity is closely related to genuine equivariance under finite subgroups of $S^{1}$ that is a recurring theme in the discussion of topological Hochschild homology. This gives a conceptual origin for $q$-Hodge cohomology. This discussion, however, still depends on the existence of the lift to $\ku$ which can be awkward to work with.
+\begin{example}
+    Framed algebras have a preferred lift. 
+\end{example}
+\begin{example}
+    Lifts as an $\EE_{1}$-algebra are unique up to unique homotopy after inverting small primes. 
+\end{example}\marginpar{The instructor describes the approach using refined topological Hochschild homology as ``more fancy.''} 
+One can also leverage the machinery of refined topological Hochschild homology and its varia following Efimov and as discussed in the work of Meyer-Wagner \cite{MeyerWagner}. This produces a version of Habiro cohomology where a prime being a unit over the ring need not imply that it is a unit in Habiro cohomology such as in the construction of \Cref{conj: Wagner primes up to dimension inverted} where if $R$ had some prime $p$ inverted, $p$ would also be inverted in $q\dash\HHdg_{R}$, and where $q\dash\HHdg_{R}$ can be nontrivial modulo $p$. 
+\begin{remark}
+    This phenomena of non-inversion of primes also occurs in the analytic variant of prismatic cohomology where for a rigid space over $\QQ_{p}$ the prismatic cohomology can still contain $p$-torsion information. 
+\end{remark}
+\begin{remark}
+    In the language of the previous semester's course on the Habiro ring of a number field, we did not produce $p$-adic congruences over the primes dividing the discriminant of the number field. But this construction using refined localizing invariants hopefully will allow us to understand the behavior of the Habiro ring at these bad primes and bad roots of unity. 
+\end{remark}
+While these are approaches that have borne fruit in the past, we will not discuss them in the remainder of this course. 
+
+Recall from Lecture \ref{sec: lecture 1} that the goal is to produce for any separated finite type scheme $X$ over the integers a category $\Dscr_{\Hab}(X)$ of coefficients for Habiro cohomology. 
+\begin{example}\label{ex: categories of coefficients}
+    Recall the discussion from Figure \ref{fig: cohomology theories for schemes} of cohomology theories and their coefficients: 
+    \begin{itemize}
+        \item The coefficients for Betti (ie. singular) cohomology are the Betti sheaves. 
+        \item The coefficients for de Rham cohomology are $D$-modules. 
+        \item The coefficients for \'{e}tale cohomology are the constructible \'{e}tale sheaves.
+    \end{itemize}
+\end{example}
+We will embark on a more geometric approach. Bhatt's principle of transmutation \cite[Rmk. 2.3.8]{FGauges} -- a program first initiated by Simpson -- suggests that there is a functor $\Sch^{\mathsf{sft}}_{\ZZ}\to\mathsf{AnStk}_{\Hcal}$ that preserves finite limits and colimits along gluing diagrams taking a separated finite type $\ZZ$-scheme to an analytic stack over the Habiro ring $\Hcal$ such that $\Dscr_{\Hab}(X)\simeq\Dscr_{\QCoh}(X^{\Hab})$ -- that is, the category of coefficients for Habiro cohomology is equivalent to the derived $\infty$-category of quasicoherent sheaves on the putative Habiro stack $X^{\Hab}$. This is already substantiated by known cases. 
+\begin{example}
+    Continuing \Cref{ex: categories of coefficients}, we have the following transmutation constructions: 
+    \begin{itemize}
+        \item Betti sheaves arise as the quasicoherent sheaves on the Betti stack. 
+        \item $D$-modules arise as the quasicoherent sheaves on the de Rham stack. 
+    \end{itemize}
+\end{example}
+Recall now that we have already determined $\GG_{m}^{\Hab}$ to be $$\Dscr_{\Hab}(\GG_{m})\simeq\Dscr_{\QCoh}(\GG_{m}^{\Hab})=\left\{\text{modified }q\text{-connections on }\GG_{m,\Hcal}\right\}$$
+in \Cref{ex: Habiro stack on Gm}. These are just quasicoherent sheaves on $\GG_{m,\Hcal}/q^{\ZZ}$ as the modified $q$-connections merely prescribe the descent datum to the quotient by the multiplicative action of $q^{\ZZ}$. The upshot of this approach is that it suffices to deterimine $(\A^{1}_{\ZZ})^{\Hab}$ as a ring stack since all separated finite type $\ZZ$-schemes are built out of $\A^{1}_{\ZZ}$ from finite limits and gluing (in a sense we make more precise below). This is the content of the following proposition. 
+\begin{proposition}\label{prop: gluing lemma for schemes}
+    Let $F:\Sch_{\ZZ}^{\mathsf{sft}}\to\Cscr$ be a functor such that 
+    \begin{enumerate}[label=(\arabic*)]
+        \item $F$ commutes with finite limits. 
+        \item $F$ commutes with colimits along diagrams which are frames of spectral spaces with transition maps open immersions. 
+    \end{enumerate}
+    Then the value of $F$ on any object is determined completely by $F(\A^{1}_{\ZZ})$. 
+\end{proposition}
+\begin{proof}
+    Note that any separated finite type scheme is spectral and by (2) we have 
+    $$F(X)=F(\colim_{\spec(R)\subseteq X}\spec(R))\simeq\colim_{\spec(R)\subseteq X}F(\spec(R))$$
+    so it suffices to deterimine $F(\spec(R))$. Since $X$ is finite type, $R$ is of the form $\ZZ[T_{1},\dots,T_{n}]/(f_{1},\dots,f_{r})$. Now we observe $F(\spec(R))\simeq F(\spec(\ZZ))\times_{F(\A^{r}_{\ZZ})}F(\A^{n}_{\ZZ})$ by (2) as $\spec(\ZZ[T_{1},\dots,T_{n}]/(f_{1},\dots,f_{r}))$ is the fibered product (ie. limit) of the diagram 
+    \begin{equation}\label{eqn: pullback spec R}
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHNwZWMoXFxaWltUX3sxfSxcXGRvdHMsVF97bn1dLyhmX3sxfSxcXGRvdHMsZl97cn0pKSJdLFsyLDAsIlxcQV57bn1fe1xcWlp9Il0sWzIsMSwiXFxBXntyfV97XFxaWn0iXSxbMCwxLCJcXHNwZWMoXFxaWikiXSxbMSwyXSxbMCwxXSxbMCwzXSxbMywyXV0=
+        \begin{tikzcd}
+            {\spec(\ZZ[T_{1},\dots,T_{n}]/(f_{1},\dots,f_{r}))} && {\A^{n}_{\ZZ}} \\
+            {\spec(\ZZ)} && {\A^{r}_{\ZZ}}
+            \arrow[from=1-1, to=1-3]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-3]
+        \end{tikzcd}
+    \end{equation}
+    opposite to the coCartesian square in algebras
+    \begin{equation}\label{eqn: pushout spec R}
+        % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFpaW1RfezF9LFxcZG90cyxUX3tufV0vKGZfezF9LFxcZG90cyxmX3tyfSkiXSxbMiwwLCJcXFpaW1RfezF9LFxcZG90cyxUX3tufV0iXSxbMiwxLCJcXFpaW1RfezF9LFxcZG90cyxUX3tyfV0iXSxbMCwxLCJcXFpaIl0sWzIsMSwiVF97aX1cXG1hcHN0byBmX3tpfSIsMl0sWzIsMywiVF97aX1cXG1hcHN0bzAiXSxbMSwwXSxbMywwXV0=
+        \begin{tikzcd}
+            {\ZZ[T_{1},\dots,T_{n}]/(f_{1},\dots,f_{r})} && {\ZZ[T_{1},\dots,T_{n}]} \\
+            \ZZ && {\ZZ[T_{1},\dots,T_{r}]}
+            \arrow[from=1-3, to=1-1]
+            \arrow[from=2-1, to=1-1]
+            \arrow["{T_{i}\mapsto f_{i}}"', from=2-3, to=1-3]
+            \arrow["{T_{i}\mapsto0}", from=2-3, to=2-1]
+        \end{tikzcd}
+    \end{equation}
+    and observing that each $\A^{n}_{\ZZ}$ is the iterated fibered product of $\A^{1}_{\ZZ}$'s the assertion follows. 
+\end{proof}
+\begin{remark}
+    Consdiering the affine case for simplicity, if $X=\spec(R)$ we would have after passage of (\ref{eqn: pullback spec R}) through $F(-)=(-)^{\Hab}$ a Cartesian square
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHNwZWMoUilee1xcSGFifSJdLFsyLDAsIihcXEFee259X3tcXFpafSlee1xcSGFifSJdLFsyLDEsIihcXEFee3J9X3tcXFpafSlee1xcSGFifSJdLFswLDEsIlxcc3BlYyhcXFpaKV57XFxIYWJ9Il0sWzEsMl0sWzAsMV0sWzAsM10sWzMsMl1d
+    \begin{tikzcd}
+        {\spec(R)^{\Hab}} && {(\A^{n}_{\ZZ})^{\Hab}} \\
+        {\spec(\ZZ)^{\Hab}} && {(\A^{r}_{\ZZ})^{\Hab}}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    but the map $(\A^{n}_{\ZZ})^{\Hab}\to(\A^{r}_{\ZZ})^{\Hab}$ is determined by the ``Habiroization'' of the left vertical map on affine space of (\ref{eqn: pullback spec R}), or equivalently of the map of algebras $T_{i}\mapsto f_{i}$ of (\ref{eqn: pushout spec R}). Thus, we need to understand addition and multiplication of $(\A^{n}_{\ZZ})^{\Hab}$ (in particular $(\A^{1}_{\ZZ})^{\Hab}$). That is, to understand $(\A^{1}_{\ZZ})^{\Hab}$ as a ring stack. 
+\end{remark}
+We already understand what $\GG_{m}^{\Hab}$ should be -- X. And we can build $(\A^{1}_{\ZZ})^{\Hab}$ from $\GG_{m}^{\Hab}$ by observing that we have a coCartesian diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCIoXFxHR197bX1cXHNldG1pbnVzXFx7MVxcfSlee1xcSGFifSJdLFswLDEsIihcXEFeezF9X3tcXFpafVxcc2V0bWludXNcXHsxXFx9KV57XFxIYWJ9Il0sWzIsMCwiXFxHR197bX1ee1xcSGFifSJdLFsyLDEsIihcXEFeezF9X3tcXFpafSlee1xcSGFifSJdLFswLDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzIsM10sWzAsMSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiaG9vayIsInNpZGUiOiJib3R0b20ifX19XSxbMSwzXV0=
+\begin{tikzcd}
+	{(\GG_{m}\setminus\{1\})^{\Hab}} && {\GG_{m}^{\Hab}} \\
+	{(\A^{1}_{\ZZ}\setminus\{1\})^{\Hab}} && {(\A^{1}_{\ZZ})^{\Hab}}
+	\arrow[hook, from=1-1, to=1-3]
+	\arrow[hook', from=1-1, to=2-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-1, to=2-3]
+\end{tikzcd}$$
+and that we have an isomorphism $(\A^{1}_{\ZZ}\setminus\{1\})^{\Hab}\cong\GG_{m}^{\Hab}$ by the coordinate transformation $x\mapsto 1-x$. The crux, then, is to define the map $x\mapsto 1-x$ (cf. the marginal note of \Cref{rmk: get a sheaf theory}). In other words, to define a map $(\GG_{m}\setminus\{1\})^{\Hab}\to \GG_{m}^{\Hab}$ which is ``$(x\mapsto 1-x)^{\Hab}$'' and addition can be completely built off this one map. Once we have this map we can perform the gluing. Moreover, defining the multiplication is easy as we know $\GG_{m}^{\Hab}$ not only as a stack but as a group stack. The explicit construction of this map via $q$-series will be the subject of the subsequent lectures. 
+\begin{remark}
+    Bhatt-Lurie \cite{BhattLurieAbsolute} and Drinfeld \cite{DrinfeldPrismatization} undertake a similar approach for prismatic cohomology defining $(\A^{1}_{\ZZ_{p}})^{\prism}$ which is somewhat easy to understand as a stack and where the multiplication operation comes readily, but where the construction of addition is also fairly involved. 
+\end{remark}
