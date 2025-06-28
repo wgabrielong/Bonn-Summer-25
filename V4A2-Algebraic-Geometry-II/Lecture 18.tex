@@ -1,0 +1,114 @@
+\section{Lecture 18 -- 26th July 2025}\label{sec: lecture 18}
+We prove \Cref{thm: flat base change}. We begin with some preparatory homological algebra matters. 
+\begin{definition}[Quasi-Isomorphism]\label{def: quasiisomorphism}
+    Let $\Asf$ be an Abelian category and $C^{\bullet},C'^{\bullet}$ two $\Asf$-chain complexes. $C^{\bullet}$ is quasiisomorphic to $C'^{\bullet}$ if $H^{i}(C^{\bullet})\cong H^{i}(C'^{\bullet})$. 
+\end{definition}
+\begin{definition}[Mapping Cone]\label{def: mapping cone}
+    Let $\Asf$ be an Abelian category and $\phi^{\bullet}:C^{\bullet}\to C'^{\bullet}$ a morphism of $\Asf$-chain complexes. Then the mapping cone $\Cone(\phi)^{\bullet}$ is the complex beginning in degree -1 with terms $C^{i}\oplus C'^{i+1}$ with differentials $(\partial^{i},-d^{i+1}+\psi^{i+1})$. 
+\end{definition}
+With this language in hand, we can prove the relevant lemmata. 
+\begin{lemma}\label{lem: downward recursion modules}
+    Let $A$ be a Noetherian ring and $C^{\bullet}$ be a finite complex of $A$-modules such that all $H^{i}(C^{\bullet})$ are also finitely generated $A$-modules. Then there exists a finite complex $K^{\bullet}$ and a morphism $K^{\bullet}\to C^{\bullet}$ in $\mathrm{Ch}(\Mod_{A})$ such that $K^{i}$ are free for $i\geq 1$ and $K^{\bullet}$ is quasi-isomorphic to $C^{\bullet}$. Moreover, if all $C^{i}$'s are flat, then so too are the $K^{i}$'s. 
+\end{lemma}
+\begin{proof}
+    Assume that we have already constructed 
+    $$% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiS157bSsxfSJdLFswLDEsIkNee20rMX0iXSxbMiwwLCJcXGRvdHMiXSxbMSwwLCJLXnttKzJ9Il0sWzEsMSwiQ157bSsyfSJdLFsyLDEsIlxcZG90cyJdLFszLDAsIktee259Il0sWzMsMSwiQ157bn0iXSxbNCwwLCIwIl0sWzQsMSwiMCJdLFswLDMsImRee20rMX0iXSxbMywyLCJkXnttKzJ9Il0sWzIsNl0sWzYsOF0sWzcsOV0sWzUsN10sWzQsNSwiXFxwYXJ0aWFsXnttKzJ9IiwyXSxbMSw0LCJcXHBhcnRpYWxee20rMX0iLDJdLFswLDFdLFszLDRdLFs2LDddXQ==
+    \begin{tikzcd}
+        {K^{m+1}} & {K^{m+2}} & \dots & {K^{n}} & 0 \\
+        {C^{m+1}} & {C^{m+2}} & \dots & {C^{n}} & 0
+        \arrow["{d^{m+1}}", from=1-1, to=1-2]
+        \arrow[from=1-1, to=2-1]
+        \arrow["{d^{m+2}}", from=1-2, to=1-3]
+        \arrow[from=1-2, to=2-2]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=1-4, to=2-4]
+        \arrow["{\partial^{m+1}}"', from=2-1, to=2-2]
+        \arrow["{\partial^{m+2}}"', from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+    \end{tikzcd}$$
+    with $K^{i}$ free and $H^{i}(K^{\bullet})\cong H^{i}(C^{\bullet})$ for all $i\geq m+2$ and $\ker(d^{m+1})\twoheadrightarrow H^{m}(C^{\bullet})$. Since $K^{m+1}$ is finite and $A$ is Noetherian we can set 
+    $$M=\ker(\ker(d^{m+1})\to H^{m+1}(C^{\bullet}))$$ 
+    which is also finite. Pick free modules $K',K''$ with morphisms $\alpha:K'\twoheadrightarrow M, K''\to H^{m+1}(C^{\bullet})$ inducing the map $\beta$ below
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJLJyciXSxbMiwwLCJIXnttfShDXntcXGJ1bGxldH0pIl0sWzIsMSwiXFxrZXIoXFxwYXJ0aWFsXnttfSkiXSxbMCwyLCJcXGJldGEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMiwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJlcGkifX19XSxbMCwxXV0=
+    \begin{tikzcd}
+        {K''} && {H^{m}(C^{\bullet})} \\
+        && {\ker(\partial^{m})}
+        \arrow[from=1-1, to=1-3]
+        \arrow["\beta"', dashed, from=1-1, to=2-3]
+        \arrow[two heads, from=2-3, to=1-3]
+    \end{tikzcd}$$
+    which exists by $K''$ being free and in particular both injective and projective. Set $K^{m}=K'\oplus K''$ which is free being the direct sum of free modules. Consider 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXnttfSJdLFswLDIsIkNee219Il0sWzEsMSwiXFxrZXIoXFxwYXJ0aWFsXnttfSkiXSxbNCwwLCJLXnttKzF9Il0sWzQsMiwiQ157bSsxfSJdLFszLDAsIk0iXSxbNSwzLCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFszLDRdLFswLDUsIihcXGFscGhhLDApIiwwLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzEsNCwiXFxwYXJ0aWFsXnttfSIsMl0sWzAsMSwiXFx3aWRldGlsZGV7XFxhbHBoYX0iLDJdLFswLDIsIlxcYmV0YSJdLFsyLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV0sWzAsNCwiIiwwLHsiY3VydmUiOi0yfV1d
+    \begin{tikzcd}
+        {K^{m}} &&& M & {K^{m+1}} \\
+        & {\ker(\partial^{m})} \\
+        {C^{m}} &&&& {C^{m+1}}
+        \arrow["{(\alpha,0)}", two heads, from=1-1, to=1-4]
+        \arrow["\beta", from=1-1, to=2-2]
+        \arrow["{\widetilde{\alpha}}"', from=1-1, to=3-1]
+        \arrow[curve={height=-12pt}, from=1-1, to=3-5]
+        \arrow[hook, from=1-4, to=1-5]
+        \arrow[from=1-5, to=3-5]
+        \arrow[hook, from=2-2, to=3-1]
+        \arrow["{\partial^{m}}"', from=3-1, to=3-5]
+    \end{tikzcd}$$
+    and where the curved arrow factors over $\img(\partial^{m})$. We have that $M\subseteq\ker(d^{m+1})$ surjecting onto $H^{m+1}(C^{\bullet})$. So $H^{m+1}(K^{\bullet})\cong\ker(d^{m+1})/M$ injects into $H^{m+1}(C^{\bullet})$. Since this was surjective by assumption, injectivity here yields an isomorphism. That $\beta$ is surjective it suffices to observe that $\ker(d^{m})\twoheadrightarrow H^{m}(C^{\bullet})$. This extends the construction by one step and by iterating the process we get 
+    $$% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiS157MH0iXSxbMCwxLCJDXnswfSJdLFsyLDAsIlxcZG90cyJdLFsxLDAsIkteezF9Il0sWzEsMSwiQ157MX0iXSxbMiwxLCJcXGRvdHMiXSxbMywwLCJLXntufSJdLFszLDEsIkNee259Il0sWzQsMCwiMCJdLFs0LDEsIjAiXSxbMCwzLCJkXnswfSJdLFszLDIsImReezF9Il0sWzIsNl0sWzYsOF0sWzcsOV0sWzUsN10sWzQsNSwiXFxwYXJ0aWFsXnsxfSIsMl0sWzEsNCwiXFxwYXJ0aWFsXnswfSIsMl0sWzAsMSwiXFxwc2leezB9IiwyXSxbMyw0XSxbNiw3XV0=
+    \begin{tikzcd}
+        {K^{0}} & {K^{1}} & \dots & {K^{n}} & 0 \\
+        {C^{0}} & {C^{1}} & \dots & {C^{n}} & 0
+        \arrow["{d^{0}}", from=1-1, to=1-2]
+        \arrow["{\psi^{0}}"', from=1-1, to=2-1]
+        \arrow["{d^{1}}", from=1-2, to=1-3]
+        \arrow[from=1-2, to=2-2]
+        \arrow[from=1-3, to=1-4]
+        \arrow[from=1-4, to=1-5]
+        \arrow[from=1-4, to=2-4]
+        \arrow["{\partial^{0}}"', from=2-1, to=2-2]
+        \arrow["{\partial^{1}}"', from=2-2, to=2-3]
+        \arrow[from=2-3, to=2-4]
+        \arrow[from=2-4, to=2-5]
+    \end{tikzcd}$$
+    where all $K^{i}$ are free and $K^{\bullet}$ quasi-isomorphic to $C^{\bullet}$ in positive degree. Replacing $K^{0}$ by $K^{0}/\ker(d_{0})\cap\ker(\psi^{0})$, we get a quasiisomorphism in degree 0 as well but $K^{0}$ is no longer free. 
+
+    It remains to show the second statement that $K^{0}$ in particular is flat when the $C^{i}$'s are so. For this, we note that there are morphisms of complexes $K^{\bullet}\to C^{\bullet}\to \Cone(\psi)^{\bullet}\to K^{\bullet}[1]$ and $C^{i}\hookrightarrow\Cone(\psi)^{i}\twoheadrightarrow K^{i+1}$ inducing a long exact sequence in cohomology 
+    $$\dots\to H^{i}(K^{\bullet})\xrightarrow{\sim} H^{i}(C^{\bullet})\to H^{i}(\Cone(\psi)^{\bullet})\to H^{i+1}(K^{\bullet})\xrightarrow{\sim}H^{i+1}(C^{\bullet})\to\dots$$
+    where the indicated isomorphisms are by the quasiisomorphism of the complex. Examining terms in low degrees, we have that each $\Cone(\psi)^{i}$ for $i\geq0$ is $C^{i}\oplus K^{i+1}$ the sum of flat modules, hence flat. So $K^{0}$ is flat too. 
+\end{proof}
+\begin{lemma}\label{lem: quasiiso persists on ring extensions}
+    Let $A$ be a Noetherian ring and $K^{\bullet},C^{\bullet}$ complexes fo flat $A$-modules such that $\psi^{\bullet}:K^{\bullet}\to C^{\bullet}$ is a quasi-isomorphism. Then for all $A\to B$, the induced map $\psi\otimes\id_{B}:K^{\bullet}\otimes_{A}B\to C^{\bullet}\otimes_{A}B$ is a quasi-isomorphism. 
+\end{lemma}
+\begin{proof}
+    We form the mapping cone fitting into 
+    $$K^{\bullet}\to C^{\bullet}\to \Cone(\psi)^{\bullet}\to K^{\bullet}[1]$$
+    and since $\psi$ is a quasi-isomorphism, $\Cone(\psi)^{\bullet}$ is an acyclic complex, so tensoring with $B$, we get $\Cone(\psi)^{\bullet}\otimes\id_{B}\cong\Cone(\psi\otimes\id_{B})$ acyclic so $K^{\bullet}\otimes_{A}B$ is quasi-isomorphic to $C^{\bullet}\otimes_{A}B$. 
+\end{proof}
+We are now prepared to show \Cref{thm: proper base change}. 
+\begin{proof}[Proof of \Cref{thm: proper base change}]
+    Let $X=\bigcup_{i=1}^{n}U_{i}$ where $U_{i}=\spec(A_{i})$ be a finite cover of $X$ by affine open schemes. We can form the \v{C}ech complex which computes sheaf cohomology since $X$ is projective (and in particular separated) over $\spec(A)$. The \v{C}ech complex is termwise finitely generated by projectivity and termwise flat by flatness of $\Fcal$ so for $A\to A'$, $X'=X\times_{\spec(A)}\spec(A')$, $X'$ admits an open cover by $\bigcup_{i=1}^{n}U_{i}'$ where $U_{i}'=\spec(A_{i}\otimes_{A}A')$. Here, the result follows immediately from \Cref{lem: downward recursion modules,lem: quasiiso persists on ring extensions}. 
+\end{proof}
+We turn to a discussion of some applications. 
+\begin{proposition}\label{prop: see-saw}
+    Let $X$ be projective and geometrically integral over $k$ and $T$ of finte type over $k$. For $\Lcal\in\Pic(X\times_{k}T)$ the set 
+    $$Z=\{t\in T:\Lcal|_{X\times_{k}\spec(\kappa(t))\cong\Ocal_{X\times_{k}\spec(\kappa(t))}}\}$$
+    is closed. 
+\end{proposition}
+\begin{proof}
+    Recall that if $\Mcal$ is an invertible sheaf on a proper integral scheme $X$ over a field, $\Mcal$ is trivial if and only if $H^{0}(X,\Mcal)\neq0$ and $H^{0}(X,\Mcal^{\vee})\neq0$. Since $H^{0}(X,\Ocal_{X})$ is a field, we can write 
+    $$Z=\{t\in T:H^{0}(X\times_{k}\spec(\kappa(t)),\Lcal_{t})\neq0\}\cap\{t\in T:H^{0}(X\times_{k}\spec(\kappa(t)),\Lcal_{t}^{\vee})\neq0\}$$
+    where we denote $\Lcal_{t}=\Lcal|_{X\times_{k}\spec(\kappa(t))}$. By \Cref{prop: upper semicontinuity of local cohomology}, both of these sets are closed, so $Z$ being their intersection is closed too. 
+\end{proof}
+\begin{proposition}\label{prop: local trivial line bundle is globally trivial}
+    Let $f:X\to Y$ be a surjective flat projective morphism with integral fibers and $Y$ a reduced Noetherian scheme. If $\Lcal\in\Pic(X)$ such that $\Lcal|_{X_{y}}\cong\Ocal_{X_{y}}$ for all $y\in Y$ then $\Lcal\cong f^{*}\Mcal$ for some $\Mcal\in\Pic(Y)$. 
+\end{proposition}
+\begin{proof}
+    Set $\Mcal=f_{*}\Lcal$ and by \Cref{prop: constant cohomology dimension iff higher direct images are locally free} and reducedness of $Y$, $h^{0}(X_{y},\Lcal_{y})=1$ implies $f_{*}\Lcal$ is invertible and the fibers $\Mcal\otimes\kappa(y)=H^{0}(X_{y},\Lcal_{y})$. Using adjunction, we can define a natural morphism $f^{*}\Mcal=f^{*}f_{*}\Lcal\to\Lcal$ which is an isomorphism on each fiber and hence globally. 
+\end{proof}
+\begin{corollary}
+    Let $f:X\to Y$ be a surjective flat projective morphism with integral fibers and $Y$ a reduced Noetherian scheme. If $\Lcal_{1},\Lcal_{2}$ are invertible sheaves such that $\Lcal_{1}|_{X_{y}}\cong\Lcal_{2}|_{X_{y}}$ for each $y\in Y$ then there exists $\Mcal\in\Pic(Y)$ such that $\Lcal_{1}\cong f^{*}\Mcal\otimes\Lcal_{2}$. 
+\end{corollary}
+\begin{proof}
+    Apply \Cref{prop: local trivial line bundle is globally trivial} to $\Lcal_{1}\otimes\Lcal_{2}^{\vee}$. 
+\end{proof}
