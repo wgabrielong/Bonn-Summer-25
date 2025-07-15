@@ -1,0 +1,58 @@
+\section{Lecture 5 -- 22nd May 2025}\label{sec: lecture 5}
+We make preparations towards showing the result of van der Put-Schneider and Huber \cite[Thm. 4]{vdPclassification} showing that the space of van der Put points on $\Sp(A)$ for $A$ affinoid is homeomorphic to the adic spectrum $\Spa(A,A^{\circ})$ of the correct Krull dimension. 
+\begin{proposition}
+    Let $A\to B$ be a morphism of affinoid $K$-algebras. 
+    \begin{enumerate}[label=(\roman*)]
+        \item If $B$ is finite over $A$, then $B^{\circ}$ is integral -- but not necessarily finite -- over $A^{\circ}$. 
+        \item $\widetilde{A}=A^{\circ}/A^{\circ\circ}$ is finite type over $K^{\circ}/K^{\circ\circ}$ with Krull dimension equal to that of $A$. Moreover, $\widetilde{B}$ is finite over $\widetilde{A}$. 
+    \end{enumerate}
+\end{proposition}
+\begin{example}
+    If $A=\TT_{n}$, then $\widetilde{A}=A^{\circ}/A^{\circ\circ}\cong K[X_{1},\dots,X_{n}]$ the ordinary polynomial ring in $n$ variables. 
+\end{example}
+\begin{proposition}\label{prop: powerbounded commutes with polynomial algebra}
+    Let $A$ be a nat ring. Then $A\langle X_{1},\dots,X_{n}\rangle^{\circ}\cong A^{\circ}\langle X_{1},\dots,X_{n}\rangle$. 
+\end{proposition}
+\begin{lemma}\label{lem: key lemma vdP points}
+    Let $A$ be an affinoid $K$-algebra, $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})$, and $B=\Ocal_{\Sp(A)}(\Omega)$. Consider the following conditions:\marginpar{Lemma 3.1}
+    \begin{enumerate}[label=(\alph*)]
+        \item $\nu\in R_{\Spa(A,A^{\circ})}(f_{0}|f_{1},\dots,f_{n})$. 
+        \item $\nu$ can be extended to an element of $\Spa(B,B^{\circ})$. 
+        \item $\nu$ admits a unique continuous extension to $B$. 
+    \end{enumerate}
+    then the following implications hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item (a) and (b) are equivalent. 
+        \item (a) and (b) imply (c). 
+    \end{enumerate}
+\end{lemma}
+The statement of \Cref{lem: key lemma vdP points} reduces to showing this for Weierstrass domains (where $f_{0}=1$) and Laurent domains (where $f_{1}=1$). 
+\begin{lemma}\label{lem: key vdP Weierstrass}
+    The statement of \Cref{lem: key lemma vdP points} holds for $f_{0}=1$. 
+\end{lemma}\todo{Proof ok?}
+\begin{proof}
+    Note that in this case $f_{0}=1$ so $\Ocal_{\Sp(A)}(R_{\Sp(A)}(1|f_{1},\dots,f_{n}))$ is of the form $A\langle f_{1},\dots,f_{n}\rangle$. 
+
+    (a)$\Rightarrow$(b) Suppose $\nu\in R_{\Spa(A,A^{\circ})}(1|f_{1},\dots,f_{n})$ so $\nu(f_{i})\leq 1$ for all $i$. For $g\in A\langle X_{1},\dots,X_{n}\rangle$, we set $\nu_{1}(g)=\lim_{n\to\infty}v_{n}$ where $v_{n}=\nu(a_{n})$ and 
+    \begin{equation}\label{eqn: leq equation 1}
+        a_{n}=\sum_{|\alpha|\leq n}g_{\alpha}f^{\alpha}.
+    \end{equation}
+    We observe that the limit $\nu_{1}(g)$ converges as by definition of the Tate algebra $A\langle X_{1},\dots,X_{n}\rangle$ there is an $N\in\NN$ such that for each $\varepsilon\in\RR_{>0}$ we have $|g_{\alpha}|<\varepsilon$ for $|\alpha|\geq N$. This implies that 
+    \begin{equation}\label{eqn: leq equation 2}
+        \nu\left(\sum_{k<|\alpha|\leq l}g_{\alpha}f^{\alpha}\right)\leq\varepsilon
+    \end{equation}
+    when $\min\{k,l\}\geq N$. If $\lim\inf_{n\to\infty}v_{n}=0$ in (\ref{eqn: leq equation 1}) then $\lim_{n\to\infty}v_{n}=0$. For any $\varepsilon>0$, we can find $N$ such that (\ref{eqn: leq equation 2}) holds, and the assertion follows. However, if $\varepsilon=\lim\inf_{n\to\infty}|v_{n}|$ is positive, then we can find $N$ such that (\ref{eqn: leq equation 2}) holds and $k>N$ with $|v_{k}|\geq\varepsilon$. For $l\geq k$ we have $\nu(a_{l}-a_{k})<v_{k}=\nu(a_{k})$ so $v_{l}=v_{k}$ and the sequence converges. This gives a continuous extension of $\nu$ to a continuous valuation which is bounded by \Cref{prop: powerbounded commutes with polynomial algebra}. 
+
+    (b)$\Rightarrow$(a),(c) Denote $B=\Ocal_{\Sp(A)}(R_{\Sp(A)}(1|f_{1},\dots,f_{n}))$ and suppose that we have $\mu:A\to \Gamma_{\mu}$ a continuous extension of $\nu$ to an element of $\Spa(B,B^{\circ})$. By \Cref{prop: universality of quotients}, $A$ is dense in $B$ so for any $b\in B$ there is a convergent $(a_{n})_{n=1}^{\infty}$ converging to $b$. By continuity of $\mu$, we have 
+    $$\mu(b)=\lim_{n\to\infty}\mu(a_{n})=\lim_{n\to\infty}\nu(a_{n})$$
+    as sequences in $\Gamma_{\mu}\cup\{0\}$. The topology of $\Gamma_{\nu}\subseteq\Gamma_{\mu}$ is discrete we have in the case when $\mu(b)\neq0$ that the sequence $\nu(a_{n})$ stabilize for $n$ large. So the values of $\nu$ and $\mu$ coincide giving $\Gamma_{\mu}=\Gamma_{\nu}$. Alternatively, viewing the convergence in $\Gamma_{\nu}\cup\{0\}$, we have that $\mu$ is uniquely determined by $\nu$. This shows that (b) implies (c). Now observe that since the images of $f_{i}$ lie in $B^{\circ}$, $\nu(f_{i})=\mu(f_{i})\leq 1$ so $\nu$ is indeed in $R_{\Spa(A,A^{\circ})}(1|f_{1},\dots,f_{n})$. 
+\end{proof}
+\begin{lemma}\label{lem: key vdP Laurent}
+    The statement of \Cref{lem: key lemma vdP points} holds for $f_{1}=1$. 
+\end{lemma}
+\begin{proof}
+    This is essentially the same as \Cref{lem: key vdP Weierstrass}, using the universal property of the localization \Cref{prop: universality of localizations} instead. 
+\end{proof}
+\begin{proof}[Proof of \Cref{lem: key lemma vdP points}]
+    By induction on the Laurent order on the sieve, it suffices to prove the statement in the case of Weierstrass and Laurent domains, which are precisely the cases treated in \Cref{lem: key vdP Weierstrass,lem: key vdP Laurent}. 
+\end{proof}
