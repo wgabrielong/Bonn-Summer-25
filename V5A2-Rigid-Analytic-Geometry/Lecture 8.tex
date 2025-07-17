@@ -1,0 +1,58 @@
+\section{Lecture 8 -- 17th June 2025}\label{sec: lecture 5}
+Herein, we let $K$ be a field with non-Archimedean absolute value (not necessarily complete). We say $f>>g$ if there is $C$ finite such that $|g|\leq C\cdot|f|$. 
+\begin{proposition}\label{prop: equivalent conditions on vector spaces}
+    Let $V$ be a finite dimensional $K$-vector space and $\Vert\cdot\Vert_{V}$ satisfying $\Vert \lambda v\Vert_{V}=|\lambda|\cdot\Vert v\Vert_{V}, \Vert v+w\Vert_{V}\leq\max\{\Vert v\Vert,\Vert w\Vert\}$. The following conditions are equivalent: 
+    \begin{enumerate}[label=(\roman*)]
+        \item If $(b_{i})_{i=1}^{n}$ is any basis then $\Vert\sum_{i=1}^{n}\lambda_{i}b_{i}\Vert_{V}>>\max_{1\leq i\leq n}|\lambda_{i}|$. 
+        \item For every $v\in V\setminus\{0\}$ there is a bounded linear functional $\ell:V\to K$ such that $\ell(v)\neq0$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (a)$\Rightarrow$(b) Suppose there is some basis where (i) holds. Let $\ell_{i}\in V^{\vee}$ such that $\ell_{i}\left(\sum_{j=1}^{n}\lambda_{i}b_{i}\right)=\lambda_{i}$. These are bounded. 
+
+    (b)$\Rightarrow$(a) We proceed by induction on the dimension of $V$. The cases where $\dim(V)\leq 1$ are clear. Let $n>1$ and suppose the assertion is shown for $\dim(V')<n$ and $v\in V\setminus\{0\}$ such that $V=V'\oplus Kv$. Let $\ell\in V^{\vee}$ be such that $\ell(v)\neq0$ with $\Vert (v',\lambda v)\Vert_{V}=\max\{|\lambda|,\Vert v'\Vert_{V}\}$ and the induction assumption applies. 
+\end{proof}
+\begin{remark}
+    This does not hold in general when $K$ is not complete. In this case, a $K$-linear functional is bounded if and only if it is continuous. 
+\end{remark}
+We now consider the general case without the condition on multiplicativity of the norm. 
+\begin{proposition}\label{prop: finite subspace is closed}
+    Let $V$ be a normed $K$-vector space. The following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item Every finite-dimensional subspace of $V$ satisfies the equivalent conditions of \Cref{prop: equivalent conditions on vector spaces}. 
+        \item Every finite dimensional subspace of $V$ is closed in $V$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+   (a)$\Rightarrow$(b) Suppose $W\subseteq V$ is a finite dimensional subspace and $v\in\overline{W}\setminus W$. Let $\widetilde{W}=W\oplus Kv$ equipped with a norm $\Vert \cdot\Vert_{V}|_{\widetilde{W}}$ the restriction of the one on $V$. For $v$ in the closure of $W$ in $\widetilde{W}$ the norms $\Vert\cdot\Vert_{V}$ and $\sum_{i=1}^{n}\lambda_{i}b_{i}\mapsto \lambda_{i}$ for a basis $(b_{i})_{i=1}^{n}$ fails to be eqiuvalent to 
+
+   (b)$\Rightarrow$(a) Let $W\subseteq V$ be finite dimensional, $w\in W\setminus\{0\}$, and $W'$ a subspace of $W$ such that $W=W'\oplus K w$ algebraically. If $\ell:W\to K$ is a linear functional, set $\ell(\lambda w-w')=\lambda$ when $w\in W'$ and all $\lambda\in K$. This produces a linear functional nonvanishing at $w'$. 
+\end{proof}
+This leads to the notion of weakly Cartesian norms. 
+\begin{definition}[Weakly Cartesian Norm]\label{def: weakly Cartesian norm}
+    Let $V$ be a normed $K$-vector space. $V$ is weakly Cartesian if either (and thus both) of the conditions of \Cref{prop: finite subspace is closed} hold. 
+\end{definition}
+\begin{remark}
+    By \Cref{prop: equivalent conditions on vector spaces}, two weakly Cartesian norms on any finite-dimensional vector space are equivalent. 
+\end{remark}
+\begin{lemma}
+    Let $|\cdot|$ be an ultrametric absolute value on $L$ and $K$ a subfield such that $L$ is weakly Cartesian as a $K$-vector space. Every weakly Cartesian $L$-norm on an $L$-vector space $V$ is weakly Cartesian as a $K$-norm. 
+\end{lemma}
+This shows that there are many bounded $K$-linear functionals on $L$. 
+\begin{proposition}
+    Let $|\cdot|$ be an ultrametric absolute value on $K$ and $L/K$ a finite field extension. Then: 
+    \begin{enumerate}[label=(\roman*)]
+        \item $\Vert\ell|L\Vert_{s}=\lim_{n\to\infty}\sqrt[n]{\Vert\ell\Vert^{n}}$ does not depend on the choice of a weakly Cartesian $K$-norm $\Vert\cdot\Vert$ on $L$ and is a power multiplicative ring norm and a $K$-vector space norm on $L$. 
+        \item Every power multiplicative norm on $L$ is bounded by the spectral norm $\Vert\cdot\Vert_{s}$. 
+        \item If the minimal polynomial of $s$ is of the form $T^{d}+\sum_{i=0}^{d-1}p_{i}T^{i}$ then $\Vert\ell\Vert=\max_{0\leq i<d}\sqrt[d-i]{|p_{i}|}$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    If $\Vert\cdot\Vert$ is given by a basis $(b_{i})_{i=1}^{n}$ as in \Cref{prop: equivalent conditions on vector spaces} and $b_{i}b_{j}=m_{ij}^{k}b_{k}$, then $\Vert xy\Vert\leq C\Vert x\Vert\cdot\Vert y\Vert$ with $C=\max\{m_{ij}^{k}\}$. Such a $C$ exists by being weakly Cartesian. We have that $\Vert x^{n}\Vert\leq C^{k}\Vert x\Vert^{n}$ and applying this iteratively by induction we have $k$ depends on $n$ sublinearly so $n\leq 2^{k}$ and we have $\lim_{n\to\infty}\sqrt[n]{\Vert x\Vert^{n}}\leq\sqrt[n]{\Vert x^{m}\Vert}$ when $m>0$ showing convergence. Checking that the axioms of the norm hold shows that $\Vert x\Vert_{s}\neq0$ when $x\neq0$. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    If $N$ is any norm and $\Vert\cdot\Vert$ is a weakly Cartesian norm, then $N(\ell)\leq\Vert \ell\Vert$ -- every norm is bounded by a weakly Cartesian one, but not conversely. 
+\end{proof}
+\begin{proof}[Proof of (iii)]
+    Let $M=\max_{0\leq i<d}\sqrt[d-i]{|p_{i}|}$ then $\Vert x\Vert_{s}^{n}=\Vert x^{n}\Vert\leq M^{n+1-d}$ where $n\geq d$ by induction on $n$. Hence $\Vert\cdot\Vert_{s}\leq M$. For the reverse inequality, the arguments of (i) give that without loss of generality we can take $L/K$ to be normal. If $(x_{i})_{i=1}^{m}$ are the images of $x$ under the elements of $\Aut(L/K)$ then the minimal polynomial of $x$ over $K$ is of the form $\left(\prod_{i=1}^{a}(T-x_{i})\right)^{q}$ for some positive integer $q$ as $\Vert x_{i}\Vert_{s}=\Vert x\Vert_{s}$ by (i) so $M\leq\Vert x\Vert_{s}$ giving the equality. 
+\end{proof}
