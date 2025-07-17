@@ -1,0 +1,91 @@
+\section{Lecture 6 -- 27th May 2025}\label{sec: lecture 6}
+We continue with the proof of the result of van der Put-Schneider and Huber stating that the space of van der Put points on $\Sp(A)$ is homeomorphic to $\Spa(A,A^{\circ})$. 
+
+We can define a morphism $\Spa(A,A^{\circ})\to \Sp(A)^{*}$ by 
+\begin{equation}\label{eqn: vdP points map}
+    (\nu/\sim)\mapsto\xi_{\nu}=\left\{R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n}):\nu(f_{i})\leq\nu(f_{0}),\forall 1\leq i\leq n\right\}.
+\end{equation}
+This can be shown to be well-defined. 
+\begin{proposition}\label{prop: map from Spa exists}
+    Let $A$ be an affinoid $K$-algebra, $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})$, and $B=\Ocal_{\Sp(A)}(\Omega)$. Then the map (\ref{eqn: vdP points map}) exists and is well-defined. 
+\end{proposition}
+\begin{proof}
+    We first show that $\xi_{\nu}$ is a van der Put point. If $\Omega\subseteq\Theta\subseteq X$ and $\Omega\in\xi_{\nu}$ then $\nu\in R_{\Spa(A,A^{\circ})}(f_{0}|f_{1},\dots,f_{n})$ extends to $\nu_{\Omega}\in\Spa(\Ocal_{\Sp(A)}(\Omega),\Ocal_{\Sp(A)}(\Omega)^{\circ})$. Consider the restriction map $\Ocal_{\Sp(A)}(\Theta)\to\Ocal_{\Sp(A)}(\Omega)$. The map is continuous and the image of $\Ocal_{\Sp(A)}(\Theta)^{\circ}$ is in $\Ocal_{\Sp(A)}(\Omega)^{\circ}$. By \Cref{lem: key lemma vdP points}, there is a unique extension to $\nu_{\Theta}\in\Spa(\Ocal_{\Sp(A)}(\Theta),\Ocal_{\Sp(A)}(\Theta)^{\circ})$ so $\Theta\in\xi_{\nu}$. 
+
+    Having shown the upwards closure property, it remains to show the sieve properties. Let $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n}),\Theta=R_{\Sp(A)}(g_{0}|g_{1},\dots,g_{m})\in\xi_{\nu}$. We have $\nu(f_{0}g_{0})\geq\nu(f_{i}g_{j})$ for all $1\leq i\leq n,1\leq j\leq m$ so $\Omega\cap\Theta=R_{\Sp(A)}(f_{0}g_{0}|f_{i}g_{j})\in\xi_{\nu}$. This shows verifies the second van der Put point condition. Now for $\Omega\in\xi_{\nu}$, let $\Scal$ be a covering sieve of $\Omega$. We need to show that $\Scal\cap\xi_{\nu}$ is nonempty. We proceed by induction on the (necessarily finite) Laurent order of the sieve. If $\ofrak_{L}(\Scal)=0$ then $\Omega\in\Scal$ and the assertion follows. Observe that there is $g\in\Ocal_{\Sp(A)}(\Omega)$ such that $\ofrak_{L}(\Scal|_{\Omega_{1}})<\ofrak_{L}(\Scal)$ or $\ofrak_{L}(\Scal|_{\Omega_{2}})<\ofrak_{L}(\Scal)$ where $\Omega_{1}=R_{\Omega}(g|1),\Omega_{2}=R_{\Omega}(1|g)$. If $\nu_{\Omega}(g)\leq 1$ then by \Cref{lem: key lemma vdP points} replacing $\Sp(A)$ by $\Omega$ and $\nu$ by $\nu_{\Omega}$ we get an extension to an element of $\Spa(\Ocal_{\Sp(A)}(\Omega_{2}),\Ocal_{\Sp(A)}(\Omega_{2})^{\circ})$. Arguing similarly in the case of $\nu_{\Omega}(g)>1$ we get an extension to an element of $\Spa(\Ocal_{\Sp(A)}(\Omega_{1}),\Ocal_{\Sp(A)}(\Omega_{1})^{\circ})$. The $\Omega_{i}$ are rational open subsets and by the induction assumption $\emptyset\neq(\Scal|_{\Omega_{i}})\cap\xi_{\nu}\subseteq\Scal\cap\xi_{\nu}$. The former is nonemtpy, and thus so is the latter. This too shows the well-definedness of the map. 
+\end{proof}
+\Cref{prop: map from Spa exists} does the bulk of the work of proving the theorem of Huber and van der Put-Schneider. We first show that this map is a bijection. 
+\begin{definition}[$\xi$-Infinitesmal]\label{def: xi-infinitesmal}
+    Let $A$ be an affinoid $K$-algebra and $\xi\in\Sp(A)^{*}$ be a van der Put point. An element $a\in A$ is $\xi$-infinitesmal if and only if $R_{\Sp(A)}(\varepsilon|a)\in\xi$ for all $\varepsilon\in K^{\times}$. 
+\end{definition} 
+\begin{definition}[$\xi$-Ordering]\label{def: xi-ordering}
+    Let $A$ be an affinoid $K$-algebra and $\xi\in\Sp(A)^{*}$ be a van der Put point. If $a$ is not $\xi$-infinitesmal, then we say $b\preceq_{\xi}a$ if and only if the following equivalent conditions hold:
+    \begin{enumerate}[label=(\roman*)]
+        \item $R_{\Sp(A)}(a|b,\varepsilon)\in\xi$ for some $\varepsilon\in K^{\times}$. 
+        \item $R_{\Sp(A)}(a|b,\varepsilon)\in\xi$ for all $\varepsilon\in K^{\times}$ with $|\varepsilon|$ small enough. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    We have for $a$ $\xi$-infinitesmal, $b\preceq_{\xi}a$ if and only if $b$ is $\xi$-infinitesmal and we say $a\simeq_{\xi}b$ if and only if $b\preceq_{\xi}a$ and $a\preceq_{\xi}b$. 
+\end{remark}
+We can show that the ordering of \Cref{def: xi-ordering} defines a linear partial order on the non-$\xi$-infintesmal elments of $A$. 
+\begin{proposition}\label{prop: xi-ordering is linear}
+    Let $\xi$ be a van der Put point on $\Sp(A)$. The $\xi$-ordering is a linear partial order on the monoid $\{a\in A:a\text{ not }\xi\text{-infinitesmal}\}$. 
+\end{proposition}
+\begin{proof}
+    If $a,b$ are not $\xi$-infinitesmal then $R_{\Sp(A)}(a|\varepsilon),R_{\Sp(A)}(g|\varepsilon)\in\xi$ for some $\varepsilon\in K^{\times}$. Their intersection $R_{\Sp(A)}(a|\varepsilon)\cap R_{\Sp(A)}(b|\varepsilon)=R_{\Sp(A)}(fg|\varepsilon^{2})$ is in $\xi$ and the covering $R_{\Sp(A)}(a|b,\varepsilon)\cup R_{\Sp(A)}(b|a,\varepsilon)$ is admissable as it is finite, hence one of $R_{\Sp(A)}(a|b,\varepsilon), R_{\Sp(A)}(b|a,\varepsilon)$ lie in $\xi$ giving one of $b\preceq_{\xi}a$ or $a\preceq_{\xi}b$. 
+
+    To show this partial order is linear, suppose we have $a,b,c$ non-infinitesmal and $ac\preceq_{\xi}bc$. Then $R_{\Sp(A)}(bc|ac,\varepsilon)\in\xi$ and $R_{\Sp(A)}(c|\delta)\in\xi$ for $\varepsilon,\delta\in K^{\times}$. When $\widetilde{\varepsilon}\in K^{\times}$ such that $|\widetilde{\varepsilon}|\cdot\Vert c|A\Vert_{\max}\leq\varepsilon$ we have $R_{\Sp(A)}(c|\delta)\cap R_{\Sp(A)}(bc|ac,\epsilon)\subseteq R_{\Sp(A)}(b|a,\widetilde{\varepsilon})$ so $a\preceq_{\xi}b$, that is, the monoid is cancellative. 
+\end{proof}
+The data of the linear order allows us to define a map to a linearly ordered group, and in fact prescribes a point of the adic spectrum. 
+\begin{proposition}
+    Let $\xi$ be a van der Put point on $\Sp(A)$ and $\Gamma$ denote the quotient of the linearly ordered monoid $\{a\in A:a\text{ not }\xi\text{-infinitesmal}\}$ by the equivalence $\simeq_{\xi}$. There is a continuous map 
+    \begin{equation}\label{eqn: defines a point of adic space}
+        \nu_{\xi}:A\to\Gamma\cup\{0\}\text{ by }\nu_{\xi}(a)=\begin{cases}
+            0 & a\text{ is }\xi\text{-infinitesmal} \\
+            [a]_{\xi} & \text{otherwise}
+        \end{cases}
+    \end{equation}
+    with $\nu_{\xi}\in\Spa(A,A^{\circ})$. 
+\end{proposition}
+\begin{proof}
+    It is clear that $\nu_{\xi}$ is a valuation. If $\gamma\in\Gamma$ with $\gamma=\frac{[a]_{\xi}}{[b]_{\xi}}$ then for $R(a|\varepsilon)\cap R(b|\varepsilon)\in\xi$ and $\delta$ such that $\delta\cdot\Vert b|A\Vert_{\max}<\varepsilon$ then $\Vert f|A\Vert_{\max}<\varepsilon\delta$ implies that $\nu_{\xi}(f)<\gamma$ showing continuity. $\nu_{\xi}$ satisfies the correct compatibility condition with respect to $A^{\circ}$ as powerbounded elements are $\xi$-infinitesmal. 
+\end{proof}
+This is inverse to the construction (\ref{eqn: vdP points map}). 
+\begin{proposition}\label{prop: mutually inverse}
+    Let $A$ be an affinoid $K$-algebra. The constructions (\ref{eqn: vdP points map}) and (\ref{eqn: defines a point of adic space}) are mutually inverse. 
+\end{proposition}
+\begin{proof}
+    Suppose $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$ then $$R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n},\varepsilon)=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$$ when $\varepsilon$ is small enough, showing $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$ and $\Omega\in\xi_{\nu_{\xi}}$. Suppose that $\nu\in\xi_{\nu}$, that is, $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$. Since not all $f_{i}\in\supp(\nu_{\xi})=\{f\in A:f\text{ is }\xi\text{-infinitesmal}\}$ we have $f_{0}\in\supp(\nu_{\xi})$ hence $f_{0}$ is not $\xi$-infinitesmal. Taking $\varepsilon\in K^{\times}$ small, all $R_{\Sp(A)}(f_{0}|f_{i},\varepsilon)\in\xi$ hence 
+    $$\bigcap_{i=1}^{n}R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\subseteq R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})$$ and $\bigcap_{i=1}^{n}R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$. This shows $\xi=\xi_{\nu_{\xi}}$. 
+
+    Dually suppose $\nu$ is given. It follows from the definitions and continuity that $a\in A$ is $\xi$-infinitesmal if and only if $\nu(a)=0$ and $a\geq b$ if and only if $\nu(a)\geq b$ so indeed $\nu_{\xi}=\nu$. 
+\end{proof}
+This proves the bijection in full. It remains to show the assertion regarding the Krull dimension. 
+
+For the statement on Krull dimension, we consider some general properties of specializations in $\Spa(A,A^{+})$ for $A$ Tate. 
+\begin{lemma}\label{lem: cts map to spec A}
+    Let $(A,A^{+})$ be a Huber pair with $A$ Tate. There is a continuous morphism $S:\Spa(A,A^{+})\to\spec(A)$ by $\nu\mapsto\supp(\nu)$
+\end{lemma}
+\begin{proof}
+    We have $S^{-1}(\spec(A_{f}))=\bigcup_{m\geq0}R_{\Spa(A,A^{+})}(f|s^{m})$ for a topologically nilpotent unit $s\in A^{\times}\cap A^{\circ\circ}$. 
+\end{proof}
+The map $S$ detects when points have disjoint neighborhoods in $\Spa(A,A^{+})$. 
+\begin{lemma}\label{lem: disjoint neighborhoods on Spa}
+    Let $(A,A^{+})$ be a Huber pair with $A$ Tate. Then $S(x)\neq S(y)$ if and only if $x,y\in\Spa(A,A^{+})$ have disjoint open neighborhoods. 
+\end{lemma}
+\begin{proof}
+    Without loss of generality, let $a\in A$ be such that $|a|_{x}>0$ but $|a|_{y}=0$. By continuity of $|\cdot|_{x}$ and $\lim_{m\to\infty}s^{m}=0$, $|a|_{x}\geq|s^{m}|_{x}$ when $m$ is sufficiently large. Thus $x\in R_{\Spa(A,A^{+})}(a|s^{m}),y\in R_{\Spa(A,A^{+})}(s^{m+1}|a)$ and these rational open subsets are disjoint. 
+\end{proof}
+Recall that for $X$ a space, a point $y\in X$ is a generification of $x\in X$ if $x\in\overline{\{y\}}$. 
+\begin{remark}
+    Since $\Spa(A,A^{+})$ is spectral, each irreducible component has a unique generic point so each point of $\Spa(A,A^{+})$ has a maximal generification.
+\end{remark}
+\begin{definition}[Vertical generification]\label{def: vertical generification}
+    Let $(\nu/\sim)\in\Spa(A,A^{\circ})$, $\Gamma$ the group of values of $\nu$, and $\Lambda\subseteq\Gamma$ a convex subgroup. We define a valuation 
+    $$(\nu/\Lambda)(a)=\begin{cases}
+        0 & \nu(a) = 0 \\
+        \nu(a)\Lambda & \text{otherwise.}
+    \end{cases}$$ 
+\end{definition}
+These generifications are vertical in the sense that they occur within a single fiber of the map $S:\Spa(A,A^{\circ})\to\spec(A)$ of \Cref{lem: cts map to spec A}
