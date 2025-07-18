@@ -1,0 +1,111 @@
+\section{Lecture 9 -- 26th June 2025}\label{sec: lecture 9}
+\begin{proposition}\label{prop: equivalent conditions on dense embeddings}
+    Let $L/K$ be a finite field extension and $\LL$ be the completion of $K$ with respect to some weakly Cartesian norm. Let $(\LL_{i})_{i=1}^{n}$ be the set of isomorphism classes of dense $K$-embeddings $L\to\LL_{i}$ where $\LL_{i}$ is a finite field extension of the completion $\KK$ of $K$. The following are equivalent. 
+    \begin{enumerate}[label=(\alph*)]
+        \item $\sum_{i=1}^{n}d_{i}=d$ where $[\LL_{i}:K]$. 
+        \item $\Vert\cdot|\LL\Vert_{s}$ is weakly Cartesian. 
+        \item $\LL$ is reduced. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    (a)$\Rightarrow$(b) Let $\sum_{i=1}^{n}d_{i}=d$ and denote $B^{(i)}=(b_{j}^{(i)})_{j=1}^{d_{i}}$ and $B=(b_{i})_{i=1}^{d}$ be bases of $\LL_{i}/K$ and $L/K$. By Artin-Whaples weak approximation, $\LL\to\bigoplus_{i=1}^{n}\LL_{i}$ is a surjective linear map, hence an isomorphism as $\KK$-vector spaces. The image of $B$ and the direct sum $\bigoplus_{i=1}^{n}B^{(i)}$ is a basis for the $\LL$-vector space $\bigoplus_{i=1}^{n}\LL_{I}$. Since two bases define the same norm, the spectral norm on $L$ is equivalent to the norm defined by $B$ and hence weakly Cartesian. 
+
+    (b)$\Rightarrow$(c) $\LL$ is the completion of $L$ with respect to the spectral norm which is power multiplicative. Assume $\ell\in\LL$ is nilpotent, ie. $\ell^{n}=0$. We have $\ell=\lim_{j\to\infty}\ell_{j}$ with $\ell_{j}\in L$. Hence 
+    $$0=\Vert\ell^{n}\Vert_{s}=\lim_{j\to\infty}\Vert \ell_{j}^{n}\Vert_{s} =\lim_{j\to\infty}\Vert\ell_{j}\Vert_{s}^{n}$$
+    so $\lim_{j\to\infty}\Vert\ell_{j}\Vert_{s}=0$ and thus $\ell=0$. 
+
+    (c)$\Rightarrow$(a) By the basic theory of finite-dimensional $K$-algebras, $\LL=\bigoplus_{j=1}^{m}\LL^{(j)}$ where the $\LL^{(j)}$ are fields as $\KK$ is reduced. By the choice of the $\LL_{i}$, every $\LL^{(j)}$ is amongst the $\LL_{i}$ as if $\LL_{i}$ occured twice, say as $\LL^{(j)}$ and $\LL^{(k)}$ then $L\to\LL\to\LL^{(j)}\oplus\LL^{(k)}$ would factor over $L\to\LL_{i}\xrightarrow{\Delta}\LL^{(j)}\oplus\LL^{(k)}$ which would fail to have dense image as $L$ is dense in its completion. It follows that 
+    $$d=\dim_{K}L=\dim_{\KK}\LL=\sum_{j=1}^{m}\LL^{(j)}=\sum_{j=1}^{n}d_{j}.$$
+    as desired. 
+\end{proof}
+\begin{definition}[Weakly Stable]
+    Let $K$ be a field with non-Archimedean absolute value. $K$ is weakly stable if the conditions of \Cref{prop: equivalent conditions on dense embeddings} hold for all finite extensions $L/K$. 
+\end{definition}
+It is useful to understand explicitly when these conditions hold. 
+\begin{proposition}\label{prop: when things are weakly stable}
+    Let $K$ be a field with non-Archimedean absolute value. 
+    \begin{enumerate}[label=(\roman*)]
+        \item If $L/K$ is separable, the equivalent conditions of \Cref{prop: equivalent conditions on dense embeddings} hold. 
+        \item Every perfect, and thus every characteristic zero field, is weakly stable. 
+        \item If $K$ has positive characteristic $p$, the following are equivalent: 
+        \begin{enumerate}[label=(\alph*)]
+            \item $K$ is weakly stable. 
+            \item $K^{1/p}/K$ is weakly Cartesian. 
+            \item For every $q=p^{N}$ $K^{1/q}/K$ is weakly Cartesian. 
+        \end{enumerate}
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    As $L/K$ is separable, $\Tr_{L/K}$ does not vanish identically. Let $\varepsilon\in L$ be such that $\Tr_{L/K}(\varepsilon)=1$. If $\ell\in L^{\times}$ then $\lambda\mapsto\Tr_{L/K}(\frac{t\lambda}{\ell})$ is a $\Vert\cdot\Vert_{s}$-bounded $K$-linear functional on $L$ such that $\lambda(\ell)=1$. By \Cref{prop: equivalent conditions on vector spaces}, the spectral norm is weakly Cartesian. 
+\end{proof}
+\begin{proof}[Proof of (ii)]
+    This is immediate from (i). 
+\end{proof}
+\begin{proof}[Proof of (iii)]
+    This can be shown using (ii) and \Cref{lem: weakly cartesian as K-norm}. 
+\end{proof}
+\begin{proposition}\label{prop: restriction of bounded functionals}
+    Let $K$ be a complete non-Archimedean field and $V$ a $K$-Banach space containing a dense subspace of at most countable dimension over $K$. Let $W\subseteq V$ be a subspace and $\ell:W\to K$ a linear functional. Then for every $B>\Vert \ell|W^{\vee}\Vert$ there is $\lambda\in V^{\vee}$ such that $\Vert\lambda|V^{\vee}\Vert\leq B$ and $\lambda|_{W}=\ell$. 
+\end{proposition}
+\begin{proof}
+    Let $(b_{i})_{i=1}^{\infty}$ be a set of $K$-linear generators of a dense $K$ subspace of $V$ and $W_{i}$ the closure in $V$ of $W+\sum_{j=1}^{i}K b_{j}$. Then $W_{0}$ is the closure of $W$ and hence $\ell$ extends to $\lambda_{0}:W_{0}\to K$ such that $\Vert\ell|W^{\vee}\Vert=\Vert\lambda_{0}|W_{0}^{\vee}\Vert$ and $\lambda_{i}:W_{i}\to K$ will be constructed by induction such that $\Vert\lambda_{i}|W_{i}^{\vee}\Vert\leq B_{i}$ where $\Vert\ell|W^{\vee}\Vert=B_{0}<B_{1}<\dots$. Note $\dim(W_{i+1}/W_{i})\leq 1$ and if $W_{i+1}=W_{i}$ then the extension is trivial. Otherwise, choose some $x\in W_{i+1}$ such that $\Vert x\Vert\leq (1+\varepsilon)\cdot\mathrm{dist}(x,W_{i})$. Then $W_{i+1}=W_{i}\oplus Kx$ defines a projection $\pi:W_{i+1}\to W_{i}$ of norm at most $(1+\varepsilon)$. Choosing $\varepsilon$ small enough, we can define $\lambda_{i+1}=\lambda_{i}\circ\pi$. Finally, $\lambda_{\infty}$ on $\bigcup_{i=1}^{\infty}W_{i}$ extends to $V$ in which $W_{\infty}$ is dense by continuity in a unique norm-preserving way. 
+\end{proof}
+\begin{remark}
+    Recall that the following conditions on a complete non-Archimedean field are equivalent: 
+    \begin{enumerate}[label=(\roman*)]
+        \item $K$ is spherically complete: the intersection of any decreasing sequence of balls is empty. 
+        \item The Hahn-Banach theorem holds for all normed $K$-vector spaces: for any $K$-vector space $V$ with norm $\Vert\cdot|V\Vert$ and $W\subseteq V$ a vector subspace, any linear functional $\ell:W\to K$ such that $|\ell(w)|\leq\Vert w|V\Vert$ extends to a linear functional $\widetilde{\ell}:V\to K$ bounded by $\Vert\cdot|V\Vert$. 
+        \item Let $\ell^{\infty}=\{(x_{i})_{i=0}^{\infty}:\text{all }x_{i}\in K, \sup|x_{i}|<\infty\}$ there is $\lambda:\ell^{\infty}\to K$ such that $\Vert\lambda|(\ell^{\infty})^{\vee}\Vert=1$ and such that $\lambda(x)=\lim_{i\to\infty}x_{i}$. 
+    \end{enumerate}
+\end{remark}
+\begin{example}
+    $\QQ_{p}$ is spherically complete, but $\CC_{p}$ is not spherically complete. 
+\end{example}
+Let $A$ be a nat ring \Cref{def: nat ring} equipped with a complete multiplicative ring norm. We consider norms on $M$. 
+\begin{definition}[Module Norm]\label{def: module norm}
+    Let $A$ be a nat ring and $M$ an $A$-module. A map $\Vert\cdot|M\Vert$ to a totally ordered Abelian group is a norm if
+    \begin{equation}\label{eqn: module norm}
+        \Vert am|M\Vert\leq\Vert a|A\Vert\cdot\Vert m|M\Vert.
+    \end{equation}
+\end{definition}
+\begin{definition}[Faithful Module Norm]\label{def: faithful module norm}
+    Let $A$ be a nat ring and $M$ an $A$-module. A module norm on $M$ is faithful if equality in (\ref{eqn: module norm}) always holds. 
+\end{definition}
+We consider the bounded homomorphisms between normed modules over a nat ring $A$. 
+\begin{definition}[Bounded Module Homomorphisms]\label{def: bounded module homomorphisms}
+    Let $A$ be a nat ring and $M,N$ $A$-modules with norms. We define the set of bounded homomorphisms 
+    \begin{equation}\label{eqn: def of BHom}
+        \BHom_{A}(M,N)=\left\{\varphi:M\to N\in\Hom_{A}(M,N):\substack{\exists C\in\RR_{>0}\text{ s.t. }\\ \Vert f(m)|N\Vert\leq C\cdot\Vert m|M\Vert}\right\}.
+    \end{equation}
+\end{definition}
+\begin{definition}[Norm of Homomorphism]\label{def: norm of Homomorphism}
+    Let $A$ be a nat ring and $M,N$ $A$-modules with norms. Let $\varphi\in\BHom_{A}(M,N)$. We define $\Vert\varphi|\BHom_{A}(M,N)\Vert$ to be the smallest $C\in\RR_{>0}$ such that $\Vert f(m)|N\Vert\leq C\cdot\Vert m|M\Vert$ holds for all $m\in M$. 
+\end{definition}
+\begin{lemma}\label{lem: p-power roots}
+    Let $K$ be a field of characteristic $p$ complete with respect to a non-Archimedean absolute value, $q=p^{N}$, and $M=K^{1/q}$. For $\Xfrak\subseteq M$ countable, the closure of the subfield $L\subseteq M$ generated by $K$ and $\Xfrak$. Let $A=K\langle X_{1},\dots,X_{n}\rangle, B=L\langle Y_{1},\dots,Y_{n}\rangle$ where $B$ has the $A$-algebra structure by $X_{i}\mapsto Y_{i}^{q}$. For every $b\in B$ nonzero and $\varepsilon\in\RR_{>0}$ there is a bounded homomorphism $\varphi\in\BHom_{A}(B,A)$such that $\varphi(b)\neq0$ and 
+    $$\Vert b|B\Vert\cdot\Vert\varphi|\BHom_{A}(B,A)\Vert\leq(1-\varepsilon)\cdot\Vert\varphi(b)|A\Vert.$$
+\end{lemma}
+\begin{proof}
+    Let $b=\sum_{\alpha\in\NN^{n}}b_{\alpha}Y^{\alpha}$ with $b_{\alpha}\in L$. Choose $\alpha$ such that $|b_{\alpha}|_{L}=\Vert b|B\Vert$. By \Cref{prop: restriction of bounded functionals}, there is a $K$-linear functional $\lambda:L\to K$ such that $\lambda(b_{\alpha})\neq0$ and such that $|\lambda(\ell)|\cdot|b_{\alpha}|\leq(1-\varepsilon)|\ell|\cdot|\lambda(b_{\alpha})|$. We have $\alpha=q\alpha'+\beta$ where all $0\leq \beta_{i}\leq q-1$. Then $\ell(c)=\sum_{\gamma\in\NN^{N}}\lambda(c_{\beta+q\gamma})X^{\gamma}$ where $c=\sum_{\delta\in\NN^{n}}c_{\delta}Y^{\delta}\in B$. 
+\end{proof}
+\begin{remark}
+    In the statement of \Cref{lem: p-power roots}, $M$ may be a field extesion of infinite degree, but is complete with respect to the absolute value of $|\cdot|_{K}$. 
+\end{remark}
+\begin{lemma}\label{lem: existence of finite generators of extension}
+    Let $K$ be a field of characteristic $p$ with respect to a non-Archimedean absolute value, $q=p^{N}$, $E=\mathrm{Frac}(K\langle X_{1},\dots,X_{n}\rangle)$, and $F/E$ a finite field extension such that $F^{q}\subseteq E$. There is $\Xfrak\subseteq E$ such that 
+    $$F\cap K^{1/q}\langle X_{1},\dots,X_{n}\rangle\subseteq B=K(\Xfrak)\langle Y_{1},\dots,Y_{n}\rangle.$$
+\end{lemma}
+\begin{proof}
+    Let $(f^{(i)})_{i=1}^{m}$ generate $F/E$ as a field extension. Then $(f^{(i)})^{q}=\sum_{\alpha\in\NN^{n}}\varphi_{\alpha}^{(i)}X^{\alpha}$ where $\varphi_{\alpha}^{(i)}\in K$. Hence $\xi_{\alpha}^{(i)}=\sqrt[q]{\varphi_{\alpha}^{(i)}}\in M$ and 
+    $$\Xfrak=\{\xi_{\alpha}^{(i)}:\alpha\in\NN^{N},1\leq i\leq m\}$$
+    suffices. 
+\end{proof}
+\begin{proposition}\label{prop: fractions of Tate algebra is weakly stable}
+    Let $K$ be a field complete with respect to an ultrametric norm and $E=\mathrm{Frac}(\TT_{n})$ equipped with $|\frac{f}{g}|_{E}=\frac{\Vert f|\TT_{n}\Vert}{\Vert g|\TT_{n}\Vert}$ for $f\in\TT_{n},g\in\TT_{n}\setminus\{0\}$. Then $E$ is weakly stable. 
+\end{proposition}
+\begin{proof}
+    For $K$ of characteristic zero, this is merely the statement of \Cref{lem: existence of finite generators of extension}. In the charcteristic $p$ case, we can use the same lemma to observe that in the hypotheses, the spectral norm of $F$ is weakly Cartesian. But using the construction of \Cref{lem: p-power roots} the spectral norm of $F$ is weakly Cartesian. The construction therein in conjunction with \Cref{prop: when things are weakly stable} can be used to give for each $f\in F\setminus\{0\}$ an $E$-linear functional $\ell:F\to E$ such that $\ell(t)\neq0$. Since $F$ is in the fraction field of $B$, the claim follows from \Cref{prop: equivalent conditions on dense embeddings}. 
+\end{proof}
+\begin{remark}
+    Every finite field extension of $E$ is also weaklys table with respect to every extension of the absolute value on $E$. 
+\end{remark}
