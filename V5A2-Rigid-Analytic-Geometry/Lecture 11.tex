@@ -1,0 +1,71 @@
+\section{Lecture 11 -- 10th July 2025}\label{sec: lecture 11}
+Recall from the Gerritzen-Grauert representability theorem \Cref{thm: GG thm}, every affinoid subset is admissable in the sense of \Cref{def: admissable open subset}. We continue our investigations of these notions. 
+\begin{lemma}\label{lem: sandwich implies admissable}
+    Let $U\subseteq\Sp(A)$ be open. If for every morphism $\alpha:A\to B$ of affinoid $K$-algebras such that $\Sp(B)\subseteq U\subseteq\Sp(A)$ there exists a rational open subset $\Omega$ in $U$ containing $\Sp(B)$ then $U$ is admissable. 
+\end{lemma}
+\begin{proof}
+    Let $\alpha:A\to B$ be any morphism of affiniod $K$-algebras and $f:\Sp(B)\to\Sp(A)$ the induced map. We want to show that $f^{-1}\Scal$ is a covering sieve for $f^{-1}(U)$ for any covering sieve $\Scal$ of $U$. The rational open subsets $\Theta\subseteq f^{-1}(U)$ admissably cover $f^{-1}(U)$ so by locality of covering sieves it suffices to show $f^{-1}\Scal|_{\Theta}$ covers $\Theta$. Since $\Theta=\Sp(\Ocal_{\Sp(B)}(\Theta))$, we may replace $B$ by $\Ocal_{\Sp(B)}(\Theta)$. This gives $f(\Sp(B))\subseteq U$ and we have to show that $f^{-1}\Scal$ covers $\Sp(B)$. By assumption, there is $\Omega\subseteq\Sp(A)$ such that $f(\Sp(B))\subseteq\Omega$. Then $f{-1}\Scal=f^{-1}(\Scal|_{\Omega})$ covers $\Sp(B)$ as $\Scal|_{\Omega}$ covers $\Omega$ and such $\Omega$ are admissable. 
+\end{proof}
+\begin{lemma}\label{lem: distinguished opens are admissable}
+    Let $A$ be an affinoid $K$-algebra. Then $\Sp(A)\setminus V(a)$ is admissable. 
+\end{lemma}
+\begin{proof}
+    Keeping the notations of \Cref{lem: sandwich implies admissable} and its proof, if $f(\Sp(B))\subseteq U$ then $a\in B^{\times}$ and there is $r\in K^{\times}$ such that $\frac{1}{ar}\in B^{\times}$ so $f(\Sp(B))\subseteq\Sp(A)$ is contained in the rational open subset $R_{\Sp(A)}(ar|1)$. 
+\end{proof}
+\begin{example}
+    Every Zariski open subset is admissable. This is immediate from \Cref{lem: distinguished opens are admissable} and that every Zariski open is a union of such opens. 
+\end{example}
+It is, however, not the case that all open subsests are admissable. 
+\begin{example}
+    Let $A=\TT_{2}$, $c\in K$ such that $0<|c|<1$, $\Theta_{i}=R_{\Sp(A)}(c^{i}|X_{2})\cap R_{\Sp(A)}(c|X_{1}^{i})$, $\Xi=R_{\Sp(A)}(X_{1}|1)$. The open set $U=\Xi\cup\bigcup_{i=1}^{\infty}\Theta_{i}$ is not admissable. Indeed, let $Y=\Sp(\TT_{1})$ identified with $V(X_{2})\subseteq\Sp(A)$ with $\pi:X\to Y$ the projection induced by the inclusion. For every rational open $\Omega\subseteq X$ there is $\varepsilon\in K^{\times}$ such that $\Omega\cap R_{\Sp(A)}(\varepsilon|X_{2})=\pi^{-1}(\Omega\cap Y)\cap R_{\Sp(A)}(\varepsilon|X_{2})$. Let $n$ be chosen smallest such that $|c|^{n+1}<|\varepsilon|$. Then $U\cap R_{\Sp(A)}(X_{2}|\varepsilon)\cap\Theta_{i}=\emptyset$ for $i>n$ as $R_{\Sp(A)}(X_{2}|\varepsilon)\cap\Theta_{i}=\emptyset$. And if $\Omega\subseteq U$ then $\Omega\cap R_{\Sp(A)}(X_{2}|\varepsilon)\subseteq\Xi\cup\bigcup_{i=1}^{n}\Theta_{i}$. So $\Omega\subseteq U$. Since these $\Omega$ cover $U$ admissably, $\Scal=[\Xi,\Theta_{1},\dots]$ covers $U$. If $i:Y\to X$ is the inclusion, $i^{*}\Scal$ would imply that $Y$ decomposes $R_{Y}(X_{1}|1)\cup(Y\setminus R_{Y}(X_{1}|1))$ producing $e\in \TT_{1}$ which is 1 on one component and 0 on the other, contradicting $\TT_{1}$ being a domain. 
+\end{example}
+In this proof, we have relied on the following lemma. 
+\begin{lemma}
+    Let $X=\Sp(\TT_{n}),Y=\Sp(\TT_{n-1}), \pi:X\to Y$ the inclusion and $i:Y\to X$ the quotient of $\TT_{n}$ by $X_{n}$. If $\Omega\subseteq X$ is rational there is $\varepsilon\in K^{\times}$ such that $\Omega\cap R_{X}(\varepsilon|X_{n})=(\pi^{-1}i^{-1}(\Omega))\cap R_{X}(\varepsilon|X_{n})$. 
+\end{lemma}
+We are finally able to define rigid spaces. 
+\begin{definition}[Para-Rigid Space]\label{def: para-rigid space}
+    Let $X$ be a $G_{+}$-space with a sheaf of $K$-algebras. $X$ is para-rigid if the set of affinoid opens admissably cover $X$. 
+\end{definition}
+\begin{definition}[Continuous Morphism of Para-Rigid Spaces]\label{def: morphism of pararigid spaces}
+    A morphism $f:Y\to X$ of para-rigid spaces is the data of a continuous topological map with a morphism $f^{*}:\Ocal_{X}\to f_{\flat}\Ocal_{Y}$ of presheaves such that the composite 
+    $$\Ocal_{X,f(y)}\to(f_{\flat}\Ocal_{Y})f_{y}\to\Ocal_{Y,y}$$
+    is a local homomorphism of local rings. 
+\end{definition}
+The opposite category of affinoid $K$-algebras embeds fully faithfully into the category of para-rigid spaces. 
+\begin{proposition}\label{def: affinoids fully faithful in pararigid}
+    There is a bijection
+    $$\Hom_{\ParRigid}(\Sp(B),\Sp(A))\leftrightarrow\Hom_{\Aff_{K}}(A,B)$$
+    by the induced map on global sections and the $\Sp(-)$ of a morphism of algebras natural in $A$ and $B$. 
+\end{proposition}
+We consider some continuity properties of para-rigid spaces. 
+\begin{proposition}\label{prop: continuity of pararigid spaces}
+    Let $X$ be a para-rigid space. The following are equivalent. 
+    \begin{enumerate}[label=(\alph*)]
+        \item Every morphism of para-rigid spaces $T\to X$ is continuous over $X$. 
+        \item Every $\Sp(A)\to X$ is continuous over $X$. 
+    \end{enumerate}
+    In particular, continuity is local on the source. 
+\end{proposition}
+\begin{definition}[Intrinsically Admissable Para-Rigid Space]\label{def: intrinsically admissable}
+    Let $X$ be a para-rigid space. $X$ is intrinsically admissable if it satisfies either (and thus both) of the conditions of \Cref{prop: continuity of pararigid spaces}. 
+\end{definition}
+This already holds for $G_{+}$ quasicompact spaces. 
+\begin{proposition}\label{prop: any G plus qc space is intrinsically admissable}
+    Let $X$ be a para-rigid space. If $X$ is $G_{+}$-quasicompact then $X$ is intrinsically admissable. 
+\end{proposition}
+\begin{proposition}\label{prop: admissability on pararigid spaces}
+    Let $X$ be a para-rigid space. The following are equivalent:
+    \begin{enumerate}[label=(\alph*)]
+        \item The intrinsically admissable open subsets of a para-rigid space form a $G_{++}$ basis of $X$. 
+        \item The intersection of intrinsically admissable opens of $X$ are intrinsically admissable. 
+        \item The affinoid open subspaces of $X$ are intrinsically admissable. 
+    \end{enumerate}
+\end{proposition}
+We now make a long-awaited definition. 
+\begin{definition}[Rigid Analytic Space]\label{def: rigid analytic space}
+    Let $X$ be a para-rigid space. $X$ is a rigid analytic space if it satisfies the equivalent conditions of \Cref{prop: admissability on pararigid spaces}. 
+\end{definition}
+\begin{definition}[Admissable Open]\label{def: admissable open}
+    Let $U\subseteq X$ be an open subset of a rigid analytic space. $U$ is admissable if every morphism of rigid analytic spaces is continuous over $U$. 
+\end{definition}
