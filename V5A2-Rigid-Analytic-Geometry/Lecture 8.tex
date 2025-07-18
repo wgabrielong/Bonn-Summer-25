@@ -39,7 +39,7 @@ This leads to the notion of weakly Cartesian norms.
     Let $|\cdot|$ be an ultrametric absolute value on $L$ and $K$ a subfield such that $L$ is weakly Cartesian as a $K$-vector space. Every weakly Cartesian $L$-norm on an $L$-vector space $V$ is weakly Cartesian as a $K$-norm. 
 \end{lemma}
 This shows that there are many bounded $K$-linear functionals on $L$. 
-\begin{proposition}
+\begin{proposition}\label{prop: spectral norm}
     Let $|\cdot|$ be an ultrametric absolute value on $K$ and $L/K$ a finite field extension. Then: 
     \begin{enumerate}[label=(\roman*)]
         \item $\Vert\ell|L\Vert_{s}=\lim_{n\to\infty}\sqrt[n]{\Vert\ell\Vert^{n}}$ does not depend on the choice of a weakly Cartesian $K$-norm $\Vert\cdot\Vert$ on $L$ and is a power multiplicative ring norm and a $K$-vector space norm on $L$. 
@@ -55,4 +55,18 @@ This shows that there are many bounded $K$-linear functionals on $L$.
 \end{proof}
 \begin{proof}[Proof of (iii)]
     Let $M=\max_{0\leq i<d}\sqrt[d-i]{|p_{i}|}$ then $\Vert x\Vert_{s}^{n}=\Vert x^{n}\Vert\leq M^{n+1-d}$ where $n\geq d$ by induction on $n$. Hence $\Vert\cdot\Vert_{s}\leq M$. For the reverse inequality, the arguments of (i) give that without loss of generality we can take $L/K$ to be normal. If $(x_{i})_{i=1}^{m}$ are the images of $x$ under the elements of $\Aut(L/K)$ then the minimal polynomial of $x$ over $K$ is of the form $\left(\prod_{i=1}^{a}(T-x_{i})\right)^{q}$ for some positive integer $q$ as $\Vert x_{i}\Vert_{s}=\Vert x\Vert_{s}$ by (i) so $M\leq\Vert x\Vert_{s}$ giving the equality. 
+\end{proof}
+We will consider $\Vert\cdot\Vert_{s}$ for algebraic extensions of $L$ over $K$. 
+\begin{proposition}\label{prop: spectral norm for field extensions}
+    Let $L/K$ be a finite field extension and $|\cdot|$ an ultrametric absolute value on $K$. 
+    \begin{enumerate}[label=(\roman*)]
+        \item There is a bijection between extensions of $|\cdot|$ to some absolute value of $L$ and the isomorphism classes of embeddings $L\to\widehat{L}$ with dense image and $\widehat{L}$ finite over $\widehat{K}$ by $|\cdot|_{L}\mapsto\widehat{L}$ the completion of $L$ with respect to that absolute value and conversely $L\hookrightarrow\widehat{L}$ to the unique norm $|\cdot|_{L}$ where $|\ell|_{L}=|\ell|_{\widehat{L}}$. 
+        \item For a list of representatives of isomorphism classes in (i) and $d_{i}=[\widehat{L}_{i}:K]$ then $\sum_{i=1}^{n}d_{i}<[L:K]$. In particular, $n$ is finite and the spectral norm admits an explicit description $\Vert x\Vert_{s}=\max_{1\leq i\leq n}|x|_{\widehat{L}_{i}}$. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}[Proof of (i)]
+    This is immediate from the construction. 
+\end{proof}
+\begin{proof}[Proof of (ii)]\todo{Check}
+    Let $\LL$ be the completion of $L$ with respect to any weakly Cartesian norm. This is a vector space over $\widehat{K}$ of dimension equal to the degree of the field extension $[L:K]$ and $\LL\twoheadrightarrow\bigoplus_{i=1}^{n}\widehat{L}_{i}$ is reduced. That $\Vert x\Vert_{s}\geq\Vert x\Vert_{\widehat{L}_{i}}$ follows from \Cref{prop: spectral norm} (ii). For the opposite inequality, we can take $L/K$ to be a normal field extension, wherein $\Aut(L/K)$ permutes $L$ transitively. For $n>0$ let $\widehat{L}$ be a finite extension of $\widehat{K}$ in which $L$ can be embedded. Then this follows from \Cref{prop: spectral norm} (iii). 
 \end{proof}
