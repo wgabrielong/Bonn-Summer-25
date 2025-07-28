@@ -65,17 +65,19 @@ It is useful to understand explicitly when these conditions hold.
 \begin{example}
     $\QQ_{p}$ is spherically complete, but $\CC_{p}$ is not spherically complete. 
 \end{example}
-Let $A$ be a nat ring \Cref{def: nat ring} equipped with a multiplicative ring norm. We consider norms on $M$. 
+Let $A$ be a nat ring \Cref{def: nat ring} equipped with a multiplicative ring norm. We consider norms on $M$.
 \begin{definition}[Module Norm]\label{def: module norm}
     Let $A$ be a nat ring and $M$ an $A$-module. A map $\Vert\cdot|M\Vert$ to a totally ordered Abelian group is a norm if
-\begin{itemize}
+\begin{enumerate}[label=(\roman*)]
 \item $\Vert m|M\Vert = 0$ if and only if $m=0$,
 \item $\Vert m+n|M\Vert \le \max\{\Vert m|M\Vert, \Vert n|M\Vert\}$,
 \item $\Vert am|M\Vert\leq\Vert a|A\Vert\cdot\Vert m|M\Vert$.
-\end{itemize}
+\end{enumerate}
 \end{definition}
 \begin{definition}[Faithful Module Norm]\label{def: faithful module norm}
-    Let $A$ be a nat ring and $M$ an $A$-module. A module norm on $M$ is faithful if equality in (\ref{eqn: module norm}) always holds. 
+    Let $A$ be a nat ring and $M$ an $A$-module. A module norm on $M$ is 
+    faithful if the inequality in (iii) of definition \ref{def: module norm}
+    is always an equality.
 \end{definition}
 We consider the bounded homomorphisms between normed modules over a nat ring $A$. 
 \begin{definition}[Bounded Module Homomorphisms]\label{def: bounded module homomorphisms}
