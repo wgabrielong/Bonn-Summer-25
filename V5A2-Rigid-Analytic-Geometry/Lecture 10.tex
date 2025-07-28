@@ -17,7 +17,8 @@ This is a property that holds for all affinoid algebras.
     Suppose that $A$ is an integral domain. By Noether normalization, we can take $A$ to be a finite $\TT_{d}$-algebra. Let $(a_{i})_{i=1}^{n}$ be a basis of $L/E$ where $L$ and $E$ are the fields of fractions of $A$ and $\TT_{d}$, respectively. Since $A$ is a finitely generated $\TT_{d}$-module, there is $f\in\TT_{d}\setminus\{0\}$ such that $f\cdot A\subseteq M$ where $M=\oplus_{i=1}^{n}\TT_{d}a_{i}\subseteq L$. We put $\Vert\sum_{i=1}^{n}b_{i}a_{i}|M\Vert=\max\{\Vert b_{i}|\TT_{d}\Vert:1\leq i\leq n\}$. By a result from the Winter, $\Vert a|A\Vert$ and $\Vert fa|M\Vert$ are equivalent norms on $A$. Since $\Vert fa|M\Vert$ is a weakly Cartesian $K$-norm on $L$, it follows that $\Vert\cdot|A\Vert$ is the restriction to $A$ of the spectral norm on $L$. By \Cref{prop: equivalent conditions on dense embeddings}, this is equivalent to any weakly Cartesian norm on $L$ -- recall here that the maximum norm is bounded by the spectral norm. In particular, the norm restricting to $\Vert fa|M\Vert$ on $A$. Hence $\Vert\cdot|A\Vert_{s}=\Vert\cdot|A\Vert_{\max}$ as stated. The general case can be reduced to this one by induction on the number of minimal prime ideals of $A$. 
 \end{proof} %end of page 1
 \begin{example}
-    Let $A=\TT_{2}/(X_{1}X_{2}-\pi)$ for $\pi\in K^{\times}\cap K^{\circ\circ}$ a topoligically nilpotent unit. Then 
+    $\Vert\cdot|A\Vert_{\max}$ may fail to be multiplicative even when $A$ is an integral domain. For example,
+    let $A=\TT_{2}/(X_{1}X_{2}-\pi)$ for $\pi\in K^{\times}\cap K^{\circ\circ}$ a topoligically nilpotent unit. Then 
     \begin{align*}
         \Vert X_{1}|A\Vert_{\max}&=1 \\
         \Vert X_{2}|A\Vert_{\max}&=1 \\
@@ -25,15 +26,15 @@ This is a property that holds for all affinoid algebras.
     \end{align*}
 \end{example}
 \begin{proposition}\label{prop: multiplicative iff reduced}
-    Let $A$ be an affinoid $K$-algebra. The spectral norm on $A$ is completely multiplicative if and only if $A$ is reduced and $\widetilde{A}=A^{\circ}/A^{\circ\circ}$ is an integral domain. 
+    Let $A$ be an affinoid $K$-algebra. The spectral norm on $A$ is multiplicative if and only if $A$ is reduced and $\widetilde{A}=A^{\circ}/A^{\circ\circ}$ is an integral domain. 
 \end{proposition}
 \begin{proof}
     $(\Rightarrow)$ Since $\Vert\cdot|A\Vert_{s}$ is power-multiplicative, the nilradical of $A$ is trivial when $\Vert\cdot|A\Vert_{s}$ is a norm. 
 
-    $(\Rightarrow)$ Suppose $A$ is reduced and $\widetilde{A}$ is an integral domain. Let $a_{1},a_{2}\in A\setminus\{0\}$. We need to show $\Vert a_{1}a_{2}|A\Vert_{s}=\Vert a_{1}|A\Vert_{s}\cdot\Vert a_{2}|A\Vert_{s}$. Since $\Vert\cdot|A\Vert_{s}$ is power multiplicative, it suffices to prove the statement for $a_{1}^{n},a_{2}^{n}$ where $n\in\NN$. By all residual norms on an affinoid $K$-algebra being equivalent, there are $k_{i}\in K^{\times}$ such that $|k_{i}|=\Vert a_{i}|A\Vert_{s}$. Replacing $a_{i}$ by $a_{i}/k_{I}$ we have $\Vert a_{i}|A\Vert_{s}=1$ and the inequality $\Vert a_{1}a_{2}|A\Vert_{s}<1$ would imply that the images of $a_{i}$ in $\widetilde{A}$ are nonzero nilpotents. 
+    $(\Leftarrow)$ Suppose $A$ is reduced and $\widetilde{A}$ is an integral domain. Let $a_{1},a_{2}\in A\setminus\{0\}$. We need to show $\Vert a_{1}a_{2}|A\Vert_{s}=\Vert a_{1}|A\Vert_{s}\cdot\Vert a_{2}|A\Vert_{s}$. Since $\Vert\cdot|A\Vert_{s}$ is power multiplicative, it suffices to prove the statement for $a_{1}^{n},a_{2}^{n}$ where $n\in\NN$. By all residual norms on an affinoid $K$-algebra being equivalent, there are $k_{i}\in K^{\times}$ such that $|k_{i}|=\Vert a_{i}|A\Vert_{s}$. Replacing $a_{i}$ by $a_{i}/k_{i}$ we have $\Vert a_{i}|A\Vert_{s}=1$ and the inequality $\Vert a_{1}a_{2}|A\Vert_{s}<1$ would imply that the images of $a_{i}$ in $\widetilde{A}$ are nonzero nilpotents. 
 \end{proof}
 \begin{remark}
-    Let $A$ be an affinoid $K$-algebra. We can use these results to construct continuous valuations of $A$ with the end of showing that the dimension of $\Spa(A,A^{\circ})=\dim(A)$. For a domain $A$, $\TT_{d}\subseteq A$ for some $d$ by Noether normalization such that $A/\TT_{d}$ is finite. Then $\dim(A)=d$ by going up. 
+    Let $A$ be an affinoid $K$-algebra. We can use these results to construct continuous valuations of $A$ hence showing that the dimension of $\Spa(A,A^{\circ})$ is equal to $\dim(A)$. For a domain $A$, $\TT_{d}\subseteq A$ for some $d$ by Noether normalization such that $A/\TT_{d}$ is finite. Then $\dim(A)=d$ by going up. 
 \end{remark} %end of page 2
 Let $E$ and $F$ be the fields of fractions of $\TT_{d}$ and $A$, respectively. Equip $E$ with the absolute value defined by the completely multiplicative $\TT_{d}$-norm. $|\cdot|_{E}$ admits an extension to $|\cdot|_{F}$. 
 \begin{example}
@@ -51,13 +52,10 @@ We recall the following propositions.
 \end{proposition}
 \begin{corollary}
     If $A$ is an affinoid $K$-algebra then $\widetilde{A}$ is of finite type over $\Kfrak=K^{\circ}/K^{\circ\circ}$.
-\end{corollary}
-\begin{example}
-    $\Vert\cdot|A\Vert_{\max}$ may fail to be multiplicative when even when $A$ is an integral domain. 
-\end{example} %end of page 3
+\end{corollary} %end of page 3
 Recall that 
 \begin{equation}\label{eqn: structure sheaf}
-    \Fcal_{\Omega}(B)=\left\{f\in\Hom_{\Aff_{K}}(A,B):\Sp(B)\subseteq\Omega\subseteq\Sp(A)\right\}.
+    \Fcal_{\Omega}(B)=\left\{f\in\Hom_{\Aff_{K}}(A,B):\Sp(f)(\Sp(B))\subseteq\Omega\subseteq\Sp(A)\right\}.
 \end{equation}
 This functor was used to define sections over a rational open subset, but can be applied to arbitrary open subsets of the Tate spectrum $\Sp(A)$. 
 \begin{definition}[Affinoid Open Subset]\label{def: affinoid open subset}
@@ -71,7 +69,7 @@ This functor was used to define sections over a rational open subset, but can be
     $$\{V\in\Opens_{f^{-1}(\Omega)}:\exists U\subseteq \Sp(A)\text{ s.t. }f(V)\subseteq U\}$$ 
     is a covering sieve of $f^{-1}(\Omega)$. 
 \end{remark}
-We can now state and prove the Gerritzen-Grauert theorem. 
+We can now state without proof the Gerritzen-Grauert theorem. 
 \begin{theorem}[Gerritzen-Grauert]\label{thm: GG thm}
     Let $\Omega\subseteq\Sp(A)$ be affinoid then $\Omega$ can be written as a finite union of rational open subsets of $\Sp(A)$. In particular, any affinoid open subset is a $G_{+}$-quasicompact open subset of $\Sp(A)$.
 \end{theorem}
@@ -83,5 +81,5 @@ We consider the simple example of a finite union of rational open subsets.
     Let $A$ be an affinoid $K$-algebra. Any finite union of rational open subsets is admissable. 
 \end{proposition}
 \begin{proof}
-    Let $\Omega=\bigcup_{i=1}^{n}\Omega_{i}$ be such that each $\Omega_{i}\in\mathsf{Rat}_{\Sp(A)}$ and $\Scal$ a covering sieve for $\Omega$. There are finitely many $\Omega_{ij}\in\Scal\cap\Bcal_{\Omega_{i}}$ such that $\Omega_{i}=\bigcup_{j=1}^{m_{i}}\Omega_{ij}$. If $\varphi:A\to B$ inducing $f:\Sp(B)\to\Sp(A)$ and $\Omega_{ij}=R_{\Sp(A)}(a_{ij,0}|a_{ij,1},\dots,a_{ij,n})$ we have $f^{-1}(\Omega_{ij})=R_{\Sp(B)}(\varphi(a_{ij,0})|\varphi(a_{ij,1}),\dots,\varphi(a_{ij,n}))\in\mathsf{Rat}_{\Sp(B)}\cap f^{-1}\Scal$. Since $f^{-1}(\Omega)=\bigcup_{i=1}^{n}\bigcup_{j=1}^{m_{i}}$, this shows $f^{-1}\Scal$ is a covering sieve of $f^{-1}(\Omega)$. 
+    Let $\Omega=\bigcup_{i=1}^{n}\Omega_{i}$ be such that each $\Omega_{i}\in\mathsf{Rat}_{\Sp(A)}$ and $\Scal$ a covering sieve for $\Omega$. There are finitely many $\Omega_{ij}\in\Scal\cap\Bcal_{\Omega_{i}}$ such that $\Omega_{i}=\bigcup_{j=1}^{m_{i}}\Omega_{ij}$. If $\varphi:A\to B$ inducing $f:\Sp(B)\to\Sp(A)$ and $\Omega_{ij}=R_{\Sp(A)}(a_{ij,0}|a_{ij,1},\dots,a_{ij,n})$ we have $f^{-1}(\Omega_{ij})=R_{\Sp(B)}(\varphi(a_{ij,0})|\varphi(a_{ij,1}),\dots,\varphi(a_{ij,n}))\in\mathsf{Rat}_{\Sp(B)}\cap f^{-1}\Scal$. Since $f^{-1}(\Omega)=\bigcup_{i=1}^{n}\bigcup_{j=1}^{m_{i}}\Omega_{ij}$, this shows $f^{-1}\Scal$ is a covering sieve of $f^{-1}(\Omega)$. 
 \end{proof} %end of page 4

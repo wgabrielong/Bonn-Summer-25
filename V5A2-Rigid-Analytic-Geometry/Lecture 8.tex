@@ -1,9 +1,34 @@
-\section{Lecture 8 -- 17th June 2025}\label{sec: lecture 5}
-Herein, we let $K$ be a field with non-Archimedean absolute value (not necessarily complete). We say $f>>g$ if there is $C$ finite such that $|g|\leq C\cdot|f|$. 
+\section{Lecture 8 -- 17th June 2025}\label{sec: lecture 8}
+We start with a 
+\begin{remark}
+The degree of $\tilde{A}$ over $\underline{K}$ is less-equal the Krull-dimension
+of $A$.
+\end{remark}
+We want to pursue the problem of how to write down a rank $d+1$ valuations
+on $A$, where $d=\dim(A)$. Recall from end of last term the rank 2 examples
+for $\mathbb{T}_1$ reduced to inspecting $\Vert\cdot|\mathbb{T}_1\Vert$ 
+or the maximum norm. In our case of interest the maximum norm will
+coincide with the spectral norm, so we want to understand how to
+deal with the maximum norm.
+\begin{proposition}
+When $A$ is reduced, then $\Vert\cdot|A\Vert_{max}$ is equivalent to the
+residual norm.
+\end{proposition}
+\begin{proof}
+Last term.
+\end{proof}
+As $\Vert\cdot|\mathbb{T}_1\Vert$ is multiplicative (i.e. 
+$\Vert fg|\mathbb{T}_1\Vert=\Vert f|\mathbb{T}_1\Vert\Vert g|\mathbb{T}_1\Vert$),
+it defines an absolute value on the field of fractions $\mathbb{K}_1$.
+But $\mathbb{K}_1$ is not complete w.r.t. the unique extension
+$\Vert\cdot|\mathbb{K}_1\Vert$.
+
+Herein, we let $K$ be a field with non-Archimedean absolute value (not necessarily complete). Let $f,g\colon V\to W$ be linear maps between normed
+$K$-vector spaces. We say $f>>g$ if there is $C>0$ such that $|g|\leq C\cdot|f|$. 
 \begin{proposition}\label{prop: equivalent conditions on vector spaces}
     Let $V$ be a finite dimensional $K$-vector space and $\Vert\cdot\Vert_{V}$ satisfying $\Vert \lambda v\Vert_{V}=|\lambda|\cdot\Vert v\Vert_{V}, \Vert v+w\Vert_{V}\leq\max\{\Vert v\Vert,\Vert w\Vert\}$. The following conditions are equivalent: 
     \begin{enumerate}[label=(\roman*)]
-        \item If $(b_{i})_{i=1}^{n}$ is any basis then $\Vert\sum_{i=1}^{n}\lambda_{i}b_{i}\Vert_{V}>>\max_{1\leq i\leq n}|\lambda_{i}|$. 
+        \item If $(b_{i})_{i=1}^{n}$ is any basis then $\Vert\sum_{i=1}^{n}\lambda_{i}b_{i}\Vert_{V}>>\max_{1\leq i\leq n}|\lambda_{i}|$ (viewed as linear functions in the $\lambda_i$). 
         \item For every $v\in V\setminus\{0\}$ there is a bounded linear functional $\ell:V\to K$ such that $\ell(v)\neq0$. 
     \end{enumerate}
 \end{proposition}
@@ -36,7 +61,7 @@ This leads to the notion of weakly Cartesian norms.
     By \Cref{prop: equivalent conditions on vector spaces}, two weakly Cartesian norms on any finite-dimensional vector space are equivalent. 
 \end{remark}
 \begin{lemma}\label{lem: weakly cartesian as K-norm}
-    Let $|\cdot|$ be an ultrametric absolute value on $L$ and $K$ a subfield such that $L$ is weakly Cartesian as a $K$-vector space. Every weakly Cartesian $L$-norm on an $L$-vector space $V$ is weakly Cartesian as a $K$-norm. 
+    Let $|\cdot|$ be an ultrametric absolute value on $L$ and $K$ a subfield such that $[L:K]<\infty$ and $L$ is weakly Cartesian as a $K$-vector space. Then every weakly Cartesian $L$-norm on an $L$-vector space $V$ is weakly Cartesian as a $K$-norm. 
 \end{lemma}
 This shows that there are many bounded $K$-linear functionals on $L$. 
 \begin{proposition}\label{prop: spectral norm}

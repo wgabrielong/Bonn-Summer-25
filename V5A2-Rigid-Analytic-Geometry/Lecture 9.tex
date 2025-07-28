@@ -1,6 +1,6 @@
 \section{Lecture 9 -- 26th June 2025}\label{sec: lecture 9}
 \begin{proposition}\label{prop: equivalent conditions on dense embeddings}
-    Let $L/K$ be a finite field extension and $\LL$ be the completion of $K$ with respect to some weakly Cartesian norm. Let $(\LL_{i})_{i=1}^{n}$ be the set of isomorphism classes of dense $K$-embeddings $L\to\LL_{i}$ where $\LL_{i}$ is a finite field extension of the completion $\KK$ of $K$. The following are equivalent. 
+    Let $L/K$ be a finite field extension and $\LL$ be the completion of $L$ with respect to some weakly Cartesian norm. Let $(\LL_{i})_{i=1}^{n}$ be the set of isomorphism classes of dense $K$-embeddings $L\to\LL_{i}$ where $\LL_{i}$ is a finite field extension of the completion $\KK$ of $K$. The following are equivalent. 
     \begin{enumerate}[label=(\alph*)]
         \item $\sum_{i=1}^{n}d_{i}=d$ where $d_{i}=[\LL_{i}:\KK]$. 
         \item $\Vert\cdot|\LL\Vert_{s}$ is weakly Cartesian. 
@@ -18,6 +18,10 @@
     $$d=\dim_{K}L=\dim_{\KK}\LL=\sum_{j=1}^{m}\LL^{(j)}=\sum_{j=1}^{n}d_{j}.$$
     as desired. 
 \end{proof}
+\begin{example}
+Let $K=\mathbb{Q}$ and $L=\mathbb{Q}(i)$. Then there are two
+$L\to \mathbb{Q}_5$ with dense image, in particular $n=2, d_1=d_2=1$.
+\end{example}
 \begin{definition}[Weakly Stable]
     Let $K$ be a field with non-Archimedean absolute value. $K$ is weakly stable if the conditions of \Cref{prop: equivalent conditions on dense embeddings} hold for all finite extensions $L/K$. 
 \end{definition}
@@ -36,7 +40,7 @@ It is useful to understand explicitly when these conditions hold.
     \end{enumerate}
 \end{proposition}
 \begin{proof}[Proof of (i)]
-    As $L/K$ is separable, $\Tr_{L/K}$ does not vanish identically. Let $\varepsilon\in L$ be such that $\Tr_{L/K}(\varepsilon)=1$. If $\ell\in L^{\times}$ then we can define a functional $\lambda$ by $t\mapsto\Tr_{L/K}(\frac{t\varepsilon}{\ell})$ is a $\Vert\cdot\Vert_{s}$-bounded $K$-linear functional on $L$ such that $\lambda(\ell)=1$. By \Cref{prop: equivalent conditions on vector spaces}, the spectral norm is weakly Cartesian. 
+    As $L/K$ is separable, $\Tr_{L/K}$ does not vanish identically. Let $\varepsilon\in L$ be such that $\Tr_{L/K}(\varepsilon)=1$. If $\ell\in L^{\times}$ then we can define a functional $\lambda$ by $\lambda(t)=\Tr_{L/K}(\frac{t\varepsilon}{\ell})$, which is a $\Vert\cdot\Vert_{s}$-bounded $K$-linear functional on $L$ such that $\lambda(\ell)=1$. By \Cref{prop: equivalent conditions on vector spaces}, the spectral norm is weakly Cartesian. 
 \end{proof}
 \begin{proof}[Proof of (ii)]
     This is immediate from (i). 
@@ -61,15 +65,19 @@ It is useful to understand explicitly when these conditions hold.
 \begin{example}
     $\QQ_{p}$ is spherically complete, but $\CC_{p}$ is not spherically complete. 
 \end{example}
-Let $A$ be a nat ring \Cref{def: nat ring} equipped with a complete multiplicative ring norm. We consider norms on $M$. 
+Let $A$ be a nat ring \Cref{def: nat ring} equipped with a multiplicative ring norm. We consider norms on $M$.
 \begin{definition}[Module Norm]\label{def: module norm}
     Let $A$ be a nat ring and $M$ an $A$-module. A map $\Vert\cdot|M\Vert$ to a totally ordered Abelian group is a norm if
-    \begin{equation}\label{eqn: module norm}
-        \Vert am|M\Vert\leq\Vert a|A\Vert\cdot\Vert m|M\Vert.
-    \end{equation}
+\begin{enumerate}[label=(\roman*)]
+\item $\Vert m|M\Vert = 0$ if and only if $m=0$,
+\item $\Vert m+n|M\Vert \le \max\{\Vert m|M\Vert, \Vert n|M\Vert\}$,
+\item $\Vert am|M\Vert\leq\Vert a|A\Vert\cdot\Vert m|M\Vert$.
+\end{enumerate}
 \end{definition}
 \begin{definition}[Faithful Module Norm]\label{def: faithful module norm}
-    Let $A$ be a nat ring and $M$ an $A$-module. A module norm on $M$ is faithful if equality in (\ref{eqn: module norm}) always holds. 
+    Let $A$ be a nat ring and $M$ an $A$-module. A module norm on $M$ is 
+    faithful if the inequality in (iii) of definition \ref{def: module norm}
+    is always an equality.
 \end{definition}
 We consider the bounded homomorphisms between normed modules over a nat ring $A$. 
 \begin{definition}[Bounded Module Homomorphisms]\label{def: bounded module homomorphisms}
@@ -107,5 +115,5 @@ We consider the bounded homomorphisms between normed modules over a nat ring $A$
     For $K$ of characteristic zero, this is merely the statement of \Cref{lem: existence of finite generators of extension}. In the charcteristic $p$ case, we can use the same lemma to observe that in the hypotheses, the spectral norm of $F$ is weakly Cartesian. But using the construction of \Cref{lem: p-power roots} the spectral norm of $F$ is weakly Cartesian. The construction therein in conjunction with \Cref{prop: when things are weakly stable} can be used to give for each $f\in F\setminus\{0\}$ an $E$-linear functional $\ell:F\to E$ such that $\ell(t)\neq0$. Since $F$ is in the fraction field of $B$, the claim follows from \Cref{prop: equivalent conditions on dense embeddings}. 
 \end{proof}
 \begin{remark}
-    Every finite field extension of $E$ is also weaklys table with respect to every extension of the absolute value on $E$. 
+    Every finite field extension of $E$ is also weakly stable with respect to every extension of the absolute value on $E$. 
 \end{remark}
