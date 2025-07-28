@@ -2,7 +2,7 @@
 \begin{proposition}\label{prop: equivalent conditions on dense embeddings}
     Let $L/K$ be a finite field extension and $\LL$ be the completion of $K$ with respect to some weakly Cartesian norm. Let $(\LL_{i})_{i=1}^{n}$ be the set of isomorphism classes of dense $K$-embeddings $L\to\LL_{i}$ where $\LL_{i}$ is a finite field extension of the completion $\KK$ of $K$. The following are equivalent. 
     \begin{enumerate}[label=(\alph*)]
-        \item $\sum_{i=1}^{n}d_{i}=d$ where $[\LL_{i}:K]$. 
+        \item $\sum_{i=1}^{n}d_{i}=d$ where $d_{i}=[\LL_{i}:\KK]$. 
         \item $\Vert\cdot|\LL\Vert_{s}$ is weakly Cartesian. 
         \item $\LL$ is reduced. 
     \end{enumerate}
@@ -36,7 +36,7 @@ It is useful to understand explicitly when these conditions hold.
     \end{enumerate}
 \end{proposition}
 \begin{proof}[Proof of (i)]
-    As $L/K$ is separable, $\Tr_{L/K}$ does not vanish identically. Let $\varepsilon\in L$ be such that $\Tr_{L/K}(\varepsilon)=1$. If $\ell\in L^{\times}$ then $\lambda\mapsto\Tr_{L/K}(\frac{t\lambda}{\ell})$ is a $\Vert\cdot\Vert_{s}$-bounded $K$-linear functional on $L$ such that $\lambda(\ell)=1$. By \Cref{prop: equivalent conditions on vector spaces}, the spectral norm is weakly Cartesian. 
+    As $L/K$ is separable, $\Tr_{L/K}$ does not vanish identically. Let $\varepsilon\in L$ be such that $\Tr_{L/K}(\varepsilon)=1$. If $\ell\in L^{\times}$ then we can define a functional $\lambda$ by $t\mapsto\Tr_{L/K}(\frac{t\varepsilon}{\ell})$ is a $\Vert\cdot\Vert_{s}$-bounded $K$-linear functional on $L$ such that $\lambda(\ell)=1$. By \Cref{prop: equivalent conditions on vector spaces}, the spectral norm is weakly Cartesian. 
 \end{proof}
 \begin{proof}[Proof of (ii)]
     This is immediate from (i). 
