@@ -33,9 +33,9 @@ We can show that the ordering of \Cref{def: xi-ordering} defines a linear partia
     Let $\xi$ be a van der Put point on $\Sp(A)$. The $\xi$-ordering is a linear partial order on the monoid $\{a\in A:a\text{ not }\xi\text{-infinitesmal}\}$. 
 \end{proposition}
 \begin{proof}
-    If $a,b$ are not $\xi$-infinitesmal then $R_{\Sp(A)}(a|\varepsilon),R_{\Sp(A)}(g|\varepsilon)\in\xi$ for some $\varepsilon\in K^{\times}$. Their intersection $R_{\Sp(A)}(a|\varepsilon)\cap R_{\Sp(A)}(b|\varepsilon)=R_{\Sp(A)}(fg|\varepsilon^{2})$ is in $\xi$ and the covering $R_{\Sp(A)}(a|b,\varepsilon)\cup R_{\Sp(A)}(b|a,\varepsilon)$ is admissable as it is finite, hence one of $R_{\Sp(A)}(a|b,\varepsilon), R_{\Sp(A)}(b|a,\varepsilon)$ lie in $\xi$ giving one of $b\preceq_{\xi}a$ or $a\preceq_{\xi}b$. 
+    If $a,b$ are not $\xi$-infinitesmal then $R_{\Sp(A)}(a|\varepsilon),R_{\Sp(A)}(b|\varepsilon)\in\xi$ for some $\varepsilon\in K^{\times}$. Their intersection $R_{\Sp(A)}(a|\varepsilon)\cap R_{\Sp(A)}(b|\varepsilon)=R_{\Sp(A)}(ab|\varepsilon^{2})$ is in $\xi$ and the covering $R_{\Sp(A)}(a|b,\varepsilon)\cup R_{\Sp(A)}(b|a,\varepsilon)$ is admissable (i.e. in the Grothendieck topology) as it is finite, hence one of $R_{\Sp(A)}(a|b,\varepsilon), R_{\Sp(A)}(b|a,\varepsilon)$ lie in $\xi$ giving one of $b\preceq_{\xi}a$ or $a\preceq_{\xi}b$. 
 
-    To show this partial order is linear, suppose we have $a,b,c$ non-infinitesmal and $ac\preceq_{\xi}bc$. Then $R_{\Sp(A)}(bc|ac,\varepsilon)\in\xi$ and $R_{\Sp(A)}(c|\delta)\in\xi$ for $\varepsilon,\delta\in K^{\times}$. When $\widetilde{\varepsilon}\in K^{\times}$ such that $|\widetilde{\varepsilon}|\cdot\Vert c|A\Vert_{\max}\leq\varepsilon$ we have $R_{\Sp(A)}(c|\delta)\cap R_{\Sp(A)}(bc|ac,\epsilon)\subseteq R_{\Sp(A)}(b|a,\widetilde{\varepsilon})$ so $a\preceq_{\xi}b$, that is, the monoid is cancellative. 
+    To show this partial order is linear, suppose we have $a,b,c$ non-infinitesmal and $ac\preceq_{\xi}bc$. Then $R_{\Sp(A)}(bc|ac,\varepsilon)\in\xi$ and $R_{\Sp(A)}(c|\delta)\in\xi$ for $\varepsilon,\delta\in K^{\times}$. When $\widetilde{\varepsilon}\in K^{\times}$ such that $|\widetilde{\varepsilon}|\cdot\Vert c|A\Vert_{\max}\leq |\varepsilon|$ we have $R_{\Sp(A)}(c|\delta)\cap R_{\Sp(A)}(bc|ac,\epsilon)\subseteq R_{\Sp(A)}(b|a,\widetilde{\varepsilon})$ so $a\preceq_{\xi}b$, that is, the monoid is cancellative. 
 \end{proof}
 The data of the linear order allows us to define a map to a linearly ordered group, and in fact prescribes a point of the adic spectrum. 
 \begin{proposition}
@@ -48,18 +48,19 @@ The data of the linear order allows us to define a map to a linearly ordered gro
     \end{equation}
     with $\nu_{\xi}\in\Spa(A,A^{\circ})$. 
 \end{proposition}
-\begin{proof}
-    It is clear that $\nu_{\xi}$ is a valuation. If $\gamma\in\Gamma$ with $\gamma=\frac{[a]_{\xi}}{[b]_{\xi}}$ then for $R(a|\varepsilon)\cap R(b|\varepsilon)\in\xi$ and $\delta$ such that $\delta\cdot\Vert b|A\Vert_{\max}<\varepsilon$ then $\Vert f|A\Vert_{\max}<\varepsilon\delta$ implies that $\nu_{\xi}(f)<\gamma$ showing continuity. $\nu_{\xi}$ satisfies the correct compatibility condition with respect to $A^{\circ}$ as powerbounded elements are $\xi$-infinitesmal. 
+\begin{proof} (TODO: the proof makes no sense)
+    It is clear that $\nu_{\xi}$ is a valuation. If $\gamma\in\Gamma$ with $\gamma=\frac{[a]_{\xi}}{[b]_{\xi}}$ then for $R_{\Sp(A)}(a|\varepsilon)\cap R_{\Sp(A)}(b|\varepsilon)\in\xi$ and $\delta$ such that $\delta\cdot\Vert b|A\Vert_{\max}<\varepsilon$ then $\Vert f|A\Vert_{\max}<\varepsilon\delta$ implies that $\nu_{\xi}(f)<\gamma$ showing continuity. $\nu_{\xi}$ satisfies the correct compatibility condition with respect to $A^{\circ}$ as powerbounded elements are $\xi$-infinitesmal. 
 \end{proof}
 This is inverse to the construction (\ref{eqn: vdP points map}). 
 \begin{proposition}\label{prop: mutually inverse}
     Let $A$ be an affinoid $K$-algebra. The constructions (\ref{eqn: vdP points map}) and (\ref{eqn: defines a point of adic space}) are mutually inverse. 
 \end{proposition}
 \begin{proof}
-    Suppose $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$ then $$R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n},\varepsilon)=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$$ when $\varepsilon$ is small enough, showing $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$ and $\Omega\in\xi_{\nu_{\xi}}$. Suppose that $\nu\in\xi_{\nu}$, that is, $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$. Since not all $f_{i}\in\supp(\nu_{\xi})=\{f\in A:f\text{ is }\xi\text{-infinitesmal}\}$ we have $f_{0}\in\supp(\nu_{\xi})$ hence $f_{0}$ is not $\xi$-infinitesmal. Taking $\varepsilon\in K^{\times}$ small, all $R_{\Sp(A)}(f_{0}|f_{i},\varepsilon)\in\xi$ hence 
+    Suppose $\xi$ is given.
+Let $\Omega=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$ then $$R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n},\varepsilon)=R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$$ when $\varepsilon$ is small enough, showing $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$ and $\Omega\in\xi_{\nu_{\xi}}$. Suppose that $\nu\in\xi_{\nu_\xi}$, that is, $\nu_{\xi}(f_{i})\leq\nu_{\xi}(f_{0})$. Since not all $f_{i}\in\supp(\nu_{\xi})=\{f\in A:f\text{ is }\xi\text{-infinitesmal}\}$ we have $f_{0}\in\supp(\nu_{\xi})$ hence $f_{0}$ is not $\xi$-infinitesmal. Taking $\varepsilon\in K^{\times}$ small, all $R_{\Sp(A)}(f_{0}|f_{i},\varepsilon)\in\xi$ hence 
     $$\bigcap_{i=1}^{n}R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\subseteq R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})$$ and $\bigcap_{i=1}^{n}R_{\Sp(A)}(f_{0}|f_{1},\dots,f_{n})\in\xi$. This shows $\xi=\xi_{\nu_{\xi}}$. 
 
-    Dually suppose $\nu$ is given. It follows from the definitions and continuity that $a\in A$ is $\xi$-infinitesmal if and only if $\nu(a)=0$ and $a\geq b$ if and only if $\nu(a)\geq b$ so indeed $\nu_{\xi}=\nu$. 
+    Dually suppose $\nu$ is given. It follows from the definitions and continuity that $a\in A$ is $\xi$-infinitesmal if and only if $\nu(a)=0$ and $a\geq b$ if and only if $\nu(a)\geq \nu(b)$ so indeed $\nu_{\xi_\nu}=\nu$. 
 \end{proof}
 This proves the bijection in full. It remains to show the assertion regarding the Krull dimension. 
 
