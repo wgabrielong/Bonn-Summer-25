@@ -48,14 +48,15 @@ These rational open sets form the basis for the topology on the Tate spectrum $\
 \end{definition}
 In some simple cases, the underlying space of the Tate spectrum admits a description. 
 \begin{example}
-    Let $K=\overline K$. $\Sp(\TT_{n})= (K^{\circ})^{n}$, where $K^{\circ}$ is the subring of powerbounded elements of $K$. Each point $x\in\Sp(A)$ is taken to $(\xi_{i})_{i=1}^{n}$ where $\xi_{i}$ is the image of $X_{i}$ in $K\cong\kappa(x)$ and an $n$-tuple of powerbounded elements of $K$ is taken to the ideal of $\TT_{n}$ consisting of functoins vanishing at that tuple. In this case, the basis for the ordinary topology on the Tate spectrum is identified with non-Archimedean balls $d(\xi,\nu)=\max_{1\leq i\leq n}|\xi_{i}-\nu_{i}|$. 
+    Let $K=\overline K$. $\Sp(\TT_{n})= (K^{\circ})^{n}$, where $K^{\circ}$ is the subring of powerbounded elements of $K$. Each point $x\in\Sp(A)$ is taken to $(\xi_{i})_{i=1}^{n}$ where $\xi_{i}$ is the image of $X_{i}$ in $K\cong\kappa(x)$ and an $n$-tuple of powerbounded elements of $K$ is taken to the ideal of $\TT_{n}$ consisting of functions vanishing at that tuple. In this case, the basis for the ordinary topology on the Tate spectrum is identified with non-Archimedean balls $d(\xi,\nu)=\max_{1\leq i\leq n}|\xi_{i}-\nu_{i}|$. 
 \end{example}
 We now want to define the structure sheaf on $\Sp(A)$ which will be valued in the category affinoid $K$-algebras $\Aff_{K}$. This is a full subcategory of the category of $K$-algebras as all maps between affinoid $K$-algebras are automatically continuous. 
 
 The structure sheaf is defined as follows. 
 \begin{definition}[Tate Spectrum -- Structure Sheaf]\label{def: structure sheaf of the Tate spectrum}
     Let $A$ be an affinoid $K$-algebra. The functor $$R_{A}(f_{0}|f_{1},\dots,f_{n})\mapsto A\left\langle\frac{\varepsilon}{f_{0}}\right\rangle\left\langle\frac{f_{1}}{f_{0}},\dots,\frac{f_{n}}{f_{0}}\right\rangle$$ where $\varepsilon\in K^{\times}$ such that $\max_{0\leq i\leq n}|f_{i}(x)|\geq|\varepsilon|$ for all $x\in\Sp(A)$ represents the functor $\mathsf{Rat}_{A}^{\Opp}\to\Aff_{K}$
-    $$F_{\Omega}(B)=\left\{\varphi\in\Hom_{\Aff_{K}}(A,B):\Sp(\varphi)(\Sp(B))\subseteq\Omega\right\}.$$
+    $$F_{\Omega}(B)=\left\{\varphi\in\Hom_{\Aff_{K}}(A,B):\Sp(\varphi)(\Sp(B))\subseteq\Omega\right\},$$
+where $Ω=\Ocal_{\Sp(A)}(A\left\langle\frac{\varepsilon}{f_{0}}\right\rangle\left\langle\frac{f_{1}}{f_{0}},\dots,\frac{f_{n}}{f_{0}}\right\rangle$.
 \end{definition}
 Summing up the preceding constructions, we have:
 \begin{definition}[Tate Spectrum -- Ringed Space]\label{def: Tate spectrum as a ringed space}
@@ -124,7 +125,8 @@ We begin with the following preparatory result. \marginpar{We now begin marginal
     \begin{itemize}
         \item [($\dagger$)] For all $n\in\NN$, $A/\widetilde{\mfrak}^{n}\to B/\mfrak^{n}$ is an isomorphism. 
     \end{itemize}
-    Note that $B/\mfrak^{n}$ is initial amongst affinoid $B$-algebras $C$ such that $\mfrak^{n}C=0$, while $A/\mfrak^{n}$ is initial amongst affinoid $A$-algebras $C'$ such that $\mfrak^{n}C=0$. For $C$ as above, the image of $\Sp(C)$ in $\Sp(B)$ is $\mfrak$, while the image of $\Sp(C')$ in $\Sp(A)$ is $\widetilde{\mfrak}\in\Omega$. Applying the universal property twice, $C'$ can be endowed uniquely with the structure of a $B$-algebra, and by $\kappa(\mfrak)\cong\kappa(\widetilde{\mfrak})$ it follows that $C'$ is annihilated by $\widetilde{\mfrak}$ Thus both $A/\widetilde{\mfrak}^{n}, B/\mfrak^{n}$ satisfy the same universal property, hence isomorphic. 
+    Note that $B/\mfrak^{n}$ is initial amongst $B$-algebras $C$ such that $\mfrak^{n}C=0$, while $A/\mfrak^{n}$ is initial amongst $A$-algebras $\tilde{C}$ such that $\mfrak^{n}\tilde{C}=0$. For $C$ as above, the image of $\Sp(C)$ in $\Sp(B)$ is $\mfrak$, while the image of $\Sp(\tilde{C})$ in $\Sp(A)$ is $\widetilde{\mfrak}\in\Omega$. Applying the universal property twice, 
+$\tilde{C}$ can be endowed uniquely with the structure of a $B$-algebra, and by $\kappa(\mfrak)\cong\kappa(\widetilde{\mfrak})$ it follows that $\tidle{C}$ is annihilated by $\widetilde{\mfrak}$. Thus both $A/\widetilde{\mfrak}^{n}, B/\mfrak^{n}$ satisfy the same universal property, hence are isomorphic. 
 
     The desired claim follows from ($\dagger$) by passage to the limit. 
 \end{proof}
@@ -135,11 +137,12 @@ As in the case of algebraic geometry, coherent sheaves are defined as $\widetild
 \begin{definition}[$\widetilde{(-)}$]\label{def: tildeification}\marginpar{Definition 2.1}
     Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module. The sheaf $\widetilde{M}$ is the sheafification of the presheaf $\Omega\mapsto M\otimes_{A}\Ocal_{\Sp(A)}(\Omega)$ on rational open subsets. 
 \end{definition}
-Exactness of the sequence 
+Since each module in the exact sequence 
 $$0\to\Ocal_{\Sp(A)}(\Omega)\to\Ocal_{\Sp(A)}(R_{\Omega}(1|g))\oplus\Ocal_{\Sp(A)}(R_{\Omega}(g|1))\to\Ocal_{\Sp(A)}(R_{\Omega}(g|1,g^{2}))\to0$$
-is preserved under $-\otimes_{A}M$ by \Cref{def: two set condition for acyclicity}. In particular, we have:
+is flat, exactness is preserved under $-\otimes_{A}M$.
+In particular, by \Cref{def: two set condition for acyclicity} we have:
 \begin{proposition}\label{prop: tildeification is tensor}\marginpar{Proposition 2.2}
-    Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module with associated sheaf $\widetilde{M}$. Then $\widetilde{M}(\Omega)=\Ocal_{\Sp(A)}(\Omega)\otimes_{A}M$ and $H^{p}(\Omega,\widetilde{M})=0$ for all $p>0$ and for all rational $\Omega$. 
+    Let $A$ be an affinoid $K$-algebra and $M$ a finitely generated $A$-module with associated sheaf $\widetilde{M}$. Then $H^{p}(\Omega,\widetilde{M})=0$ for all $p>0$ and for all rational $\Omega$. 
 \end{proposition}
 \begin{proof}
     By flatness of $\Ocal_{\Sp(A)}(\Omega)$ as an $A$-algebra, exactness of the sequence for $\Omega$ rational, we have a short exact sequence 
