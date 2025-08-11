@@ -1,0 +1,114 @@
+\section{Lecture 7 -- 4th July 2025}\label{sec: lecture 7}
+We continue our discussion of the construction of the analytic Habiro ring $\Hcal^{\an}$ and the functor $(-)^{\Hab}:\Sch_{\ZZ}^{\mathsf{sft}}\to\mathsf{AnStack}_{\Hcal^{\an}}$ to analytic stacks over the Habiro ring which commutes with finite limits and gluing and such that the functor $X\mapsto\Dscr_{\QCoh}(X^{\Hab})$ is a six-functor formalism. It turns out that one can extend the functor $(-)^{\Hab}$ from $\Sch^{\mathsf{sft}}_{\ZZ}$ to Berkovich spaces of finite type over $\ZZ$. 
+
+At least in the case of schemes, the functor $(-)^{\Hab}$ by $X\mapsto X^{\Hab}$ is fully determined by its value on $(\A^{1}_{\ZZ})^{\Hab}$ as a ring object in stacks. In the setting of Berkovich spaces, we need to supply additional structure.\marginpar{Recall here that the Berkovich spectrum is defined to be the set of multiplicative seminorms bounded by the norm.} Recall that the Berkovich affine line $\A^{1,\Berk}_{\ZZ}$ admits a norm map $|T|$ to $[0,\infty)$ taking a point $|\cdot|_{x}$ in $\A^{1,\Berk}_{\ZZ}$ to its value $|T|_{x}$ on the coordinate $T$. Open discs in the Berkovich affine line $\A^{1,\Berk}_{\ZZ}$ are of the form $D_{r}(0)^{\circ}$, the preimage of $[0,r)\subseteq[0,\infty)$ under the map $|T|$. Similarly, the closed disc $D_{r'}(0)=\bigcap_{r'<r}D_{r}(0)^{\circ}$ is the intersection of all larger open discs is the preimage of $[0,r']\subseteq[0,\infty)$ under $|T|$. This definition of closed discs captures its overconvergent nature, where a convergent function on the closed disc converges already in a slightly larger open disc. In particular, covers of the half-interval pull back to covers of the Berkovich affine line by discs. Under the functor $(-)^{\Hab}$, we would expect a similar correspondence on coverings. For this to make sense, we will require a notion of normed ring stacks: there is a norm map $N:(\A^{1,\Berk}_{\ZZ})^{\Hab}\to[0,\infty)_{\Betti}$ satisfying the usual axioms of a non-Archimedean norm where $[0,\infty)_{\Betti}$ is the analytic Betti stack associated to the topological space $[0,\infty)$. Ongoing work of Aoki provides an $(\infty,2)$-categorical realizations of Berkovich motives are equivalent to normed ring stacks with certain properties. 
+\begin{remark}
+    We should be careful to distinguish between the existence of a norm on an analytic ring and a norm on a ring stack over an analytic ring. These are related in the sense that a norm on an analytic ring is precisely the norm on the affine line over it as a ring stack. 
+\end{remark}
+With this language in hand, we can restate our desideratum as finding a normed ring stack $(\A^{1}_{\ZZ})^{\Hab}$ over an analytic ring $\Hcal^{\an}$ such that $(\GG_{m})^{\Hab}$ is $\GG_{m,\Hcal^{\an}}/q^{\ZZ}$ as in \Cref{ex: Habiro stack on Gm}. The composition 
+$$\GG_{m,\Hcal^{an}}\longrightarrow\GG_{m,\Hcal^{\an}}/q^{\ZZ}\cong(\GG_{m})^{\Hab}\xrightarrow{N}[0,\infty)_{\Betti}$$
+exhibits $\GG_{m,\Hcal^{\an}}$ as a normed analytic stack. This constructs a norm on nonzero elements of $\Hcal^{\an}$ and by conventions on norms a norm on the analytic ring $\Hcal^{\an}$ in the sense that the map $\AnSpec(\Hcal^{\an}[T])=\A^{1}_{\Hcal^{\an}}\to[0,\infty]_{\Betti}$ satisfies the expected properties and where the preimage of $[0,\infty)_{\Betti}$ is $\A^{1,\an}_{\Hcal^{\an}}$ the analytic affine line over the analytic Habiro ring. 
+\begin{example}
+    For a normed analytic ring $A$, there is a map $\A^{1}_{A}\to[0,\infty]_{\Betti}$ such that for any $A$-algebra $B$ and $f\in B$ the diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXEFeezF9X3tBfSJdLFszLDAsIlswLFxcaW5mdHldX3tcXEJldHRpfSJdLFsxLDEsIlxcQW5TcGVjKEIpIl0sWzAsMCwiVCJdLFswLDEsImYiXSxbMyw0LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzIsMF0sWzAsMSwifFR8Il0sWzIsMSwifGZ8IiwyXV0=
+    \begin{tikzcd}
+        T & {\A^{1}_{A}} && {[0,\infty]_{\Betti}} \\
+        f & {\AnSpec(B)}
+        \arrow[maps to, from=1-1, to=2-1]
+        \arrow["{|T|}", from=1-2, to=1-4]
+        \arrow[from=2-2, to=1-2]
+        \arrow["{|f|}"', from=2-2, to=1-4]
+    \end{tikzcd}$$
+    induces a norm $|f|$ on $\AnSpec(B)$. In particular $|f|$ takes a point $|\cdot|_{x}\in\AnSpec(B)$ to $|f|_{x}$.  
+\end{example}
+\begin{example}
+    Let $\ZZ((u))$ the Laurent series in $u$. Its solid analytic ring structure $A=\ZZ((u))_{\square}$ is a normed analytic ring for $0<|u|<1$.\marginpar{Note that the $\square$ here denotes solidity, not a framing as has been convention thus far.} Saying that $|u|=c$ for $0<c<1$ is saying that the map $|u|:\AnSpec(A)\to[0,\infty]_{\Betti}$ is the constant map with value $c$. The preimage of $[0,r]_{\Betti}\subseteq[0,\infty]_{\Betti}$ is the overconvergent disc $D_{0}(r)^{\dagger}=\{T\in\ZZ((u))_{\square}:|T|\leq r\}$.
+\end{example}
+We can produce an affine analytic stack of overconvergent functions on this disc. 
+\begin{definition}[Overconvergent Functions on the Disc]\label{def: overconvergent functions on the disc}
+    The ring of overconvergent functions on the disc of radius $r$ is 
+    $$\ZZ((u))\langle T\rangle_{r}^{\dagger}=\left\{\sum_{n\geq0}a_{n}T^{n}:a_{n}\in\ZZ((u)),\exists r'>r\text{ s.t. }|a_{n}|r'^{n}\to0\right\}.$$\todo{2 to the power of some valuation?}
+\end{definition}
+This language gives us a more precise definition of the overconvergent disc. 
+\begin{definition}[Overconvergent Disc]\label{def: overconvergent disc}
+    The overconvergent disc of radius $r$ is the analytic spectrum of the overconvergent functions on the disc $\AnSpec(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}$. 
+\end{definition}
+This shows that $(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}$ is an idempotent $\ZZ((u))_{\square}[T]$-algebra: the canonical map 
+$$(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}\xrightarrow{\id\otimes^{L}[\ZZ((u))_{\square}[T]\to(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}]}(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}\otimes_{\ZZ((u))_{\square}[T]}(\ZZ((u))\langle T\rangle_{r}^{\dagger})_{\square}$$ 
+is an isomorphism. These become injections on taking $\AnSpec(-)$. 
+
+We can now define the analytic affine line.
+\begin{definition}[Analytic Affine Line over $\ZZ((u))_{\square}$]\label{def: analytic affine line over analytic Habiro}
+    The analytic affine line over $\ZZ((u))_{\square}$ is 
+    $$\A^{1,\an}_{\ZZ((u))_{\square}}=\bigcup_{r<\infty}D_{0}(r)^{\dagger}\subseteq\A^{1}_{\ZZ((u))_{\square}}.$$
+\end{definition}
+Functions on $\A^{1,\an}_{\ZZ((u))_{\square}}$ should be thought of as entire functions in $T$, that is, 
+$$\left\{\sum_{n\geq0}a_{n}T^{n}:a_{n}\in\ZZ((u)),\forall r<\infty, |a_{n}|r^{n}\to0\right\}.$$
+\begin{remark}
+    There are far fewer functions on $\A^{1}_{\ZZ((u))_{\square}}$ than on $\A^{1,\an}_{\ZZ((u))_{\square}}$. 
+\end{remark}
+We can now define the analytic Habiro ring. 
+\begin{definition}[Analytic Habiro Ring]\label{def: analytic Habiro ring}
+    The analytic Habiro ring $\Hcal^{\an}$ is the free $\ZZ((u))_{\square}$-algebra with element $q$ where $|q|=1$ such that:
+    \begin{enumerate}[label=(\roman*)]
+        \item The sequence $((q;q)_{n})_{n\geq1}$ has rapid decay in the sense that for all $k\geq 1$ $\left(\frac{(q;q)_{n}}{u^{kn}}\right)_{n\geq1}$ is a nullsequence. 
+        \item For all $n\geq 1$, $1-q^{n}$ is invertible in $\Hcal^{\an}$ and for all $\varepsilon>0$ the sequence $\left(\frac{u^{\varepsilon n}}{1-q^{n}}\right)_{n\geq1}$ is a nullsequence. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    This definition is only preliminary. Indeed, one would only want (i) in principle, but working with this object is significantly more difficult without (ii). 
+\end{remark}
+\begin{remark}
+    \todo{The analytic Habiro ring is not a X ring. Have to be careful about things such as vector bundles. }
+\end{remark}
+The analytic Habiro ring is a promotion of the Habiro ring, and admits a comparison map from it. 
+\begin{lemma}\label{lem: map from Habiro to analytic Habiro}
+    There exists a morphism $\Hcal\to\Hcal^{\an}$. 
+\end{lemma}
+\begin{proof}
+    Any element of the ordinary Habiro ring $\Hcal$ can be written as $\sum_{n\geq0}f_{n}(q)(q;q)_{n}$ where $f_{n}(q)\in\ZZ[q^{\pm}]$. Its image in $\Hcal^{an}$ is of the form $\sum_{n\geq0}u^{n}f_{n}(q)\frac{(q;q)_{n}}{u^{n}}$. The terms $\left(\frac{(q;q)_{n}}{u^{n}}\right)_{n\geq1}$ form a nullsequence and thus $\sum_{n\geq0}u^{n}f_{n}(q)\frac{(q;q)_{n}}{u^{n}}$ is summable as Laurent polynomials are of bounded norm and $u^{n}$ has exponential decay. 
+\end{proof}
+The second condition in fact implies that the Habiro cohomology of the disc is trivial.
+\begin{proposition}
+    The Habiro cohomology of $D_{0}(1)^{\dagger}=\AnSpec(\ZZ((u))\langle T\rangle_{1}^{\dagger})_{\square}$ is trivial. 
+\end{proposition} 
+\begin{proof}
+    The Habiro cohomology is computed via the $q$-de Rham complex of the disc $\Hcal^{\an}\langle T\rangle^{\dagger}_{1}\to\Hcal^{\an}\langle T\rangle^{\dagger}_{1}$ by $T^{n}\mapsto (1-q^{n})T^{n-1}$.\todo{Bad video.}
+\end{proof}
+The triviality of cohomology on the disc is analogous to case of Berkovich motives, and makes the theory simpler in many ways. In particular (ii) removes undesirable phenomena of cyclotomic torsion. 
+
+Having considered the case of the Habiro ring, we can consider analytic $\GG_{m}$ over the analytic Habiro ring. Recall that in the ordinary case, we have that $\GG_{m}^{\Hab}=\GG_{m,\Hcal}/q^{\ZZ}$ where the quotient prescribes the descent data of modules with a $q$-connection. 
+\begin{definition}[Analytic $\GG_{m}$ on the Habiro Ring]\label{def: analytic Gm on Habiro ring}
+    $(\GG_{m})^{\Hab}$ is the quotient $\GG^{\an}_{m,\Hcal^{\an}}/G$ where 
+    $$G=\left\{x:((x;q)_{n})_{n\geq1}\text{ has rapid decay}\right\}\subseteq\GG_{m,\Hcal^{\an}}.$$
+\end{definition}
+\begin{remark}
+    $$G=\AnSpec\left(\colim_{k}\Hcal^{\an}\left[\left(\frac{(x;q)_{n}}{u^{kn}}\right)_{n\geq0}\right]\right)$$
+    where $\Hcal^{\an}\left[\left(\frac{(x;q)_{n}}{u^{kn}}\right)_{n\geq0}\right]$ is the free module on the nullsequence. Assumption (i) of \Cref{def: analytic Habiro ring} implies $q\in G$. 
+\end{remark}
+\begin{lemma}
+    $f:*/q^{\ZZ}\to */G$ induces a fully faithful functor $f^{*}:\Dscr_{\QCoh}(*/G)\to\Dscr_{\QCoh}(*/q^{\ZZ})$. In particular, $\Dscr_{\QCoh}(\GG_{m}^{\Hab})$ is a full subcategory of $\Dscr(\GG_{m}/q^{\ZZ})$. 
+\end{lemma}
+In this sense the category of coefficients for Habiro cohomology on $\GG_{m}^{\Hab}$ form a full subcategory of quasicoherent sheaves on $\GG_{m}/q^{\ZZ}$ satisfying a convergence condition. 
+
+We now show that the analytic Habiro ring is nonempty. 
+\begin{example}
+    Consider 
+    $$B_{1}=\QQ((u))_{\square}\langle q-1\rangle_{0}^{\dagger}\left[\frac{1}{q-1}\right]$$
+    the ring of overconvergent ``meromorphic'' functions at the point $q=1$. 
+    \begin{enumerate}[label=(\roman*)]
+        \item $(q;q)_{n}$ is divisible by $(1-q)^{n}$ and for all $k$, $\left(\frac{(1-q)^{n}}{u^{kn}}\right)_{n}\to0$ as overconvergence implies the absolute value of $(1-q)$ is less than any power of $u$ by going to a smaller disc. 
+        \item Using $1-q^{n}=(1-q)[n]_{q}$ where $[n]_{q}$ is a unit of norm 1 so 
+        $$\frac{u^{\varepsilon n}}{1-q^{n}}=\frac{1}{1-q}\left(\frac{u^{\varepsilon n}}{[n]_{q}}\right)$$
+        so the increasing powers of $u$ being a nullsequence imply this is a nullsequence too. 
+    \end{enumerate}
+    exhibiting the $\ZZ((u))_{\square}$-algebra $B_{1}$ as a specialization of the Habiro ring. 
+\end{example}
+\begin{remark}
+    The main reason the conditions (i) and (ii) do not contradict each other in this example is that (ii) only asks that the sequences are not too large integrally, but their product behaves like a factorial so decays faster. 
+\end{remark}
+More generally, for all $m\geq 1$, we can define 
+$$B_{m}=\QQ(\zeta_{m})((u))_{\square}\langle q-\zeta_{m}\rangle_{0}^{\dagger}\left[\frac{1}{q-\zeta_{m}}\right]$$
+which also satisfies the conditions of the analytic Habiro ring. One can also show that $\Hcal^{\an}/p\neq0$ and connects to the theory of Berkovich motives in characteristic $p$, and in fact defines a new ring stack in that setting.  
+
+Moreover, this construction is related to $q$-divided powers as we now discuss. Recall that to define the de Rham stack integrally, we use the quotient $\GG_{a}/\GG_{a}^{\sharp}$ in place of $\widehat{\GG_{a}}$ where $\GG_{a}^{\sharp}=\spec\left(\ZZ\left[\frac{T^{n}}{n!}\right]\right)$. So in the settting of $q$-de Rham cohomology, we would expect to use $\GG_{a,\Hcal}/\GG_{a,\Hcal}^{q\dash\sharp}$ where $\GG_{a}^{q\dash\sharp}=\spec\left(\Hcal\left[\frac{T^{n}}{(q;q)_{n}}\right]\right)$ but this is not a subgroup for addition, so this is not the correct approach. We can try and do a similar approach using $\GG_{m,\Hcal}/\GG_{m,\Hcal}^{q\dash\sharp}$ where $\GG_{m,\Hcal}^{q\dash\sharp}=\spec\left(\Hcal\left[\frac{(T,q)_{n}}{(q;q)_{n}}\right]\right)$ which for a long time was the instructor's candidate for $\GG_{m}^{\Hab}$, but this does not work as $q$-divided powers are in general poorly behaved. In particular, difficulties arise in defining addition. 
