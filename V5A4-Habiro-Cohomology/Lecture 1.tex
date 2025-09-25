@@ -442,6 +442,8 @@ The state of the art of Weil-type cohomology theories for algebraic varieties ca
     \end{center}
     \caption{Prismatic cohomology at the $(p,p)$-point.}
 \end{figure}
+The study of the relationship between cohomology theories at the $(p,p)$-point is the subject of $p$-adic Hodge theory: more precisely, $p$-adic hodge theory seeks to investigate the relationship between crystalline cohomology (with the Frobenius endomorphism), de Rham cohomology (with the Hodge filtration), and \'{e}tale cohomology (with the action of the absolute Galois group $\Gal(\overline{\QQ_{p}}/\QQ_{p}))$ are related. Fontaine made some preliminary progress in this area by formulating comparison conjectures via the so-called period rings that furnish isomorphisms $H^{i}_{\mathsf{Crys}}(X)\otimes B_{\mathsf{Crys}}\cong H^{i}_{\mathsf{\acute{e}t}}(X)\otimes B_{\mathsf{Crys}}$ which are compatible with the additional structure listed above. 
+
 Moreover, the diagram reflects several important comparison phenomena between the abovementioned cohomology theories:
 \begin{itemize}
     \item The intersection of the lines corresponding to Betti and de Rham cohomology at the $(\infty,\infty)$-point is substantiated by the comparison isomorphism between singular cohomology with $\CC$-coefficients and de Rham cohomology via the Riemann-Hilbert correspondence. 
@@ -667,7 +669,12 @@ This course will consider what happens to these $q$-deformations when $q$ approa
 $$\Hcal=\lim_{m,n\geq1}\ZZ[q]/(1-q^{n})^{m}=\lim_{n}\ZZ[q]/(q;q)_{n}$$
 allows us to consider specializations at different roots of unity. 
 
-One issue that arises in trying to na\"{i}vely generalize Habiro cohomology to schemes of higher dimension is that the specialization of prismatic cohomology over the $q$-de Rham prism at $q=1$ recovers de Rham cohomology, but at other roots of unity recovers only Hodge cohomology -- this does not put all roots of unity on equal footing. But if the $q$-de Rham cohomology could be modified to be Hodge cohomology in an appropriate manner. This was shown by Meyer-Wagner in \cite{MeyerWagner}. 
+One issue that arises in trying to na\"{i}vely generalize Habiro cohomology to schemes of higher dimension is that the specialization of prismatic cohomology over the $q$-de Rham prism at $q=1$ recovers de Rham cohomology, but at other roots of unity recovers only Hodge cohomology -- this does not put all roots of unity on equal footing. This is already seen in the theory of prismatic cohomology where $p$-adically, specialization at $q=1$ recovers de Rham cohomology, but specialization at $p$-power roots of unity gives Hodge cohomology. 
+\begin{remark}
+    In dimension zero, however, these nuances dissapear as we are just computing cohomology of the structure sheaf. 
+\end{remark}
+
+If the $q$-de Rham cohomology could be modified to be Hodge cohomology in an appropriate manner, however, this would give a cohesive theory. This was shown by Meyer-Wagner in \cite{MeyerWagner}. 
 \begin{theorem}[Meyer-Wagner; {\cite[Thm. 1.7]{MeyerWagner}}]\label{thm: MeyerWagner main theorem}
     Let $R$ be a $p$-torsion free $p$-complete ring which is a quasiregular quotient over $\ZZ_{p}$ and such that the Frobenius on $R/p$ is semiperfect. If $R$ admits a lift to a $p$-complete $\EE_{1}$ ring spectrum $\SSS_{R}$ such that $R\simeq \SSS_{R}\widehat{\otimes}_{\SSS_{p}}\ZZ_{p}$ then the $q$-Hodge filtration on the $p$-complete derived $q$-de Rham complex is a $q$-deformation of the Hodge filtration on the (ordinary) $p$-complete derived de Rham complex. 
 \end{theorem} 
