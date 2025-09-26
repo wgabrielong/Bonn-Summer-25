@@ -1,5 +1,5 @@
 \section{Lecture 2 -- 2nd May 2025}\label{sec: lecture 2}
-The goal of this course is to develop a theory of Habiro cohomology, a functor that associates to a smooth $\ZZ$-scheme $X$ its Habiro cohomology -- a module over the Habiro ring, or more generally its ``category of constructible sheaves'' which in this case we tentatively denote $\Dscr_{\Hab}(X)$ of ``variations of Habiro structure.''
+The goal of this course is to develop a theory of Habiro cohomology, a functor that associates to a smooth $\ZZ$-scheme $X$ its Habiro cohomology -- a graded module over the Habiro ring, or more generally its ``category of constructible sheaves'' which in this case we tentatively denote $\Dscr_{\Hab}(X)$ of ``variations of Habiro structure.''\footnote{The terminology here borrowed from ``variations of Hodge structure'' as studied in classical algebraic geometry.}
 
 We begin with an exploration of what these structures are in terms of coordinates, and we will later show that the constructions we discuss are in fact independent of these coordinates. Let us make the notion of coordinates precise. 
 \begin{definition}[Framed Algebra]\label{def: framed algebra}
@@ -8,7 +8,7 @@ We begin with an exploration of what these structures are in terms of coordinate
 \begin{remark}
     It is often simpler to consider the case where the coordinates are invertible, that is, the case of $\GG_{m}^{d}$. 
 \end{remark}
-As a first pass, let us contemplate these constructions in the case where $X$ is affine and equal to either $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ and only later consider the generalization to the case where $X$ is \'{e}tale over one of these spaces. Moreover, under these assumptions, we need not make any completions and one can work over $\ZZ[q^{\pm}]$.
+As a first pass, let us contemplate these constructions in the case where $X$ is affine and equal to either $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ and only later consider the generalization to the case where $X$ is \'{e}tale over one of these spaces. Moreover, under these assumptions, we need not make any completions and one can work directly over $\ZZ[q^{\pm}]$.
 
 Recall Habiro cohomology subsumes de Rham cohomology in an appropriate sense, and takes the $q$-derivative -- the Gaussian $q$-analogue of the derivative -- as an input. These $q$-derivatives were first investigated by Jackson \cite{Jackson}.
 \begin{definition}[$q$-Derivative]\label{def: q-derivative}
@@ -97,7 +97,7 @@ Recomputing everything using this modified derivative gives the $q$-Hodge comple
     with differentials given by the differentials for the Koszul complex of commuting operators $\widetilde{\nabla}_{1}^{1},\dots,\widetilde{\nabla}_{d}^{q}$. 
 \end{definition}
 \begin{remark}
-    The nomenclature of \Cref{def: q-dR complex,def: q-Hodge complex} are justified by the fact that they recover the ordinary de Rham and Hodge complexes at $q=1$.
+    The nomenclature of \Cref{def: q-dR complex,def: q-Hodge complex} are justified by the fact that they recover the ordinary de Rham and Hodge complexes, respectively, at $q=1$.
 \end{remark} 
 \begin{remark}
     An automorphism of $\A^{d}_{\ZZ}$ or $\GG_{m}^{d}$ would give rise to an automorphism of the complexes (\ref{eqn: q-dR complex of R}) and (\ref{eqn: q-Hodge complex of R}), at least as an object in the derived category, but it is extremely difficult to understand these automorphisms from this explicit perspective. 
@@ -146,21 +146,24 @@ The preceding discussion of \Cref{rmk: invertible case} implies the following.
 Note that for $R=\ZZ[q^{\pm}][\underline{T}]$, $(-)\otimes_{R}(-)$ does not define a symmetric monoidal structure on the category of modules with $q$-connection: for $(M,\nabla_{i,M}^{q}),(N,\nabla_{i,N}^{q})$ two modules with $q$-connecition, $$(M\otimes_{R} N,\nabla_{i,M}^{q}\otimes_{R}\id_{N}+\id_{M}\otimes_{R}\nabla_{i,N}^{q})$$ is not a module with $q$-connection. One needs instead to take the twist $$(M\otimes_{R} N,\nabla_{i,M}^{q}\otimes_{R}\id_{N}+\gamma_{i,M}\otimes_{R}\nabla_{i,N}^{q}),$$
 defining $\gamma_{i,M}:M\to M$ in an analogous way to \Cref{rmk: invertible case}. While \emph{a priori} appearing assymetric in $M,N$, there is in fact a canonical isomorphism between them. 
 \begin{proposition}
-    Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The category of $R$-modules with $q$-connection is symmetric monoidal. 
+    Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. The category of $R$-modules with modified $q$-connection is symmetric monoidal. 
 \end{proposition}
 \begin{proof}[Proof Outline]
-    Using the equivalence of \Cref{corr: equivalence of q-connection modules and semilinear}, the latter category is symmetric monoidal, hence the former can be promoted to a symmetric monoidal category. 
+    Using the equivalence of \Cref{corr: equivalence of q-connection modules and semilinear}, the latter category of $R$-modules with $\gamma_{i}$-semilinear endomrophisms $\gamma_{i,M}$ is symmetric monoidal, hence the former can be promoted to a symmetric monoidal category. 
 \end{proof}
 \begin{proposition}
     Let $R=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. There is a fully faithful embedding from $(q-1)$-torsion free $R$-modules with $q$-connection and $R$-modules with modified $q$-connection by $(M,\nabla_{i,M}^{q})\mapsto(M,\widetilde{\nabla}_{i,M}^{q})$ with essential image those that are $(q-1)$-torsion free and such that $\widetilde{\nabla}_{i,M}^{q}\equiv0\pmod{(q-1)}$. 
 \end{proposition}
+\begin{proof}
+    This is the identity on modules and sends the $q$-connection to its $(q-1)$-multiple. $(q-1)$-torsion-freeness implies that the map is fully faithful. The essential image of the functor is necessarily $(q-1)$-torsion-free and such modules have trivial connection modulo $(q-1)$. 
+\end{proof}
 The discussion thus far has been done entirely in terms of coordinates. This prompts:
 \begin{question}
     To what extent are the cohomologies and categories discussed thus far independent of coordinates? 
 \end{question}
 Let us consider the following example. 
 \begin{example}\label{ex: Habiro stack on Gm}\marginpar{The instructor remarks that in the theory of analytic geometry the quotient would be the Tate elliptic curve for $d=1$. See \cite{AnalyticStacks}.}
-    Let $X=\GG_{m}^{d}$. The modules with modified $q$-connection are quasicoherent sheaves on $(\GG_{m}/q^{\ZZ})^{d}$ -- the $\gamma_{i}$'s act by multiplication by $q$ on the coordinates so the data of the endomorphisms $\gamma_{i,M}$ on the modules prescribe descent data to the quotient stack (ie. as an fpqc quotient).
+    Let $X=\GG_{m}^{d}=\spec\left(\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]\right)$. The modules with modified $q$-connection are quasicoherent sheaves on $(\GG_{m}/q^{\ZZ})^{d}$ -- the $\gamma_{i}$'s act by multiplication by $q$ on the coordinates so the data of the endomorphisms $\gamma_{i,M}$ on the modules prescribe descent data to the quotient stack (ie. as an fpqc quotient).
 \end{example}
 Let us relate the discussion of complexes \Cref{def: q-dR complex,def: q-Hodge complex}, their cohomologies, and these categories of modules with (modified) $q$-connections. 
 \begin{proposition}\label{prop: algebra structures on RHom unit Ad and Gm}
