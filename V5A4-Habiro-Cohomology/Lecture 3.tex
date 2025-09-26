@@ -1,5 +1,5 @@
 \section{Lecture 3 -- 9th May 2025}\label{sec: lecture 3}
-In Lecture \ref{sec: lecture 2}, we constructed the $q$-de Rham and $q$-Hodge complexes for $\A^{d}_{\ZZ},(\GG_{m})^{d}$ using the $q$-derivatives $\nabla_{i}^{q}$ and modified $q$-derivatives $\widetilde{\nabla}_{i}^{q}$, respectively. 
+In Lecture \ref{sec: lecture 2}, we constructed the $q$-de Rham and $q$-Hodge complexes for $\A^{d}_{\ZZ},(\GG_{m})^{d}$ using the $q$-derivatives $\nabla_{i}^{q}$ and modified $q$-derivatives $\widetilde{\nabla}_{i}^{q}$, respectively. This recovers, for example, the modules with $q$-connection over $\GG_{m}$ as the modules over the $q$-torus, where the operation $q$-commutes $xy=qyx$. 
 
 We now consider the construction of the $q$-de Rham and $q$-Hodge complexes more generally in the case where the $T_{i}$ are invertible and using the logarithmic $q$-derivative $\nabla_{i}^{q,\log}=T_{i}\nabla_{i}^{q}$. We first define these in the case $R=\ZZ[q^{\pm}][\underline{T}^{\pm}]=\ZZ[q^{\pm}][T_{1}^{\pm},\dots,T_{d}^{\pm}]$. 
 \begin{definition}[Logarithmic $q$-Derivative]\label{def: logarithmic q-derivative}
@@ -47,9 +47,9 @@ More formally, $\square:\ZZ[\underline{T}^{\pm}]\to R$ is \'{e}tale, and \'{e}ta
 \end{theorem}
 Such coordinate independence is somewhat easy to deduce in the case where $R$ is a $\QQ$-algebra. 
 \begin{example}[{\cite[Lem. 4.1]{qDeformations};\cite[Lem. 12.4]{BMS1}}]\label{ex: translation between connections and q-connections}
-    Consider the case of a smooth framed $\QQ$-algebra $(R,\square)$ where $\square:\spec(R)\to\GG_{m}$. We can use Taylor's theorem to write 
+    Consider the case of a smooth framed $\QQ$-algebra $(R,\square)$ where $\square:\spec(R)\to\GG_{m,\QQ}$. We can use Taylor's theorem to write 
     $$f(qT)=f(T)+\log(q)(\nabla^{\log}f)(T)+\frac{1}{2}\log(q)^{2}((\nabla^{\log})^{2}f)(T)+\dots$$
-    where $\log(q)=\sum_{n\geq0}(-1)^{n-1}\frac{(q-1)^{n}}{n}\in\QQ[[q-1]]$ so taking the difference of $f(qT)$ and $f(T)$, we find the operators $\nabla^{q,\log},\widetilde{\nabla}^{q,\log}$ are given by 
+    where $\log(q)=\sum_{n\geq0}(-1)^{n-1}\frac{(q-1)^{n}}{n}\in\QQ[[q-1]]$ and $\nabla^{\log}f(T)=\frac{1}{f(T)}f'(T)$. So taking the difference of $f(qT)$ and $f(T)$, we find the operators $\nabla^{q,\log},\widetilde{\nabla}^{q,\log}$ are given by 
     \begin{align*}
         \nabla^{q,\log} &= \frac{\log(q)}{(q-1)}(\nabla^{\log}f)(T)+\frac{1}{2}\frac{\log(q)^{2}}{(q-1)}((\nabla^{\log})^{2}f)(T)+\dots\\
         \widetilde{\nabla}^{q,\log} &= \log(q)(\nabla^{\log}f)(T)+\frac{1}{2}\log(q)^{2}((\nabla^{\log})^{2}f)(T)+\dots.
@@ -96,7 +96,7 @@ We would like to see an analogue of \Cref{prop: R-modules with ordinary connecti
     where $h=(q-1)$ and $\widetilde{\nabla}^{q,\log}_{i,M}=\exp(\widetilde{\nabla}^{\log}_{i,M})-1$. Moreover, these categories are independent of choice of coordinates on $R[[q-1]]\cong R[[h]]$. 
 \end{proposition}
 \begin{proof}[Proof Outline]
-    Observing that the topological nilpotence of the operators imply convergence of the exponential, the proof outline of \Cref{prop: R-modules with ordinary connection} goes through verbatim. 
+    Observing that the topological nilpotence of the operators imply convergence of the exponential, the proof outline of \Cref{prop: R-modules with ordinary connection} goes through verbatim. The latter statement is immediate from the former as the latter category is visibly independent of coordinates.
 \end{proof}
 \begin{remark}
     The topological nilpotence condition is typically satisfied in practice. Regardless, this is likely the best construction one can hope for -- it is unlikely that one can produce an equivalence on larger categories.  
