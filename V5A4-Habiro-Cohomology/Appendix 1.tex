@@ -1,18 +1,25 @@
 \section{Explicit Elements of the Habiro Ring \\ (d'apr\`{e}s Garoufalidis-Wheeler)}\label{appdx: explicit elements}
 This appendix contains the proof sketch of \Cref{ex: element of Habiro ring}. The interested reader is encouraged to consult \cite{GWClassesHabiroCoh} for further details. 
 
-We seek to show that for $R=\ZZ[T_{1},\dots,T_{d},\frac{1}{1-T_{1}-\dots-T_{d}}]$ that the element 
+We want to show that the element 
+$$\frac{1}{1-T_{1}-\dots-T_{d}}=\sum_{k_{1},\dots,k_{d}\geq0}\binom{k_{1}+\dots+k_{d}}{k_{1} \dots k_{d}}T_{1}^{k_{1}}\dots T_{d}^{k_{d}}\in\ZZ[[\underline{T}]]$$
+has a $q$-deformation. More precisely, we seek to show that for $R=\ZZ[T_{1},\dots,T_{d},\frac{1}{1-T_{1}-\dots-T_{d}}]$ that the element 
 \begin{equation}\label{eqn: Habiro element}
     \sum_{k_{1},\dots,k_{d}\geq0}\left[\substack{k_{1}+\dots+k_{d} \\ k_{1}\text{ }\dots\text{ }k_{d}}\right]_{q}T_{1}^{k_{1}}\dots T_{d}^{k_{d}}\in\ZZ[q^{\pm}][[\underline{T}]]
 \end{equation}
-lies in $\Hcal_{(R,\square)}$ where $\square:\ZZ[q^{\pm}][\underline{T}]\to R$ is the obvious map. For this, it sufficse to show that $R^{(m)}[[q-\zeta_{m}]]\subseteq\ZZ[\zeta_{m}][[\underline{T},q-\zeta_{m}]]$. 
+obtained by $q$-deformation of the multinomial lies in $\Hcal_{(R,\square)}$ where $\square:\ZZ[q^{\pm}][\underline{T}]\to R$ is the obvious map. For this, it sufficse to show that $R^{(m)}[[q-\zeta_{m}]]\subseteq\ZZ[\zeta_{m}][[\underline{T},q-\zeta_{m}]]$. 
 
 We have that 
 $$R^{(m)}=\ZZ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots -T_{d}^{m}}\right]$$
 and that the Frobenius gluing is already completely determined by the injectivity $R^{(m)}[[q-\zeta_{m}]]\hookrightarrow\ZZ[\zeta_{m}][[\underline{T},q-\zeta_{m}]]$ as it can be checked after $\underline{T}$-adic completion. Note, furthermore, that 
 {\footnotesize
 $$\ZZ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots-T_{d}^{m}}\right]=\QQ\left[T_{1},\dots,T_{d},\frac{1}{1-T_{1}^{m}-\dots-T_{d}^{m}}\right]\bigcap\ZZ[[T_{1},\dots,T_{d}]]$$
-\normalsize}as subrings of $\QQ[[T_{1},\dots,T_{d}]]$, so it suffices to verify the statement rationally. Using $q=\zeta_{m}\exp(h)$, we get an isomorphism $\QQ(\zeta_{m})[[q-\zeta_{m}]]\cong\QQ(\zeta_{m})[[h]]$ and seek to develop (\ref{eqn: Habiro element}) as a power series in $h$. Using that 
+\normalsize}as subrings of $\QQ[[T_{1},\dots,T_{d}]]$, so it suffices to verify the statement rationally. Using $q=\zeta_{m}\exp(h)$, we get an isomorphism $\QQ(\zeta_{m})[[q-\zeta_{m}]]\cong\QQ(\zeta_{m})[[h]]$ and seek to develop (\ref{eqn: Habiro element}) as a power series in $h$: 
+\begin{align*}
+    1-q^{i} &= 1-\exp(ih) = -ih - \frac{i^{2}}{2} h^{2}-\dots \\
+    (q;q)_{n}&=(-1)^{n}!h^{n}\left(1 + \frac{n(n+1)}{4}+\dots\right)
+\end{align*}
+Using that 
 $$\left[\substack{k_{1}+\dots+k_{d} \\ k_{1}\text{ }\dots\text{ }k_{d}}\right]_{q}=\binom{k_{1}+\dots+k_{d}}{k_{1}\dots k_{d}}\cdot O(h)$$
 where $O(h)$ is a power series in $h$ with coefficients in $\QQ[k_{1},\dots,k_{d}]$, we have that each term in the power series expansion in $h$ at $m=1$ is of the form 
 \begin{equation}\label{eqn: h series expansion}

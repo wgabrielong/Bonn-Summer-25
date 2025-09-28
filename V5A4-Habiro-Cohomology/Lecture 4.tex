@@ -20,7 +20,7 @@ Analogously, we can define $q$-connections.
     \normalsize}where $\varphi_{p}$ lifts the Frobenius on $R^{(m)}/(p)$ by raising each variable to the $p$-th power and fixes $q$ and $\zeta_{m}$. 
 \end{proposition}
 \begin{remark}
-    There is an obvious map from the Habiro ring of the torus \Cref{def: Habiro ring of base} $\Hcal_{\ZZ[\underline{T}^{\pm}]}\to\Hcal_{(R,\square)}$ endowing the Habiro ring of $(R,\square)$ with the structure of a $\Hcal_{\ZZ[\underline{T}^{\pm}]}$-algebra.  
+    There is an obvious map from the Habiro ring of the torus \Cref{def: Habiro ring of base} $\Hcal_{\ZZ[\underline{T}^{\pm}]}\to\Hcal_{(R,\square)}$ endowing the Habiro ring of $(R,\square)$ with the structure of a(n \'{e}tale) $\Hcal_{\ZZ[\underline{T}^{\pm}]}$-algebra.  
 \end{remark}
 Let us consider some explicit elements of the Habiro ring. 
 \begin{example}\label{ex: element of Habiro ring}\marginpar{The lecture contained a fairly substantive sketch of the proof \Cref{ex: element of Habiro ring}, which the author has defered to \Cref{appdx: explicit elements} for continuity of exposition.}
@@ -68,10 +68,11 @@ For general $m$, $H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)$ h
 \end{proof}
 This produces a description of $H^{i}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right)$ that is visibly independent of coordinates, being the quotient of coordinate-independent objects. 
 
-In fact we can do better. For any $R$, there is a notion of $q$-Witt vectors $q\dash W_{m}(R)$ and $q$-de Rham-Witt complexes $q\dash W_{m}\Omega_{R}$ which is a commutative differential graded algebra with first term $q\dash W_{m}(R)$ isomorphic to $H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)$. 
+In fact we can do better. For any $R$, there is a notion of $q$-Witt vectors $q\dash W_{m}(R)$ and $q$-de Rham-Witt complexes $q\dash W_{m}\Omega_{R}$ which is a commutative differential graded algebra with first term given by the $q$-Witt vectors $q\dash W_{m}(R)$ isomorphic to the complex $H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)$ as a commutative differential graded algebra. 
 \begin{theorem}[Wagner; {\cite[Thm. 5.7]{WagnerMSThesis}}]\label{thm: }
     Let $R$ be a smooth framed $\ZZ$-algebra. There is an isomorphism 
-    $$q\dash W_{m}\Omega_{R}^{\bullet}\longrightarrow H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q)\right).$$
+    $$q\dash W_{m}\Omega_{R}^{\bullet}\longrightarrow H^{\bullet}\left(q\dash\HHdg_{(R,\square)}/(1-q^{m})\right)$$
+    where $q\dash W_{m}\Omega^{\bullet}_{R}$ is the $q$-de Rham-Witt complex.
 \end{theorem}
 \begin{remark}
     This is related to the classical construction of the de Rham-Witt complex, though the sense in which the preceding constructions are $q$-deformations are quite subtle. 
