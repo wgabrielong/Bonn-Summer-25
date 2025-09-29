@@ -115,9 +115,18 @@ Note that this only gives vanishing of the cotangent complex over $\FF_{p}$. How
 \begin{corollary}\label{corr: p-completion mod 1-q}
     Let $R$ be a flat $\ZZ$-algebra such that $R/(p)$ is a perfect $\FF_{p}$-algebra. Then for $q\dash\HHdg_{R}$ as in \Cref{thm: Wagner no-go},
     $$\left(q\dash\HHdg_{R}/^{L}(1-q)\right)^{\wedge}_{p}\cong (R^{\wedge}_{p})[0].$$
+    Further, $\left(q\dash\HHdg_{R}/^{L}(1-q)\right)^{\wedge}_{(p,q-1)}\cong (R[[q-1]])[0]$. 
 \end{corollary}
 \begin{proof}
     The $p$-adic completion $\left(q\dash\HHdg_{R}/^{L}(1-q)\right)^{\wedge}_{p}$ is the unique lift of the quotient $\left(q\dash\HHdg_{R}/^{L}(p,1-q)\right)$ to characteristic zero, and the unique lift of $R/(p)[0]$ computed in \Cref{lem: mod p q-Hodge is R mod p} is precisely $(R^{\wedge}_{p})[0]$.  
+\end{proof}
+\begin{proposition}
+    Let $R$ be a flat $\ZZ$-algebra such that $R/(p)$ is a perfect $\FF_{p}$-algebra. If $S=R/(f)$ for some $f\in R$ a non-zerodivisor, then
+    $\left(q\dash\HHdg_{S}/^{L}(1-q)\right)^{\wedge}_{(p,q-1)}$
+    is concentrated in degree 0 and flat over $\ZZ_{p}[[q-1]]$.
+\end{proposition}
+\begin{proof}
+    We have $(\LL_{S/\ZZ})_{p}^{\wedge}\simeq\LL_{S/R}\simeq S[1]$, the latter isomorphism by $R\to S$ being a regular closed immersion. Thus the $q$-Habiro-Hodge complex has after $(p,q-1)$-adic completion the desired properties by animating the $q$-Habiro-Hodge complex modulo $(q-1)$.
 \end{proof}
 We now proceed with the proof of \Cref{thm: Wagner no-go}. 
 \begin{proof}[Proof Outline of \Cref{thm: Wagner no-go}]
